@@ -1,0 +1,14 @@
+---
+import type { SiteProfile } from '../content';
+const { site } = Astro.props as { site: SiteProfile };
+---
+<footer class="border-t border-emerald-900/10 bg-white">
+  <div class="container grid gap-8 py-10 md:grid-cols-[2fr_1fr_1fr]">
+    <div>
+      <div class="font-bold text-slate-950">{site.name}</div>
+      <p class="mt-3 max-w-xl text-sm text-slate-600">Independent Shopify app comparisons for merchants choosing retention, lifecycle, cart recovery, and owned-channel marketing software. Built around <strong>{site.primaryKeyword}</strong>.</p>
+    </div>
+    <div class="text-sm"><div class="font-semibold text-slate-900">Explore</div><a class="mt-2 block text-slate-600" href="/apps">Apps</a><a class="mt-2 block text-slate-600" href="/compare">Comparisons</a><a class="mt-2 block text-slate-600" href="/guides">Guides</a></div>
+    <div class="text-sm"><div class="font-semibold text-slate-900">Sequenzy</div><a class="mt-2 block text-slate-600" href="https://sequenzy.com">Lifecycle email for growing stores</a><p class="mt-4 text-slate-500">© 2026 {site.domain}</p></div>
+  </div>
+</footer>
