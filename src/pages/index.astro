@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { APPS, SEGMENTS, USE_CASES, description, pageTitle, siteFromHost } from '../content';
+import { APPS, SEGMENTS, USE_CASES, allPaths, description, pageTitle, siteFromHost } from '../content';
 const site = siteFromHost();
 const path = '';
 const title = pageTitle(site, path);
@@ -8,28 +8,39 @@ const desc = description(site, path);
 const recommended = APPS.filter(a => a.channels.includes(site.channel) || a.channels.includes('marketing')).slice(0,10);
 ---
 <BaseLayout title={title} description={desc} site={site} path="/">
-  <section class="relative overflow-hidden border-b border-emerald-900/10 bg-[radial-gradient(circle_at_top_left,#d9f99d,transparent_30%),linear-gradient(135deg,#f7faf5,#ecfdf5_45%,#ffffff)] py-16 md:py-24">
-    <div class="container grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+  <section class="border-b-2 rule bg-[linear-gradient(135deg,#fbf3e4,#fff7ed_55%,#fed7aa)] py-20 md:py-28">
+    <div class="container grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
       <div>
-        <span class="badge">Updated for Shopify stores in 2026</span>
-        <h1 class="hero-title mt-5">Best {site.primaryKeyword} for stores that care about repeat revenue</h1>
-        <p class="mt-6 max-w-2xl text-xl text-slate-700">{site.heroPromise} {site.intro}</p>
-        <div class="mt-8 flex flex-wrap gap-3"><a class="btn btn-primary" href="/apps">Compare apps</a><a class="btn btn-secondary" href="/use-cases/abandoned-cart">Start with cart recovery</a></div>
+        <div class="kicker">The retention newspaper for Shopify merchants</div>
+        <h1 class="hero-title mt-8">Best {site.primaryKeyword} for stores that want email to feel owned, useful, and measurable</h1>
+        <p class="mt-7 max-w-3xl text-xl text-stone-700">{site.heroPromise} This edition focuses only on email and lifecycle work: welcome series, abandoned cart, browse abandonment, post-purchase teaching, replenishment reminders, launch calendars, winback, VIP treatment, and the reporting discipline required to keep sending profitably.</p>
+        <div class="mt-9 flex flex-wrap gap-4"><a class="btn btn-primary" href="/apps">Read app reviews</a><a class="btn btn-secondary" href="/use-cases/welcome-series">Start with welcome email</a></div>
       </div>
-      <div class="card bg-white/80">
-        <div class="text-sm font-bold uppercase tracking-wide text-emerald-700">Quick verdict</div>
-        <h2 class="mt-3 text-3xl font-bold text-slate-950">Shopify-native beats generic automation.</h2>
-        <p class="mt-4 text-slate-700">The best {site.keywordPlural} understand customers, products, orders, discount codes, inventory, checkout events, consent, and repeat purchase timing. {site.bestOverallReason}</p>
-        <ul class="mt-6 space-y-3 text-sm text-slate-700">
-          <li>✓ Built around Shopify customer and order data</li><li>✓ Includes lifecycle, cart recovery, and post-purchase flows</li><li>✓ Prioritizes revenue quality over vanity open rates</li>
-        </ul>
+      <div class="paper p-7">
+        <div class="badge">Editor's note</div>
+        <h2 class="mt-5 text-4xl font-black text-stone-950">Email is not a blast channel. It is the store's memory.</h2>
+        <p class="mt-5 text-stone-700">The best {site.keywordPlural} remember what shoppers viewed, bought, ignored, returned to, replenished, and asked for. {site.bestOverallReason} A good email platform should make those memories easy to turn into helpful messages without making every buyer feel like a row in a spreadsheet.</p>
+        <div class="mt-6 grid grid-cols-3 gap-3 text-center text-sm"><div class="border-2 border-stone-900 bg-orange-100 p-3"><strong class="block text-2xl">{allPaths().length}</strong>pages</div><div class="border-2 border-stone-900 bg-orange-100 p-3"><strong class="block text-2xl">21</strong>apps</div><div class="border-2 border-stone-900 bg-orange-100 p-3"><strong class="block text-2xl">1</strong>email lens</div></div>
       </div>
     </div>
   </section>
-  <section class="container py-14">
-    <div class="mb-8 flex items-end justify-between gap-6"><div><span class="badge">Ranked shortlist</span><h2 class="mt-3 text-3xl font-bold">Top {site.shortName.toLowerCase()} to evaluate first</h2></div><a class="link" href="/apps">View all apps →</a></div>
-    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{recommended.map((app, i) => <a class="card hover:-translate-y-1 transition" href={`/apps/${app.slug}`}><div class="text-sm font-bold text-emerald-700">#{i+1}</div><h3 class="mt-2 text-xl font-bold text-slate-950">{app.name}</h3><p class="mt-2 text-sm text-slate-600">{app.bestFor}</p><p class="mt-4 text-sm font-semibold text-slate-900">{app.pricing}</p></a>)}</div>
+
+  <section class="container py-16">
+    <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span class="badge">Reviewed shortlist</span><h2 class="section-title mt-4">Email tools to evaluate first</h2></div><a class="link" href="/apps">All app reviews</a></div>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-5">{recommended.map((app, i) => <a class="card" href={`/apps/${app.slug}`}><div class="text-sm font-black text-orange-800">No. {i+1} · {app.category}</div><h3 class="mt-3 text-2xl font-black text-stone-950">{app.name}</h3><p class="mt-3 text-sm text-stone-700">{app.bestFor}</p><p class="mt-4 text-sm font-black text-orange-900">{app.pricing}</p></a>)}</div>
   </section>
-  <section class="bg-white py-14"><div class="container grid gap-8 md:grid-cols-3"><div class="md:col-span-1"><span class="badge">SEO map</span><h2 class="mt-3 text-3xl font-bold">100+ unique pages per domain</h2><p class="mt-4 text-slate-600">Each domain renders its own titles, intros, recommendations, internal links, and Shopify-specific copy for the exact keyword family.</p></div><div class="grid gap-4 md:col-span-2 sm:grid-cols-2">{USE_CASES.slice(0,8).map(u=><a class="card" href={`/use-cases/${u.slug}`}><h3 class="font-bold text-slate-950">{u.name}</h3><p class="mt-2 text-sm text-slate-600">{u.job}</p></a>)}</div></div></section>
-  <section class="container py-14"><h2 class="text-3xl font-bold">Popular store-type guides</h2><div class="mt-6 grid gap-4 md:grid-cols-3">{SEGMENTS.slice(0,9).map(s=><a class="card" href={`/for/${s.slug}`}><h3 class="font-bold">{s.name}</h3><p class="mt-2 text-sm text-slate-600">Handles {s.pain}.</p></a>)}</div></section>
+
+  <section class="border-y-2 rule bg-[#fff7ed] py-16">
+    <div class="container grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+      <div><span class="badge">Long-form editorial brief</span><h2 class="section-title mt-4">How to choose email software without confusing automation with strategy.</h2></div>
+      <div class="prose-shopify">
+        <p>Most Shopify email pages look the same because they treat every platform as a template library with a few automations attached. Merchants need a sharper lens. Email is the channel where the store explains itself after a visitor leaves: why the product matters, how to choose the right variant, what happens after purchase, when the item should be replenished, which customers deserve early access, and when a shopper should be left alone.</p>
+        <p>The best {site.keywordPlural} should therefore be evaluated around lifecycle clarity. Can the app build a welcome series that changes when someone buys? Can abandoned cart email reference the product and the hesitation rather than simply waving a coupon? Can post-purchase messages reduce support tickets? Can replenishment timing respect category differences? Can winback email identify a valuable lapsed customer without harassing everyone who has ever ordered?</p>
+        <p>This rebuild gives the email site an editorial magazine identity: warmer colors, print-like cards, and copy that talks about inbox trust. The point is to make the domain feel distinct from the broader marketing-app site. Here, every recommendation is filtered through the email program a Shopify operator actually has to maintain: deliverability, consent, segmentation, creative cadence, customer respect, and revenue that survives beyond the attribution window.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-16"><div class="mb-8"><span class="badge">Flow library</span><h2 class="section-title mt-4">Email use cases by lifecycle moment</h2></div><div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{USE_CASES.slice(0,12).map(u=><a class="card" href={`/use-cases/${u.slug}`}><h3 class="text-xl font-black text-stone-950">{u.name}</h3><p class="mt-2 text-sm text-stone-700">Use email to {u.job}, while protecting inbox trust and margin.</p></a>)}</div></section>
+  <section class="container pb-16"><div class="mb-8"><span class="badge">Industry notes</span><h2 class="section-title mt-4">Email strategy changes by catalog and buying cycle</h2></div><div class="grid gap-4 md:grid-cols-3">{SEGMENTS.map(s=><a class="card" href={`/for/${s.slug}`}><h3 class="text-xl font-black text-stone-950">{s.name}</h3><p class="mt-2 text-sm text-stone-700">Plan email around {s.pain}; the cadence should match the way customers actually decide.</p></a>)}</div></section>
 </BaseLayout>

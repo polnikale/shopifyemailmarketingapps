@@ -2,17 +2,17 @@
 import type { SiteProfile } from '../content';
 const { site } = Astro.props as { site: SiteProfile };
 ---
-<header class="sticky top-0 z-50 border-b border-emerald-900/10 bg-white/85 backdrop-blur-xl">
+<header class="sticky top-0 z-50 border-b-2 border-stone-900 bg-[#fbf3e4]/90 backdrop-blur-xl">
   <div class="container flex h-16 items-center justify-between">
-    <a href="/" class="flex items-center gap-3 font-bold text-slate-950">
-      <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-slate-950 to-emerald-500 text-white shadow-lg shadow-emerald-500/20">S</span>
-      <span>{site.name}</span>
+    <a href="/" class="flex items-center gap-3 font-black text-stone-950">
+      <span class="grid h-10 w-10 place-items-center border-2 border-stone-950 bg-orange-200 text-stone-950 shadow-[4px_4px_0_#2a2118]">E</span>
+      <span class="hidden sm:inline">{site.name}</span>
     </a>
-    <nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-      <a href="/apps" class="hover:text-slate-950">Apps</a>
-      <a href="/compare" class="hover:text-slate-950">Compare</a>
-      <a href="/use-cases" class="hover:text-slate-950">Use cases</a>
-      <a href="/for" class="hover:text-slate-950">Store types</a>
+    <nav class="hidden items-center gap-6 text-xs font-black uppercase tracking-[.18em] text-stone-700 md:flex">
+      <a href="/apps" class="hover:text-orange-700">Reviews</a>
+      <a href="/compare" class="hover:text-orange-700">Comparisons</a>
+      <a href="/use-cases" class="hover:text-orange-700">Flows</a>
+      <a href="/for" class="hover:text-orange-700">Industries</a>
     </nav>
     <a href="https://sequenzy.com" class="btn btn-primary">Try Sequenzy</a>
   </div>
