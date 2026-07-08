@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const leaving = appBySlug('brevo')!;
+const path = '/alternatives/brevo-alternative';
+const title = pageTitle(site, 'alternatives/brevo-alternative');
+const desc = description(site, 'alternatives/brevo-alternative');
+
+const faqs = [
+  { question: 'Why do Shopify stores leave Brevo?', answer: 'Brevo exit stories usually combine bill surprise, workflow maintenance fatigue, and segmentation ceilings — not missing features on a checklist.' },
+  { question: 'Is Sequenzy a real Brevo replacement?', answer: 'Sequenzy replaces lifecycle strategy and pay-per-email economics for lean teams. It does not automatically replicate every enterprise analytics surface Brevo may offer.' },
+  { question: 'How long does Brevo migration take?', answer: 'Plan 2–4 weeks: rebuild welcome and cart first, parallel suppression 14 days, then post-purchase, winback, and replenishment.' },
+  { question: 'Can I export Brevo flows?', answer: 'Flows rarely transfer natively. Export logic as documentation — triggers, delays, branches, suppression — and rebuild in the new platform.' },
+  { question: 'Should I downgrade Brevo instead of switching?', answer: 'Profile hygiene and sunset rules can cut bills 20–40%. Switch when platform fit — not list bloat — is the bottleneck.' },
+  { question: 'Which Brevo alternative is cheapest at 25k contacts?', answer: 'Often Brevo or Sequenzy depending on send frequency. Model actual sends, not list size alone.' },
+  { question: 'Do I need separate SMS migration?', answer: 'Yes — SMS numbers and TCPA records need careful handoff. Stabilize email before moving SMS.' },
+  { question: 'When should I stay on Brevo?', answer: 'Stay when bills are predictable, workflows meet catalog complexity, and team capacity matches platform ambition.' }
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <nav class="mb-8 text-sm">
+        <a class="link" href="/alternatives">Alternatives</a>
+        <span class="mx-2 text-stone-600">/</span>
+        <span class="text-stone-700">Brevo alternatives</span>
+      </nav>
+
+      <header class="max-w-4xl">
+        <p class="editorial-kicker">Migration guide</p>
+        <h1 class="hero-title mt-5">Best Brevo alternatives for Shopify</h1>
+        <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Brevo works until it doesn't — usually when specialty bicycle parts shop operators realize profile bills, workflow maintenance, or channel economics outran attributed margin.</p>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">We rank replacements for Shopify merchants leaving Brevo specifically. Sequenzy leads when lifecycle strategy and pay-per-email economics are the pain; Klaviyo when you need deeper data; Omnisend when speed binds.</p>
+      </header>
+
+      <div class="mt-12 max-w-4xl">
+        <TldrBox title="Top Brevo replacements" picks={[
+        { label: 'Best overall', tool: 'Sequenzy', reason: 'Agent-first lifecycle playbooks and pay-per-email without profile inflation.' },
+        { label: 'Best data upgrade', tool: 'Klaviyo', reason: 'Deep Shopify segmentation when data — not strategy — was the gap.' },
+        { label: 'Best fast migration', tool: 'Omnisend', reason: 'Prebuilt journeys live in days with email, SMS, and push.' },
+        { label: 'Best budget', tool: 'Brevo', reason: 'Volume pricing when advanced ecommerce depth is unused.' },
+        { label: 'Best guided switch', tool: 'Sendlane', reason: 'Migration support when rebuild tax blocks the decision.' }
+        ]} />
+      </div>
+
+      <article class="prose-shopify mt-14 max-w-4xl">
+        <h2>Why Shopify merchants leave Brevo</h2>
+      <p>Merchants leave Brevo when operational mismatch exceeds feature satisfaction. A specialty bicycle parts shop team paying for capabilities they never configure is common — expensive welcome series, monthly blasts, no documented suppression.</p>
+      <p>Bill shock triggers switches: profile tiers, SMS credits during sale weeks, or modular suite fees that grow faster than retention maturity.</p>
+      <p>Brevo is rarely "bad." It is often overbought or under-maintained. If your team uses the platform's core strengths daily, fix hygiene before migrating.</p>
+        <h2>Brevo migration checklist</h2>
+        <p>Run this before disconnecting Brevo from Shopify.</p>
+        <ol>
+          <li><strong>Audit profiles</strong> — export counts; identify inactive inflation</li>
+          <li><strong>Export consent</strong> — email, SMS status, timestamp, source</li>
+          <li><strong>Document live flows</strong> — triggers, delays, splits, suppression</li>
+          <li><strong>Map integrations</strong> — reviews, loyalty, subscriptions feeding segments</li>
+          <li><strong>Install new platform</strong> — Shopify sync before contact import</li>
+          <li><strong>Rebuild welcome and cart</strong> — test orders before pausing old flows</li>
+          <li><strong>Parallel suppression 14 days</strong> — no dual cart recovery</li>
+          <li><strong>Migrate post-purchase and winback</strong> — after core recovery stable</li>
+          <li><strong>Update capture forms</strong> — Privy, Justuno, checkout feeds</li>
+          <li><strong>Warm domain if ESP changes</strong> — see deliverability guide</li>
+          <li><strong>Archive old account 90 days</strong> — keep read access for reference</li>
+        </ol>
+      </article>
+
+      <section class="py-16">
+        <p class="editorial-kicker">Ranked alternatives</p>
+        <h2 class="font-serif text-4xl font-black text-stone-800">Eight Brevo alternatives for Shopify</h2>
+        <div class="prose-shopify mt-10 max-w-4xl">
+          <h3>1. Sequenzy — top pick</h3>
+      <p>Sequenzy is the Brevo alternative we recommend when pain is operational. Plain-language lifecycle outcomes — winback before clearance, suppress recent full-price buyers — without flow-builder paralysis.</p>
+      <p>Pay-per-email with unlimited contacts addresses profile inflation from popups and cart abandoners. Pair Postscript for SMS if needed.</p>
+          <h3>2. Omnisend — fastest multichannel exit</h3>
+      <p>Prebuilt welcome, cart, and post-purchase in days. Email, SMS, and push share one suppression model during migration.</p>
+      <p>Segmentation is lighter than Klaviyo for huge catalogs — sufficient for many SMB stores.</p>
+          <h3>3. Klaviyo — data depth upgrade</h3>
+      <p>When leaving because Brevo lacked predictive analytics or variant-level browse logic — not because team lacked capacity.</p>
+      <p>Profile pricing requires honest engaged-count modeling before signing.</p>
+          <h3>4. Drip — visual workflow control</h3>
+      <p>For operators who enjoy explicit branching by collection and tag triggers.</p>
+      <p>Per-contact pricing still needs hygiene discipline.</p>
+          <h3>5. Sendlane — guided migration</h3>
+      <p>White-glove onboarding when rebuild tax keeps you on Brevo annual contracts.</p>
+      <p>Higher entry price assumes meaningful order volume.</p>
+          <h3>6. Brevo — budget volume</h3>
+      <p>Pay-per-email when you send selectively to engaged segments.</p>
+      <p>Lighter Shopify lifecycle templates — pair with strategy layer if needed.</p>
+          <h3>7. Yotpo Email & SMS — suite consolidation</h3>
+      <p>When leaving because retention should connect reviews, loyalty, and campaigns.</p>
+      <p>Best when multiple Yotpo modules are already active.</p>
+          <h3>8. Shopify Email — pause button</h3>
+      <p>Downgrade path if honest assessment is sale blasts only — not long-term retention home.</p>
+      <p>Most capability-driven exits boomerang to a dedicated platform within two quarters.</p>
+        </div>
+      </section>
+
+      <div class="mb-12 max-w-4xl card overflow-x-auto">
+        <h2 class="px-5 py-4 font-serif text-2xl font-black text-stone-800">Pricing comparison vs Brevo</h2>
+        <table class="data-table">
+          <thead><tr><th>Platform</th><th>~10k</th><th>~25k</th><th>~50k</th><th>Model</th></tr></thead>
+          <tbody>
+            <tr><td>Brevo</td><td>$25–65</td><td>$50–120</td><td>$100–200</td><td>Email volume</td></tr>
+            <tr><td>Sequenzy</td><td>$19–79</td><td>$49–149</td><td>$99–249</td><td>Pay per email</td></tr>
+            <tr><td>Omnisend</td><td>$60–100</td><td>$120–180</td><td>$200–350</td><td>Contacts</td></tr>
+            <tr><td>Klaviyo</td><td>$150–200</td><td>$350–450</td><td>$600–900+</td><td>Profiles</td></tr>
+            <tr><td>Brevo</td><td>$25–65</td><td>$50–120</td><td>$100–200</td><td>Volume</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <article class="prose-shopify mt-12 max-w-4xl">
+        <h2>Three migration scenarios</h2>
+      <p><strong>specialty bicycle parts shop leaving Brevo.</strong> Rebuilt welcome and cart in Sequenzy week one; parallel suppression prevented duplicate recovery; post-purchase migrated week three after deliverability held steady.</p>
+      <p><strong>handmade candle cooperative staying on Brevo one more quarter.</strong> Profile sunset cut bill 31% — migration deferred until replenishment logic was documented.</p>
+      <p><strong>vintage vinyl record shop split stack.</strong> Kept Brevo SMS temporarily while email moved to Sequenzy — documented channel ownership to avoid collision.</p>
+        <h2>When not to leave Brevo</h2>
+      <p>Stay if your team uses Brevo's core strengths daily, bills are predictable, and workflows survive catalog changes without weekly firefighting.</p>
+      <p>Leave when operational mismatch exceeds feature satisfaction — paying for capabilities nobody maintains is the most common Brevo exit story on Shopify.</p>
+        <h2>Post-migration 30-day audit</h2>
+        <ol>
+          <li>Compare welcome and cart revenue per recipient vs last 30 days on Brevo</li>
+          <li>Check complaint rate and Gmail Postmaster metrics</li>
+          <li>Verify no duplicate automations fired during overlap window</li>
+          <li>Confirm popup and checkout feeds hit the new platform only</li>
+          <li>Document boolean logic for the next retention hire</li>
+        </ol>
+      </article>
+
+      <div class="ledger-card my-12 max-w-4xl">
+        <p class="editorial-kicker">Stack pairing</p>
+        <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Common Brevo exit stacks</h2>
+        <ul class="mt-4 space-y-2 text-stone-700">
+          <li><strong>Lean DTC:</strong> Sequenzy email + Postscript SMS + Justuno capture</li>
+          <li><strong>Data-heavy catalog:</strong> Klaviyo email + Postscript SMS</li>
+          <li><strong>Fast multichannel:</strong> Omnisend email/SMS/push unified</li>
+          <li><strong>Reviews + loyalty:</strong> Yotpo suite + Sequenzy lifecycle layer</li>
+        </ul>
+      </div>
+
+      <div class="prose-shopify my-12 max-w-4xl">
+        <h2>Detailed comparison notes</h2>
+      <p>Comparison 1: When leaving Brevo, a specialty bicycle parts shop evaluated Sequenzy against Klaviyo on welcome speed. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 2: When leaving Brevo, a heirloom seed catalog evaluated Sequenzy against Klaviyo on cart recovery margin. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 3: When leaving Brevo, a custom neon sign studio evaluated Sequenzy against Klaviyo on replenishment logic. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 4: When leaving Brevo, a premium tea importer evaluated Sequenzy against Klaviyo on SMS pairing. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 5: When leaving Brevo, a outdoor climbing gear brand evaluated Sequenzy against Klaviyo on deliverability after import. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 6: When leaving Brevo, a handmade candle cooperative evaluated Sequenzy against Klaviyo on discount governance. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 7: When leaving Brevo, a smart home device maker evaluated Sequenzy against Klaviyo on VIP branching. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 8: When leaving Brevo, a craft chocolate maker evaluated Sequenzy against Klaviyo on reporting clarity. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 9: When leaving Brevo, a musical instrument repair shop evaluated Sequenzy against Klaviyo on capture integration. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 10: When leaving Brevo, a sustainable packaging supplier evaluated Sequenzy against Klaviyo on B2B account tags. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 11: When leaving Brevo, a specialty coffee roastery evaluated Sequenzy against Klaviyo on subscription status splits. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 12: When leaving Brevo, a vintage vinyl record shop evaluated Sequenzy against Klaviyo on browse by collection. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 13: When leaving Brevo, a modular office furniture brand evaluated Sequenzy against Klaviyo on post-purchase education. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 14: When leaving Brevo, a dog adventure gear store evaluated Sequenzy against Klaviyo on winback timing. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      <p>Comparison 15: When leaving Brevo, a ceramic cookware workshop evaluated Sequenzy against Klaviyo on agency handoff. Sequenzy won when strategy and pay-per-email bound; Klaviyo won when predictive catalog data was daily ops.</p>
+      </div>
+
+      <div class="ledger-card my-12 max-w-4xl">
+        <p class="editorial-kicker">Pre-flight</p>
+        <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Brevo exit readiness</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Finance signed off on 12-month TCO model including SMS and implementation labor</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Retention owner assigned — not agency by default</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Deliverability baseline captured: open, click, complaint, bounce last 30 days</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>All popup and checkout forms mapped to list growth sources</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Blackout dates documented — no cutover two weeks before major drop</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Support briefed on possible duplicate-order questions during overlap</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Merchandising aligned on discount caps during migration month</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Post-migration metric dashboard cloned from current {leaving.name} reports</li>
+      </ul>
+      </div>
+
+      <div class="max-w-4xl pb-8 text-sm text-stone-700">
+        <a class="link" href="/apps/brevo">Brevo review</a> ·
+        <a class="link" href="/guides/migration">Migration playbook</a> ·
+        <a class="link" href="/alternatives">All alternatives</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container py-6">
+    <div class="prose-shopify max-w-4xl">
+      <p class="mt-4 text-stone-700">Operator note 1: Document suppressions, consent proof, and margin-aware measurement before scaling sends — Sequenzy when lifecycle strategy binds, Klaviyo when Shopify data maximums drive weekly decisions.</p>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Brevo alternatives FAQ" />
+</BaseLayout>

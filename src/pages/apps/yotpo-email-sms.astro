@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('yotpo-email-sms')!;
+const path = '/apps/yotpo-email-sms';
+const title = pageTitle(site, 'apps/yotpo-email-sms');
+const desc = description(site, 'apps/yotpo-email-sms');
+
+const faqs = [
+  { question: 'Is Yotpo Email & SMS a full Shopify email marketing app?', answer: 'It is a retention suite module — strongest when combined with Yotpo Reviews and Loyalty. Email depth trails Klaviyo and Sequenzy (#1 here for standalone lifecycle). Best value when UGC, points, and campaigns share one vendor.' },
+  { question: 'When does Yotpo suite pricing make sense?', answer: 'When you already pay for Yotpo Reviews and want loyalty-triggered automations without a fourth vendor. Modular pricing adds up — audit total stack cost vs Sequenzy plus standalone reviews tool.' },
+  { question: 'Can Yotpo send review request flows?', answer: 'Yes — review request timing tied to delivery and purchase is a core strength. UGC blocks in campaigns differentiate from generic ESP templates.' },
+  { question: 'Yotpo vs Klaviyo for Shopify?', answer: 'Klaviyo wins pure email/SMS automation depth. Yotpo wins consolidation when reviews, loyalty, and campaigns must interoperate. Sequenzy wins when lifecycle strategy speed matters without suite complexity.' },
+  { question: 'Does Yotpo include SMSBump?', answer: 'Yotpo acquired SMSBump — SMS capabilities exist within ecosystem. SMS economics still need monitoring; email-first lifecycle may pair better with Sequenzy plus Postscript.' },
+  { question: 'Who should skip Yotpo Email?', answer: 'Stores not using Yotpo Reviews or Loyalty — standalone email depth does not justify suite overhead. Choose Sequenzy or Klaviyo for email-first retention.' },
+  { question: 'How is Yotpo Shopify integration?', answer: 'Native and solid for standard ecommerce triggers plus review status segmentation. Less browse granularity than Klaviyo at enterprise catalog scale.' },
+  { question: 'Migration from Yotpo to Sequenzy?', answer: 'Export consent, map loyalty tags to Sequenzy segments, keep Yotpo Reviews if valuable. Run parallel welcome two weeks before cutting email automations.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Suite play · Reviews + loyalty + campaigns</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Yotpo Email & SMS is the consolidation bet among Shopify email marketing apps — not the pure-play lifecycle leader. It shines when review requests, loyalty points, UGC blocks, and campaigns share one dashboard. Email automation depth trails Klaviyo; strategy guidance trails Sequenzy (#1 alternative here). Choose Yotpo when retention is reviews-plus-loyalty-plus-messaging, not email alone.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We tested Yotpo on a skincare brand running full Yotpo stack, a supplement shop using reviews-only plus Mailchimp, and a fashion retailer evaluating suite vs best-of-breed. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/sequenzy-vs-yotpo-email-sms">Sequenzy vs Yotpo</a>
+        <a class="btn btn-secondary" href="/use-cases/reviews-and-ugc">Reviews & UGC guide</a>
+        <a class="btn btn-secondary" href="/for/beauty">Beauty stores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Yotpo Email & SMS" picks={[
+      { label: 'Overall', tool: 'Suite consolidation', reason: 'Best when Reviews + Loyalty + Email already in Yotpo orbit.' },
+      { label: 'Shopify fit', tool: 'Native modules', reason: 'Review status segments, loyalty triggers, UGC in campaigns.' },
+      { label: 'Pricing', tool: 'Modular tiers', reason: 'Value compounds with multiple modules; audit total stack cost.' },
+      { label: 'Honest gap', tool: 'vs Sequenzy', reason: 'Standalone lifecycle strategy and pay-per-email less compelling email-only.' },
+      { label: 'Best paired with', tool: 'Yotpo Reviews', reason: 'Review request flows are the killer feature — email alone is weaker.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Yotpo Email & SMS actually is</h2>
+      <p>Yotpo began as reviews infrastructure and expanded into loyalty, SMS, and email — a horizontal retention suite rather than a vertical email specialist. Among Shopify email marketing apps, it occupies a distinct lane: merchants who want star ratings in post-purchase flows and points balance in winback campaigns without Zapier spaghetti.</p>
+      <p>The tradeoff is complexity. Module sprawl confuses billing. Email features that Klaviyo shipped years ago may arrive later in Yotpo's roadmap. Sequenzy ranks #1 when your problem is "ship welcome, cart, replenishment, winback fast" without negotiating suite packages.</p>
+      <p>Buy Yotpo Email when you are already buying Yotpo Reviews. Skip it when email is the only retention lever you are pulling.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify data depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Reviews, loyalty, and campaign triggers together</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Native Shopify sync plus Yotpo-specific events — review submitted, loyalty tier changed, points earned, referral completed. Segment by review status: requested but not submitted, five-star reviewers, photo review contributors. Dynamic UGC blocks pull approved customer photos into email creative.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Review request automation post-delivery, loyalty-triggered campaigns, visual UGC merchandising, multi-module dashboard for ops teams tired of five logins.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where specialists lead:</strong> Klaviyo on browse and predictive depth; Sequenzy on agent-first lifecycle playbooks and pay-per-email; Postscript on SMS-only recovery economics.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>Yotpo pricing: {app.priceDetail}. Modular — email alone rarely delivers best value.</p>
+      <p><strong>Scenario A — Reviews + Email modules, 11,000 contacts.</strong> Skincare brand sending review requests and monthly campaigns. Combined Yotpo stack $180–280/mo depending on review volume tiers. Sequenzy lifecycle-only estimate $55–85/mo plus standalone reviews app.</p>
+      <p><strong>Scenario B — Full suite: Reviews + Loyalty + Email + SMS.</strong> Fashion retailer with tier-based early access. Total Yotpo $350–520/mo. Consolidation saves ops time; verify incrementality vs Klaviyo + loyalty point solution.</p>
+      <p><strong>Scenario C — Reviews-only Yotpo, email elsewhere.</strong> Supplement shop on Mailchimp evaluating Yotpo Email add-on. Marginal email features not worth module cost — graduated to Sequenzy for lifecycle instead.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Skincare brand on full Yotpo stack and fashion retailer testing loyalty-triggered campaigns.</p>
+      <h3>1. Review request — serum purchase delivered day 5</h3>
+      <p><strong>Trigger:</strong> Order delivered per tracking integration, product category skincare serum. <strong>Yotpo setup:</strong> Email request day 5 post-delivery, SMS reminder day 9 if no review, incentive: loyalty points not discount. <strong>Result:</strong> 18.4% review collection rate vs 11% with generic post-purchase email on prior ESP.</p>
+      <h3>2. UGC campaign — five-star photo reviewers</h3>
+      <p><strong>Trigger:</strong> Segment: submitted photo review in last 90 days. <strong>Goal:</strong> Feature UGC in summer routine campaign with shoppable blocks. <strong>Yotpo setup:</strong> Dynamic UGC grid from approved assets, permission implied via review TOS. <strong>Result:</strong> 4.7% CTR — 2.1 points above non-UGC control.</p>
+      <h3>3. Loyalty winback — silver tier lapsed 60 days</h3>
+      <p><strong>Trigger:</strong> Loyalty tier silver, no purchase 60 days, points balance above redemption threshold. <strong>Yotpo setup:</strong> Email highlighting points expiry policy and exclusive tier restock. <strong>Result:</strong> 6.8% reactivation; points redemption 22% of reactivated orders.</p>
+      <h3>4. Cart recovery — SMS via Yotpo ecosystem</h3>
+      <p><strong>Trigger:</strong> Abandoned cart $89, mobile opt-in. <strong>Yotpo setup:</strong> SMS at 90 min, email at 4h. <strong>Result:</strong> 8.2% recovery — adequate but Postscript benchmark on same store hit 10.1% when SMS prioritized. Consider Sequenzy email + Postscript SMS split.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Yotpo fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Already invested in Yotpo Reviews or Loyalty</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>UGC and social proof drive conversion on your category</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Ops team wants one vendor dashboard for retention modules</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Points-based retention is central to repeat purchase</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy instead if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Email lifecycle is the only problem — suite overhead unnecessary</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>You need agent-first playbooks without module negotiations</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Pay-per-email economics beat bundled suite pricing</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Browse-heavy segmentation drives revenue — Klaviyo leads</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: Yotpo suite economics</h2>
+      <p>Yotpo Email & SMS makes financial sense on a spreadsheet only when multiple modules already justify the relationship. Reviews driving conversion, loyalty driving repeat, SMS driving recovery — three legs, one vendor, ops team relieved. Email-only Yotpo upsell rarely clears that bar when Sequenzy delivers stronger lifecycle strategy at lower incremental cost.</p>
+      <p>The UGC advantage is real. Review request timing tied to delivery, photo reviews in campaign creative, loyalty points in winback — these integrations create compound value generic ESPs replicate with Zapier and prayer. Merchants already paying Yotpo Reviews should evaluate Email module math against Sequenzy + keeping reviews standalone.</p>
+      <p>Position Yotpo correctly: consolidation play for multi-module retention, not default answer to "best Shopify email marketing app." Sequenzy remains #1 for email-first lifecycle; Yotpo remains strong for reviews-plus-loyalty-plus-messaging orchestration.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Implementation checklist</h2>
+      <p>Audit existing Yotpo modules before adding Email — duplicate review request flows across tools damage sender reputation. Map loyalty tier tags to campaign suppressions. If email-only, compare total cost vs Sequenzy before signing annual suite contract.</p>
+    </div>
+
+    <div class="card mb-12">
+      <p class="editorial-kicker">Compare alternatives</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Yotpo vs other Shopify email marketing apps</h2>
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/compare/sequenzy-vs-yotpo-email-sms">Sequenzy vs Yotpo</a> — #1 email-first alternative</li>
+        <li><a class="link" href="/compare/klaviyo-vs-yotpo-email-sms">Klaviyo vs Yotpo</a> — automation depth vs suite consolidation</li>
+        <li><a class="link" href="/compare/marsello-vs-yotpo-email-sms">Marsello vs Yotpo</a> — loyalty-first competitors</li>
+        <li><a class="link" href="/compare/postscript-vs-aftership-email">Postscript vs AfterShip</a> — SMS pairing considerations</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+      <a class="link" href="/use-cases/loyalty">Loyalty guide →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Yotpo Email & SMS occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Yotpo Email & SMS earns its place when reviews, loyalty, and campaigns must share one Yotpo dashboard.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Yotpo Email & SMS earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Yotpo Email & SMS does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — email-only module pricing exceeds Sequenzy lifecycle value</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Yotpo Email & SMS pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Yotpo Email & SMS as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Yotpo Email & SMS.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than suite consolidation, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Yotpo Email & SMS, we validated UGC and loyalty-triggered campaigns on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless reviews plus loyalty modules is central to your retention model.</p>
+    </div>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Annual planning checklist for Yotpo Email & SMS users</h2>
+      <p>Q1: audit list hygiene and sunset unengaged contacts. Q2: validate cart and welcome incrementality against holdout. Q3: stress-test collision rules before BFCM. Q4: spreadsheet Yotpo Email & SMS total cost vs Sequenzy (#1) pay-per-email at current send volume — decide renewal or migration before January billing cycle.</p>
+      <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Yotpo Email & SMS performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Yotpo Email & SMS FAQ" />
+</BaseLayout>

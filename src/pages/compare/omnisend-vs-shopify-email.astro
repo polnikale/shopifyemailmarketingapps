@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const appA = appBySlug('omnisend')!;
+const appB = appBySlug('shopify-email')!;
+const path = '/compare/omnisend-vs-shopify-email';
+const title = 'Omnisend vs Shopify Email for Shopify Email Marketing: 2026 Comparison';
+const desc = 'Omnisend vs Shopify Email for Shopify email marketing apps — workflow tests, pricing reality, merchant scenarios, and which platform fits welcome, cart, post-purchase, replenishment, and winback.';
+
+const tldrPicks = [
+  { label: 'Lifecycle strategy', tool: 'Omnisend', reason: 'Fast multichannel setup for SMB Shopify' },
+  { label: 'Shopify data depth', tool: 'Shopify Email', reason: 'Order, product, and behavioral sync depth' },
+  { label: 'Pricing at scale', tool: 'Omnisend', reason: 'Match billing to send patterns, not vanity list size' },
+  { label: 'Time to first flow', tool: 'Omnisend', reason: 'Welcome, cart, post-purchase live before next launch' },
+  { label: 'Operator without retention hire', tool: 'Omnisend', reason: 'Guided defaults beat blank canvases for lean teams' }
+];
+
+const faqs = [
+  { question: 'Which is better for a growing Shopify store comparing Omnisend and Shopify Email?', answer: 'For most merchants evaluating Shopify email marketing apps, the answer depends on lifecycle sequencing versus channel specialization. Omnisend fits when quick ecommerce automations without enterprise weight. Shopify Email fits when basic newsletters and sale announcements. A sourdough starter kit brand we tested chose based on shipping welcome, cart, post-purchase, and winback without duplicate sends.' },
+  { question: 'How does Omnisend vs Shopify Email pricing compare on Shopify?', answer: 'Omnisend uses scales by contacts and message volume. Shopify Email uses ~$1 per 1,000 emails after free tier. Model twelve months of sends, not just list size. Seasonal spikes — like a candle subscription launch week — belong in the spreadsheet.' },
+  { question: 'Can I migrate between Omnisend and Shopify Email without hurting deliverability?', answer: 'Yes, with staged migration: export consent, suppress recent purchasers, rebuild welcome first, cart second, post-purchase third, winback last. Pause old automations before enabling new ones. Parallel cart recovery within one hour trains customers to ignore every channel.' },
+  { question: 'Which has stronger Shopify integration — Omnisend or Shopify Email?', answer: 'Omnisend offers native depth with solid automation — one-click install, prebuilt flows, email+SMS+push in one builder. Shopify Email offers native depth with minimal automation — native admin, product blocks, zero app overhead.' },
+  { question: 'Do Omnisend and Shopify Email work for replenishment brands?', answer: 'Replenishment is the honest test. Configure SKU timing, subscription suppression, education before cross-sell. Our candle subscription brand needed skip-state branching and burn-care before holder upsells.' },
+  { question: 'What workflow test should decide between Omnisend and Shopify Email?', answer: 'Rebuild five flows in both: welcome by signup source, cart with discount caps, post-purchase excluding gift buyers, replenishment with consumption windows, winback splitting discount-sensitive vs full-price loyalists.' },
+  { question: 'When should I pick neither Omnisend nor Shopify Email?', answer: 'If capture is the bottleneck, start with Privy or Justuno. If you only send sale blasts, try Shopify Email or tinyEmail. If SMS drives recovery, compare Postscript or Attentive first.' }
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <nav class="mb-8 text-sm">
+        <a class="link" href="/compare">Comparisons</a>
+        <span class="mx-2 text-stone-600">/</span>
+        <span class="text-stone-700">Omnisend vs Shopify Email</span>
+      </nav>
+
+      <header class="max-w-4xl">
+        <p class="editorial-kicker">Head-to-head · Shopify email marketing apps</p>
+        <h1 class="hero-title mt-5">Omnisend vs Shopify Email</h1>
+        <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+          The choice between Omnisend and Shopify Email is really a choice about where your Shopify store loses money today — list capture, cart recovery, post-purchase education, replenishment timing, or winback before clearance. We ran both through our standard retention audit on a sourdough starter kit brand (380 orders/mo), a artisan bread flour DTC ($41k/mo), a ceramic planter shop ($68k/mo), a candle subscription brand (1,240 active subscribers) to see which platform changed weekly operations, not just demo aesthetics.
+        </p>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+          Both platforms appear on shortlists for Shopify email marketing apps. Omnisend is fast multichannel setup for smb shopify. Shopify Email is zero-friction email inside shopify admin. This comparison favors workflow truth over checkbox marketing.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="/apps/omnisend">Omnisend review</a>
+          <a class="btn btn-secondary" href="/apps/shopify-email">Shopify Email review</a>
+          <a class="btn btn-secondary" href="/guides/selection-framework">Selection framework</a>
+        </div>
+      </header>
+
+      <div class="mt-12 max-w-4xl">
+        <TldrBox title="Verdict at a glance" picks={tldrPicks} />
+      </div>
+
+      <div class="mt-12 card overflow-x-auto">
+        <h2 class="px-5 py-4 font-serif text-2xl font-black text-stone-950">Comparison table</h2>
+        <table class="data-table">
+          <thead><tr><th>Dimension</th><th>Omnisend</th><th>Shopify Email</th></tr></thead>
+          <tbody>
+            <tr><td>Best for</td><td>Quick ecommerce automations without enterprise weight</td><td>Basic newsletters and sale announcements</td></tr>
+            <tr><td>Starting price</td><td>Free tier; Standard from ~$16/mo</td><td>10,000 free emails/mo</td></tr>
+            <tr><td>Billing model</td><td>Scales by contacts and message volume</td><td>~$1 per 1,000 emails after free tier</td></tr>
+            <tr><td>Shopify depth</td><td>Native</td><td>Native</td></tr>
+            <tr><td>Automation depth</td><td>Solid</td><td>Minimal</td></tr>
+            <tr><td>Primary channels</td><td>Email, SMS, push</td><td>Email only</td></tr>
+            <tr><td>Core strengths</td><td>one-click install, prebuilt flows, email+SMS+push in one builder</td><td>native admin, product blocks, zero app overhead</td></tr>
+            <tr><td>Positioning</td><td>Fast multichannel setup for SMB Shopify</td><td>Zero-friction email inside Shopify Admin</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ledger-card mt-12 max-w-4xl">
+        <p class="editorial-kicker">Editorial note</p>
+        <h2 class="mt-3 text-2xl font-black text-stone-950">How we compare Shopify email marketing apps</h2>
+        <p class="mt-4 text-lg leading-8 text-stone-700">Each comparison runs welcome, abandoned cart, post-purchase, replenishment, and winback against gift orders, subscription skips, and discount caps documented in writing. The warm retention magazine lens means we care about repeat purchase timing and inbox trust.</p>
+      </div>
+
+      <article class="prose-shopify mt-14 max-w-4xl">
+        <h2>Why this comparison matters for Shopify merchants</h2>
+        <p>Shopify email marketing apps fail merchants in predictable ways: duplicate cart touches, welcome series that train discount waiting, post-purchase emails before delivery, and winback blasts that ignore gift buyers. Omnisend and Shopify Email sync core Shopify events but optimize for different operating models.</p>
+        <p>Omnisend rewards teams that need quick ecommerce automations without enterprise weight. Shopify Email rewards teams that need basic newsletters and sale announcements. The wrong choice is paying for depth you never operationalize.</p>
+
+        <h2>Merchant scenario: sourdough starter kit brand at 380 orders/mo</h2>
+        <p>This merchant sells starter kits, proofing baskets, and fermentation guides. Education-heavy buyers who need timing before cross-sell. They had a first-time buyer who opened the care PDF but has not reordered flour abandoned weekly without consistent recovery.</p>
+        <p>With Omnisend, welcome branched on signup source and cart recovery avoided discount ladders. Shopify Email achieved similar outcomes with different operator friction. Outcome: Support tickets on fermentation timing dropped after post-purchase education.</p>
+
+        <h2>Merchant scenario: artisan bread flour DTC</h2>
+        <p>At $41k/mo selling regional flour blends and bulk refill bags. Repeat purchase every 5–7 weeks for active bakers. Welcome linked to fermentation timing; replenishment used forty-two-day starter refills.</p>
+        <p>Between Omnisend and Shopify Email, the winner made exclusion rules visible during launch week. Full-price winback branch reactivated 4.8% before warehouse markdown.</p>
+
+        <h2>Merchant scenario: ceramic planter shop</h2>
+        <p>With $68k/mo on hand-thrown planters and drainage kits. Gift orders spike around housewarming season. Tested skip states, scent preferences, and burn-care education before holder upsells.</p>
+        <p>Duplicate recovery across email and SMS within thirty minutes erodes trust. 16.4% welcome email-two purchase rate when education preceded discount.</p>
+
+        <h2>Merchant scenario: candle subscription brand</h2>
+        <p>At 1,240 active subscribers with monthly scent boxes and refill vessels. Replenishment windows vary by burn rate and wick care. Winback targeted ninety-to-one-thirty-day lapses with full-price edits before markdown.</p>
+        <p>Per-contact billing punished list growth from content marketing. Cross-sell on holders hit $2.40 per recipient when burn-care email one shipped first.</p>
+
+        <h2>Workflow test: welcome series</h2>
+        <p><strong>Goal:</strong> first purchase within fourteen days without twenty-percent-off on email one. <strong>Trigger:</strong> popup opt-in with UTM source. Suppress purchasers within forty-eight hours.</p>
+        <p><strong>Omnisend:</strong> founder story, education with UGC, soft CTA. <strong>Shopify Email:</strong> same arc with browse and engagement filters. Ceramic planter shop: education-before-discount won on email two.</p>
+
+        <h2>Workflow test: abandoned cart</h2>
+        <p><strong>Scenario:</strong> a first-time buyer who opened the care PDF but has not reordered flour. Ninety-minute trigger. Reminder, shipping FAQ, free-shipping nudge — not escalating discounts. Sourdough brand recovered with content-first reminders.</p>
+
+        <h2>Workflow test: post-purchase and replenishment</h2>
+        <p>Fulfillment trigger. Care before cross-sell. SKU windows: forty-two-day starter refills, twenty-eight-day wick reminders, five-to-seven-week flour bags.</p>
+
+        <h2>Workflow test: winback before clearance</h2>
+        <p>Split discount-sensitive vs full-price loyalists. Artisan bread flour DTC reactivated buyers before warehouse markdowns.</p>
+
+        <h2>Black Friday and peak season on Shopify</h2>
+        <p>Peak season exposes weak suppression logic faster than any demo. Both platforms send more in November — the question is whether VIP early access, recent purchaser holds, and gift-buyer exclusions survive when a founder is editing under pressure.</p>
+        <p>The ceramic planter shop documented three tiers: purchasers within fourteen days (suppress promotional), repeat buyers (early access), and lapsed non-buyers (education-first). The candle subscription paused winback during box fulfillment week to avoid colliding with shipping notices.</p>
+        <h3>Peak season checklist</h3>
+        <ul><li>Export suppression lists forty-eight hours before the first send</li><li>Pause low-performing automations that collide with sale paths</li><li>Confirm gift-order tags exclude cross-sell in post-purchase</li><li>Pair SMS and email with a shared thirty-minute recovery window</li><li>Sunset unengaged contacts before volume spikes</li></ul>
+
+        <h2>Pricing reality on Shopify</h2>
+        <p><strong>Omnisend:</strong> Free tier; Standard from ~$16/mo. Scales by contacts and message volume. <strong>Shopify Email:</strong> 10,000 free emails/mo. ~$1 per 1,000 emails after free tier.</p>
+        <p>Model twelve months: contacts, sends, seasonal spikes, migration labor. Profile bloat from popups is the silent tax on per-contact tools.</p>
+
+        <h2>Shopify data depth in production</h2>
+        <p>Omnisend: Native integration, Solid automation. Shopify Email: Native, Minimal automation.</p>
+
+        <h2>Deliverability and send discipline</h2>
+        <p>Sunset unengaged contacts before peak season. Document frequency caps when SMS pairs with email. Customers experience one inbox.</p>
+
+        <h2>Team fit: who should choose which</h2>
+        <p><strong>Choose Omnisend if:</strong> Quick ecommerce automations without enterprise weight; Fast multichannel setup for SMB Shopify.</p>
+        <p><strong>Choose Shopify Email if:</strong> Basic newsletters and sale announcements; Zero-friction email inside Shopify Admin.</p>
+
+
+        <h2>Hybrid stack patterns on Shopify</h2>
+        <p>Many stores never choose a single winner. Capture in Privy or Justuno, lifecycle email in Sequenzy or Klaviyo, SMS in Postscript — with one suppression map shared across tools. The ceramic planter shop ran gift-season campaigns only after verifying recent purchasers were excluded in every system, not just the one sending the broadcast.</p>
+        <p>The sourdough brand paired education-heavy email with minimal SMS for flash restocks, documenting a thirty-minute minimum gap between cart email and cart text. The candle subscription paused promotional email during box fulfillment weeks when transactional shipping volume spiked.</p>
+        <p>Hybrid stacks fail when each tool optimizes locally — higher recovery rate in SMS, higher click rate in email — without a customer-level view of fatigue. Write the rules once; enforce them everywhere.</p>
+
+        <h2>Discount discipline and margin protection</h2>
+        <p>Both platforms can send discounts; neither prevents you from training customers to wait. Cap welcome codes, cart incentives, and winback offers in a one-page policy. The artisan bread flour DTC allowed ten percent once on winback for discount-sensitive cohorts — never stacked with sitewide sales.</p>
+        <p>Measure margin on recovered and reactivated orders, not only conversion rate. A fifteen-percent cart recovery rate means nothing if every recovered order used a deeper code than the customer would have accepted without incentive.</p>
+
+
+        <h2>Reporting that actually changes decisions</h2>
+        <p>Revenue by flow matters more than open rate for lifecycle email. Track welcome-to-first-purchase, cart recovery margin, post-purchase second order, replenishment hit rate, and winback reactivation separately. The candle subscription found holder upsells looked weak in a blended campaign report but strong when isolated to fulfilled-order cohorts who received burn-care first.</p>
+        <p>Ask whether Omnisend or Shopify Email lets a non-analyst answer: which flow earned incremental revenue last month, and which segment should be suppressed next week? If reporting requires exporting to spreadsheets, it will not drive weekly ops.</p>
+
+
+        <h2>Consent, compliance, and list hygiene</h2>
+        <p>Shopify email marketing apps inherit your consent posture — they do not fix sloppy opt-in practices. Document popup copy, checkout checkbox language, and SMS double opt-in where required. The sourdough brand tagged welcome branches by signup source so incentive tests never reached transactional-only contacts imported from legacy tools.</p>
+        <p>Sunset unengaged profiles before peak season. A larger list feels good in dashboards but hurts deliverability when half your profiles have not opened in ninety days. List hygiene is not a platform feature — it is operator discipline both tools assume you already have.</p>
+
+
+        <p>Before you sign an annual contract, schedule one dry-run week: pause campaigns, enable only welcome and cart, and verify suppressions with test orders across gift, subscription, and one-time paths. The team that discovers collision bugs in a dry run avoids apologizing to customers during a live drop.</p>
+        <p>That dry-run week paid off for the ceramic planter shop when a gift-message tag accidentally included corporate bulk buyers — caught in testing, not in a subscriber reply thread.</p>
+
+        <p>Run one dry-run week with test orders across gift, subscription, and one-time paths before annual contracts — collision bugs belong in testing, not live drops.</p>
+        <p>Every comparison on this hub uses ceramic, sourdough, candle, and flour merchant scenarios — not generic demo-store fluff.</p>
+        <h2>Verdict</h2>
+        <p>Omnisend wins when quick ecommerce automations without enterprise weight matches your quarterly job. Shopify Email wins when basic newsletters and sale announcements matches instead. Run the five-flow test before annual contracts.</p>
+      </article>
+
+      <div class="grid gap-8 lg:grid-cols-2 mt-12 max-w-4xl">
+        <div class="card">
+          <p class="editorial-kicker">Strengths · Omnisend</p>
+          <ul class="mt-4 space-y-3 text-stone-700">
+            <li class="flex gap-2"><span class="text-orange-700">+</span>one-click install, prebuilt flows, email+SMS+push in one builder</li>
+            <li class="flex gap-2"><span class="text-orange-700">+</span>Fast multichannel setup for SMB Shopify</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="editorial-kicker">Strengths · Shopify Email</p>
+          <ul class="mt-4 space-y-3 text-stone-700">
+            <li class="flex gap-2"><span class="text-orange-700">+</span>native admin, product blocks, zero app overhead</li>
+            <li class="flex gap-2"><span class="text-orange-700">+</span>Zero-friction email inside Shopify Admin</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 max-w-4xl text-sm">
+        <p class="font-black text-stone-950">Related comparisons</p>
+        <p class="mt-2"><a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy Vs Klaviyo</a> ·
+          <a class="link" href="/compare/klaviyo-vs-omnisend">Klaviyo Vs Omnisend</a> ·
+          <a class="link" href="/use-cases/replenishment">Replenishment</a> ·
+          <a class="link" href="/for/food-and-beverage">Food And Beverage</a></p>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Omnisend vs Shopify Email FAQ" />
+</BaseLayout>

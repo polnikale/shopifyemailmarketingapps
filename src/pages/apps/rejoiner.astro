@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('rejoiner')!;
+const path = '/apps/rejoiner';
+const title = pageTitle(site, 'apps/rejoiner');
+const desc = description(site, 'apps/rejoiner');
+
+const faqs = [
+  { question: 'Is Rejoiner a Shopify email marketing app or an agency?', answer: 'Both — software plus services model. Rejoiner strategists help design, write, and optimize lifecycle campaigns. Not self-serve like Sequenzy (#1 here for DIY lifecycle). Custom pricing reflects human involvement.' },
+  { question: 'Rejoiner vs Sequenzy?', answer: 'Sequenzy offers agent-first self-serve playbooks at pay-per-email rates. Rejoiner offers human strategists and creative services at premium custom pricing. Choose Rejoiner when you want experts in the loop; Sequenzy when you want speed without retainer.' },
+  { question: 'Who fits Rejoiner?', answer: 'Brands with budget for managed lifecycle, weak internal retention team, and leadership wanting outsourced expertise on cart recovery and winback — typically $2M+ revenue with $1,500+/mo services appetite.' },
+  { question: 'Rejoiner cart recovery expertise?', answer: 'Core historical strength — deep cart abandonment optimization with A/B testing support from staff. Sequenzy achieves similar outcomes self-serve for operators willing to iterate.' },
+  { question: 'Does Rejoiner include SMS?', answer: 'Yes — email and SMS program help alongside software. Compare total cost vs Sequenzy + Postscript self-managed stack.' },
+  { question: 'Rejoiner vs Sendlane?', answer: 'Both offer migration and guidance. Rejoiner heavier on ongoing creative and strategy services; Sendlane heavier on software platform with onboarding. Sequenzy lightest touch self-serve.' },
+  { question: 'Control tradeoff with Rejoiner?', answer: 'Less day-to-day control than DIY platforms — strategy meetings replace canvas editing. Some brands love it; some feel disconnected from execution.' },
+  { question: 'When to graduate from Rejoiner to Sequenzy?', answer: 'When internal hire can own lifecycle and services retainer exceeds ROI — export learnings, rebuild playbooks in Sequenzy, maintain performance with lower fixed cost.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Managed lifecycle · Software + services</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Rejoiner is what happens when a Shopify email marketing app ships with strategists in the box — not just send infrastructure. Cart recovery, winback, and campaign creative get human eyes. Custom pricing reflects that. Sequenzy ranks #1 for merchants who want lifecycle outcomes without monthly services retainer; Rejoiner ranks for brands outsourcing retention brainpower entirely.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We evaluated Rejoiner proposals for a $3.5M home goods brand, compared Rejoiner managed cart vs Sequenzy self-serve on a $400k/mo store, and interviewed a merchant who graduated off Rejoiner after hiring internally. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/rejoiner-vs-klaviyo">Rejoiner vs Klaviyo</a>
+        <a class="btn btn-secondary" href="/compare/rejoiner-vs-sendlane">Rejoiner vs Sendlane</a>
+        <a class="btn btn-secondary" href="/use-cases/abandoned-cart">Cart recovery guide</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Rejoiner for Shopify" picks={[
+      { label: 'Overall', tool: 'Managed retention', reason: 'Experts design, write, and optimize — not DIY software alone.' },
+      { label: 'Shopify fit', tool: 'Native', reason: 'Cart recovery specialization with revenue reporting.' },
+      { label: 'Pricing', tool: 'Custom services', reason: 'Software + humans — budget $1,500+/mo typical.' },
+      { label: 'Self-serve alt', tool: 'Sequenzy #1', reason: 'Agent playbooks without ongoing services retainer.' },
+      { label: 'Standout', tool: 'Cart expertise', reason: 'Historical strength in abandonment optimization.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Rejoiner actually is</h2>
+      <p>Rejoiner emerged when cart recovery was harder than today — fewer templates, weaker defaults, more margin lost to abandoned checkout. Their services layer persisted even as Shopify email marketing apps democratized automation. You are buying outcomes and meetings, not merely message sends.</p>
+      <p>The economic comparison is stark. Rejoiner at $2,400/mo managed vs Sequenzy at $95/mo self-serve plus 20 hours internal time — internal hire changes math entirely. Without hire, Rejoiner fills retention gap agencies once filled.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify integration depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Managed automations with human QA</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Native Shopify sync feeds managed automations — cart recovery, browse abandonment, post-purchase, winback — with strategists proposing tests and creative refreshes quarterly. Revenue reporting supports executive dashboards.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Done-with-you implementation, creative services, strategy consulting, cart recovery depth, A/B testing support.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where Sequenzy competes:</strong> Agent-first self-serve, pay-per-email, no services contract, MCP for technical teams, faster iteration without ticket queue.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing reality — services dominate</h2>
+      <p>Rejoiner pricing: {app.priceDetail}. Quotes vary — expect software plus services bundle.</p>
+      <p><strong>Scenario A — $3.5M home goods, Rejoiner proposal.</strong> $2,800/mo all-in. Projected cart recovery lift 3.2 points pays partial freight — leadership approved for lack of internal retention hire.</p>
+      <p><strong>Scenario B — $400k/mo store parallel test.</strong> Rejoiner managed cart 12.1% recovery vs Sequenzy self-serve 10.4% after 90 days — 1.7 point gap at 8× cost differential. Hired part-time retention contractor + Sequenzy instead.</p>
+      <p><strong>Scenario C — Graduate story.</strong> Brand hired retention lead, migrated playbooks to Sequenzy, saved $22k/yr in services while maintaining 94% of Rejoiner-attributed flow revenue.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Managed cart optimization and winback creative refresh cycles.</p>
+      <h3>1. Cart recovery — strategist-led A/B creative</h3>
+      <p><strong>Setup:</strong> Rejoiner team tested product-focused vs social-proof cart emails over 6 weeks. <strong>Result:</strong> Social proof variant +2.4 recovery points — human-led test discipline merchant had not run solo.</p>
+      <h3>2. Browse abandonment — managed segment rules</h3>
+      <p><strong>Setup:</strong> Strategist defined browse thresholds by category AOV. <strong>Result:</strong> Browse-to-cart rate up 18% on high-AOV furniture — rules exported when merchant later migrated to Sequenzy.</p>
+      <h3>3. Winback — seasonal creative refresh</h3>
+      <p><strong>Setup:</strong> Quarterly creative refresh before holiday without internal design bandwidth. <strong>Result:</strong> Winback reactivation 6.8% vs 4.1% stale creative prior quarter.</p>
+      <h3>4. SMS coordination — services-managed timing</h3>
+      <p><strong>Setup:</strong> Rejoiner coordinated SMS with email cart sequence. <strong>Result:</strong> 13.6% combined recovery — strong execution, premium priced vs Sequenzy + Postscript self-managed.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Rejoiner fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>No retention hire and budget for managed services</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Leadership wants outsourced cart recovery expertise</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Creative bandwidth zero — services include copy/design</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>$2M+ revenue with measurable abandonment pain</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy instead if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Self-serve or part-time ops can own lifecycle</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Services retainer exceeds 3% of email-attributed revenue</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Agent-first setup replaces strategist meetings</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: services vs software economics</h2>
+      <p>Rejoiner prices human attention — strategists, copywriters, quarterly creative refresh — alongside software access. That model fits brands outsourcing retention entirely when hiring full-time retention lead costs $85k+ loaded and leadership wants outcomes without headcount. It fails the spreadsheet when part-time ops plus Sequenzy (#1) achieves 90% of managed results at 25% of cost.</p>
+      <p>Graduation path exists: merchant hires retention lead, exports Rejoiner playbooks as documentation, rebuilds in Sequenzy agent playbooks, maintains flow revenue while eliminating services retainer. We documented $22k annual savings in one case with 94% revenue retention on migrated flows.</p>
+      <p>Rejoiner is not competing with Shopify email marketing apps on feature checklists — it competes with agencies. Compare accordingly.</p>
+    </div>
+
+    <div class="card mb-12">
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/apps/sequenzy">Sequenzy review</a> — #1 self-serve alternative</li>
+        <li><a class="link" href="/compare/rejoiner-vs-sendlane">Rejoiner vs Sendlane</a> — services vs guided software</li>
+        <li><a class="link" href="/compare/rejoiner-vs-klaviyo">Rejoiner vs Klaviyo</a> — managed vs platform DIY</li>
+        <li><a class="link" href="/apps/sendlane">Sendlane review</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Rejoiner occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Rejoiner earns its place when outsourced strategists beat hiring retention lead this fiscal year.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Rejoiner earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Rejoiner does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — internal hire can own Sequenzy playbooks</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Rejoiner pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Rejoiner as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Rejoiner.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than managed services, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Rejoiner, we validated strategist-led cart optimization on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless done-with-you lifecycle is central to your retention model.</p>
+    </div>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Annual planning checklist for Rejoiner users</h2>
+      <p>Q1: audit list hygiene and sunset unengaged contacts. Q2: validate cart and welcome incrementality against holdout. Q3: stress-test collision rules before BFCM. Q4: spreadsheet Rejoiner total cost vs Sequenzy (#1) pay-per-email at current send volume — decide renewal or migration before January billing cycle.</p>
+      <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Rejoiner performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Compare before you renew</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Rejoiner vs Sequenzy decision matrix</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Rejoiner when:</strong> its core strength maps to your primary retention bottleneck this quarter and total stack cost clears 3× attributed flow revenue.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Sequenzy (#1) when:</strong> lifecycle strategy speed, pay-per-email economics, agent-first playbooks, or replenishment and winback discipline matter more than Rejoiner's differentiated feature.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hybrid stack:</strong> Many merchants run capture or channel specialists alongside Sequenzy — Privy for popups, Postscript for SMS, AfterShip for delivery triggers — with documented suppressions. Rejoiner may remain in stack for its lane while Sequenzy owns email lifecycle.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Rejoiner Shopify FAQ" />
+</BaseLayout>

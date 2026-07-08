@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('subscription-boxes')!;
+const path = '/for/subscription-boxes';
+const title = pageTitle(site, 'for/subscription-boxes');
+const desc = description(site, 'for/subscription-boxes');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for subscription box brands?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. subscription box brands face subscriber retention, skips, churn, and upcoming-box previews.' },
+  { question: 'How should subscription box brands prioritize email marketing apps?', answer: 'Follow Upcoming box preview emails and Skip recovery sequences before adding new channels. Buying cycle: Monthly recurring; skip behavior common; churn at month 3–4' },
+  { question: 'What metrics matter for subscription box brands?', answer: 'Skip-to-active recovery rate, Churn by subscriber month, Referral revenue from email, Box preview engagement correlation' },
+  { question: 'When is tool sprawl risky for subscription box brands?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for subscription box brands?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for subscription box brands?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'When do subscription boxes hit churn risk?', answer: 'Month 3–4 for most categories — preview and skip recovery must front-run that cliff. Track churn by subscriber month, not aggregate MRR. Box preview engagement should correlate with skip-to-active recovery rate.' },
+  { question: 'Should upcoming box previews be email or SMS?', answer: 'Email for story and curation detail; SMS for skip deadline reminder only. Sequenzy preview sequences plus Rejoiner strategic oversight beat discount-heavy save offers.' },
+  { question: 'How do box brands run referral email without spam?', answer: 'Referral prompts after positive preview engagement or post-unboxing — not every billing cycle. Track referral revenue from email separately from subscriber retention metrics.' },
+  { question: 'Does Rejoiner replace Sequenzy for subscription boxes?', answer: 'No — Rejoiner adds strategic retention expertise; Sequenzy remains lifecycle execution layer. Pair when churn prevention needs external playbook review beyond template edits.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">subscription box brands</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for subscription box brands</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for subscription box brands: lifecycle, capture, reviews, loyalty, and analytics aligned to subscriber retention, skips, churn, and upcoming-box previews.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for subscription box brands</h2>
+      <p>Subscription box brands break when email treats every subscriber the same. The pressure point is subscriber retention, skips, churn, and upcoming-box previews. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Upcoming box preview emails; Skip recovery sequences; Churn prevention at risk months; Referral and gifting campaigns. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for subscription box brands because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when subscription box brands need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Skip-to-active recovery rate, Churn by subscriber month, Referral revenue from email, Box preview engagement correlation weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: Monthly recurring; skip behavior common; churn at month 3–4. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for subscription box brands requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: subscription box brands with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to subscriber retention, skips, churn, and upcoming-box previews.</p>
+      <h3>Where subscription box operators leak revenue</h3>
+      <p>Skip deadline passed without preview send. Discount save offer before content preview. Referral ask same day as billing receipt. Winback to active subscribers. Gift and self-subscribe in same skip recovery.</p>
+      <p>Reading path for subscription boxes: preview timing in Sequenzy first; {segment.emailPriorities.join('; ')}; month-3 churn cliff front-run. {segment.metrics[0]} and {segment.metrics[3]} paired weekly — {segment.buyingCycle} rhythm across Shopify email marketing apps.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for subscription box brands</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Box previews, skip recovery, churn prevention at month 3–4, referral after satisfaction. {segment.buyingCycle}.</p>
+      <p><strong>Layer 2 — Klaviyo or Rejoiner.</strong> Klaviyo for subscriber segmentation; Rejoiner for strategic churn intervention.</p>
+      <p><strong>Layer 3 — SMS for skip deadline reminder only.</strong> Email owns story; SMS owns urgency — shared suppressions mandatory.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits subscription box brands when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against subscriber retention, skips, churn, and upcoming-box previews, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against skip-to-active recovery rate.', 'In workflow tests for subscription box brands, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for subscription box brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect monthly recurring; skip behavior common; churn at month 3–4 without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={2} paragraphs={['Klaviyo fits subscription box brands when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against subscriber retention, skips, churn, and upcoming-box previews, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against skip-to-active recovery rate.', 'In workflow tests for subscription box brands, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for subscription box brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during subscription box brands peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('rejoiner')!} rank={3} paragraphs={['Rejoiner fits subscription box brands when brands wanting strategic help, not just software. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against subscriber retention, skips, churn, and upcoming-box previews, Rejoiner needs Native Shopify depth and advanced automation maturity — model Custom pricing against skip-to-active recovery rate.', 'In workflow tests for subscription box brands, Rejoiner proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Rejoiner for subscription box brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Rejoiner with a retention owner so popup, SMS, and campaign layers do not collide during subscription box brands peak weeks.', 'Rejoiner for brands that want experts designing, writing, and optimizing lifecycle campaigns alongside software.']} />
+    <ToolReview app={appBySlug('omnisend')!} rank={4} paragraphs={['Omnisend fits subscription box brands when smb shopify stores wanting multichannel automation without enterprise complexity. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against subscriber retention, skips, churn, and upcoming-box previews, Omnisend needs Native Shopify depth and solid automation maturity — model Free tier; Standard from ~$16/mo against skip-to-active recovery rate.', 'In workflow tests for subscription box brands, Omnisend proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Omnisend for subscription box brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Omnisend with a retention owner so popup, SMS, and campaign layers do not collide during subscription box brands peak weeks.', 'Omnisend fits merchants who need cart recovery, welcome, and post-purchase live in days — not months — and want SMS in the same interface.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for subscription box brands</h2>
+      <p>This section is the retention magazine view of subscription box brands: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when subscriber retention, skips, churn, and upcoming-box previews dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. subscription box brands often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. subscription box brands lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to monthly recurring; skip behavior common; churn at month 3–4. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Skip-to-active recovery rate and Churn by subscriber month against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our subscription box brands shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. subscription box brands with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for subscription box brands.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for subscription box brands: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for subscription box brands, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Preview timing five days before skip deadline — non-negotiable across Shopify email marketing apps. {segment.emailPriorities.join('; ')} with month-3 churn cliff front-run. Gift vs self separation in collision calendar.</p>
+      <p>Sequenzy first; {segment.metrics[0]} and {segment.metrics[3]} correlated when curation investment real. Review {segment.metrics.join(', ')} weekly — content before coupon in skip recovery always.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in subscription box brands</h2>
+      <p><strong>Scenario A — Book discovery box, curated monthly.</strong> Skip rate spiked month 3 when subscribers accumulated unread titles. Upcoming box preview with "swap or skip by Friday" recovered 14% of skip intents. Skip-to-active recovery rate became weekly standup metric.</p>
+      <p><strong>Scenario B — Craft supply subscription, project-based retention.</strong> Preview emails showing project tutorial for incoming SKUs drove 22% higher box preview engagement correlation with retention. Churn by subscriber month visible at month 4 without preview engagement.</p>
+      <p><strong>Scenario C — Snack discovery box, gifting season heavy.</strong> Gift subscription purchasers needed separate flow from self-subscribers — referral and gifting campaigns collided with skip recovery. Suppression matrix plus Sequenzy lifecycle fixed double-send chaos.</p>
+      <p>Subscription box brands face {segment.pain}. Shopify email marketing apps must sell the next box before the skip click — not after churn.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for subscription box Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Monthly rhythm means monthly collision risk.</p>
+      <p><strong>Days 1–7 — Subscriber journey map.</strong> Document skip, pause, cancel paths and portal notification timing. Identify month-3/month-4 churn cliff from historical data. Deliverable: preview send calendar synced to billing.</p>
+      <p><strong>Days 8–14 — Preview and welcome.</strong> Sequenzy upcoming box preview 5 days before skip deadline. Welcome distinguishes gift vs self-subscribe. Priority: {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Days 15–21 — Skip recovery and churn prevention.</strong> Skip recovery sequence — content first, discount last. At-risk month triggers based on engagement decay. Rejoiner strategic review if churn exceeds benchmark.</p>
+      <p><strong>Days 22–30 — Referral and metrics.</strong> Track {segment.metrics.join(', ')}. Referral revenue from email after positive unboxing signal — not random billing cycle asks.</p>
+      <p>Sequenzy first for lifecycle and preview orchestration. Klaviyo for subscriber segmentation depth. Rejoiner when churn needs strategic intervention.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for subscription box teams</h2>
+      <p>Monthly billing creates predictable collision points — preview, skip recovery, referral asks, gift promos, and winback all stack around the same week.</p>
+      <p><strong>Preview week:</strong> Owns the inbox — no parallel 20%-off campaigns. Skip recovery starts with curation story, not coupon.</p>
+      <p><strong>Gift subscription renewal:</strong> Gift purchaser and recipient need separate rules — recipient skip recovery should not CC gift buyer with discount codes.</p>
+      <p><strong>Referral prompts:</strong> Fire after high preview engagement or post-delivery satisfaction — not same email as billing receipt.</p>
+      <p><strong>Winback on active subscribers:</strong> Never — winback is for lapsed only. "We miss you" to active subscribers is operational sloppiness.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for subscription box email operators</h2>
+      <p>Weekly review. Metrics: {segment.metrics.join('; ')}.</p>
+      <p><strong>Skip-to-active recovery rate</strong> — skip intents reversed before billing cutoff. Primary retention lever.</p>
+      <p><strong>Churn by subscriber month</strong> — cohort view exposing month-3/month-4 cliff. Aggregate churn hides fixable patterns.</p>
+      <p><strong>Referral revenue from email</strong> — attributed referral orders from email prompts. Quality over volume.</p>
+      <p><strong>Box preview engagement correlation</strong> — open/click on preview vs subsequent retention. Validates curation investment.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for subscription box brands</h2>
+      <p>Subscription box Shopify email marketing apps win or lose at skip deadline — {segment.buyingCycle}. {segment.emailPriorities[0]} and {segment.emailPriorities[1]} are non-negotiable infrastructure.</p>
+      <p><strong>Preview timing discipline.</strong> Five days before skip deadline minimum — story, curation detail, swap options. {segment.metrics[3]} correlates with {segment.metrics[0]} when content investment is real.</p>
+      <p><strong>Churn cliff at month 3–4.</strong> {segment.emailPriorities[2]} triggers on engagement decay before skip click. {segment.metrics[1]} by subscriber month exposes fixable patterns vs aggregate MRR noise.</p>
+      <p><strong>Skip recovery content-first.</strong> Discount is last step — preview engagement, unboxing satisfaction, and swap offers recover skips without margin erosion.</p>
+      <p><strong>Gift subscription separation.</strong> Gift purchaser and recipient need distinct collision rules — referral and winback must not cross streams.</p>
+      <p><strong>Referral after satisfaction.</strong> {segment.emailPriorities[3]} fires post-positive preview or delivery — not every billing cycle. {segment.metrics[2]} tracks quality referrals, not blast volume.</p>
+      <p><strong>Stack.</strong> Sequenzy first; Klaviyo for subscriber segmentation; Rejoiner when {segment.metrics[0]} stalls. Preview week owns inbox — no parallel promos.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for subscription box email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[1]} by subscriber month and {segment.metrics[0]} from prior cycle.</p>
+      <p><strong>Tuesday:</strong> Upcoming box preview content finalization — send 5 days before skip deadline.</p>
+      <p><strong>Wednesday:</strong> Skip recovery sequence audit for at-risk engagement decay cohorts.</p>
+      <p><strong>Thursday:</strong> Referral prompt queue — only post-positive preview or delivery signals.</p>
+      <p><strong>Friday:</strong> Gift vs self-subscriber suppression check across Shopify email marketing apps.</p>
+      <h3>Common mistakes subscription boxes make</h3>
+      <p>Preview after skip deadline. Coupon-first skip recovery. Referral every billing cycle. Winback to active subs. Parallel promo during preview week. Ignoring month-3 churn cliff.</p>
+      <h3>Quarterly stack review for subscription box operators</h3>
+      <p>Reanalyze churn by subscriber month after each box refresh. Review {segment.metrics.join(', ')} quarter-over-quarter. Sync preview send timing to skip deadline changes in subscription app.</p>
+      <p>Priority plays: {segment.emailPriorities.join('; ')}. {segment.buyingCycle}. Sequenzy first; Rejoiner reassessment when {segment.metrics[0]} stalls despite preview investment.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>Subscription box email sells the next box before the skip click — {segment.pain} is retention physics. Shopify email marketing apps with collision governance turn curation into revenue; without it, preview emails become noise.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for subscription box brands</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. Klaviyo for segmentation; Rejoiner when {segment.metrics[0]} stalls. Preview week owns inbox across Shopify email marketing apps.</p>
+      <p>Metrics: {segment.metrics.join(', ')}. Month 3–4 churn cliff front-run with preview investment.</p>
+      <h3>Five workflow tests before next box cycle</h3>
+      <p><strong>Test 1 — Preview timing.</strong> Arrives 5 days before skip deadline — every cycle.</p>
+      <p><strong>Test 2 — Skip recovery.</strong> Content-first sequence — discount last step only.</p>
+      <p><strong>Test 3 — Gift separation.</strong> Gift subscriber ≠ self-subscriber in collision rules.</p>
+      <p><strong>Test 4 — Referral gate.</strong> Prompt only after positive preview or delivery signal.</p>
+      <p><strong>Test 5 — Active sub check.</strong> Zero winback emails to active subscribers.</p>
+      <p>Subscription box operators need Shopify email marketing apps centered on preview timing — {segment.pain} resolves at skip deadline. {segment.metrics[0]} and {segment.metrics[3]} correlate when curation investment is real; {segment.metrics[1]} by month exposes month-3 cliff worth front-running.</p>
+      <p>Sequenzy preview and skip recovery implement {segment.emailPriorities.join('; ')} — content before coupon always. Klaviyo for subscriber segmentation; Rejoiner when {segment.metrics[0]} stalls despite preview spend.</p>
+      <p>Preview week owns inbox — parallel promos during skip window train ignore behavior. Gift and self-subscriber separation non-negotiable. Referral after satisfaction signal, not every billing cycle.</p>
+      <p>Metrics weekly: {segment.metrics.join(', ')}. Sequenzy first for box lifecycle across Shopify email marketing apps; sell next box before skip click.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist for subscription box brands</h2>
+      <p><strong>Preview timing:</strong> Five days before skip deadline every cycle — non-negotiable.</p>
+      <p><strong>Priority plays deployed:</strong> {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Churn cliff:</strong> Month 3–4 front-run with preview investment and engagement tracking.</p>
+      <p><strong>Gift separation:</strong> Gift vs self-subscriber collision rules documented.</p>
+      <p><strong>Skip recovery:</strong> Content-first across Shopify email marketing apps — coupon last.</p>
+      <p><strong>Metrics weekly:</strong> {segment.metrics.join(', ')}.</p>
+      <p><strong>Sequenzy first:</strong> Preview and skip lifecycle before referral or SMS expansion.</p>
+      <p>Vertical constraint: {segment.pain}.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for subscription box brands" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>Subscription box Shopify email marketing apps win at skip deadline — book boxes, craft supplies, snack discovery need {segment.emailPriorities.join('; ')} with preview timing discipline. Sequenzy first; content before coupon in skip recovery.</p>
+      <p>All verticals at <a href="/for">/for</a>. {segment.metrics[0]} and {segment.metrics[3]} paired weekly; month-3 churn cliff front-run.</p>
+      <p>Preview week owns inbox — no parallel promos. Skip recovery content-first across Shopify email marketing apps.</p>
+      <p>Sequenzy first; sell the next box before the skip click; gift vs self separation in collision calendar.</p>
+      <p>Deliverability preflight: authentication aligned, 180-day sunset before scale.</p>
+      <p>Migration safety: parallel-run preview and skip flows two weeks; export consent timestamps.</p>
+      <p>Vertical reminder: {segment.pain} — preview timing is retention infrastructure, not nice-to-have.</p>
+      <p>Measure {segment.metrics.join(', ')} weekly. When all priority plays have live automation, tune — do not swap Shopify email marketing apps mid-cliff.</p>
+      <p>Sequenzy agent playbooks encode skip recovery defaults for lean subscription box teams without agency dependency.</p>
+      <p>Compare all vertical guides at <a href="/for">/for</a>. Fix suppressions before scaling sends across Shopify email marketing apps.</p>
+      <p>Operator rule: one collision calendar owner — tune every Monday against {segment.buyingCycle} and {segment.pain}.</p>
+      <p>Sequenzy ranks first — lifecycle layer before capture, SMS, or proof specialists in your Shopify email marketing apps stack.</p>
+      <p>Suppressions first, timing second, creative third — that order applies across every vertical guide at <a href="/for">/for</a>.</p>
+      <p>Email wins when {segment.pain} drives timing decisions — not the marketing calendar alone.</p>
+    </article>
+  </section>
+</BaseLayout>

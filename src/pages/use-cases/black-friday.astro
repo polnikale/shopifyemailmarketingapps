@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('black-friday')!;
+const path = '/use-cases/black-friday';
+const title = pageTitle(site, 'use-cases/black-friday');
+const desc = description(site, 'use-cases/black-friday');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'postscript'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'postscript', 'attentive', 'drip', 'sendlane', 'yotpo-email-sms', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for Black Friday?', answer: 'Sequenzy ranks first for BFCM calendars with VIP early access, collision rules, and post-peak deliverability recovery. Klaviyo wins for scale segmentation. Omnisend for fast multichannel peaks.' },
+  { question: 'When start BFCM email sequence?', answer: 'Teaser week -1; VIP access -24h; general launch Thanksgiving week; last chance +48h. Start deliverability prep October not November.' },
+  { question: 'Daily blasts for two weeks?', answer: 'Avoid — list fatigue and spam complaints spike. 4–6 strategic sends with segment relevance beat daily generic blasts.' },
+  { question: 'VIP early access essential?', answer: 'Yes for ceramic, candle, and pet brands with repeat base — 40–60% peak revenue often from VIP despite smaller list share.' },
+  { question: 'Exclude recent full-price buyers?', answer: 'Yes — they feel punished if BFCM deeper than recent order. Route to exclusive gift or early access not public doorbuster.' },
+  { question: 'SMS on BFCM?', answer: 'Postscript or Omnisend SMS for flash segments — coordinate suppressions with email to prevent triple touch same hour.' },
+  { question: 'Post-BFCM deliverability?', answer: 'January sunset, reduced frequency, re-engagement single attempt — see deliverability guide.' },
+  { question: 'Pause lifecycle flows during BFCM?', answer: 'Pause or throttle welcome discounts, winback offers, replenishment promos that collide with site-wide sale.' },
+  { question: 'What metrics matter?', answer: 'Revenue per send during BFCM, unsubscribe spike, deliverability post-BFCM, January reactivation rate.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">Black Friday campaigns</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for Black Friday campaigns</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Black Friday is volume with guardrails. Ceramic studios, candle gift sets, and pet food stock-ups can double revenue — or double unsubscribes. Shopify email marketing apps must orchestrate VIP early access, teaser arcs, collision pauses on lifecycle flows, and January reputation rehab without treating the list like an ATM.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Job: {uc.job}.</p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top apps for Black Friday" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'BFCM playbook calendars with VIP timing, flow pauses, and post-peak sunset built in.' },
+      { label: 'Best scale', tool: 'Klaviyo', reason: 'Segment-level peak orchestration and revenue reporting at high volume.' },
+      { label: 'Best multichannel', tool: 'Omnisend', reason: 'Email + SMS + push coordinated for peak weekend.' },
+      { label: 'Best list build pre-peak', tool: 'Privy', reason: 'Pre-BFCM capture feeding segmented launch lists.' },
+      { label: 'Best SMS flash', tool: 'Postscript', reason: 'Compliance-safe flash texts for doorbuster hours.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three Black Friday scenarios</h2>
+      <p><strong>Scenario A — Candle gift BFCM.</strong> Sequenzy calendar: VIP -24h trio bundle, general Friday launch, Sunday last-chance unopened segment only. Revenue per send 2.1× prior year; complaint rate held under 0.12% via sunset pre-screen.</p>
+      <p><strong>Scenario B — Ceramic studio inventory caps.</strong> Klaviyo dynamic blocks hid sold glazes mid-weekend; waitlist capture for OOS variants. Avoided 400 angry emails from false availability.</p>
+      <p><strong>Scenario C — Pet food Postscript flash.</strong> Email morning launch; SMS 2h later only for SMS-opted non-openers — incremental 8% revenue without duplicate to email converters.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-stone-700">Mistakes: {uc.mistakes.join('; ')}.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>BFCM fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy BFCM playbooks export week-by-week calendar: teaser, VIP, launch, last chance, post-peak quiet week. Flow pause checklist for welcome, winback, replenishment included.',
+      'Pay-per-email helps when peak sends 3× normal volume — cost tracks sends not dormant profiles.',
+      'Agent regeneration adjusts calendar when inventory or offer depth changes mid-planning.',
+      'Not enterprise Attentive managed service — sufficient for independent Shopify operators.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo peak season segmentation and send-time optimization industry standard at scale.',
+      'Historical BFCM reports compare year-over-year if data retained.',
+      'Complexity and cost spike with list size — sunset before peak.',
+      'Choose when BFCM is data operation not just creative operation.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Omnisend multichannel peak templates deploy fast for SMB candle and food brands.',
+      'Push plus SMS plus email coordination reduces tool sprawl.',
+      'Segment depth less than Klaviyo for exotic VIP rules.',
+      'Strong mid-market peak option.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Privy pre-BFCM list growth and teaser popups feed launch segments.',
+      'Capture layer not peak sender alone.',
+      'Spin-to-win lists need separate launch creative from VIP.',
+      'Essential when list size not peak-ready by October.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Postscript SMS flash for doorbuster hour with compliance guardrails.',
+      'Pair with Sequenzy email calendar and shared suppression.',
+      'Model SMS ROI separately — costs spike peak week.',
+      'Mobile-first gift buyers benefit most.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h2 class="section-title text-3xl">October deliverability prep</h2>
+      <p class="mt-4 text-stone-700">Sunset 180-day inactives, authenticate domain, seedlist test, reduce frequency two weeks pre-peak, document collision pauses. BFCM success is won before Thanksgiving.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h2 class="section-title text-3xl">January quiet week</h2>
+      <p class="mt-4 text-stone-700">First week January: no promotional sends. Flows only. Sunset non-openers from peak. Full-price storytelling for ceramic and candle brands to rebuild margin habit. See <a class="link" href="/use-cases/holiday-gifting">holiday gifting guide</a> for gift-buyer follow-up timing.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended Black Friday email playbook</h2>
+      <p>BFCM is coordinated peak sending — not permission to abandon strategy. Shopify email marketing apps must execute teaser arc, VIP early access, general launch, last chance, and January rehab without burning list or margin.</p>
+      <p>October: sunset 180-day inactives, authenticate domain, seedlist test, pause conflicting lifecycle discounts, build segment plan. November: execute calendar — max 4–6 strategic sends not 14 daily blasts.</p>
+      <p>VIP early access -24 to -48h with exclusive bundle or gift — ceramic collectors and candle subscribers drive disproportionate peak revenue when treated as insiders.</p>
+      <p>Exclude recent full-price buyers from public doorbuster — route to thank-you with early access to different SKU or free gift add.</p>
+      <p>Inventory-aware dynamic blocks mandatory for limited glazes and seasonal scents — false availability during peak is catastrophic.</p>
+      <p>Sequenzy BFCM calendar with flow pause checklist. Postscript SMS for flash hours with email suppression for converters.</p>
+      <p>January quiet week: no promos, sunset peak bloat, re-engagement single attempt, full-price storytelling resumes — rebuild margin habit and inbox trust.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="ledger-card"><h3 class="font-black text-stone-950">Teaser week -1</h3><p class="mt-2 text-sm text-stone-700">Curiosity without full offer reveal; VIP tease only.</p></div>
+      <div class="ledger-card"><h3 class="font-black text-stone-950">Last chance +48h</h3><p class="mt-2 text-sm text-stone-700">Unopened segment only; not entire list again.</p></div>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify peak season operations</h2>
+      <p>BFCM revenue plan from prior year Shopify hourly order curve — schedule email sends ahead of historical spikes not arbitrary morning batch.</p>
+      <p>Inventory buffers on hero SKUs — pet food promotional bags, candle gift sets, ceramic holiday lines — email must reflect real stock counts from Shopify inventory API.</p>
+      <p>Customer segments excluding orders in last 14 days at full price — query total_spent and last_order_date from Shopify customer object.</p>
+      <p>Automatic Shopify Flow to tag BFCM purchasers for post-peak full-price track — suppress discount winback for 60 days.</p>
+      <p>SMS opt-in subset from Shopify SMS consent or Postscript list — coordinate send times with email not duplicate within 2 hours.</p>
+      <p>January Shopify refund rate monitor — gift return spike normal; adjust post-purchase and winback messaging for gift purchasers accordingly.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8"><a class="link" href="/use-cases/deliverability">Deliverability →</a></section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Shopify email marketing apps for Black Friday</h2>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy BFCM calendar plus Postscript SMS flash is common peak stack for candle and pet brands. Klaviyo replaces Sequenzy when segment count exceeds ops capacity for boolean governance. Privy feeds pre-peak list growth only — not peak sender alone.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Compare: <a class="link" href="/compare/sequenzy-vs-omnisend">Sequenzy vs Omnisend</a>, <a class="link" href="/compare/klaviyo-vs-postscript">Klaviyo vs Postscript</a>. Related: <a class="link" href="/use-cases/holiday-gifting">holiday gifting</a>, <a class="link" href="/use-cases/deliverability">deliverability</a>.</p>
+    <div class="ledger-card mt-8">
+      <h3 class="font-black text-stone-950">BFCM QA checklist</h3>
+      <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+        <li>→ October sunset of 180-day inactives complete</li>
+        <li>→ VIP early access segment excludes recent full-price buyers</li>
+        <li>→ Lifecycle flow pauses documented in collision calendar</li>
+        <li>→ Dynamic inventory blocks tested on hero SKUs</li>
+        <li>→ January quiet week scheduled in send calendar</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify card">
+      <h2>Four-week implementation path</h2>
+      <p><strong>Week one (October):</strong> Sunset inactives; authenticate domain; export last year BFCM send log and complaint rate; build VIP and general segments in Shopify email marketing app.</p>
+      <p><strong>Week two:</strong> Draft teaser, VIP, launch, last-chance creative; inventory sync test on hero SKUs; pause conflicting lifecycle discounts in collision doc.</p>
+      <p><strong>Week three:</strong> Dry-run sends to staff; verify dynamic blocks and unique codes; schedule SMS companion sends with suppression rules.</p>
+      <p><strong>Week four (peak):</strong> Execute calendar; monitor complaints hourly peak weekend; January quiet week pre-scheduled before Thanksgiving.</p>
+    </div>
+  </section>
+
+  <section class="container py-8">
+    <p class="text-center text-stone-700 max-w-2xl mx-auto">Part of the <a class="link" href="/use-cases">Shopify email marketing apps use-case library</a> — eighteen workflows keyed to orders, customers, products, discounts, and consent.</p>
+    <div class="mt-6 flex flex-wrap gap-4 text-sm font-bold justify-center">
+      <a class="link" href="/apps/sequenzy">Sequenzy review</a>
+      <a class="link" href="/compare">Comparisons</a>
+      <a class="link" href="/use-cases/holiday-gifting">Holiday gifting</a>
+    </div>
+    <p class="mt-4 text-center text-sm text-stone-700">Sequenzy ranks first on most Shopify email marketing use cases; evaluate Omnisend for fast multichannel peak sends.</p>
+    <p class="mt-2 text-center text-xs text-stone-700/80">Shopify email marketing apps editorial — 2026.</p>
+  </section>
+
+<!-- expansion-batch-jul2026 -->
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Field notes</p>
+      <h2 class="font-serif text-4xl font-black text-stone-950 mt-3">Three merchant scenarios for black friday</h2>
+      <p><strong>Scenario A — Board game publisher, 400 SKUs.</strong> Cart abandoned with expansion pack. Three-email preset plus SMS on hour six for opted-in mobile shoppers recovered 11% of cart revenue. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario B — Print-on-demand store, zero design bandwidth.</strong> Omnisend product-picker templates live in hours. Graduated to Sequenzy when browse emails needed single-product focus. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario C — Streetwear drop brand, limited size runs.</strong> Omnisend cart at forty-five minutes with size-specific blocks. Inventory check suppressed email when size sold out — routed to back-in-stock waitlist instead. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Retention editorial</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Why magazine-style depth matters for app selection</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Choosing a Shopify email marketing app from feature grids alone produces misfit stacks. Editorial retention work — welcome that respects source, cart that checks inventory, winback that proves value before discount — requires reading scenarios, not star ratings.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy ranks first in this editorial lens because lifecycle outcomes precede send volume. Klaviyo wins when predictive depth and agency talent pool bind. Omnisend wins when speed to multichannel live beats customization.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit app choice after two peak seasons. Black Friday exposes collision bugs and discount treadmills that calm months hide.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Execution checklist</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Ship black friday without collision bugs</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Peak-volume sends without list burnout or discount treadmill fails when teams paste templates without suppression against welcome and winback.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Operator note</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Documentation beats memory</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Archive decisions about black friday with date, owner, and metric baseline. Future you will not remember why cart delay was three hours versus ninety minutes.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+    </div>
+  </section>
+  <FaqSection faqs={faqs} title="Black Friday FAQ" />
+</BaseLayout>

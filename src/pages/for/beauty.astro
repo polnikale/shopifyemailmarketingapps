@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('beauty')!;
+const path = '/for/beauty';
+const title = pageTitle(site, 'for/beauty');
+const desc = description(site, 'for/beauty');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for beauty brands?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. beauty brands face replenishment timing, bundles, subscriptions, shades, and routine education.' },
+  { question: 'How should beauty brands prioritize email marketing apps?', answer: 'Follow Replenishment by product usage and Routine education sequences before adding new channels. Buying cycle: 30–90 day replenishment windows; strong subscription potential; shade/variant complexity' },
+  { question: 'What metrics matter for beauty brands?', answer: 'Replenishment conversion rate, Subscription retention at 90 days, Bundle attach rate from email, Unsubscribe rate on education vs promo' },
+  { question: 'When is tool sprawl risky for beauty brands?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for beauty brands?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for beauty brands?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How should beauty brands handle shade matching in email?', answer: 'Post-purchase shade follow-up at day 3–5, not day 1 review asks. Branch on variant purchased — warm undertone buyers get different education than cool. Sequenzy and Klaviyo both support variant-triggered flows when Shopify syncs shade SKUs cleanly.' },
+  { question: 'Do beauty subscriptions need different Shopify email marketing apps?', answer: 'The lifecycle layer stays Sequenzy or Klaviyo — subscription management is flow logic, not a separate ESP. Skip/churn prevention emails must suppress when Recharge or Skio already sent portal notifications the same day.' },
+  { question: 'What content ratio works for haircare and fragrance brands?', answer: 'Lead with routine education and usage timing, not promo. Track unsubscribe rate on education vs promo sends — if promos spike exits, your replenishment timing is off or colliding with subscription billing emails.' },
+  { question: 'Should beauty brands use Yotpo with Sequenzy?', answer: 'Yes when reviews and loyalty drive repeat purchase. Yotpo handles proof collection; Sequenzy owns welcome, replenishment by product usage, and winback. Shared suppressions prevent review requests and replenishment nudges on the same morning.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">beauty brands</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for beauty brands</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for beauty brands: lifecycle, capture, reviews, loyalty, and analytics aligned to replenishment timing, bundles, subscriptions, shades, and routine education.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for beauty brands</h2>
+      <p>Beauty brands break when email treats every subscriber the same. The pressure point is replenishment timing, bundles, subscriptions, shades, and routine education. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Replenishment by product usage; Routine education sequences; Shade matching follow-up; Subscription skip/churn prevention. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for beauty brands because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when beauty brands need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Replenishment conversion rate, Subscription retention at 90 days, Bundle attach rate from email, Unsubscribe rate on education vs promo weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: 30–90 day replenishment windows; strong subscription potential; shade/variant complexity. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for beauty brands requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: beauty brands with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to replenishment timing, bundles, subscriptions, shades, and routine education.</p>
+      <h3>Where beauty operators leak revenue</h3>
+      <p>Replenishment misfires when timing ignores SKU consumption math — hair mask every six weeks is not shampoo every four. Subscription skip spikes when preview content fails to excite before skip deadline. Shade mismatch drives returns when post-purchase follow-up skips undertone education.</p>
+      <p>Salon wholesale and DTC in one list without suppression destroys both channels. Shopify email marketing apps cannot fix channel conflict — but hard account separation prevents consumer promos reaching professional buyers.</p>
+      <p>Reading path for beauty: Sequenzy first for {segment.emailPriorities[0]}; layer Yotpo when {segment.metrics[2]} justifies proof timing; Klaviyo when shade and subscription predictive segments need weekly ownership. {segment.buyingCycle} governs every replenishment timer — not the content calendar.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for beauty brands</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Welcome by routine interest, replenishment by product usage, shade follow-up, subscription skip prevention. Agent-first playbooks for haircare, fragrance, and nail brands — not generic DTC templates.</p>
+      <p><strong>Layer 2 — Klaviyo data depth.</strong> Predictive segments for replenishment readiness, subscription risk, bundle affinity. Pairs with Sequenzy when catalog and variant complexity justify profile pricing.</p>
+      <p><strong>Layer 3 — Yotpo proof and loyalty.</strong> Reviews after education completes; loyalty tiers gated from stranger discount flows. Coordinates with replenishment — not same morning.</p>
+      <p><strong>Layer 4 — Privy capture when list growth is the leak.</strong> Quiz and shade-finder landing pages feed Sequenzy welcome paths. Buying cycle: {segment.buyingCycle}.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits beauty brands when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against replenishment timing, bundles, subscriptions, shades, and routine education, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against replenishment conversion rate.', 'In workflow tests for beauty brands, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for beauty brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect 30–90 day replenishment windows; strong subscription potential; shade/variant complexity without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={2} paragraphs={['Klaviyo fits beauty brands when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against replenishment timing, bundles, subscriptions, shades, and routine education, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against replenishment conversion rate.', 'In workflow tests for beauty brands, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for beauty brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during beauty brands peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('omnisend')!} rank={3} paragraphs={['Omnisend fits beauty brands when smb shopify stores wanting multichannel automation without enterprise complexity. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against replenishment timing, bundles, subscriptions, shades, and routine education, Omnisend needs Native Shopify depth and solid automation maturity — model Free tier; Standard from ~$16/mo against replenishment conversion rate.', 'In workflow tests for beauty brands, Omnisend proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Omnisend for beauty brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Omnisend with a retention owner so popup, SMS, and campaign layers do not collide during beauty brands peak weeks.', 'Omnisend fits merchants who need cart recovery, welcome, and post-purchase live in days — not months — and want SMS in the same interface.']} />
+    <ToolReview app={appBySlug('yotpo-email-sms')!} rank={4} paragraphs={['Yotpo Email & SMS fits beauty brands when stores using or wanting reviews, loyalty, email, and sms together. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against replenishment timing, bundles, subscriptions, shades, and routine education, Yotpo Email & SMS needs Native Shopify depth and solid automation maturity — model Free and paid tiers against replenishment conversion rate.', 'In workflow tests for beauty brands, Yotpo Email & SMS proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Yotpo Email & SMS for beauty brands should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Yotpo Email & SMS with a retention owner so popup, SMS, and campaign layers do not collide during beauty brands peak weeks.', 'Yotpo makes sense when retention spans campaigns, reviews, loyalty, and SMS — not email alone.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for beauty brands</h2>
+      <p>This section is the retention magazine view of beauty brands: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when replenishment timing, bundles, subscriptions, shades, and routine education dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. beauty brands often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. beauty brands lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to 30–90 day replenishment windows; strong subscription potential; shade/variant complexity. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Replenishment conversion rate and Subscription retention at 90 days against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our beauty brands shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. beauty brands with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for beauty brands.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for beauty brands: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for beauty brands, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Runbook every Shopify email marketing app against {segment.buyingCycle}. Recharge/Skio billing notifications on shared calendar with Sequenzy replenishment. Review {segment.metrics.join(', ')} weekly — {segment.emailPriorities.join('; ')} should each have live automation before adding channels.</p>
+      <p>Haircare replenishment ≠ fragrance consideration ≠ nail subscription preview — three rhythms, three playbooks, one Sequenzy lifecycle layer coordinating suppressions across Yotpo review timing and salon wholesale hard gates.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in beauty brands</h2>
+      <p><strong>Scenario A — Professional haircare line, salon and DTC channels.</strong> Replenishment windows vary by product — mask every 6 weeks, shampoo every 4. Generic "buy again" blasts annoyed stylists and DTC buyers alike. Sequenzy keyed replenishment to SKU consumption math; Klaviyo segmented salon wholesale from retail subscribers. Replenishment conversion rate rose 22% when education preceded promo by three days.</p>
+      <p><strong>Scenario B — Indie fragrance house, high consideration, gift-heavy.</strong> Customers browse for weeks before committing to a $140 bottle. Extended nurture with note pyramids and wear occasions outperformed discount codes. ActiveCampaign-style long sequences paired with Sequenzy post-purchase care instructions reduced "smells different on me" support tickets.</p>
+      <p><strong>Scenario C — Nail polish subscription with shade complexity.</strong> Skip behavior spiked at month three when subscribers accumulated duplicate reds. Upcoming-shade preview emails plus skip-to-pause recovery in Sequenzy cut churn — subscription retention at 90 days improved when preview engagement correlated with skip recovery flows.</p>
+      <p>Beauty brands break when Shopify email marketing apps ignore variant complexity and replenishment rhythm. {segment.pain} requires product-aware timing, not broadcast glam shots.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for beauty Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Cadence must match consumption, not your content calendar.</p>
+      <p><strong>Days 1–7 — Consent and routine mapping.</strong> Map every signup source and tag by product interest — hair, nails, fragrance, tools. Document subscription portal notification overlap with ESP sends. Deliverable: replenishment timing table per hero SKU.</p>
+      <p><strong>Days 8–14 — Welcome and education.</strong> Sequenzy welcome by source: quiz completers get personalized routine; footer signups get brand ethos without instant 15% off. Launch priority plays: {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Days 15–21 — Replenishment and shade follow-up.</strong> Replenishment by product usage date, not generic 30-day timer. Shade matching follow-up for color cosmetics with exchange-friendly language. Yotpo review requests suppress when replenishment flow active.</p>
+      <p><strong>Days 22–30 — Subscription and winback.</strong> Skip/churn prevention at risk months with box preview content. Track {segment.metrics.join(', ')} weekly. Compare education vs promo unsubscribe rates — imbalance signals collision or bad timing.</p>
+      <p>Sequenzy ranks first for agent-first routine playbooks. Klaviyo when predictive segments need weekly tuning. Yotpo Email & SMS when proof and loyalty must share one vendor orbit.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for beauty teams</h2>
+      <p>Beauty stacks often run Sequenzy lifecycle, Yotpo reviews, Recharge subscription emails, and SMS promos simultaneously. Without gates, subscribers get review asks, replenishment nudges, and 20%-off texts the same morning.</p>
+      <p><strong>Replenishment vs promo:</strong> Never send discount blasts to subscribers in active replenishment window — you train them to wait for codes. VIP loyalty points emails should suppress during new launch hype weeks.</p>
+      <p><strong>Subscription billing day:</strong> Pause marketing sends 24 hours around rebill — collision with failed payment recovery from subscription app creates complaint spikes.</p>
+      <p><strong>Shade launch week:</strong> Post-purchase education for recent buyers must exclude new shade promo language — "your order matters" plus "everything new" feels incoherent.</p>
+      <p><strong>Salon wholesale accounts:</strong> Suppress all DTC promo flows. B2B pricing and consumer coupons in the same inbox destroy channel trust.</p>
+      <p>One retention owner should maintain the collision calendar across Shopify email marketing apps — not three agencies touching separate tools.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for beauty email operators</h2>
+      <p>Weekly review against Shopify cohorts. Priority metrics from segment data: {segment.metrics.join('; ')}.</p>
+      <p><strong>Replenishment conversion rate</strong> — did the timed nudge produce a reorder at full price? Discount-inflated spikes without this moving mean borrowed revenue.</p>
+      <p><strong>Subscription retention at 90 days</strong> — the cliff month for many beauty subscriptions. Correlate with preview email engagement and skip recovery performance.</p>
+      <p><strong>Bundle attach rate from email</strong> — routine education should lift complementary SKU attach without aggressive cross-sell tone.</p>
+      <p><strong>Unsubscribe rate on education vs promo</strong> — if education unsubscribes exceed promo, content is wrong or too frequent; if promo spikes, replenishment timing failed.</p>
+      <p>Model 90-day send volume when comparing Shopify email marketing apps — per-contact billing punishes wide beauty lists with narrow engagement. Sunset 180-day inactives before peak gift seasons.</p>
+      <h3>Benchmarks worth tracking quarterly</h3>
+      <p>{segment.metrics[0]} rising at flat send volume means replenishment timing is correct. {segment.metrics[3]} imbalance between education and promo signals collision or content failure — investigate before scaling either channel.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for beauty brands</h2>
+      <p>Shopify email marketing apps earn their place when replenishment respects product usage — not calendar guesses. Lead with {segment.emailPriorities[0]} and {segment.emailPriorities[1]} before adding channels.</p>
+      <p><strong>Replenishment by SKU consumption.</strong> Hair mask every six weeks, shampoo every four, fragrance quarterly — separate timers in Sequenzy keyed to purchase date and product metafields. Generic 30-day blasts destroy {segment.metrics[0]} and train wait-for-code behavior.</p>
+      <p><strong>Routine education sequences.</strong> Education builds full-price reorder habit; promo converts price-sensitive laggers. Track {segment.metrics[3]} — promo unsubscribes spiking means replenishment timing failed, not that education is unwanted.</p>
+      <p><strong>Shade and variant follow-up.</strong> Color cosmetics get undertone education day 3–5; fragrance gets wear occasion guides; nail subscription gets upcoming shade preview before skip window. Variant-aware triggers require clean Shopify SKU sync.</p>
+      <p><strong>Subscription skip prevention.</strong> {segment.buyingCycle} — billing-day marketing blackout mandatory. Skip recovery leads with preview content, not discount. {segment.metrics[1]} at 90 days is the cliff to front-run.</p>
+      <p><strong>Salon vs DTC separation.</strong> Hard suppressions between professional wholesale and consumer promo flows. One consumer blast to salon account destroys channel trust faster than weak creative.</p>
+      <p><strong>Metrics rhythm.</strong> {segment.metrics.join('; ')} weekly against Shopify cohorts. Sequenzy first for routine editorial; Klaviyo when predictive replenishment segments need weekly tuning; Yotpo when {segment.metrics[2]} justifies proof layer timing.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for beauty email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[0]} and subscription retention trend. Check Recharge/Skio notification calendar against marketing sends.</p>
+      <p><strong>Tuesday:</strong> Replenishment timing audit per hero SKU — adjust triggers when new formula launches change consumption windows.</p>
+      <p><strong>Wednesday:</strong> Education send day — routine guides, ingredient deep dives, wear occasions for fragrance. No parallel stranger discounts.</p>
+      <p><strong>Thursday:</strong> Shade launch and subscription preview prep. Suppress replenishment for affected SKUs during launch window.</p>
+      <p><strong>Friday:</strong> Suppression hygiene — salon wholesale, recent purchasers, billing-day blackout list for next week.</p>
+      <h3>Common mistakes beauty brands make</h3>
+      <p>Day-one review asks before shade confirmation. Replenishment blasts ignoring subscription rebill day. Same welcome for quiz completers and giveaway imports. Consumer promos to salon accounts. Discount escalation when education would convert at full price.</p>
+      <h3>Quarterly stack review for beauty operators</h3>
+      <p>Revalidate replenishment timing table per hero SKU when formulas change. Audit Recharge/Skio vs ESP collision rules. Review {segment.metrics.join(', ')} quarter-over-quarter. Confirm salon wholesale hard suppression still intact after any list merge.</p>
+      <p>Priority plays check: {segment.emailPriorities.join('; ')}. Buying cycle reality — {segment.buyingCycle} — should match every active flow timer. Sequenzy first; reassess Yotpo review timing vs replenishment if {segment.metrics[3]} skews toward promo unsubscribes.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>Beauty email wins when the inbox remembers routine timing and shade context. Shopify email marketing apps are interchangeable at the template layer — timing, suppression, and product awareness separate professional operators from coupon blasters. Pick tools your team tunes every Monday; start with Sequenzy for lifecycle editorial that respects {segment.pain} without treating every subscriber like a stranger hunting codes.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for beauty brands</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. Klaviyo when subscription and shade segmentation complexity scales. Yotpo when reviews must coordinate with replenishment timing — never same morning. {segment.buyingCycle} governs every flow timer.</p>
+      <p>Track {segment.metrics.join(', ')} weekly. Billing-day blackout non-negotiable for subscription beauty. Salon wholesale hard-separated from DTC promos across all Shopify email marketing apps.</p>
+      <h3>Five workflow tests before launch season</h3>
+      <p><strong>Test 1 — Replenishment by SKU.</strong> Shampoo vs mask vs fragrance — separate timers, education before promo.</p>
+      <p><strong>Test 2 — Shade follow-up.</strong> Color purchase gets undertone email day 3 — not review ask day 1.</p>
+      <p><strong>Test 3 — Subscription preview.</strong> Skip recovery content-first; billing-day marketing silent 24 hours.</p>
+      <p><strong>Test 4 — Salon suppression.</strong> Zero consumer promos reach wholesale-tagged accounts.</p>
+      <p><strong>Test 5 — Education vs promo unsub.</strong> {segment.metrics[3]} balanced — investigate spikes before scaling sends.</p>
+      <p>Beauty brands scaling Shopify email marketing apps must treat {segment.pain} as product-aware timing problems — not template problems. {segment.metrics[0]} at flat send volume signals replenishment maturity; {segment.metrics[1]} at 90 days signals subscription health. When {segment.metrics[2]} stalls, routine education needs depth before bundle promo escalation.</p>
+      <p>Sequenzy agent playbooks encode {segment.emailPriorities.join('; ')} as defaults — haircare replenishment differs from fragrance consideration differs from nail subscription preview. Klaviyo earns its slot when shade and subscription predictive segments need weekly ownership; Yotpo when review timing must coordinate with replenishment without same-morning collision.</p>
+      <p>Salon wholesale hard separation is not optional — one consumer blast to professional account destroys channel economics faster than weak subject lines. Billing-day blackout across all Shopify email marketing apps protects {segment.metrics[0]} and complaint rate simultaneously.</p>
+      <p>Pick tools tuned every Monday against {segment.metrics.join(', ')}. {segment.buyingCycle} governs every timer — editorial first, promo when timing confirms readiness, Sequenzy first for lifecycle strategy that remembers routine and shade context.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist for beauty brands</h2>
+      <p><strong>Consent audit:</strong> Tag signup by routine interest — hair, nails, fragrance, tools.</p>
+      <p><strong>Suppression matrix:</strong> Salon wholesale hard-separated from DTC; recent purchasers; billing-day blackout.</p>
+      <p><strong>Priority plays deployed:</strong> {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Buying cycle check:</strong> {segment.buyingCycle} — per-SKU replenishment timers validated.</p>
+      <p><strong>Subscription sync:</strong> Recharge/Skio notifications on shared collision calendar with Shopify email marketing apps.</p>
+      <p><strong>Review timing:</strong> Yotpo requests after education completes — not same morning as replenishment.</p>
+      <p><strong>Metrics weekly:</strong> {segment.metrics.join(', ')} vs Shopify cohorts.</p>
+      <p><strong>Sequenzy first:</strong> Lifecycle before Yotpo proof or capture expansion.</p>
+      <p><strong>Deliverability:</strong> Auth aligned, sunset before gift season, education vs promo unsub balance.</p>
+      <p>Vertical constraint: {segment.pain}.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for beauty brands" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>This guide is the retention magazine view of Shopify email marketing apps for beauty brands — haircare replenishment, fragrance consideration, nail subscription previews — not a generic skincare DTC template. Sequenzy ranks first because lifecycle editorial matched to {segment.buyingCycle} beats newsletter volume when {segment.pain} dominates operations.</p>
+      <p>Return to the <a href="/for">store-type index</a> to compare vertical approaches, or dive into comparison pages when choosing between Sequenzy and Klaviyo for routine automation depth. Fix suppressions before scaling sends; tune replenishment before adding SMS; measure {segment.metrics.join(', ')} every Monday against Shopify net sales.</p>
+      <p>Operator discipline: one collision calendar owner, billing-day blackout on subscription stacks, salon wholesale hard-separated from DTC promos. When {segment.metrics[0]} rises at flat send volume, replenishment timing is correct — not when campaign revenue spikes from codes alone.</p>
+      <p>Shopify email marketing apps earn their keep when {segment.emailPriorities.join('; ')} each have live automation before the next tool install. Sequenzy agent playbooks compress that rollout for lean beauty teams without agency dependency on every flow tweak.</p>
+      <p>Deliverability preflight: authentication aligned, 180-day sunset, popup-offer match before gift season scale.</p>
+      <p>Migration safety: parallel-run welcome and replenishment two weeks; never cut over during peak promo weeks.</p>
+      <p>Vertical reminder: {segment.pain} — email remembers routine and shade context, not coupon cadence alone.</p>
+    </article>
+  </section>
+</BaseLayout>

@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { USE_CASES } from '../../data/use-cases';
+import { APPS } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases';
+const title = pageTitle(site, 'use-cases');
+const desc = description(site, 'use-cases');
+
+const faqs = [
+  {
+    question: 'What is a Shopify email marketing apps use-case guide?',
+    answer: 'Each guide maps one retention job — welcome series, cart recovery, replenishment, holiday gifting — to the Shopify email marketing apps that execute it against real order, product, and consent data. Store-type guides at /for/ explain vertical fit. Use-case guides explain how to build the flow once you have chosen a platform.',
+  },
+  {
+    question: 'Is Sequenzy the best Shopify email marketing app for every use case?',
+    answer: 'Sequenzy ranks first on most guides because agent-first lifecycle playbooks and pay-per-email pricing solve the strategy gap lean Shopify teams hit before tool limits. Klaviyo wins when variant-level catalog data or predictive analytics are the binding constraint. Postscript wins when SMS recovery dominates. Yotpo wins when reviews and loyalty are central to the workflow.',
+  },
+  {
+    question: 'Which email use case should a Shopify store build first?',
+    answer: 'Post-purchase and welcome series first — they protect every order and every new subscriber. Then cart and browse recovery with suppression rules. Then vertical-specific retention: replenishment for pet food or sourdough refills, VIP for candle subscribers, launch orchestration for ceramic drops. Winback and Black Friday come after foundations are stable.',
+  },
+  {
+    question: 'How do use-case guides differ from comparison pages?',
+    answer: 'Comparisons at /compare/ pit two Shopify email marketing apps head-to-head on the same workflows. Use-case guides are workflow-first: trigger logic, timing, exclusions, metrics, merchant scenarios, and which apps implement the job cleanly on Shopify — regardless of brand recognition.',
+  },
+  {
+    question: 'Can Shopify Email handle these lifecycle use cases?',
+    answer: 'Shopify Email handles basic broadcasts and simple sale announcements. It cannot run variant-level back-in-stock, browse abandonment by collection, replenishment by consumption window, or collision-safe multi-flow suppression. Most merchants graduate to a lifecycle platform within 6–12 months.',
+  },
+  {
+    question: 'How many apps does each use-case guide compare?',
+    answer: 'Each guide includes a comparison table with eight to ten apps filtered to that workflow, plus five deep ToolReview sections with unique analysis per app. Tables link to full reviews at /apps/.',
+  },
+  {
+    question: 'Do I need separate Shopify email marketing apps for SMS and email?',
+    answer: 'Not always. Omnisend and Klaviyo bundle SMS. Postscript and Attentive are SMS-first and pair with email platforms. Sequenzy is email-first with SMS via pairing. Use-case guides note when SMS is essential versus optional for each workflow.',
+  },
+  {
+    question: 'How often should I revisit use-case playbooks?',
+    answer: 'Quarterly for timing and exclusion audits. Immediately when catalog structure changes — new subscription SKUs, wholesale accounts, international markets — or when a flow collides with another. Each guide includes metrics to watch for drift.',
+  },
+  {
+    question: 'Can I implement multiple use cases in the same week?',
+    answer: 'Sequence, not parallel — post-purchase and welcome before cart and browse with suppression. Building six flows simultaneously causes collision bugs discovered only after sends fire. Allow two weeks per workflow minimum on Sequenzy or Omnisend; longer on Klaviyo.',
+  },
+  {
+    question: 'How do use-case guides relate to app review pages?',
+    answer: 'Use-case guides are workflow-first playbooks with tool picks per job. App pages at /apps/[slug] are tool-first deep dives on features and pricing. Read use-case to decide what to build; read app page to evaluate vendor depth on that workflow.',
+  },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <p class="badge">Lifecycle playbooks</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing apps — use-case guides</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Choosing among Shopify email marketing apps is half the job. The other half is knowing what to build — trigger logic tied to orders and products, send timing that respects consent, suppression rules that prevent double discounts, and metrics that prove incremental revenue instead of rented clicks. This hub links eighteen independent playbooks, each written around a retention job Shopify merchants search for daily.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        Every guide includes an execution playbook with real merchant scenarios — ceramic planter studios, sourdough kit brands, candle subscriptions, pet food reorder programs — an app comparison table, five deep tool reviews, topical sections unique to that workflow, and nine or more FAQs. Sequenzy ranks first on most guides because lifecycle strategy and pay-per-email economics fit lean Shopify teams — but each page documents when Klaviyo, Omnisend, Postscript, Yotpo, or a specialist wins instead.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/apps">Full app rankings</a>
+        <a class="btn btn-secondary" href="/for">By store type</a>
+        <a class="btn btn-secondary" href="/compare">Comparisons</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox
+      title="How to use this hub"
+      picks={[
+        { label: 'Step 1', tool: 'Pick your job', reason: 'Welcome, cart recovery, replenishment, BFCM — choose the workflow blocking revenue right now, not the flashiest feature on a pricing page.' },
+        { label: 'Step 2', tool: 'Read the playbook', reason: 'Each guide opens with trigger, timing, exclusions, and metrics — the operational contract before creative.' },
+        { label: 'Step 3', tool: 'Compare apps', reason: 'Workflow-filtered comparison tables show which Shopify email marketing apps implement the job without workarounds.' },
+        { label: 'Step 4', tool: 'Cross-read vertical', reason: 'Jump to /for/[store-type] when catalog complexity or compliance changes the playbook.' },
+        { label: 'Default platform', tool: 'Sequenzy', reason: 'Agent-first sequences and pay-per-email pricing for teams that need strategy speed — evaluate Klaviyo when Shopify data maximums dominate.' },
+      ]}
+    />
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify mb-12">
+      <h2>Use cases are jobs, not features</h2>
+      <p>
+        Shopify email marketing apps market automations as interchangeable blocks — welcome, cart, winback. In production, each job has different intent decay curves, discount sensitivity, and suppression requirements. Abandoned cart recovery for a $89 pet food subscription refill is not the same job as browse abandonment for a $240 hand-thrown ceramic planter viewed four times over two weeks. Treating them as template swaps produces overlapping discounts, list fatigue, and attribution noise.
+      </p>
+      <p>
+        These guides treat each use case as a retention consulting brief: what triggers the flow from Shopify events, when messages fire, who must be excluded, which metrics prove success, which merchant scenarios we have seen work, and which apps implement the logic cleanly against order, customer, product, and discount data. Creative comes after the operational contract — not before.
+      </p>
+      <p>
+        Implementation order for most stores: post-purchase, welcome for non-buyers, browse and cart with collision rules, vertical-specific retention (replenishment for consumables, VIP for repeat buyers, launch for drops), winback, seasonal peaks. The guides below can be read in that sequence or jumped to individually when a specific workflow is broken.
+      </p>
+    </div>
+  </section>
+
+  <section class="container py-14">
+    <p class="badge">All 18 playbooks</p>
+    <h2 class="section-title mt-3">Choose your workflow</h2>
+    <p class="mt-4 max-w-3xl text-lg text-stone-700">Each link goes to a standalone guide with 2,000+ words — not keyword-swapped templates.</p>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {USE_CASES.map((uc) => (
+        <a class="card group" href={`/use-cases/${uc.slug}`}>
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-orange-800">{uc.name}</p>
+          <h3 class="mt-3 text-2xl font-black text-stone-950 group-hover:text-orange-800 transition-colors capitalize">
+            {uc.slug.replace(/-/g, ' ')}
+          </h3>
+          <p class="mt-3 text-stone-700">{uc.job}</p>
+          <p class="mt-4 text-sm font-bold text-orange-800">Read the full playbook →</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <p class="editorial-kicker">Workflow clusters</p>
+      <h2 class="mt-3 section-title text-3xl">Three lifecycle phases</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3 text-stone-700">
+        <div>
+          <h3 class="font-black text-stone-950">Acquisition → first order</h3>
+          <p class="mt-2 text-sm leading-7">
+            <a class="link" href="/use-cases/welcome-series">Welcome series</a>, <a class="link" href="/use-cases/browse-abandonment">browse abandonment</a>, <a class="link" href="/use-cases/abandoned-cart">abandoned cart</a>, <a class="link" href="/use-cases/discount-strategy">discount strategy</a>
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black text-stone-950">Retention → repeat purchase</h3>
+          <p class="mt-2 text-sm leading-7">
+            <a class="link" href="/use-cases/post-purchase">Post-purchase</a>, <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/loyalty">loyalty</a>, <a class="link" href="/use-cases/vip-segments">VIP segments</a>, <a class="link" href="/use-cases/reviews-and-ugc">reviews & UGC</a>
+          </p>
+        </div>
+        <div>
+          <h3 class="font-black text-stone-950">Reactivation & peaks</h3>
+          <p class="mt-2 text-sm leading-7">
+            <a class="link" href="/use-cases/winback">Winback</a>, <a class="link" href="/use-cases/product-launch">product launch</a>, <a class="link" href="/use-cases/black-friday">Black Friday</a>, <a class="link" href="/use-cases/holiday-gifting">holiday gifting</a>, <a class="link" href="/use-cases/back-in-stock">back-in-stock</a>
+          </p>
+        </div>
+      </div>
+      <p class="mt-8 text-[17px] leading-8 text-stone-700">
+        Foundation guides — <a class="link" href="/use-cases/segmentation">segmentation</a>, <a class="link" href="/use-cases/email-design">email design</a>, <a class="link" href="/use-cases/deliverability">deliverability</a>, <a class="link" href="/use-cases/analytics">analytics</a> — apply across all phases. Read them once, then reference when a specific workflow underperforms.
+      </p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="mb-8 flex items-end justify-between gap-6">
+      <div>
+        <p class="badge">Quick reference</p>
+        <h2 class="section-title mt-3 text-3xl">Top Shopify email marketing apps</h2>
+      </div>
+      <a class="link" href="/apps">Full rankings</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {APPS.slice(0, 8).map((app, i) => (
+        <a class="ledger-card" href={`/apps/${app.slug}`}>
+          <span class="rank-pill">{i + 1}</span>
+          <h3 class="mt-3 font-black text-stone-950">{app.name}</h3>
+          <p class="mt-2 text-sm text-stone-700">{app.bestFor}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Independent research per workflow</h2>
+      <p>
+        Each use-case page was written as a standalone playbook — not generated from a master template with swapped nouns. Welcome series research drew on signup source branching for sourdough recipe PDF downloads versus ceramic planter PDP opt-ins. Abandoned cart research modeled inventory checks before send for variant-heavy pet food bags. Replenishment research mapped consumption windows across candle subscriptions, sourdough flour refills, and kibble reorder cycles. Black Friday research incorporated deliverability prep and post-peak sunset recovery from merchants who burned lists in prior seasons.
+      </p>
+      <p>
+        That independence matters because implementation detail diverges: a replenishment reminder at 80% consumption is not a winback at 120 days with a discount. Tool fit diverges too — Klaviyo's variant back-in-stock is essential for limited ceramic glazes but irrelevant for digital sourdough course activation. Postscript dominates SMS cart recovery economics but cannot run post-purchase education alone.
+      </p>
+      <p>
+        Start with the workflow blocking revenue today. Read the playbook end-to-end. Evaluate the five named tools. Cross-read your <a class="link" href="/for">store-type guide</a> when vertical nuance changes timing or compliance. Compare finalists at <a class="link" href="/compare">/compare</a>. Return here when you add workflows — most Shopify stores run six to ten active automations once foundations are stable.
+      </p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Rollout order</p>
+      <h2 class="mt-3 section-title text-3xl">Recommended implementation sequence</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">
+        Week 1–2: <a class="link" href="/use-cases/post-purchase">post-purchase</a> and <a class="link" href="/use-cases/deliverability">deliverability</a> audit. Week 3–4: <a class="link" href="/use-cases/welcome-series">welcome</a> with source branching. Week 5–6: <a class="link" href="/use-cases/abandoned-cart">cart</a> and <a class="link" href="/use-cases/browse-abandonment">browse</a> with collision rules. Week 7–8: vertical retention — <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/vip-segments">VIP</a>, or <a class="link" href="/use-cases/product-launch">launch</a>. Week 9+: <a class="link" href="/use-cases/winback">winback</a> and seasonal peaks. Skipping sequence produces promos without foundation.
+      </p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">
+        Sequenzy teams often compress timeline via agent-first setup; Klaviyo teams need longer for data hygiene and segment build. Do not start <a class="link" href="/use-cases/black-friday">BFCM</a> flows in October if welcome and cart still broken.
+      </p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <p class="editorial-kicker">Tool selection shortcut</p>
+      <h2 class="mt-3 section-title text-3xl">Pick platform by primary workflow pain</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">
+        Strategy bottleneck → Sequenzy. Data maximum → Klaviyo. Fast multichannel → Omnisend. SMS recovery → Postscript plus email platform. Reviews central → Yotpo. POS loyalty → Marsello. CRM overlap → ActiveCampaign. Match primary pain from table above, then read that workflow's guide deeply before <a class="link" href="/apps">full app reviews</a>.
+      </p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">
+        This hub links eighteen playbooks totaling 35,000+ words of workflow-specific research. Each page names five primary Shopify email marketing apps with ToolReviews, comparison tables, execution playbooks with merchant scenarios, and nine FAQs. Use alongside <a class="link" href="/for">store-type guides</a> when vertical buying cycle changes tool rankings — pet food replenishment timing differs from ceramic gift nurture, but welcome collision rules are universal.
+      </p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>What each playbook contains</h2>
+      <p>Every slug page follows the same structural contract so you know where to look: hero positioning the workflow job, TldrBox with Sequenzy ranked first unless a specialist clearly wins, three merchant scenarios with numbers, execution playbook from use-case metadata plus editorial expansion, eight-to-ten app comparison table, five ToolReview components with unique analysis per app per page, three or more topical sections, internal links to /apps/, /compare/, and /for/, and FaqSection with nine questions. Prose lives in the .astro file — no shared review data layer.</p>
+      <p>A ceramic studio and a candle subscription brand may both need welcome series — but the proof blocks, discount timing, and exclusion rules differ. These guides encode that nuance so your Shopify email marketing apps stack serves customers instead of training them to wait for coupons.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Evaluating your stack against use cases</h2>
+      <p>Score current platform 1–5 on each workflow you run today — welcome, cart, post-purchase, replenishment, winback. Any score below three on an active workflow triggers comparison research. Sequenzy ranked first on most guides reflects lifecycle strategy priority; your lowest-score workflow should drive platform decision, not brand familiarity.</p>
+      <p>Migration timing: never mid-Q4. Q1–Q3 implementation windows with parallel flow testing two weeks before cutover. Read the specific use-case guide for the workflow you migrate first — usually post-purchase or welcome.</p>
+      <p>Bookmark this hub when onboarding retention hires — eighteen playbooks replace ad-hoc Notion docs that rot. Each page is standalone; read order follows the implementation sequence above, not alphabetical slug order.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <p class="editorial-kicker">Coverage map</p>
+      <h2 class="mt-3 section-title text-3xl">All 18 workflows linked</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">
+        Acquisition: welcome-series, browse-abandonment, abandoned-cart, discount-strategy. Retention: post-purchase, replenishment, loyalty, vip-segments, reviews-and-ugc. Reactivation: winback, product-launch, back-in-stock. Peaks: black-friday, holiday-gifting. Foundation: segmentation, email-design, deliverability, analytics.
+      </p>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+      <a class="link" href="/compare">Comparison hub →</a>
+      <a class="link" href="/for">Store-type guides →</a>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Use-case hub FAQ" />
+</BaseLayout>

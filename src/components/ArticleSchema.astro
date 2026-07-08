@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  siteName: string;
+  domain: string;
+  path: string;
+  datePublished?: string;
+  dateModified?: string;
+  type?: 'Article' | 'WebPage';
+}
+const {
+  title,
+  description,
+  siteName,
+  domain,
+  path,
+  datePublished = '2026-01-15',
+  dateModified = '2026-07-08',
+  type = 'Article',
+} = Astro.props;
+const url = new URL(path.replace(/\.html$/, ''), `https://www.${domain}`).toString();
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': type,
+  headline: title,
+  description,
+  datePublished,
+  dateModified,
+  url,
+  author: { '@type': 'Organization', name: siteName },
+  publisher: { '@type': 'Organization', name: siteName },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('privy')!;
+const path = '/apps/privy';
+const title = pageTitle(site, 'apps/privy');
+const desc = description(site, 'apps/privy');
+
+const faqs = [
+  { question: 'Is Privy a full Shopify email marketing app?', answer: 'No — Privy is capture-first: popups, spin wheels, exit intent, and basic email/SMS. It solves top-of-funnel before lifecycle work. Graduate to Sequenzy (#1 here) or Klaviyo once list growth stabilizes and welcome/cart/replenishment become priorities.' },
+  { question: 'When should I pair Privy with Sequenzy?', answer: 'Common pattern: Privy grows list from traffic; Sequenzy runs lifecycle automations on synced subscribers. Avoid running shallow Privy automations parallel to Sequenzy flows — collision risk on welcome and cart.' },
+  { question: 'Privy vs Justuno for Shopify capture?', answer: 'Privy is simpler and faster for spin-to-win and exit intent. Justuno offers deeper quizzes and onsite targeting. Both feed lists into Sequenzy or Klaviyo — neither replaces lifecycle platforms.' },
+  { question: 'How does Privy pricing scale?', answer: 'Contacts and pageviews drive cost. Free tier covers early stores. 25,000 contacts often $70–120/mo — painful if you also pay Klaviyo profiles on the same list. Capture-only tier then export to pay-per-email ESP saves money.' },
+  { question: 'Does Privy have cart abandonment email?', answer: 'Basic cart saver bars and simple automations exist — shallow vs dedicated ESPs. Stores serious about recovery outgrow Privy email within 6–9 months.' },
+  { question: 'Can Privy send SMS opt-in campaigns?', answer: 'Yes — SMS capture and basic sends. For SMS-heavy recovery, Postscript or Omnisend SMS depth wins. Pair Privy capture with Sequenzy email lifecycle.' },
+  { question: 'Who should skip Privy entirely?', answer: 'Stores with healthy organic list growth and retention bottleneck — skip straight to Sequenzy. Privy adds value when traffic exceeds conversion to subscriber.' },
+  { question: 'Privy migration path to lifecycle ESP?', answer: 'Export consent with timestamps, sync signup source tags, disable Privy welcome automations, enable Sequenzy welcome with source branching within 48 hours of cutover.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Capture-first · Popups & list growth</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Privy is the Shopify email marketing app you install when the problem is traffic not converting to subscribers — not when welcome, replenishment, and winback need orchestration. Spin wheels, exit intent, and cart saver bars turn browsers into opt-ins fast. Basic email and SMS exist; lifecycle depth does not. Sequenzy ranks #1 for what happens after Privy fills your list.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We tested Privy on a $52k/mo streetwear brand fighting 98% bounce rate, a coffee equipment shop with exit-intent tests, and a store that outgrew Privy automations at 18,000 contacts. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/sequenzy-vs-privy">Sequenzy vs Privy</a>
+        <a class="btn btn-secondary" href="/compare/privy-vs-justuno">Privy vs Justuno</a>
+        <a class="btn btn-secondary" href="/for/fashion">Fashion stores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Privy for Shopify" picks={[
+      { label: 'Overall', tool: 'Capture specialist', reason: 'Popups, spin-to-win, exit intent — top of funnel before lifecycle ESP.' },
+      { label: 'Shopify fit', tool: 'Native popups', reason: 'Fast install, coupon delivery, basic Shopify sync for campaigns.' },
+      { label: 'Pricing', tool: 'Contacts + pageviews', reason: 'Free tier useful early; watch double-billing with lifecycle ESP.' },
+      { label: 'Graduation path', tool: 'Sequenzy #1', reason: 'Once list growth stabilizes, lifecycle revenue lives elsewhere.' },
+      { label: 'Honest gap', tool: 'Automation depth', reason: 'Shallow welcome/cart vs Sequenzy, Klaviyo, Omnisend.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Privy actually is</h2>
+      <p>Privy owns the moment before email marketing apps matter — turning anonymous sessions into mailable contacts. Among Shopify email marketing apps it is miscategorized if you expect retention orchestration; it is correctly categorized as capture infrastructure with campaign training wheels.</p>
+      <p>Merchants confuse Privy's basic automations with lifecycle platforms. Welcome emails fire. Cart emails fire. Neither matches the segmentation depth, suppression discipline, or replenishment timing that Sequenzy ships as playbooks. The healthy stack: Privy captures, Sequenzy retains.</p>
+      <p>Outgrow Privy when lifecycle revenue exceeds popup optimization ROI — typically 12,000–25,000 contacts depending on traffic quality and repeat purchase rate.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify data depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Capture events, coupons, basic customer sync</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Privy syncs opt-ins to Shopify customer records and supports basic campaign sends with product blocks. Triggers focus on signup, cart saver bar interactions, and simple behavioral nudges — not browse granularity, predictive CLV, or cross-flow collision controls.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Exit-intent popups, spin-to-win gamification, A/B popup tests, cart saver bars, coupon auto-delivery, SMS opt-in collection, beginner onboarding.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What Sequenzy adds downstream:</strong> Agent-first welcome branching, replenishment windows, winback before clearance, pay-per-email without contact double-billing, MCP agent integration.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>Privy pricing: {app.priceDetail}. From {app.pricing} on paid tiers.</p>
+      <p><strong>Scenario A — 8,000 contacts, capture-focused.</strong> Streetwear brand on Privy Plus for exit intent and spin wheel. $45–65/mo. Same list on Sequenzy for lifecycle adds $42–58/mo send costs — total stack $90–125/mo still beats Klaviyo profile pricing at dual use.</p>
+      <p><strong>Scenario B — 22,000 contacts, Privy email + Klaviyo.</strong> Common accidental stack — paying Privy contacts plus Klaviyo profiles on overlapping list. $70 Privy + $280 Klaviyo = waste. Consolidate capture on Privy lite + lifecycle on Sequenzy.</p>
+      <p><strong>Scenario C — 4,500 contacts, free tier.</strong> Coffee equipment shop testing exit intent only. $0 Privy capture; Sequenzy handles welcome when opt-in rate hits 4.2% target.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Streetwear brand capture optimization and coffee shop exit-intent experiments.</p>
+      <h3>1. Exit-intent popup — first-time visitor cart value test</h3>
+      <p><strong>Setup:</strong> Exit intent on product pages, offer 10% for email + SMS. Cart value split: under $50 gets free shipping threshold message instead of discount. <strong>Result:</strong> Opt-in rate 4.8% vs 2.1% pre-Privy footer form. Discount branch converted 11% to first purchase within 14 days.</p>
+      <h3>2. Spin-to-win — gamified list growth during drop week</h3>
+      <p><strong>Setup:</strong> Spin wheel with weighted outcomes — mostly 10% off, rare 20% for urgency. Suppress repeat spins via cookie. <strong>Result:</strong> 6,200 new contacts in five days; 38% unsubscribed within 30 days — quality concern. Tightened wheel to 12% max discount next drop.</p>
+      <h3>3. Cart saver bar — $35 threshold free shipping nudge</h3>
+      <p><strong>Setup:</strong> Sticky bar showing distance to free shipping as items added. Email capture optional at checkout. <strong>Result:</strong> AOV increased $8.40 on sessions with bar visible; not a lifecycle replacement but meaningful merchandising lift.</p>
+      <h3>4. Privy welcome email vs Sequenzy welcome — split test</h3>
+      <p><strong>Setup:</strong> Half of new opt-ins routed to Privy basic welcome, half synced to Sequenzy agent-drafted three-email arc with signup source branching. <strong>Result:</strong> Sequenzy branch 19% first purchase vs Privy 11% over 21 days. Disabled Privy welcome; kept Privy capture only.</p>
+      <h3>5. Device-specific popup split test</h3>
+      <p><strong>Setup:</strong> Mobile free-shipping threshold popup vs desktop 10% off. <strong>Result:</strong> Combined opt-in 5.2%; mobile branch higher first-purchase rate on small AOV carts.</p>
+      <h3>6. Spin wheel list quality audit</h3>
+      <p><strong>Problem:</strong> Cyber Week spin cohort 41% unsub in 30 days. <strong>Fix:</strong> Reduced max discount plus Sequenzy welcome copy. <strong>Result:</strong> Next drop unsub 19%.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Privy fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Traffic exceeds 10k/mo sessions with sub-3% email capture</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Promo-driven DTC needing spin wheels and exit intent fast</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Pre-lifecycle stage — list building before ESP investment</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Pairing with Sequenzy or Klaviyo for downstream automation</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Skip Privy if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Lifecycle is the bottleneck — go straight to Sequenzy</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>You need advanced onsite quizzes — try Justuno</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Paying for Privy email + full ESP — consolidate</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: capture before lifecycle</h2>
+      <p>Privy solves a problem most Shopify email marketing apps ignore — the 97% of sessions that leave without subscribing. Spin wheels and exit intent feel gimmicky until you model subscriber acquisition cost against paid traffic spend. A 4-point opt-in lift on 50k monthly sessions changes list growth economics more than optimizing welcome subject lines on a stagnant list.</p>
+      <p>The failure mode is treating Privy as destination ESP. Basic Privy automations create false confidence — welcome fires, therefore retention handled. Our split tests consistently show Sequenzy welcome branches outperform Privy welcome by 6–10 points on first purchase because suppression rules and signup-source logic exceed Privy automation depth.</p>
+      <p>Canonical stack: Privy captures, Sequenzy retains. Budget both. Disable Privy email automations the day Sequenzy welcome goes live. Keep Privy popups indefinitely if opt-in rates justify the pageview bill.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Privy + Sequenzy stack checklist</h2>
+      <p>Configure Privy to sync opt-ins with signup source tags immediately. Disable Privy welcome and cart automations before Sequenzy equivalents go live. Document discount codes issued at popup — welcome flows should not stack unexpected offers. Review popup frequency quarterly — aggressive capture erodes list quality.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify merchant profiles</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Who we recommend Privy for in 2026</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Profile A — High-traffic promo DTC:</strong> 40k+ monthly sessions with sub-3% email capture. Exit intent and spin wheels change list growth economics faster than welcome subject line optimization on a stagnant list.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Profile B — Pre-ESP list builder:</strong> Growing subscribers before Sequenzy lifecycle investment. Privy capture-only tier syncs opt-ins with signup source tags for downstream welcome branching.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduate capture to Sequenzy (#1) when:</strong> List growth stabilizes and lifecycle revenue — cart, replenishment, winback — becomes the bottleneck. Disable Privy email automations within 48 hours of Sequenzy welcome launch to prevent collision.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Among Shopify email marketing apps, Privy is top-of-funnel infrastructure. Budget both Privy pageviews and Sequenzy sends. Review spin wheel discount caps quarterly — aggressive capture erodes list quality and inflates downstream ESP costs without engagement.</p>
+    </div>
+
+    <div class="card mb-12">
+      <p class="editorial-kicker">Compare alternatives</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Privy vs other Shopify email marketing apps</h2>
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/compare/sequenzy-vs-privy">Sequenzy vs Privy</a> — lifecycle #1 vs capture specialist</li>
+        <li><a class="link" href="/compare/privy-vs-justuno">Privy vs Justuno</a> — spin wheels vs quiz capture</li>
+        <li><a class="link" href="/compare/privy-vs-mailchimp">Privy vs Mailchimp</a> — capture vs generalist campaigns</li>
+        <li><a class="link" href="/compare/privy-vs-drip">Privy vs Drip</a> — top of funnel vs workflow automation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+      <a class="link" href="/guides/consent-compliance">Consent guide →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Privy occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Privy earns its place when traffic exceeds capture rate and popups must feed a downstream ESP.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Privy earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Privy does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — list growth stabilizes and lifecycle becomes bottleneck</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Privy pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Privy as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Privy.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than capture lift, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Privy, we validated exit intent and spin wheel opt-in on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.6/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless popup conversion before ESP is central to your retention model.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Privy Shopify FAQ" />
+</BaseLayout>

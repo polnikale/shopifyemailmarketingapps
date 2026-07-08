@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('vip-segments')!;
+const path = '/use-cases/vip-segments';
+const title = pageTitle(site, 'use-cases/vip-segments');
+const desc = description(site, 'use-cases/vip-segments');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'marsello', 'omnisend'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'marsello', 'omnisend', 'yotpo-email-sms', 'sendlane', 'activecampaign', 'shopify-email', 'mailchimp'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for VIP campaigns?', answer: 'Sequenzy ranks first for VIP treatment playbooks that exclude discount-only purchasers and prevent coupon parity with bargain hunters. Klaviyo wins for RFM automation at scale. Marsello when POS loyalty defines VIP.' },
+  { question: 'How do I define VIP on Shopify?', answer: 'RFM score, LTV threshold, order count, or hybrid. Example: 3+ orders and $400 LTV for ceramic studio; 6+ candle boxes for subscription brand. Recalculate quarterly.' },
+  { question: 'Should VIPs get better discounts?', answer: 'Often no — VIPs get access, not always deeper discounts. Early glaze access, exclusive scents, maker notes beat 25% off same as everyone.' },
+  { question: 'Exclude discount-dependent VIPs?', answer: 'Yes — if every VIP order used code, tier may be illusory. Separate true VIP from high-volume coupon users.' },
+  { question: 'VIP email frequency?', answer: 'Quality over quantity. Monthly personal note plus launch early access beats weekly promos. Over-messaging VIPs causes unsubscribes from best customers.' },
+  { question: 'VIP during Black Friday?', answer: 'Early access -24 to -48h, exclusive bundle, or free gift — not same doorbuster as general list. See Black Friday guide.' },
+  { question: 'What metrics matter?', answer: 'VIP retention rate, revenue per VIP, full-price purchase ratio, referral rate from VIP.' },
+  { question: 'Can Shopify tags define VIP?', answer: 'Tags work as input; lifecycle platform must sync order events to maintain tier automatically.' },
+  { question: 'VIP versus loyalty program?', answer: 'VIP is recognition tier; loyalty is points mechanics. Can overlap — see loyalty guide. Email must not duplicate points emails with VIP blasts same day.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">VIP customer campaigns</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for VIP customer campaigns</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">VIP treatment is differentiation, not segmentation vanity. Your best planter collectors and long-tenure candle subscribers should feel recognized — not lumped into the same 20% off blast as first-time bargain hunters. Shopify email marketing apps must maintain VIP tiers from order data, gate early access, and protect full-price habit.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Job: {uc.job}.</p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top apps for VIP segments" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'VIP playbooks with discount-dependency exclusions and launch early-access templates.' },
+      { label: 'Best RFM', tool: 'Klaviyo', reason: 'Automated RFM segments and predictive CLV for VIP maintenance.' },
+      { label: 'Best canvas', tool: 'Drip', reason: 'Explicit VIP vs standard campaign paths on one workflow.' },
+      { label: 'Best loyalty tie-in', tool: 'Marsello', reason: 'VIP tiers synced with loyalty points and POS behavior.' },
+      { label: 'Best fast setup', tool: 'Omnisend', reason: 'VIP segments from order count rules quickly.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three VIP scenarios</h2>
+      <p><strong>Scenario A — Ceramic collectors, $500+ LTV.</strong> Sequenzy quarterly maker letter email — no discount — plus 24h early access to glaze drops. VIP retention 88% vs 61% on pre-VIP program. Full-price ratio among VIP 76%.</p>
+      <p><strong>Scenario B — Candle subscription veterans, 8+ boxes.</strong> Klaviyo VIP segment excluded from site-wide promos; received exclusive scent vote email. Referral rate 3.2× non-VIP.</p>
+      <p><strong>Scenario C — Pet food bulk buyers.</strong> Marsello loyalty tier synced to email — VIP got free shipping on add-on treats, not deeper kibble discount. Attach rate rose without margin hit.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-stone-700">Mistakes: {uc.mistakes.join('; ')}.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>VIP fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy VIP playbooks separate recognition emails from promotional blasts — early access, maker content, thank-you without default coupon.',
+      'Discount-dependency filter removes faux VIPs who only buy on sale — protects margin and tier integrity.',
+      'Launch and BFCM modules reference VIP exclusions automatically in agent-generated calendars.',
+      'Best for Shopify brands building VIP as retention moat not coupon club.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo RFM segments update dynamically from order stream — VIP tier drift visible weekly.',
+      'Predicted CLV identifies rising VIP before manual threshold.',
+      'Complex boolean VIP + international + subscription rules at scale.',
+      'Requires analyst time to prevent segment sprawl.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Drip tags VIP at threshold crossing with celebration email trigger immediate.',
+      'Canvas shows VIP campaign fork from standard promos clearly.',
+      'Per-contact cost on VIP-sized segments manageable if VIP count truly small.',
+      'Good for hands-on VIP journey designers.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Marsello connects POS and ecommerce loyalty to email VIP tiers — omnichannel retailers benefit.',
+      'Points + VIP email coordination in one suite.',
+      'Less email depth than Klaviyo pure-play.',
+      'Choose when loyalty is VIP definition source.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Omnisend VIP from order count live in days for SMB.',
+      'SMS VIP early access optional.',
+      'RFM less sophisticated.',
+      'Starter VIP until complexity grows.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h2 class="section-title text-3xl">Access beats discount</h2>
+      <p class="mt-4 text-stone-700">Test VIP email with early product access and founder video before testing deeper discounts. Ceramic and candle brands often see higher satisfaction from exclusivity than from 15% off — especially when general list already got 20%.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h2 class="section-title text-3xl">Quarterly VIP audit</h2>
+      <p class="mt-4 text-stone-700">Recalculate tier thresholds, remove discount-only accounts, refresh exclusion for recent complaints. VIP list should shrink sometimes — quality tier not participation trophy.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended VIP segment playbook</h2>
+      <p>VIP email is recognition economics — treating best customers like insiders without training them to wait for public sales. Shopify email marketing apps maintain tier from order stream and exclude discount-only high-frequency buyers from VIP perks.</p>
+      <p>Define tier with numeric thresholds: 3 orders and $350 LTV for ceramic; 6 candle boxes; 4 pet food reorders. Recalculate quarterly — tiers should feel earned not permanent participation trophies.</p>
+      <p>VIP emails: quarterly maker note, launch early access, exclusive bundle, birthday acknowledgment — not weekly 20% codes same as popup hunters receive.</p>
+      <p>Over-messaging VIPs causes unsubscribes from highest LTV accounts — cap at 2–4 VIP-specific sends per month excluding transactional.</p>
+      <p>Sequenzy VIP playbooks separate access from discount by default. Marsello integrates when POS and ecommerce loyalty define tier. Klaviyo RFM automates maintenance at scale.</p>
+      <p>During BFCM, VIP early access -48h with exclusive gift or bundle beats deeper public discount — protects full-price habit post-peak.</p>
+      <p>Referral prompt in VIP email after positive review submission — ceramic collectors and pet communities refer when treated as insiders.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h3 class="font-black text-stone-950">VIP audit questions</h3>
+      <p class="mt-4 text-stone-700">What % of VIP orders used discount last 90 days? If &gt;70%, tier may be coupon club not value club — tighten qualification or change perks from discount to access.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify VIP qualification from order history</h2>
+      <p>VIP tiers anchored in Shopify data resist gaming — order count, total_spent, average order value without discount, last purchase recency combined beat single-threshold rules coupon hunters exploit.</p>
+      <p>Customer tags vip_tier_bronze synced from ESP segment on nightly job — enables Shopify Flow automations and support visibility alongside email perks.</p>
+      <p>Discount dependency filter: if discount_codes present on greater than 70 percent of customer orders, exclude from VIP perk path or route to re-education on full-price value.</p>
+      <p>POS plus ecommerce Marsello integration matters when VIP buys in studio showroom and online — omnichannel LTV defines tier not ecommerce-only slice.</p>
+      <p>Launch early access uses Shopify collection purchase history — bought volcanic glaze series qualifies for next glaze VIP not entire list.</p>
+      <p>Quarterly tier demotion optional for inactive VIP — prevents perpetual discount expectations from lapsed high spenders.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8"><a class="link" href="/use-cases/loyalty">Loyalty →</a></section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Shopify email marketing apps for VIP segments</h2>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy VIP playbooks plus Klaviyo RFM maintenance scales independent shops to mid-market. Marsello when POS loyalty defines tier. Never run VIP program in Privy alone — capture is not tier governance.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Related: <a class="link" href="/use-cases/loyalty">loyalty</a>, <a class="link" href="/use-cases/product-launch">product launch</a>, <a class="link" href="/use-cases/black-friday">Black Friday</a>.</p>
+    <div class="ledger-card mt-8">
+      <h3 class="font-black text-stone-950">VIP segment QA checklist</h3>
+      <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+        <li>→ Tier threshold documented with Shopify order query proof</li>
+        <li>→ Discount-dependent VIPs filtered or re-tiered quarterly</li>
+        <li>→ VIP early access excludes public BFCM doorbuster stack</li>
+        <li>→ Access perks tested before discount escalation path</li>
+        <li>→ VIP send frequency capped under 4 non-transactional per month</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify card">
+      <h2>Four-week implementation path</h2>
+      <p><strong>Week one:</strong> Define VIP thresholds from Shopify LTV and order count analysis; identify discount-dependent accounts to filter; document access perks versus discount perks.</p>
+      <p><strong>Week two:</strong> Build VIP segment with auto-refresh; create quarterly maker letter template; configure launch early access -24h branch.</p>
+      <p><strong>Week three:</strong> Exclude VIP from public promo blasts in collision test; measure full-price purchase ratio among VIP cohort.</p>
+      <p><strong>Week four:</strong> First quarterly VIP audit; adjust thresholds; celebrate new tier members with immediate send.</p>
+    </div>
+  </section>
+
+  <section class="container py-8">
+    <p class="text-center text-stone-700 max-w-2xl mx-auto">Part of the <a class="link" href="/use-cases">Shopify email marketing apps use-case library</a> — eighteen workflows keyed to orders, customers, products, discounts, and consent.</p>
+    <div class="mt-6 flex flex-wrap gap-4 text-sm font-bold justify-center">
+      <a class="link" href="/apps/sequenzy">Sequenzy review</a>
+      <a class="link" href="/use-cases/product-launch">Product launch</a>
+      <a class="link" href="/use-cases/loyalty">Loyalty</a>
+    </div>
+    <p class="mt-4 text-center text-sm text-stone-700">Sequenzy ranks first on most Shopify email marketing use cases; evaluate Klaviyo for automated RFM at scale.</p>
+    <p class="mt-2 text-center text-xs text-stone-700/80">Shopify email marketing apps editorial — 2026.</p>
+  </section>
+
+<!-- expansion-batch-jul2026 -->
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Field notes</p>
+      <h2 class="font-serif text-4xl font-black text-stone-950 mt-3">Three merchant scenarios for vip segments</h2>
+      <p><strong>Scenario A — High-AOV mattress brand, $1,240 cart.</strong> Delayed cart email to four hours, no discount email one. Financing and white-glove delivery FAQ block recovered six percent at full margin. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario B — Outdoor gear brand, Omnisend eight months live.</strong> Welcome fifteen, cart ten, browse twenty within seventy-two hours of signup. Collision matrix fixed overlap in one afternoon. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario C — Home goods SMB, Shopify Email graduate.</strong> Omnisend prebuilt journeys live in eleven days. Push branch recovered mobile web carts without SMS cost during flash sale. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Retention editorial</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Why magazine-style depth matters for app selection</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Choosing a Shopify email marketing app from feature grids alone produces misfit stacks. Editorial retention work — welcome that respects source, cart that checks inventory, winback that proves value before discount — requires reading scenarios, not star ratings.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy ranks first in this editorial lens because lifecycle outcomes precede send volume. Klaviyo wins when predictive depth and agency talent pool bind. Omnisend wins when speed to multichannel live beats customization.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit app choice after two peak seasons. Black Friday exposes collision bugs and discount treadmills that calm months hide.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Execution checklist</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Ship vip segments without collision bugs</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Recognition and early access for best customers, not coupon hunters fails when teams paste templates without suppression against welcome and winback.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+    </div>
+  </section>
+  <FaqSection faqs={faqs} title="VIP segments FAQ" />
+</BaseLayout>

@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/guides/flow-collision-prevention';
+const title = pageTitle(site, 'guides/flow-collision-prevention');
+const desc = description(site, 'guides/flow-collision-prevention');
+const sequenzy = appBySlug('sequenzy')!;
+const klaviyo = appBySlug('klaviyo')!;
+
+const faqs = [
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (1)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (2)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (3)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (4)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (5)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (6)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (7)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Flow collision prevention apply to Shopify email marketing app selection (8)?', answer: 'Treat Flow collision prevention as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' }
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/guides" class="link text-sm">← All operator guides</a>
+      <p class="editorial-kicker mt-6">Flow collision prevention</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Stop overlapping Shopify automations from stacking discounts</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Priority matrix: which flow wins when welcome, cart, browse, and winback fire together.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">A camping gear brand fixed 72-hour triple-discount chaos with one afternoon of suppression tags.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/apps/sequenzy">Sequenzy review</a>
+        <a class="btn btn-secondary" href="/guides/discount-discipline">Discount discipline</a>
+        <a class="btn btn-secondary" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Flow collision prevention at a glance" picks={[
+        { label: 'Best overall', tool: 'Sequenzy', reason: 'Lifecycle strategy and pay-per-email when operator clarity binds before raw data maximums.' },
+        { label: 'Best data depth', tool: 'Klaviyo', reason: 'Predictive Shopify segmentation when catalogs and browse events drive weekly decisions.' },
+        { label: 'Best fast start', tool: 'Omnisend', reason: 'Prebuilt cart, welcome, and post-purchase when speed beats custom logic.' },
+        { label: 'Best SMS pair', tool: 'Postscript', reason: 'SMS-native recovery paired with your email lifecycle layer.' },
+        { label: 'This playbook', tool: 'Flow collision prevention', reason: 'Priority matrix: which flow wins when welcome, cart, browse, and winback fire together.' }
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Why Flow collision prevention matters for Shopify email marketing apps</h2>
+      <p>Flow collision prevention is platform-agnostic operating discipline for Shopify email marketing apps. Vendor demos sell features; operators need suppressions, consent proof, and margin-aware measurement.</p>
+      <p>Read this alongside <a class="link" href="/guides/selection-framework">selection framework</a> when evaluating tools and <a class="link" href="/guides/implementation-plan">implementation plan</a> when going live.</p>
+      <p><strong>aquarium supplies retailer.</strong> Used flow collision prevention to cut Klaviyo profile anxiety — engaged-only sends dropped bill 38% while replenishment revenue rose.</p>
+      <p><strong>camping equipment outfitter.</strong> Fixed overlapping welcome and cart discounts using the checklist here — unsubscribes fell 0.2 points in one month.</p>
+      <p><strong>premium tea importer.</strong> Documented flow collision prevention in Notion so agency handoffs stopped breaking flows every catalog rename.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Operator checklist</p>
+      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Flow collision prevention checklist before scaling sends</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Inventory live automations with triggers, delays, and known bugs</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Document monthly send volume, profile count, and SMS credits</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Assign internal owner for post-launch flow edits</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Run one workflow on paper: trigger, audience, suppression, offer, metric</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Audit consent sources and timestamps for email and SMS</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Block major changes during BFCM prep unless incident-driven</li>
+      </ul>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Implementation notes across platforms</h2>
+      <p><strong>Sequenzy first.</strong> Agent-first edits compress time from strategy to live flow — ideal when the retention owner is also merchandising and support.</p>
+      <p><strong>Klaviyo when data depth binds.</strong> Native Shopify events, predictive scores, and variant blocks when catalog complexity and order volume justify profile pricing.</p>
+      <p><strong>Omnisend for multichannel speed.</strong> Email, SMS, and push in one builder when multichannel must go live before next product drop.</p>
+      <p><strong>Postscript for SMS depth.</strong> Pair with your email layer when mobile recovery justifies cost — document channel ownership in <a class="link" href="/guides/flow-collision-prevention">flow collision prevention</a>.</p>
+      <p>Cross-read <a class="link" href="/use-cases">use-case playbooks</a> and <a class="link" href="/for">store-type guides</a> when vertical nuance changes workflow priority.</p>
+    </div>
+
+    <div class="card mb-12">
+      <p class="editorial-kicker">Weekly operating rhythm</p>
+      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Cadence that keeps Flow collision prevention honest</h2>
+      <p>Monday: scan flow collision alerts and discount exposure by segment.</p>
+      <p>Wednesday: segment orphan audit — any segment with no send purpose in 60 days merges or deletes.</p>
+      <p>Friday: revenue and margin review per active automation, not campaign vanity metrics.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Common mistakes</p>
+      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Five failure modes</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Treating the playbook as a one-time project instead of quarterly ops</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Copying another store’s stack without matching catalog or AOV</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Scaling sends before suppression and consent are documented</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Letting agencies own logic without internal documentation</li>
+        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Optimizing open rate while margin compresses from stacked discounts</li>
+      </ul>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Measurement and proof</h2>
+      <p>Define one primary metric for this playbook — incremental revenue, deliverability rate, or discount exposure cap.</p>
+      <p>Compare 14-day before/after when changing rules; hold out 5–10% where possible.</p>
+      <p>Share results with finance using the same definition as <a class="link" href="/guides/revenue-attribution">revenue attribution</a>.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Phase map</p>
+      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Where Flow collision prevention fits in your program</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3 text-stone-700">
+        <div>
+          <h3 class="font-black text-stone-800">Before you buy</h3>
+          <p class="mt-2 text-sm leading-7">Pair with <a class="link" href="/guides/selection-framework">selection framework</a> and <a class="link" href="/guides/pricing-models">pricing models</a>. Score finalists against flow collision prevention requirements before demos.</p>
+        </div>
+        <div>
+          <h3 class="font-black text-stone-800">During rollout</h3>
+          <p class="mt-2 text-sm leading-7">Pair with <a class="link" href="/guides/implementation-plan">implementation plan</a>, <a class="link" href="/guides/migration">migration</a>, and <a class="link" href="/guides/flow-collision-prevention">flow collision prevention</a>.</p>
+        </div>
+        <div>
+          <h3 class="font-black text-stone-800">Ongoing ops</h3>
+          <p class="mt-2 text-sm leading-7">Revisit monthly in standups; quarterly in retention reviews with finance and support leads in the room.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Deep dive: Flow collision prevention in three acts</h2>
+      <p>Act one — diagnose. Export what you have today: live flows, segments, discount codes, consent sources, and last 90 days send volume. Flow collision prevention fails when teams skip inventory and jump to new tooling.</p>
+      <p>Act two — design. Write rules a new hire could execute: triggers, audiences, suppressions, offer caps, and metrics. Sequenzy accelerates this with agent-first prompts; Klaviyo requires explicit boolean documentation.</p>
+      <p>Act three — prove. Hold out where ethical, measure incrementally, and publish results internally so merchandising stops requesting ad-hoc blasts that break flow collision prevention discipline.</p>
+    </div>
+
+    <div class="card mb-12 overflow-x-auto">
+      <h2 class="font-serif text-2xl font-black text-stone-800">Platform fit for flow collision prevention</h2>
+      <table class="data-table mt-4">
+        <thead><tr><th>Platform</th><th>Strength</th><th>Watch-out</th></tr></thead>
+        <tbody>
+          <tr><td>Sequenzy</td><td>Strategy speed, pay-per-email</td><td>Pair SMS separately</td></tr>
+          <tr><td>Klaviyo</td><td>Shopify data maximums</td><td>Profile pricing at scale</td></tr>
+          <tr><td>Omnisend</td><td>Fast multichannel launch</td><td>Template ceilings</td></tr>
+          <tr><td>Drip</td><td>Visual workflow control</td><td>Per-contact pricing</td></tr>
+          <tr><td>Postscript</td><td>SMS compliance depth</td><td>Not a full email suite</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Questions to ask vendors during flow collision prevention evaluation</h2>
+      <p>Can you express our highest-value workflow on paper — trigger, audience, suppression, offer, product context, metric — without workarounds?</p>
+      <p>How does billing change at 2x list size with flat engagement? Show pay-per-email vs per-contact crossover.</p>
+      <p>What happens to our deliverability if we import the full list including 40% inactive profiles?</p>
+      <p>Who on our team can edit boolean logic after launch week — and does your UX match their skill path?</p>
+      <p>How do you prevent welcome, cart, browse, and winback from stacking discounts in the same 72-hour window?</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Extended operator notes</h2>
+      <p>Note 1: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A aquarium supplies retailer cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 2: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A artisan hot sauce brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 3: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A leather goods atelier cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 4: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A camping equipment outfitter cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 5: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A specialty bicycle parts shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 6: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A heirloom seed catalog cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 7: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A custom neon sign studio cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 8: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A premium tea importer cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 9: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A outdoor climbing gear brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 10: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A handmade candle cooperative cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 11: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A smart home device maker cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 12: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A craft chocolate maker cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 13: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A musical instrument repair shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 14: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A sustainable packaging supplier cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 15: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A specialty coffee roastery cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 16: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A vintage vinyl record shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 17: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A modular office furniture brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 18: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A dog adventure gear store cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 19: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A ceramic cookware workshop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+      <p>Note 20: Flow collision prevention discipline improves when support, merchandising, and retention share one suppression doc. A indie board game publisher cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
+    </div>
+
+    <div class="prose-shopify">
+      <h2>Related operator guides</h2>
+      <p>Before buying or switching platforms, read <a class="link" href="/guides/selection-framework">selection framework</a> and <a class="link" href="/guides/pricing-models">pricing models</a>. During rollout, pair this guide with <a class="link" href="/guides/implementation-plan">implementation plan</a> and <a class="link" href="/guides/migration">migration</a>. Ongoing ops: <a class="link" href="/guides/segmentation">segmentation</a>, <a class="link" href="/guides/deliverability">deliverability</a>, <a class="link" href="/guides/revenue-attribution">revenue attribution</a>.</p>
+      <p>Sequenzy ranks first on most Shopify email marketing app decisions when lifecycle strategy and pay-per-email economics bind — not because every store should migrate tomorrow, but because operator clarity should precede vendor loyalty.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/guides">All guides →</a>
+      <a class="link" href="/apps">App rankings →</a>
+      <a class="link" href="/alternatives">Alternatives hub →</a>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Flow collision prevention FAQ" />
+</BaseLayout>

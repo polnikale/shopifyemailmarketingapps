@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('product-launch')!;
+const path = '/use-cases/product-launch';
+const title = pageTitle(site, 'use-cases/product-launch');
+const desc = description(site, 'use-cases/product-launch');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip', 'yotpo-email-sms', 'firepush', 'mailchimp', 'attentive', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for product launches?', answer: 'Sequenzy ranks first for launch playbooks with VIP early access, waitlist fulfillment order, and inventory-aware sends. Klaviyo wins for complex drop segmentation. Privy wins for waitlist capture feeding launch executor.' },
+  { question: 'How early should VIPs get access?', answer: '24 hours before general list is standard for ceramic drops and limited candle scents. Document exclusion for recent full-price buyers of adjacent SKUs.' },
+  { question: 'Should launch email entire list?', answer: 'No — exclude recent purchasers, sold-out variants, unavailable markets. Segment by interest: planter collectors vs sourdough buyers vs pet owners.' },
+  { question: 'How do waitlists work?', answer: 'Privy or Klaviyo waitlist signup → fulfillment in signup order on restock/go-live. Firepush for push waitlist optional.' },
+  { question: 'Inventory sync critical?', answer: 'Yes — variant-level inventory in email blocks. False availability on glaze drop destroys trust and spikes support.' },
+  { question: 'Launch versus welcome collision?', answer: 'Pause welcome discount paths during launch week for subscribers who match launch segment — avoid offer stacking.' },
+  { question: 'SMS for drops?', answer: 'Postscript or Attentive for flash urgency on mobile-heavy candle and ceramic drops — coordinate with email suppressions.' },
+  { question: 'What metrics matter?', answer: 'Launch sell-through in 48h, waitlist conversion, VIP vs general revenue split, inventory accuracy in emails.' },
+  { question: 'Shopify Email for launches?', answer: 'Manual broadcasts only — no VIP early access automation or waitlist orchestration.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">Product launch campaigns</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for product launch campaigns</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Product launches on Shopify are inventory events dressed as marketing moments. A new volcanic glaze series, a limited sourdough culture drop, or a seasonal candle trio needs VIP early access, waitlist fairness, and variant-accurate emails — not a blast that sells ghosts. Shopify email marketing apps must coordinate timing with catalog truth.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Job: {uc.job}.</p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top apps for product launch" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'Launch calendars with VIP early access, waitlist order, and inventory gates from Shopify.' },
+      { label: 'Best segmentation', tool: 'Klaviyo', reason: 'Interest-based launch segments and predictive VIP identification.' },
+      { label: 'Best waitlist capture', tool: 'Privy', reason: 'Waitlist popups feeding launch sequences with source metadata.' },
+      { label: 'Best multichannel', tool: 'Omnisend', reason: 'Email + SMS + push for coordinated drop day.' },
+      { label: 'Best workflow design', tool: 'Drip', reason: 'Visual launch timelines with explicit VIP and general branches.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three launch scenarios</h2>
+      <p><strong>Scenario A — Ceramic glaze drop, 400 units.</strong> Sequenzy VIP email -24h to collectors tagged by prior glaze purchases; general list at go-live with live inventory in block. Sold through in 41 hours; zero OOS complaint emails after inventory sync fix.</p>
+      <p><strong>Scenario B — Sourdough culture waitlist.</strong> Privy waitlist 2,100 signups; Klaviyo fulfillment in queue order over 6 hours prevented site crush. 68% waitlist conversion.</p>
+      <p><strong>Scenario C — Candle holiday trio.</strong> Omnisend SMS + email at launch; VIP subscribers from <a class="link" href="/use-cases/vip-segments">VIP segment</a> got bundle pricing 24h early. 52% launch revenue from VIP despite 12% of list.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-stone-700">Mistakes: {uc.mistakes.join('; ')}.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>Launch fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy launch playbooks encode VIP → waitlist → general sequence with Shopify inventory conditions. Describe drop date, SKU, VIP criteria; agent outputs timed sends with exclusions.',
+      'Pay-per-email helps when launch list is large but only VIP early access sends day one.',
+      'Collision calendar notes for welcome and cart during launch week included in playbook exports.',
+      'Pair Privy for waitlist capture at top of funnel.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo launch segments by collection interest, LTV, and waitlist property. Dynamic blocks hide sold variants automatically when configured.',
+      'Flow splits test VIP subject lines and send times.',
+      'Best for multi-drop brands with overlapping catalogs.',
+      'Profile costs spike on launch list imports — plan hygiene.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Privy waitlist and countdown popups feed launch executor with signed-up timestamp for fair fulfillment order.',
+      'Not launch sender alone — capture layer for Sequenzy/Klaviyo.',
+      'Spin-to-win and waitlist can conflict — separate intents.',
+      'Essential when pre-drop list building is bottleneck.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Omnisend coordinates email, SMS, push on drop minute for candle flash culture.',
+      'Templates fast for seasonal SMB launches.',
+      'Complex VIP boolean trees less flexible than Klaviyo.',
+      'Good single-market drops.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Drip canvas shows parallel VIP and general tracks with wait delays — reduces launch day logic errors.',
+      'Custom tags for waitlist position.',
+      'Build time vs Sequenzy agent speed.',
+      'Operators who plan launches visually prefer Drip.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h2 class="section-title text-3xl">Launch week collision calendar</h2>
+      <p class="mt-4 text-stone-700">Pause winback discounts, throttle welcome offers, and suppress replenishment promos on launch SKUs during drop window. Document in shared spreadsheet every team member sees Monday morning.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h2 class="section-title text-3xl">Waitlist fairness</h2>
+      <p class="mt-4 text-stone-700">Fulfill waitlist in signup order, not blast-all at once — protects site stability and rewards early interest. Stagger batches of 200–500 for hot ceramic drops. Expire unconverted waitlist invites after 48h.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended product launch playbook</h2>
+      <p>Launches on Shopify fail when email outruns inventory. Shopify email marketing apps must treat go-live as operational event: VIP early access, waitlist queue, general send, each gated on variant inventory &gt; 0.</p>
+      <p>Teaser week -1 builds anticipation without revealing full offer — studio process video for ceramic, starter culture story for sourdough, scent note pyramid for candles. No cart link until go-live.</p>
+      <p>VIP segment from prior collection purchasers and LTV threshold — 24h early access email with limited quantity honesty. General list at T+0. Waitlist from Privy fulfilled in timestamp order in batches.</p>
+      <p>Pause welcome discounts, winback offers, and replenishment promos on launch SKUs during drop window — collision calendar entry mandatory.</p>
+      <p>Sequenzy launch calendar exports week plan with pause checklist. Klaviyo dynamic blocks hide sold variants mid-send when inventory sync fast enough.</p>
+      <p>Post-launch: sold-out waitlist to back-in-stock flow; purchasers excluded from "last chance" emails. Measure VIP vs general revenue split — healthy launches often 40%+ VIP despite smaller list.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h3 class="font-black text-stone-950">Launch day war room</h3>
+      <p class="mt-4 text-stone-700">One person watches Shopify inventory dashboard during send batches; one person pauses email flow if sync lag &gt; 5 minutes. Ceramic and limited drops cannot afford false availability emails.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify catalog and consent integration</h2>
+      <p>Launch emails fail when Shopify product data lags behind marketing ambition. Variant-level inventory, market availability, and compare-at pricing must sync before VIP early access sends — ceramic glazes and limited cultures sell through in minutes when email matches catalog truth.</p>
+      <p>Consent source matters for launch lists: waitlist signups from Privy carry higher intent than imported giveaway contacts. Segment launch sends by consent quality — VIP from purchasers, waitlist from notify-me, general from engaged subscribers only.</p>
+      <p>Discount codes for launch should be single-use Shopify codes with expiration aligned to drop window — not evergreen codes that leak to coupon sites. Sequenzy and Klaviyo both support unique code generation when configured.</p>
+      <p>Customer tags from Shopify — collector, subscriber, wholesale — gate launch access without manual CSV uploads. Tag added triggers VIP branch; wholesale tag hard suppresses consumer launch promos.</p>
+      <p>Post-launch analytics: compare Shopify orders tagged with launch UTM against ESP attribution; reconcile within 72 hours while memory fresh. Inventory sell-through percentage from Shopify reports beats email click rate as success metric for drops.</p>
+      <p>Pair this playbook with <a class="link" href="/use-cases/segmentation">segmentation</a> for interest-based launch lists and <a class="link" href="/use-cases/email-design">email design</a> for mobile-first drop creative.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8"><a class="link" href="/use-cases/back-in-stock">Back in stock →</a></section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Which Shopify email marketing apps pair for this job</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+      <div class="card">
+        <h3 class="font-black text-stone-950">Capture + execute</h3>
+        <p class="mt-3 text-sm leading-7">Privy waitlist and notify-me popups feed Sequenzy or Klaviyo launch execution — capture without downstream platform leaves demand orphaned in spreadsheet exports.</p>
+      </div>
+      <div class="card">
+        <h3 class="font-black text-stone-950">SMS flash layer</h3>
+        <p class="mt-3 text-sm leading-7">Postscript for VIP hour-one SMS when email early access converts slowly on mobile-heavy candle lists — shared Shopify purchase suppression mandatory.</p>
+      </div>
+    </div>
+    <p class="mt-8 text-[17px] leading-8 text-stone-700">Compare finalists: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>, <a class="link" href="/compare/sequenzy-vs-privy">Sequenzy vs Privy</a>, <a class="link" href="/compare/klaviyo-vs-omnisend">Klaviyo vs Omnisend</a>. Read <a class="link" href="/apps/sequenzy">Sequenzy review</a> for agent-first launch calendar detail.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Vertical context: ceramic studios see 48-hour sell-through on limited glazes; sourdough cultures require fair waitlist batching; candle holiday trios need gift messaging separate from self-purchase launch copy. Cross-read <a class="link" href="/for/home-goods">home goods</a> and <a class="link" href="/for/subscription-boxes">subscription boxes</a> when launch SKU fits those buying cycles.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Implementation week: Monday inventory and variant audit in Shopify; Tuesday VIP segment build from collection purchasers; Wednesday waitlist capture test on staging PDP; Thursday Sequenzy or Klaviyo calendar dry-run with staff accounts; Friday collision doc signed by marketing and ops. Launch minus seven days freeze catalog price and discount code changes.</p>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h3 class="section-title text-2xl">Launch QA before first VIP send</h3>
+      <ul class="mt-4 space-y-3 text-stone-700">
+        <li class="flex gap-2"><span class="text-orange-800">→</span>VIP segment count matches Shopify query manual spot-check</li>
+        <li class="flex gap-2"><span class="text-orange-800">→</span>Dynamic blocks show in-stock variants only on mobile preview</li>
+        <li class="flex gap-2"><span class="text-orange-800">→</span>Welcome and winback flows paused or offer-free for launch week</li>
+        <li class="flex gap-2"><span class="text-orange-800">→</span>Unique Shopify discount codes generated with correct expiration</li>
+        <li class="flex gap-2"><span class="text-orange-800">→</span>Waitlist batch size and send interval documented for ops</li>
+        <li class="flex gap-2"><span class="text-orange-800">→</span>Staff test purchase completes from email link without error</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify card">
+      <h2>Four-week implementation path</h2>
+      <p><strong>Week one:</strong> Map VIP criteria and waitlist capture for drop; sync Shopify inventory on hero variants; build teaser audience segments.</p>
+      <p><strong>Week two:</strong> Schedule VIP -24h and general launch sends; configure waitlist batch fulfillment; pause conflicting lifecycle offers.</p>
+      <p><strong>Week three:</strong> Dry-run with staff accounts through full calendar; verify sold-out variants hide in dynamic blocks.</p>
+      <p><strong>Week four:</strong> Execute launch; measure VIP versus general revenue split and 48h sell-through; post-mortem inventory accuracy.</p>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Product launch FAQ" />
+</BaseLayout>

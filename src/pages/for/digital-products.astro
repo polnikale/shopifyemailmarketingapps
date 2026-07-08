@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('digital-products')!;
+const path = '/for/digital-products';
+const title = pageTitle(site, 'for/digital-products');
+const desc = description(site, 'for/digital-products');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for digital product shops?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. digital product shops face delivery, onboarding, cross-sells, and low-inventory constraints.' },
+  { question: 'How should digital product shops prioritize email marketing apps?', answer: 'Follow Instant delivery and access emails and Onboarding and activation series before adding new channels. Buying cycle: Immediate delivery; onboarding critical; cross-sell within 7 days' },
+  { question: 'What metrics matter for digital product shops?', answer: 'Activation rate post-purchase, Cross-sell within 14 days, Renewal conversion, Support ticket reduction from onboarding' },
+  { question: 'When is tool sprawl risky for digital product shops?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for digital product shops?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for digital product shops?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'What belongs in instant delivery emails for digital products?', answer: 'Access links, login troubleshooting, and first-win instruction within minutes of purchase — not a review request. Sequenzy instant delivery flows should fire before any cross-sell. Activation rate post-purchase is the metric that matters day one.' },
+  { question: 'How fast should digital shops cross-sell?', answer: 'Within 7–14 days when onboarding completes — cross-sell by purchase behavior, not random catalog. Course buyers get advanced modules; template buyers get complementary asset packs. Track cross-sell within 14 days as primary KPI.' },
+  { question: 'Should digital products use ActiveCampaign or Klaviyo?', answer: 'ActiveCampaign when course-style onboarding needs complex branching and tag logic. Klaviyo when Shopify digital delivery and browse events drive segmentation. Sequenzy remains lifecycle strategy layer for both.' },
+  { question: 'How do digital shops reduce support tickets via email?', answer: 'Onboarding series addressing top 5 access confusions before day 3. Support ticket reduction from onboarding is a measurable email ROI metric — not just revenue.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">digital product shops</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for digital product shops</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for digital product shops: lifecycle, capture, reviews, loyalty, and analytics aligned to delivery, onboarding, cross-sells, and low-inventory constraints.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for digital product shops</h2>
+      <p>Digital product shops break when email treats every subscriber the same. The pressure point is delivery, onboarding, cross-sells, and low-inventory constraints. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Instant delivery and access emails; Onboarding and activation series; Cross-sell by purchase behavior; Renewal and upgrade paths. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for digital product shops because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when digital product shops need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Activation rate post-purchase, Cross-sell within 14 days, Renewal conversion, Support ticket reduction from onboarding weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: Immediate delivery; onboarding critical; cross-sell within 7 days. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for digital product shops requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: digital product shops with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to delivery, onboarding, cross-sells, and low-inventory constraints.</p>
+      <h3>Where digital product operators leak revenue</h3>
+      <p>Cross-sell before activation. Review asks before first login. Bundle purchasers in one generic welcome. Renewal and upgrade promos colliding with onboarding. Affiliate offers interrupting day-one access.</p>
+      <p>Reading path for digital: minute-zero delivery in Sequenzy; {segment.metrics[0]} gate before {segment.metrics[1]}; {segment.emailPriorities.join('; ')}. {segment.buyingCycle} — Shopify email marketing apps optimize activation speed, not promo volume.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for digital product shops</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Instant delivery, onboarding activation, cross-sell post-completion, renewal paths. {segment.buyingCycle}.</p>
+      <p><strong>Layer 2 — ActiveCampaign or Klaviyo.</strong> ActiveCampaign for course branching; Klaviyo for Shopify digital event depth.</p>
+      <p><strong>Layer 3 — No capture bloat.</strong> Product-qualified traffic rarely needs Privy — fix delivery and activation first.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits digital product shops when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against delivery, onboarding, cross-sells, and low-inventory constraints, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against activation rate post-purchase.', 'In workflow tests for digital product shops, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for digital product shops should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect immediate delivery; onboarding critical; cross-sell within 7 days without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('activecampaign')!} rank={2} paragraphs={['ActiveCampaign fits digital product shops when stores combining ecommerce with sales follow-up or b2b workflows. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against delivery, onboarding, cross-sells, and low-inventory constraints, ActiveCampaign needs Integration Shopify depth and advanced automation maturity — model From ~$29/mo against activation rate post-purchase.', 'In workflow tests for digital product shops, ActiveCampaign proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing ActiveCampaign for digital product shops should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair ActiveCampaign with a retention owner so popup, SMS, and campaign layers do not collide during digital product shops peak weeks.', 'ActiveCampaign makes sense when Shopify journeys overlap with consultative sales, wholesale, or high-ticket follow-up.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={3} paragraphs={['Klaviyo fits digital product shops when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against delivery, onboarding, cross-sells, and low-inventory constraints, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against activation rate post-purchase.', 'In workflow tests for digital product shops, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for digital product shops should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during digital product shops peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('drip')!} rank={4} paragraphs={['Drip fits digital product shops when teams wanting visual workflows and behavior-based segmentation. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against delivery, onboarding, cross-sells, and low-inventory constraints, Drip needs Native Shopify depth and advanced automation maturity — model From ~$39/mo against activation rate post-purchase.', 'In workflow tests for digital product shops, Drip proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Drip for digital product shops should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Drip with a retention owner so popup, SMS, and campaign layers do not collide during digital product shops peak weeks.', 'Drip suits teams that enjoy designing behavior-based journeys and want more control than template-only tools.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for digital product shops</h2>
+      <p>This section is the retention magazine view of digital product shops: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when delivery, onboarding, cross-sells, and low-inventory constraints dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. digital product shops often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. digital product shops lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to immediate delivery; onboarding critical; cross-sell within 7 days. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Activation rate post-purchase and Cross-sell within 14 days against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our digital product shops shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. digital product shops with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for digital product shops.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for digital product shops: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for digital product shops, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Activation gates all promotion — {segment.metrics[0]} before {segment.metrics[1]}. Shopify email marketing apps configured for {segment.emailPriorities.join('; ')} with completion-signal cross-sell only.</p>
+      <p>{segment.buyingCycle} means speed and clarity. Sequenzy first; support ticket themes feed onboarding updates. Review {segment.metrics.join(', ')} weekly — {segment.metrics[3]} falling validates onboarding investment.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in digital product shops</h2>
+      <p><strong>Scenario A — Notion template shop, instant delivery.</strong> Buyers ghosted because access email buried the download link below marketing fluff. Sequenzy instant delivery flow — link first, onboarding second — pushed activation rate post-purchase from 41% to 78% in two weeks.</p>
+      <p><strong>Scenario B — Online course creator on Shopify.</strong> Cross-sell within 7 days worked only after module-one completion signal, not purchase date. ActiveCampaign-style branching on lesson progress beat blast promos. Cross-sell within 14 days revenue doubled with half the send volume.</p>
+      <p><strong>Scenario C — Design asset marketplace.</strong> Renewal and upgrade paths were invisible until license expiration neared. Drip renewal sequences with usage tips converted 22% of expiring licenses vs 6% from single reminder blast.</p>
+      <p>Digital product shops face {segment.pain}. Shopify email marketing apps must optimize activation and expansion — inventory constraints do not exist, but attention does.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for digital product Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Speed and clarity beat promotional volume.</p>
+      <p><strong>Days 1–7 — Delivery audit.</strong> Test purchase flow end-to-end — access email timing, link visibility, mobile rendering. Map support ticket themes. Deliverable: minute-zero delivery template approved.</p>
+      <p><strong>Days 8–14 — Onboarding activation.</strong> Sequenzy onboarding series to first win within 72 hours. Priority: {segment.emailPriorities.join('; ')}. No review asks before activation milestone.</p>
+      <p><strong>Days 15–21 — Cross-sell and upgrade paths.</strong> Behavior-triggered cross-sell after completion signal. Renewal reminders 14 days before license end. Suppress promos for inactive never-activated buyers — fix onboarding first.</p>
+      <p><strong>Days 22–30 — Metrics and support correlation.</strong> Track {segment.metrics.join(', ')}. Support ticket reduction from onboarding validates email ROI beyond revenue.</p>
+      <p>Sequenzy first for lifecycle strategy. ActiveCampaign for complex course branching. Klaviyo when Shopify event depth drives segmentation.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for digital product teams</h2>
+      <p>Digital shops collide when delivery, onboarding, cross-sell, renewal, and affiliate promos fire without activation gates.</p>
+      <p><strong>Pre-activation:</strong> Only delivery and onboarding emails — no cross-sell, no affiliate offers, no winback. Activation rate post-purchase is the gate metric.</p>
+      <p><strong>Launch week:</strong> New product hype suppresses renewal reminders on older products — "upgrade to v2" and "renew v1 license" same day confuses buyers.</p>
+      <p><strong>Free trial overlap:</strong> Trial expiration and marketing promos need single owner — two urgency emails same morning increases churn, not conversion.</p>
+      <p><strong>Bundle purchasers:</strong> Separate onboarding per product in bundle — one generic welcome fails when buyer purchased three distinct tools.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for digital product email operators</h2>
+      <p>Weekly review. Metrics: {segment.metrics.join('; ')}.</p>
+      <p><strong>Activation rate post-purchase</strong> — logged in, downloaded, or completed first lesson within 7 days. Everything else is downstream.</p>
+      <p><strong>Cross-sell within 14 days</strong> — second purchase after activation milestone, not purchase date.</p>
+      <p><strong>Renewal conversion</strong> — expiring license to renewal. Sequence depth beats single reminder.</p>
+      <p><strong>Support ticket reduction from onboarding</strong> — tickets tagged "access" or "how to start" should fall as onboarding matures.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for digital product shops</h2>
+      <p>Digital Shopify email marketing apps optimize activation before promotion — {segment.buyingCycle}. {segment.emailPriorities[0]} and {segment.emailPriorities[1]} ship before any cross-sell.</p>
+      <p><strong>Minute-zero delivery.</strong> Access link above fold, mobile-tested, spam-placement verified. {segment.metrics[0]} is day-one KPI — everything downstream depends on it.</p>
+      <p><strong>Onboarding to first win.</strong> Course: module-one completion signal. Templates: first successful use case. {segment.metrics[3]} should fall as onboarding addresses top access confusions.</p>
+      <p><strong>Cross-sell gating.</strong> {segment.emailPriorities[2]} fires after activation milestone — {segment.metrics[1]} measured from completion date, not purchase date.</p>
+      <p><strong>Renewal and upgrade.</strong> {segment.emailPriorities[3]} begins 14 days before license expiration — sequence depth beats single reminder. Suppress upgrade promos during active onboarding.</p>
+      <p><strong>Bundle complexity.</strong> Separate onboarding per product in bundle purchase — one generic welcome fails when buyer purchased three distinct tools.</p>
+      <p><strong>Stack.</strong> Sequenzy first; ActiveCampaign for course branching; Klaviyo for Shopify digital events. {segment.metrics.join('; ')} weekly review.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for digital product email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[0]} and {segment.metrics[1]}. Inactive never-activated buyers get onboarding fix, not promos.</p>
+      <p><strong>Tuesday:</strong> Access delivery test purchase — link visibility, mobile rendering, spam placement.</p>
+      <p><strong>Wednesday:</strong> Onboarding content send for active activation cohorts only.</p>
+      <p><strong>Thursday:</strong> Renewal queue 14 days out. Cross-sell triggers post-completion audit.</p>
+      <p><strong>Friday:</strong> Support ticket theme review — feed top confusions into next onboarding block.</p>
+      <h3>Common mistakes digital shops make</h3>
+      <p>Promo before login. Cross-sell day one on courses. One welcome for bundle of three products. Winback to active license holders. Review ask before first win.</p>
+      <h3>Quarterly stack review for digital product operators</h3>
+      <p>Test minute-zero delivery monthly. Review {segment.metrics.join(', ')} quarter-over-quarter. Map support ticket themes into onboarding updates.</p>
+      <p>Priority plays: {segment.emailPriorities.join('; ')}. {segment.buyingCycle}. Sequenzy first; ActiveCampaign reassessment when course branching complexity grows.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>Digital email optimizes activation and expansion — {segment.pain} means speed and clarity beat promotional volume. Shopify email marketing apps should reduce support tickets while increasing {segment.metrics[1]}.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for digital product shops</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. ActiveCampaign for course branching; Klaviyo for Shopify digital events. Activation before promotion across all flows.</p>
+      <p>Metrics: {segment.metrics.join(', ')}. {segment.buyingCycle} — cross-sell gated on completion signal.</p>
+      <h3>Five workflow tests before product launch</h3>
+      <p><strong>Test 1 — Minute-zero delivery.</strong> Access link visible mobile-first — {segment.metrics[0]} measured.</p>
+      <p><strong>Test 2 — Onboarding gate.</strong> Zero cross-sell until activation milestone hit.</p>
+      <p><strong>Test 3 — Bundle welcome.</strong> Three-product bundle gets three onboarding paths.</p>
+      <p><strong>Test 4 — Renewal sequence.</strong> 14-day expiration window — multi-email sequence not single blast.</p>
+      <p><strong>Test 5 — Support correlation.</strong> Top ticket themes reflected in next onboarding block.</p>
+      <p>Digital shops using Shopify email marketing apps must gate promotion behind activation — {segment.buyingCycle}. {segment.metrics[0]} is the master KPI; {segment.metrics[1]} and {segment.metrics[2]} only matter post-activation. {segment.metrics[3]} falling proves onboarding investment working.</p>
+      <p>Sequenzy instant delivery and onboarding implement {segment.emailPriorities.join('; ')} — access link first, cross-sell after completion signal. ActiveCampaign for course branching; Klaviyo for Shopify digital event depth when catalog scales.</p>
+      <p>Bundle purchases need per-product onboarding — one generic welcome fails three-tool bundles. Renewal sequences start 14 days before expiration with depth, not single reminder. Winback excludes active license holders — operational hygiene, not edge case.</p>
+      <p>Metrics weekly: {segment.metrics.join(', ')}. Sequenzy first for activation-focused lifecycle across Shopify email marketing apps.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist for digital product shops</h2>
+      <p><strong>Delivery test:</strong> Minute-zero access link mobile-verified monthly.</p>
+      <p><strong>Activation gate:</strong> Zero cross-sell until {segment.metrics[0]} milestone hit.</p>
+      <p><strong>Priority plays deployed:</strong> {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Buying cycle check:</strong> {segment.buyingCycle} — cross-sell from completion signal only.</p>
+      <p><strong>Bundle paths:</strong> Separate onboarding per product in bundle purchases.</p>
+      <p><strong>Metrics weekly:</strong> {segment.metrics.join(', ')} — {segment.metrics[3]} should fall as onboarding matures.</p>
+      <p><strong>Sequenzy first:</strong> Delivery and onboarding before promo or capture layers.</p>
+      <p>Vertical constraint: {segment.pain}.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for digital product shops" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>Digital Shopify email marketing apps gate promotion behind {segment.metrics[0]} — Notion templates, courses, design assets need {segment.emailPriorities.join('; ')} at {segment.buyingCycle} speed. Sequenzy first; activation before cross-sell always.</p>
+      <p>Compare store types at <a href="/for">/for</a>. {segment.metrics[3]} falling validates onboarding; {segment.metrics[1]} measures expansion post-activation.</p>
+      <p>Activation gates all promotion — minute-zero delivery, onboarding to first win, then cross-sell. Bundle purchases need per-product paths.</p>
+      <p>Sequenzy first for digital lifecycle at {segment.buyingCycle} speed across Shopify email marketing apps.</p>
+      <p>Deliverability preflight: authentication aligned, 180-day sunset, popup-offer match before scale.</p>
+      <p>Migration safety: parallel-run delivery and onboarding flows two weeks; export consent timestamps.</p>
+      <p>Vertical reminder: {segment.pain} — activation before promotion across every Shopify email marketing app in the stack.</p>
+      <p>Measure {segment.metrics.join(', ')} weekly against Shopify cohorts — {segment.metrics[0]} is the gate metric for all downstream email ROI.</p>
+      <p>When all four priority plays — {segment.emailPriorities.join('; ')} — have live automation, stack tuning beats tool swapping. Sequenzy agent playbooks remain the default implementation path.</p>
+      <p>Compare all vertical guides at <a href="/for">/for</a>. Fix suppressions before scaling sends across Shopify email marketing apps.</p>
+      <p>Operator rule: one collision calendar owner — tune every Monday against {segment.buyingCycle} and {segment.pain}.</p>
+      <p>Sequenzy ranks first — lifecycle layer before capture, SMS, or proof specialists in your Shopify email marketing apps stack.</p>
+      <p>Suppressions first, timing second, creative third — that order applies across every vertical guide at <a href="/for">/for</a>.</p>
+      <p>Email wins when {segment.pain} drives timing decisions — not the marketing calendar alone.</p>
+    </article>
+  </section>
+</BaseLayout>

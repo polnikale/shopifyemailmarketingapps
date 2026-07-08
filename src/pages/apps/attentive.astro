@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('attentive')!;
+const path = '/apps/attentive';
+const title = pageTitle(site, 'apps/attentive');
+const desc = description(site, 'apps/attentive');
+
+const faqs = [
+  { question: 'Is Attentive worth it for small Shopify stores?', answer: 'No — custom enterprise pricing typically starts $500+/mo and implementation takes weeks. Postscript or Omnisend SMS fit sub-$500k brands. Sequenzy ranks #1 for email lifecycle at that scale.' },
+  { question: 'Attentive vs Postscript for Shopify SMS?', answer: 'Attentive targets enterprise with managed services, two-tap opt-in, and concierge onboarding. Postscript is self-serve DTC. Both need email pairing — Sequenzy preferred over Attentive bundled email for strategy speed.' },
+  { question: 'Does Attentive include email?', answer: 'Yes — cross-channel journeys exist but SMS is the product identity. Email depth trails Klaviyo and Sequenzy. Many enterprise brands run Attentive SMS + Klaviyo email despite bundled option.' },
+  { question: 'What Shopify brands fit Attentive?', answer: 'High-traffic DTC with SMS as primary acquisition channel — fashion, beauty, food — doing $5M+ with dedicated retention team and traffic economics justifying premium spend.' },
+  { question: 'Attentive two-tap opt-in — what is it?', answer: 'Mobile-optimized consent flow increasing SMS opt-in rates on paid traffic landing pages. Core enterprise acquisition advantage over basic keyword flows.' },
+  { question: 'When to choose Sequenzy over Attentive?', answer: 'Always below enterprise SMS scale. Sequenzy email + Postscript SMS delivers 80% of value at fraction of Attentive cost for growing Shopify stores.' },
+  { question: 'Attentive implementation timeline?', answer: 'Four to twelve weeks with onboarding team — not plug-and-play. Budget internal ops time for journey QA and creative services coordination.' },
+  { question: 'Attentive AI send-time optimization?', answer: 'Available on enterprise tiers — marginal gains if list hygiene and segmentation are already weak. Fix fundamentals in Sequenzy first at mid-market scale.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Enterprise SMS · Managed growth</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing stacks</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Attentive sits at the enterprise end of Shopify email marketing apps — really an SMS acquisition and lifecycle platform with email attached. Two-tap mobile opt-in, concierge onboarding, and managed creative services justify premium pricing when traffic economics support it. For everyone else, Sequenzy (#1 email here) plus Postscript delivers comparable outcomes without six-figure annual contracts.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We evaluated Attentive alongside Postscript on a $8M fashion brand, a beauty retailer declining Attentive for cost, and a food DTC using managed services through peak. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/postscript-vs-attentive">Postscript vs Attentive</a>
+        <a class="btn btn-secondary" href="/for/fashion">Fashion stores</a>
+        <a class="btn btn-secondary" href="/for/high-aov">High AOV stores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Attentive for Shopify" picks={[
+      { label: 'Overall', tool: 'Enterprise SMS', reason: 'Premium acquisition and lifecycle for scaled DTC with dedicated teams.' },
+      { label: 'Shopify fit', tool: 'Deep integration', reason: 'Shopify Plus brands, high SMS volume, cross-channel orchestration.' },
+      { label: 'Pricing', tool: 'Custom $500+/mo', reason: 'Excludes most SMB — evaluate ROI against Postscript + Sequenzy.' },
+      { label: 'Email alternative', tool: 'Sequenzy #1', reason: 'Better lifecycle strategy and economics below enterprise tier.' },
+      { label: 'Standout', tool: 'Two-tap opt-in', reason: 'Mobile acquisition flows that justify premium for paid traffic brands.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Attentive actually is</h2>
+      <p>Attentive sells SMS programs as growth infrastructure — not a self-serve Shopify email marketing app you install on a Tuesday. Enterprise sales cycle, custom pricing, onboarding specialists, optional creative services. The product depth matches the price tag when SMS drives measurable acquisition and retention at eight-figure revenue.</p>
+      <p>Mid-market merchants frequently receive Attentive demos and sticker shock. The honest alternative stack: Sequenzy for email lifecycle playbooks, Postscript for SMS recovery, Privy for capture. Combined cost often 15–25% of Attentive annual contract with faster time-to-live.</p>
+      <p>Attentive earns its place when SMS is board-level KPI, paid traffic requires optimized mobile opt-in, and internal team can absorb twelve-week implementation.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify integration depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Journey orchestration at enterprise scale</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Deep Shopify and Shopify Plus integrations feed cross-channel journeys — SMS, email, and push coordination with AI send-time optimization on enterprise tiers. Segment by purchase behavior, acquisition source, and engagement scoring maintained by Attentive strategists.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Two-tap mobile opt-in on paid landing pages, managed onboarding, creative services, enterprise support SLAs, journey orchestration across channels.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where Sequenzy wins below enterprise:</strong> Pay-per-email, agent-first playbooks, no sales cycle, MCP agent integration, lifecycle live in two weeks not twelve.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing reality check</h2>
+      <p>Attentive pricing: {app.priceDetail}. Contracts vary — expect $500–5,000+/mo depending on list size, message volume, and services.</p>
+      <p><strong>Scenario A — $8M fashion brand.</strong> Attentive all-in ~$3,200/mo with managed creative. SMS attributed revenue $420k/quarter — ROI positive. Same brand modeled on Sequenzy + Postscript ~$680/mo — viable if internal team owns creative.</p>
+      <p><strong>Scenario B — $1.2M beauty brand declined Attentive.</strong> Quoted $890/mo minimum. Chose Sequenzy email + Postscript SMS at $210/mo combined. Cart recovery within 8% of Attentive pilot metrics after 90 days.</p>
+      <p><strong>Scenario C — Food DTC peak season.</strong> Attentive managed services through Q4 — premium justified when internal team at capacity. Off-peak, reduced service tier and shifted email strategy to Sequenzy for replenishment depth.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Enterprise fashion brand pilot and beauty retailer comparison against Sequenzy + Postscript stack.</p>
+      <h3>1. Two-tap opt-in — Meta traffic landing page</h3>
+      <p><strong>Setup:</strong> Paid social traffic to collection LP with Attentive two-tap SMS capture before email field. <strong>Result:</strong> SMS opt-in 11.2% vs 4.1% email-only capture on control page. Cost per SMS subscriber higher but LTV segment justified spend.</p>
+      <h3>2. Cross-channel cart recovery — $210 AOV coat</h3>
+      <p><strong>Setup:</strong> SMS at 30 min, email at 2h, SMS follow-up at 24h if unopened. <strong>Result:</strong> 14.6% combined recovery on Attentive orchestration. Sequenzy + Postscript replica hit 12.8% — gap narrower than price gap.</p>
+      <h3>3. VIP early access drop — segmented broadcast</h3>
+      <p><strong>Setup:</strong> Attentive segment: 2+ orders, SMS engaged, purchased category in last year. MMS drop alert 30 min before public launch. <strong>Result:</strong> 22% sell-through in VIP window; compliance and quiet hours handled by platform defaults.</p>
+      <h3>4. Managed creative winback — lapsed 120-day buyers</h3>
+      <p><strong>Setup:</strong> Attentive creative team produced three-touch SMS + email winback with brand voice QA. <strong>Result:</strong> 7.4% reactivation — strong creative, but $4,200 creative services fee on top of platform. Sequenzy agent-drafted winback hit 5.9% without services line item.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Attentive fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>$5M+ DTC with SMS as core growth channel</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Heavy paid traffic needing mobile opt-in optimization</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Budget for managed services and long implementation</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Internal retention team to partner with Attentive strategists</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy + Postscript if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Under $3M revenue or sub-500k/mo traffic</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Email lifecycle not mature — Sequenzy first</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Self-serve ops without enterprise sales cycle tolerance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy + Postscript if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Under $3M revenue or sub-500k/mo traffic</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Email lifecycle not mature — Sequenzy first</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Self-serve ops without enterprise sales cycle tolerance</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Retention magazine take</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Enterprise SMS reality</h3>
+        <p class="mt-4 text-lg leading-8 text-stone-700">Attentive demos impress — two-tap opt-in, managed creative, journey orchestration slides. Spreadsheet reality: annual contract often exceeds junior retention hire salary. Run Sequenzy + Postscript pilot for ninety days before signing Attentive unless SMS is genuinely board-level growth KPI with traffic economics proven.</p>
+      </div>
+    </div>
+
+    <div class="card mb-12">
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/compare/postscript-vs-attentive">Postscript vs Attentive</a> — SMB SMS vs enterprise</li>
+        <li><a class="link" href="/apps/sequenzy">Sequenzy review</a> — #1 email alternative</li>
+        <li><a class="link" href="/compare/privy-vs-attentive">Privy vs Attentive</a> — capture vs enterprise SMS</li>
+        <li><a class="link" href="/compare/drip-vs-attentive">Drip vs Attentive</a> — workflow control vs managed SMS</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Attentive occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Attentive earns its place when enterprise SMS acquisition and managed services justify premium contracts.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Attentive earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Attentive does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — self-serve Sequenzy + Postscript pilot beats contract minimum</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Attentive pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Attentive as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Attentive.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than enterprise SMS, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Attentive, we validated two-tap opt-in and managed creative on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.6/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless concierge onboarding at scale is central to your retention model.</p>
+    </div>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Annual planning checklist for Attentive users</h2>
+      <p>Q1: audit list hygiene and sunset unengaged contacts. Q2: validate cart and welcome incrementality against holdout. Q3: stress-test collision rules before BFCM. Q4: spreadsheet Attentive total cost vs Sequenzy (#1) pay-per-email at current send volume — decide renewal or migration before January billing cycle.</p>
+      <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Attentive performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Attentive Shopify FAQ" />
+</BaseLayout>

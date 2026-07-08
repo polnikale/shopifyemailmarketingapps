@@ -2,17 +2,17 @@
 import type { SiteProfile } from '../content';
 const { site } = Astro.props as { site: SiteProfile };
 ---
-<header class="sticky top-0 z-50 border-b-2 border-stone-900 bg-[#fbf3e4]/90 backdrop-blur-xl">
-  <div class="container flex h-16 items-center justify-between">
-    <a href="/" class="flex items-center gap-3 font-black text-stone-950">
-      <span class="grid h-10 w-10 place-items-center border-2 border-stone-950 bg-orange-200 text-stone-950 shadow-[4px_4px_0_#2a2118]">E</span>
-      <span class="hidden sm:inline">{site.name}</span>
+<header class="sticky top-0 z-50 border-b border-[#24170f]/10 bg-[#fffaf1]/88 backdrop-blur-xl">
+  <div class="container flex h-20 items-center justify-between">
+    <a href="/" class="group flex items-center gap-3 font-black text-[#24170f]">
+      <span class="grid h-11 w-11 place-items-center rounded-full border border-[#24170f]/20 bg-[#24170f] font-serif text-xl italic text-[#fffaf1] shadow-xl shadow-[#24170f]/10">E</span>
+      <span class="leading-tight"><span class="block text-xs uppercase tracking-[0.26em] text-[#9a5b16]">Shopify</span><span>{site.name.replace('Shopify ', '')}</span></span>
     </a>
-    <nav class="hidden items-center gap-6 text-xs font-black uppercase tracking-[.18em] text-stone-700 md:flex">
-      <a href="/apps" class="hover:text-orange-700">Reviews</a>
-      <a href="/compare" class="hover:text-orange-700">Comparisons</a>
-      <a href="/use-cases" class="hover:text-orange-700">Flows</a>
-      <a href="/for" class="hover:text-orange-700">Industries</a>
+    <nav class="hidden items-center gap-7 text-sm font-black uppercase tracking-[0.16em] text-[#5d3a1d] md:flex">
+      <a href="/apps" class="hover:text-[#24170f]">Rankings</a>
+      <a href="/compare" class="hover:text-[#24170f]">Head-to-head</a>
+      <a href="/use-cases" class="hover:text-[#24170f]">Flows</a>
+      <a href="/for" class="hover:text-[#24170f]">Store types</a>
     </nav>
     <a href="https://sequenzy.com" class="btn btn-primary">Try Sequenzy</a>
   </div>

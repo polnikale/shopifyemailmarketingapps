@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('browse-abandonment')!;
+const path = '/use-cases/browse-abandonment';
+const title = pageTitle(site, 'use-cases/browse-abandonment');
+const desc = description(site, 'use-cases/browse-abandonment');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy', 'shopify-email', 'mailchimp', 'brevo', 'activecampaign', 'tinyemail'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for browse abandonment?', answer: 'Sequenzy ranks first for proof-first browse sequences that delay discounts until education lands. Klaviyo wins with granular viewed-product events and collection-level segmentation. Drip wins for visual browse branching.' },
+  { question: 'How is browse abandonment different from cart abandonment?', answer: 'Browse signals interest, not commitment. Intent decays slower but conversion requires education and trust. Discounting on browse email one trains wait-for-sale behavior. Cart recovery can justify stronger urgency.' },
+  { question: 'What trigger threshold should I use?', answer: 'Common: viewed product 2+ times or 60+ seconds on PDP without add-to-cart. High-AOV ceramic may require 3+ views over 48 hours. Pet food with known SKU may fire after single deep view with size guide engagement.' },
+  { question: 'Should browse emails include the viewed product?', answer: 'Yes — dynamic product blocks from Shopify catalog with current price and inventory. Include social proof specific to that SKU. Avoid recommending OOS variants.' },
+  { question: 'When should browse abandonment offer a discount?', answer: 'Email three at earliest, and only if no add-to-cart occurred and segment shows discount sensitivity. Full-price browse converters exist — protect them.' },
+  { question: 'How do I prevent browse and cart overlap?', answer: 'Suppress browse when customer enters cart abandonment flow. Cart intent supersedes browse intent. Document in collision calendar.' },
+  { question: 'Can Shopify Email do browse abandonment?', answer: 'No automated browse triggers in Shopify Email. Requires lifecycle platform with viewed product events from Shopify or onsite tracking.' },
+  { question: 'What metrics prove browse success?', answer: 'Browse-to-cart rate, full-price conversion rate, revenue without discount, product view depth before purchase.' },
+  { question: 'Does browse abandonment work for subscription products?', answer: 'Yes — educate on scent rotation or pet food transition before subscribe CTA. Browse for candle subscriptions often needs burn-time FAQ before price objection handling.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">Browse abandonment</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for browse abandonment</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Browse abandonment follows curiosity without shouting sale. Someone studying a hand-glazed planter for the third time needs drainage proof and studio story — not 15% off in hour four. Shopify email marketing apps that treat browse like cart recovery burn margin and train patience.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Job: {uc.job}. We ranked apps on viewed-product accuracy, proof-first sequencing, and discount discipline.</p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top apps for browse abandonment" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'Proof-before-discount browse playbooks with Shopify product context and pay-per-email economics.' },
+      { label: 'Best events', tool: 'Klaviyo', reason: 'Granular viewed-product and collection events for complex catalogs.' },
+      { label: 'Best canvas', tool: 'Drip', reason: 'Visual browse paths by view count and collection interest.' },
+      { label: 'Best fast setup', tool: 'Omnisend', reason: 'Prebuilt browse flows with product blocks in hours.' },
+      { label: 'Best capture feed', tool: 'Privy', reason: 'Identified browse when paired with onsite tracking and lifecycle executor.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three browse abandonment scenarios</h2>
+      <p><strong>Scenario A — Ceramic studio, planter PDP viewed 3× in 72h.</strong> Sequenzy browse email one at 4h featured customer patio photos and frost rating — no discount. Email two at 48h explained drainage kit compatibility. 14% browse-to-cart at full price versus 9% when old flow led with 10% off.</p>
+      <p><strong>Scenario B — Candle subscription, scent page linger 90+ seconds.</strong> Klaviyo browse flow branched by collection — woodsy versus floral education tracks. Subscription attach on browse recovery rose 7% without email-one discount.</p>
+      <p><strong>Scenario C — Pet food, breed-size calculator engagement.</strong> Drip tagged calculator completers separately from casual browsers. Size-specific UGC in email two lifted add-to-cart 11% for large-breed kibble viewers.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Execution playbook</p>
+      <h2 class="mt-3 section-title text-3xl">Browse abandonment contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-stone-700">Mistakes: {uc.mistakes.join('; ')}.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <h2 class="section-title text-3xl">App comparison</h2>
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>Browse fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy browse playbooks enforce proof-first sequencing by default — education email, social proof email, optional incentive email. Operators describe the product story arc; platform handles timing and viewed-product insertion from Shopify.',
+      'Pay-per-email rewards pruning casual browsers who never engage — you are not taxed on profile count for low-intent views that never open.',
+      'Collision rules with cart and welcome documented in agent-generated playbooks reduce double-discount incidents during peak candle gifting weeks.',
+      'Choose Klaviyo when browse segmentation exceeds ten boolean paths across international markets.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo viewed-product and viewed-collection events are the deepest native Shopify browse signals. Dynamic blocks pull live inventory — essential when ceramic glazes sell through mid-sequence.',
+      'Segment by view frequency, recency, and collection affinity. Predictive engagement scores throttle send frequency for low-intent profiles.',
+      'Flow testing on education versus product-grid creative isolates browse conversion drivers.',
+      'Profile costs rise with anonymous browse identification — monitor list hygiene.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Drip canvas shows browse branches explicitly — 2 views vs 4 views, collection A vs B — reducing logic errors.',
+      'Goal conversion at add-to-cart stops browse sequence cleanly.',
+      'Workflow-heavy for teams wanting templates only.',
+      'Strong for operators who tune browse weekly.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Omnisend browse templates ship fast for SMB candle and food brands.',
+      'SMS nudge on unopened browse email two optional.',
+      'Less exotic segmentation than Klaviyo.',
+      'Good 12-month bridge from Shopify Email.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Privy onsite identification feeds browse triggers when paired with Sequenzy or Klaviyo execution.',
+      'Not a browse sender alone — capture and identity layer.',
+      'Quiz and popup metadata enrich browse email one context.',
+      'Keep Privy if capture is the bottleneck; swap executor if browse converts poorly.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h2 class="section-title text-3xl">Education before incentive</h2>
+      <p class="mt-4 text-stone-700">Browse email one answers why this product fits their life — planter frost rating, sourdough starter temperature range, candle burn time. Email two shows who else bought and loved it. Email three may offer incentive only if funnel stalled. See <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h2 class="section-title text-3xl">Browse versus cart priority</h2>
+      <p class="mt-4 text-stone-700">When shopper adds to cart, exit browse immediately. Cart recovery owns stronger urgency. Suppression failure sends browse education and cart discount same day — classic margin leak for pet food and ceramic brands alike.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended browse abandonment playbook</h2>
+      <p>Browse abandonment is the gentlest revenue lever in Shopify email — and the easiest to break with premature discounts. Viewed-product events from Shopify tell you interest, not commitment. The warm retention magazine approach: treat browse email as product journalism that happens to include a buy button.</p>
+      <p>Map view depth thresholds per category. Ceramic planters: three views in 72 hours. Pet food: one view plus 90 seconds on feeding guide. Sourdough kits: two views across starter and flour PDPs. Uniform triggers produce noise in mixed catalogs.</p>
+      <p>Email one job is education — frost line for planters, burn pool for candles, transition chart for kibble. Email two job is social proof from reviews with photos. Email three may introduce incentive only if no add-to-cart and segment shows historical discount redemption.</p>
+      <p>Sequenzy browse playbooks enforce this sequence by default; operators override at margin peril. Klaviyo offers maximum flexibility to violate sequence — governance required. Omnisend templates often include discount in email one; audit before enable.</p>
+      <p>Suppress browse when cart flow active, when customer purchased same SKU in last 30 days, when variant OOS. Dynamic product block must hide OOS or show waitlist CTA linking to back-in-stock capture.</p>
+      <p>Full-price browse conversion is the metric that proves browse strategy works. If browse only converts with 15% off, you have trained browse as weak cart — reset sequence.</p>
+      <p>Cross-read <a class="link" href="/for/home-goods">home goods guide</a> for delayed purchase cycles and <a class="link" href="/for/pet-products">pet products guide</a> for education-heavy browse paths.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="card">
+        <h3 class="font-black text-stone-950">Browse email one checklist</h3>
+        <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+          <li>→ Viewed product hero with live price</li>
+          <li>→ One education paragraph answering top objection</li>
+          <li>→ Single primary CTA to PDP</li>
+          <li>→ No site-wide sale banner</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="font-black text-stone-950">When to kill browse flow</h3>
+        <p class="mt-4 text-sm text-stone-700">If revenue per recipient below $0.05 for 60 days after creative refresh, pause and audit triggers — likely firing on casual single-view traffic.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify viewed product events</h2>
+      <p>Browse abandonment requires viewed product telemetry — Shopify native browse data via Customer Events API or onsite script through Klaviyo, Sequenzy, or Elevar. Verify event fires on PDP before enabling flow.</p>
+      <p>Product handle and variant in event payload enable dynamic email blocks — candle scent variant matters not only parent product.</p>
+      <p>Collection context from referrer URL or collection page view enriches segment — planter size collection browsers get different proof than glaze collection.</p>
+      <p>Session versus identified browse — anonymous sessions merge on login or purchase; delay browse email until identity known when possible to avoid duplicate sends.</p>
+      <p>Bot traffic filter excludes unrealistic view velocity — skews browse triggers if not filtered at source.</p>
+      <p>Compare browse-to-purchase path in Shopify analytics versus ESP browse attribution — validates trigger threshold tuning.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8"><a class="link" href="/use-cases/abandoned-cart">Abandoned cart →</a></section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Shopify email marketing apps for browse abandonment</h2>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy proof-first browse plus Klaviyo viewed-product depth is common split — strategy in Sequenzy, exotic triggers in Klaviyo when needed. Privy identifies anonymous browse when onsite script pairs with executor.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Related: <a class="link" href="/use-cases/abandoned-cart">abandoned cart</a>, <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC</a>, <a class="link" href="/compare/sequenzy-vs-drip">Sequenzy vs Drip</a>.</p>
+    <div class="ledger-card mt-8">
+      <h3 class="font-black text-stone-950">Browse abandonment QA checklist</h3>
+      <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+        <li>→ Viewed product event fires on PDP in browser test</li>
+        <li>→ Email one contains no discount in creative review</li>
+        <li>→ Cart active suppresses browse in staff test path</li>
+        <li>→ OOS variant excluded or shows waitlist CTA</li>
+        <li>→ Full-price browse conversion tracked separately</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify card">
+      <h2>Four-week implementation path</h2>
+      <p><strong>Week one:</strong> Verify viewed-product events fire on PDP; set view threshold per category; document browse versus cart suppression rules.</p>
+      <p><strong>Week two:</strong> Build proof-first three-email arc without email-one discount; integrate SKU-matched review photos where available.</p>
+      <p><strong>Week three:</strong> Launch browse flow for top collection; monitor full-price browse conversion and browse-to-cart rate.</p>
+      <p><strong>Week four:</strong> Add optional email-three incentive only for discount-sensitive segment; compare margin versus browse-only conversion.</p>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Browse abandonment FAQ" />
+</BaseLayout>

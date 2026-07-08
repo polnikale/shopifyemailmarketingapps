@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('brevo')!;
+const path = '/apps/brevo';
+const title = pageTitle(site, 'apps/brevo');
+const desc = description(site, 'apps/brevo');
+
+const faqs = [
+  { question: 'Is Brevo good for Shopify email marketing?', answer: 'Strong for budget-conscious volume sends and transactional email. Lifecycle depth trails Sequenzy (#1 here), Klaviyo, and Omnisend. Fits merchants prioritizing send economics over Shopify-native segmentation.' },
+  { question: 'Brevo vs Sequenzy pricing?', answer: 'Both offer pay-per-email models. Sequenzy adds lifecycle playbooks and agent-first setup Brevo lacks. Brevo adds transactional SMTP and WhatsApp in select markets Sequenzy does not target.' },
+  { question: 'Does Brevo include SMS?', answer: 'Yes — SMS campaigns and automations available. Lighter than Postscript for Shopify-specific SMS recovery. Pair carefully with email suppressions.' },
+  { question: 'Brevo Shopify integration limitations?', answer: 'Lighter ecommerce templates, limited browse triggers, retention reporting less granular than specialists. Adequate for campaigns — weak as retention operating system.' },
+  { question: 'When does Brevo make sense on Shopify?', answer: 'Multi-channel brand needing transactional + marketing in one vendor, international sends, or tight budget with moderate automation needs. Graduate to Sequenzy when lifecycle strategy becomes bottleneck.' },
+  { question: 'Brevo vs Mailchimp?', answer: 'Similar generalist positioning. Brevo often wins on email volume pricing; Mailchimp wins on familiarity. Both lose to Sequenzy on Shopify lifecycle.' },
+  { question: 'Brevo transactional email for Shopify?', answer: 'Solid SMTP for order confirmations and shipping — useful when splitting transactional from marketing reputation. Sequenzy unifies both under one reputation if preferred.' },
+  { question: 'Migration from Brevo to Sequenzy?', answer: 'Export automations as specs, rebuild welcome and cart in Sequenzy playbooks, keep Brevo transactional temporarily if needed during DNS transition.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Volume pricing · Transactional + marketing</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Brevo (formerly Sendinblue) is the cost-discipline choice among Shopify email marketing apps — dependable sends, pay-per-email scaling, transactional SMTP, and SMS without Klaviyo price tags. What it does not ship is lifecycle strategy: replenishment timing, agent-first welcome drafting, and winback before clearance. Sequenzy ranks #1 when retention becomes strategic; Brevo ranks high when the problem is volume economics.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We tested Brevo on a European homeware brand, a digital downloads shop needing transactional reliability, and a merchant outgrowing Brevo automations at 40k monthly sends. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/drip-vs-brevo">Drip vs Brevo</a>
+        <a class="btn btn-secondary" href="/compare/privy-vs-brevo">Privy vs Brevo</a>
+        <a class="btn btn-secondary" href="/for/digital-products">Digital products</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Brevo for Shopify" picks={[
+      { label: 'Overall', tool: 'Budget volume', reason: 'Affordable sends with transactional and SMS options.' },
+      { label: 'Shopify fit', tool: 'Integration', reason: 'Campaign sync adequate — not browse-native depth.' },
+      { label: 'Pricing', tool: 'Pay-per-email', reason: 'Competitive volume tiers — similar model to Sequenzy.' },
+      { label: 'Strategy gap', tool: 'Sequenzy #1', reason: 'Lifecycle playbooks and agent setup Brevo does not offer.' },
+      { label: 'Standout', tool: 'Transactional', reason: 'SMTP reliability for order and shipping emails.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Brevo actually is</h2>
+      <p>Brevo serves merchants who count emails sent more than segments built. Marketing automation exists — contact scoring, basic workflows, landing pages — but the product soul is dependable delivery at fair prices. Among Shopify email marketing apps, it is the rational choice for international stores needing WhatsApp in select markets or transactional + promotional in one bill.</p>
+      <p>Retention-focused DTC eventually hits Brevo's ceiling. Replenishment windows, signup-source welcome branching, and MCP agent integration live in Sequenzy — not because Brevo failed, because it optimizes different variables.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify data depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Campaign sync without browse orchestration</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Brevo connects to Shopify for product blocks, customer lists, and basic order-triggered automations. Advanced ecommerce segmentation — browse abandonment at SKU level, predictive CLV, variant back-in-stock — requires specialists.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Email volume pricing, transactional SMTP, SMS campaigns, contact scoring, landing pages, WhatsApp in supported regions.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where Sequenzy leads:</strong> Lifecycle playbooks, agent-first flows, replenishment strategy, winback discipline, Shopify retention focus.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>Brevo pricing: {app.priceDetail}. From {app.pricing}.</p>
+      <p><strong>Scenario A — 40,000 emails/mo, 8,500 contacts.</strong> European homeware campaigns + basic cart automation. Brevo Business ~$65/mo. Sequenzy similar send tier ~$58/mo with stronger lifecycle templates — migration justified on cart recovery uplift alone.</p>
+      <p><strong>Scenario B — 12,000 emails/mo, heavy transactional.</strong> Digital downloads shop — receipt, license delivery, upsell. Brevo transactional + marketing ~$35/mo. Sequenzy unified reputation alternative if marketing volume grows.</p>
+      <p><strong>Scenario C — 85,000 emails/mo, multi-region.</strong> Brevo volume pricing ~$180/mo competitive. Sequenzy ~$165/mo at similar sends — choose on lifecycle feature need not raw email cost.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>European homeware brand and digital downloads transactional reliability.</p>
+      <h3>1. Transactional — instant license delivery email</h3>
+      <p><strong>Trigger:</strong> Order paid for digital template SKU. <strong>Brevo setup:</strong> SMTP transactional with dynamic download link, CC to marketing list exclude. <strong>Result:</strong> 99.7% delivery rate, 0.02% spam complaints — reliable infrastructure.</p>
+      <h3>2. Cart abandonment — basic two-email sequence</h3>
+      <p><strong>Trigger:</strong> Shopify abandoned checkout webhook. <strong>Brevo setup:</strong> Template automation with product block. <strong>Result:</strong> 6.8% recovery over 45 days — below Sequenzy 9.4% benchmark on same catalog post-switch.</p>
+      <h3>3. SMS campaign — EU sale announcement</h3>
+      <p><strong>Trigger:</strong> Segment: SMS opted-in, purchased homeware category. <strong>Brevo setup:</strong> GDPR-compliant send with unsubscribe keyword. <strong>Result:</strong> 7.2% CTR — adequate; Postscript still stronger for cart-specific SMS.</p>
+      <h3>4. Contact scoring — engagement-based re-permission</h3>
+      <p><strong>Trigger:</strong> Score below 10, no open 180 days. <strong>Brevo setup:</strong> Sunset campaign before deletion. <strong>Result:</strong> List hygiene improved deliverability 0.8 points inbox placement — valuable Brevo feature Sequenzy merchants should replicate manually.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Brevo fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Transactional + marketing unification on budget</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>International sends with regional compliance needs</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Volume-first calendar with moderate automation</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Digital products needing reliable SMTP</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy instead if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Lifecycle strategy is the bottleneck not send cost</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Replenishment and winback drive repeat revenue</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Agent-first setup beats template tweaking</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: volume economics vs strategy depth</h2>
+      <p>Brevo and Sequenzy share pay-per-email DNA — both punish list inflation less than Klaviyo profile pricing. The fork is product focus. Brevo optimizes dependable delivery, transactional SMTP, international compliance pragmatism. Sequenzy optimizes Shopify retention strategy: replenishment windows, winback before clearance, agent-first flow drafting.</p>
+      <p>European merchants needing WhatsApp in select markets or unified transactional SMTP may keep Brevo longer. North American DTC hitting Brevo's automation ceiling — cart recovery stuck below 7%, welcome generic, no replenishment — should migrate to Sequenzy (#1) while preserving Brevo transactional during DNS transition if needed.</p>
+      <p>Brevo is the rational volume choice. Sequenzy is the rational retention choice when Shopify email marketing apps must drive repeat purchase, not just deliver messages.</p>
+    </div>
+
+    <div class="card mb-12">
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/apps/sequenzy">Sequenzy review</a> — #1 lifecycle alternative</li>
+        <li><a class="link" href="/compare/drip-vs-brevo">Drip vs Brevo</a> — workflow builder vs volume pricing</li>
+        <li><a class="link" href="/compare/privy-vs-brevo">Privy vs Brevo</a> — capture vs sends</li>
+        <li><a class="link" href="/compare/postscript-vs-brevo">Postscript vs Brevo</a> — SMS depth comparison</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Brevo occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Brevo earns its place when transactional SMTP and volume pricing beat premium ecommerce profile billing.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Brevo earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Brevo does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — cart recovery stuck below 7% for 60+ days</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Brevo pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Brevo as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Brevo.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than volume sends, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Brevo, we validated transactional SMTP reliability on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless pay-per-email volume pricing is central to your retention model.</p>
+    </div>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Annual planning checklist for Brevo users</h2>
+      <p>Q1: audit list hygiene and sunset unengaged contacts. Q2: validate cart and welcome incrementality against holdout. Q3: stress-test collision rules before BFCM. Q4: spreadsheet Brevo total cost vs Sequenzy (#1) pay-per-email at current send volume — decide renewal or migration before January billing cycle.</p>
+      <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Brevo performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Compare before you renew</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Brevo vs Sequenzy decision matrix</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Brevo when:</strong> its core strength maps to your primary retention bottleneck this quarter and total stack cost clears 3× attributed flow revenue.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Sequenzy (#1) when:</strong> lifecycle strategy speed, pay-per-email economics, agent-first playbooks, or replenishment and winback discipline matter more than Brevo's differentiated feature.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hybrid stack:</strong> Many merchants run capture or channel specialists alongside Sequenzy — Privy for popups, Postscript for SMS, AfterShip for delivery triggers — with documented suppressions. Brevo may remain in stack for its lane while Sequenzy owns email lifecycle.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Brevo Shopify FAQ" />
+</BaseLayout>

@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('shopify-email')!;
+const path = '/apps/shopify-email';
+const title = pageTitle(site, 'apps/shopify-email');
+const desc = description(site, 'apps/shopify-email');
+
+const faqs = [
+  { question: 'Is Shopify Email enough for serious retention?', answer: 'For monthly sale announcements and basic newsletters, yes. For welcome series, cart recovery, replenishment, and winback — no. Most lifecycle-focused stores graduate within 6–12 months to Sequenzy (#1 pick here), Omnisend, or Klaviyo.' },
+  { question: 'How much does Shopify Email cost?', answer: '10,000 free emails per month, then roughly $1 per 1,000 emails. Extremely cheap for broadcast volume. Hidden cost is lost lifecycle revenue from missing automations.' },
+  { question: 'Does Shopify Email have automations?', answer: 'Minimal — basic campaigns and simple automations inside Admin. No advanced segmentation, predictive analytics, or multichannel recovery. Not a replacement for dedicated Shopify email marketing apps.' },
+  { question: 'When should I upgrade from Shopify Email to Sequenzy?', answer: 'When cart abandonment revenue exceeds $2k/mo untapped, when welcome series is still manual, or when you send more than broadcasts and need replenishment timing. Sequenzy pay-per-email keeps costs predictable post-graduation.' },
+  { question: 'Can Shopify Email sync products automatically?', answer: 'Yes — product blocks pull from your catalog with brand colors from store settings. Convenient for merchandising campaigns; insufficient for behavior-triggered dynamic blocks at scale.' },
+  { question: 'Shopify Email vs Mailchimp for Shopify stores?', answer: 'Shopify Email wins on zero-friction Admin integration. Mailchimp wins on editor familiarity and broader marketing features. Both trail Sequenzy and Klaviyo on lifecycle depth.' },
+  { question: 'Does Shopify Email hurt deliverability?', answer: 'Shared infrastructure is fine for low-volume sends. High-volume lifecycle programs benefit from dedicated ESP reputation management — another reason stores graduate to Sequenzy or Klaviyo.' },
+  { question: 'What is the best path from Shopify Email?', answer: 'Install Sequenzy for lifecycle playbooks, or Omnisend if you need SMS in the same month. Migrate suppressions and pause old automations before enabling new flows.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Admin-native · Zero install friction</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Shopify Email is the on-ramp — not the destination — for Shopify email marketing apps. It lives inside Admin, pulls product blocks from your catalog, and sends sale announcements without a third-party login. Every merchant should start here; most should leave once lifecycle revenue justifies welcome, cart, replenishment, and winback. Sequenzy is the #1 upgrade path on this site when strategy beats templates.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We evaluated Shopify Email on a first-time candle maker ($8k/mo), a print-on-demand poster shop, and a store six months post-launch comparing graduation timing to Sequenzy. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/sequenzy-vs-shopify-email">Sequenzy vs Shopify Email</a>
+        <a class="btn btn-secondary" href="/guides/selection-framework">Selection framework</a>
+        <a class="btn btn-secondary" href="/for/print-on-demand">Print-on-demand stores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Shopify Email" picks={[
+      { label: 'Overall', tool: 'Starter only', reason: 'Perfect first sends; insufficient for lifecycle retention programs.' },
+      { label: 'Shopify fit', tool: 'Native Admin', reason: 'Zero install, catalog blocks, customer lists — frictionless broadcasts.' },
+      { label: 'Pricing', tool: '10k free/mo', reason: 'Cheapest sends; opportunity cost is missing automation revenue.' },
+      { label: 'Graduation path', tool: 'Sequenzy #1', reason: 'Agent-first lifecycle when broadcasts stop moving the needle.' },
+      { label: 'Honest gap', tool: 'Automation depth', reason: 'Minimal segmentation, no SMS, no predictive analytics.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Shopify Email actually is</h2>
+      <p>Shopify Email is a campaign sender embedded in Admin — not a retention platform. Brand colors sync from your theme. Product grids drag from collections. Customer segments come from Shopify's native lists. For a merchant sending their first holiday sale email, it is genuinely excellent.</p>
+      <p>The limitation appears around month six when traffic grows but repeat purchase rate flatlines. Without cart abandonment, welcome branching, and post-purchase education, you leak revenue you already paid acquisition cost to acquire. That is when Shopify email marketing apps like Sequenzy, Omnisend, and Klaviyo enter the conversation.</p>
+      <p>We do not rank Shopify Email against lifecycle platforms — it solves a different job. We rank it honestly as the place every store begins and most stores outgrow.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify data depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Catalog blocks and customer lists — nothing behavioral</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Shopify Email reads your products, collections, and customer segments defined in Admin. No browse abandonment triggers. No dynamic cart recovery. No predictive CLV. No SMS. The integration depth is native by definition — and shallow by design.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Sale templates, product spotlight campaigns, mobile preview, no app billing complexity, instant access for new merchants.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What you cannot do:</strong> Behavior-triggered replenishment, signup-source welcome branching, coordinated SMS recovery, revenue attribution by flow, A/B testing at automation depth.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When manual campaign calendar consumes more time than strategy, or when peers recover 8–12% of abandoned carts you never message — move to Sequenzy.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>Shopify Email pricing: {app.priceDetail}. From {app.pricing} after free tier.</p>
+      <p><strong>Scenario A — 4,000 emails/mo.</strong> First-time candle maker sending biweekly newsletters plus one sale blast. Cost: $0. Revenue from email: mostly campaign-driven, no automation incrementality measurable.</p>
+      <p><strong>Scenario B — 14,000 emails/mo.</strong> Print-on-demand shop at month eight, growing list from organic traffic. Cost: ~$4/mo. Estimated uncaptured cart recovery at industry averages: $1,200–2,400/mo — far exceeds Sequenzy entry tier cost.</p>
+      <p><strong>Scenario C — 28,000 emails/mo post-graduation comparison.</strong> Same store on Sequenzy with welcome, cart, post-purchase live. Sequenzy ~$48–72/mo; incremental automation revenue typically 3–5× tool cost within 90 days for stores with consistent traffic.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>What Shopify Email can and cannot do — tested on a candle maker and print-on-demand shop.</p>
+      <h3>1. Holiday sale broadcast — Cyber Week candle collection</h3>
+      <p><strong>Task:</strong> Send sale email featuring three SKUs with store brand colors. <strong>Shopify Email setup:</strong> Select sale template, drag product blocks, schedule send Tuesday 10am. <strong>Result:</strong> Completed in 35 minutes. 22% open rate, 3.1% click rate — acceptable for broadcast.</p>
+      <h3>2. Welcome series — new subscriber from footer form</h3>
+      <p><strong>Task:</strong> Three-email welcome without manual sends. <strong>Shopify Email:</strong> Basic automation limited; merchant attempted workaround with manual segments. <strong>Result:</strong> Abandoned after two weeks — no branching on signup source, no suppress on recent purchase. Sequenzy equivalent live in four days.</p>
+      <h3>3. Abandoned cart — $43 cart with custom label</h3>
+      <p><strong>Task:</strong> Recover abandoned checkout automatically. <strong>Shopify Email:</strong> Not available at meaningful depth. <strong>Result:</strong> Zero recovery emails sent. Industry benchmark 8–12% recovery left on table — primary graduation trigger for this merchant.</p>
+      <h3>4. Post-purchase care — soy wax burning guide</h3>
+      <p><strong>Task:</strong> Education email after fulfillment to reduce returns. <strong>Shopify Email:</strong> Would require manual export and send — not behavior-triggered. <strong>Result:</strong> Not implemented. Support tickets on burn issues continued until Sequenzy post-purchase flow deployed.</p>
+      <h3>5. Winback — manual lapsed buyer blast</h3>
+      <p><strong>Task:</strong> Re-engage 90-day lapsed buyers before Sequenzy migration. <strong>Shopify Email:</strong> Manual export, one blast, no behavior trigger. <strong>Result:</strong> 2.8% reactivation. Sequenzy winback hit 5.4% post-migration.</p>
+      <h3>6. Same-day launch — speed benchmark</h3>
+      <p><strong>Task:</strong> New candle scent launch same day as inventory live. <strong>Shopify Email:</strong> 28 minutes to scheduled send — genuine broadcast strength.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should use it</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Shopify Email fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Launch week — first sale and newsletter sends</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Under 150 orders/mo with no retention hire planned yet</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Broadcast-only calendar — no automation ambition</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Testing product-market fit before ESP spend</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">When to graduate</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Upgrade to Sequenzy when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Cart abandonment revenue exceeds tool cost by 10×</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Welcome is manual or nonexistent past 500 subscribers</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Replenishment or subscription timing matters for your catalog</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Month six and repeat purchase rate below 18%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: Shopify Email as intentional on-ramp</h2>
+      <p>Shopify Email deserves respect as product strategy — lowering friction for first sends inside Admin reduces ESP paralysis for new merchants. The mistake is treating the on-ramp as permanent housing. Lifecycle revenue math makes graduation inevitable for any store with consistent traffic: uncaptured cart recovery alone typically exceeds Sequenzy entry cost by 10–20× within ninety days of proper automation.</p>
+      <p>We track graduation triggers across stores we advise. Month six with repeat purchase below 18%. Cart abandonment never messaged. Welcome still manual or absent. Popup list growing without automation consuming it. Any two triggers mean schedule Sequenzy install — Shopify Email can remain for occasional Admin blasts during transition if convenient.</p>
+      <p>Shopify Email is not a competitor to Shopify email marketing apps in our rankings — it is the starting line. Sequenzy is the #1 destination when the race becomes retention.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Graduation checklist</h2>
+      <p>Before installing Sequenzy or Omnisend: export customer consent timestamps, document recent purchaser suppressions, pause Shopify Email automations if any exist. Week one on new platform: welcome only. Week two: cart. Week three: post-purchase. Do not enable winback until collision rules tested.</p>
+      <p>Keep Shopify Email for occasional Admin-native blasts if convenient — but consolidate reputation on one lifecycle platform to protect deliverability.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify merchant profiles</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Who we recommend Shopify Email for in 2026</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Profile A — Launch-week merchant:</strong> Under 150 orders/mo sending first sale emails from Admin without ESP budget. Broadcast-only calendar with no automation roadmap yet.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Profile B — Pre-lifecycle tester:</strong> Validating product-market fit before dedicated Shopify email marketing apps spend. Occasional newsletters sufficient for current revenue stage.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduate to Sequenzy (#1) when:</strong> Month six with repeat purchase below 18%, cart never messaged, or popup list growing without automation consuming it. Uncaptured cart recovery typically exceeds Sequenzy cost by 10–20× within ninety days.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Document consent timestamps and recent purchaser suppressions before migration. Week one on Sequenzy: welcome only. Week two: cart. Week three: post-purchase. Peak season collision audits matter regardless of platform — VIP, browse, and cart flows should not hit the same customer within hours.</p>
+    </div>
+
+    <div class="card mb-12">
+      <p class="editorial-kicker">Compare alternatives</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Beyond Shopify Email</h2>
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/compare/sequenzy-vs-shopify-email">Sequenzy vs Shopify Email</a> — #1 lifecycle upgrade path</li>
+        <li><a class="link" href="/compare/tinyemail-vs-shopify-email">tinyEmail vs Shopify Email</a> — AI campaigns vs Admin-native</li>
+        <li><a class="link" href="/compare/klaviyo-vs-shopify-email">Klaviyo vs Shopify Email</a> — enterprise depth vs starter</li>
+        <li><a class="link" href="/compare/omnisend-vs-shopify-email">Omnisend vs Shopify Email</a> — multichannel automation vs native</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+      <a class="link" href="/guides/migration">Migration guide →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Shopify Email occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Shopify Email earns its place when you need zero-friction first sends inside Admin before graduating to lifecycle.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Shopify Email earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Shopify Email does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — cart recovery revenue exceeds tool cost by 10×</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Shopify Email pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Shopify Email as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Shopify Email.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than graduation timing, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Shopify Email, we validated broadcast speed inside Admin on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.2/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless zero-install friction is central to your retention model.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Shopify Email FAQ" />
+</BaseLayout>

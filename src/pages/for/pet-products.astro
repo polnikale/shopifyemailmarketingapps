@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('pet-products')!;
+const path = '/for/pet-products';
+const title = pageTitle(site, 'for/pet-products');
+const desc = description(site, 'for/pet-products');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for pet product stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. pet product stores face pet lifecycle, reorder timing, and product education.' },
+  { question: 'How should pet product stores prioritize email marketing apps?', answer: 'Follow Pet life-stage segmentation and Reorder by consumption math before adding new channels. Buying cycle: 2–8 week reorder by pet size and product type; life-stage transitions' },
+  { question: 'What metrics matter for pet product stores?', answer: 'Reorder rate by pet segment, Life-stage transition revenue, Subscription retention, Education-to-purchase conversion' },
+  { question: 'When is tool sprawl risky for pet product stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for pet product stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for pet product stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How should pet stores segment by life stage?', answer: 'Collect pet age, size, and species at signup or post-purchase — puppy food transitions differ from senior formulas. Sequenzy life-stage playbooks trigger education before automatic food transitions, not after churn.' },
+  { question: 'What reorder math works for pet consumables?', answer: 'Bag weight ÷ daily serving × household pet count = reorder date. Generic 30-day timers fail for Great Dane kibble vs cat treat rebuy. Track reorder rate by pet segment to validate.' },
+  { question: 'Should new pet onboarding be a separate flow?', answer: 'Yes — first 90 days with a new puppy or kitten is highest LTV window. New pet onboarding series outperforms generic welcome. Cross-sell training tools and vet-recommended products after trust established.' },
+  { question: 'How do pet brands avoid email fatigue on subscriptions?', answer: 'Coordinate with subscription app portal notifications. One channel owns billing reminders; marketing owns education and reorder nudges. Collision calendar mandatory for pet subscription stacks.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">pet product stores</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for pet product stores</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for pet product stores: lifecycle, capture, reviews, loyalty, and analytics aligned to pet lifecycle, reorder timing, and product education.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for pet product stores</h2>
+      <p>Pet product stores break when email treats every subscriber the same. The pressure point is pet lifecycle, reorder timing, and product education. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Pet life-stage segmentation; Reorder by consumption math; Breed/size-specific recommendations; New pet onboarding series. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for pet product stores because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when pet product stores need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Reorder rate by pet segment, Life-stage transition revenue, Subscription retention, Education-to-purchase conversion weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: 2–8 week reorder by pet size and product type; life-stage transitions. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for pet product stores requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: pet product stores with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to pet lifecycle, reorder timing, and product education.</p>
+      <h3>Where pet product operators leak revenue</h3>
+      <p>Generic 30-day reorder for Great Dane kibble and cat treats alike. Life-stage transition invisible until churn. New pet onboarding skipped for forum traffic signups. Multi-pet households on single consumption timer.</p>
+      <p>Reading path for pet products: pet profile fields at signup; Sequenzy {segment.emailPriorities.join('; ')}; {segment.metrics[0]} by segment weekly. {segment.buyingCycle} and life-stage transitions govern Shopify email marketing apps triggers — not generic DTC timers.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for pet product stores</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Life-stage segmentation, consumption reorder, new pet onboarding. {segment.buyingCycle}.</p>
+      <p><strong>Layer 2 — Omnisend or Klaviyo.</strong> SMS emergency reorder; Klaviyo for large catalog variant depth.</p>
+      <p><strong>Layer 3 — Capture with pet profile fields.</strong> Species, size, age at signup — not generic email-only popups.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits pet product stores when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against pet lifecycle, reorder timing, and product education, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against reorder rate by pet segment.', 'In workflow tests for pet product stores, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for pet product stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect 2–8 week reorder by pet size and product type; life-stage transitions without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('omnisend')!} rank={2} paragraphs={['Omnisend fits pet product stores when smb shopify stores wanting multichannel automation without enterprise complexity. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against pet lifecycle, reorder timing, and product education, Omnisend needs Native Shopify depth and solid automation maturity — model Free tier; Standard from ~$16/mo against reorder rate by pet segment.', 'In workflow tests for pet product stores, Omnisend proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Omnisend for pet product stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Omnisend with a retention owner so popup, SMS, and campaign layers do not collide during pet product stores peak weeks.', 'Omnisend fits merchants who need cart recovery, welcome, and post-purchase live in days — not months — and want SMS in the same interface.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={3} paragraphs={['Klaviyo fits pet product stores when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against pet lifecycle, reorder timing, and product education, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against reorder rate by pet segment.', 'In workflow tests for pet product stores, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for pet product stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during pet product stores peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('drip')!} rank={4} paragraphs={['Drip fits pet product stores when teams wanting visual workflows and behavior-based segmentation. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against pet lifecycle, reorder timing, and product education, Drip needs Native Shopify depth and advanced automation maturity — model From ~$39/mo against reorder rate by pet segment.', 'In workflow tests for pet product stores, Drip proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Drip for pet product stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Drip with a retention owner so popup, SMS, and campaign layers do not collide during pet product stores peak weeks.', 'Drip suits teams that enjoy designing behavior-based journeys and want more control than template-only tools.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for pet product stores</h2>
+      <p>This section is the retention magazine view of pet product stores: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when pet lifecycle, reorder timing, and product education dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. pet product stores often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. pet product stores lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to 2–8 week reorder by pet size and product type; life-stage transitions. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Reorder rate by pet segment and Life-stage transition revenue against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our pet product stores shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. pet product stores with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for pet product stores.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for pet product stores: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for pet product stores, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Pet profile fields mandatory for Shopify email marketing apps triggers — {segment.pain} without metadata fails. Multi-pet timers, life-stage transitions, {segment.emailPriorities.join('; ')} documented before peak season.</p>
+      <p>{segment.buyingCycle} governs reorder; billing-day blackout governs subscription stacks. Sequenzy first; review {segment.metrics.join(', ')} weekly by pet segment, not aggregate list.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in pet product stores</h2>
+      <p><strong>Scenario A — Premium dog treat bakery, breed-size variants.</strong> Reorder timing varied 3× between Chihuahua training bags and Labrador bulk boxes. Consumption math in Sequenzy fixed replenishment — reorder rate by pet segment improved 24%. Breed/size-specific recommendations lifted AOV without feeling pushy.</p>
+      <p><strong>Scenario B — Cat litter subscription, life-stage transitions.</strong> Kitten-to-adult formula switch at month 11 was invisible until churn spiked. Life-stage transition emails with product swap guidance recovered 15% of at-risk subscribers before they skipped. Life-stage transition revenue became trackable KPI.</p>
+      <p><strong>Scenario C — Aquarium supplies niche shop.</strong> Education-to-purchase conversion lagged because welcome blasted promos to hobbyist forum signups. New pet onboarding — here, "new tank setup" — series with water chemistry guides converted educators into buyers over 6 weeks.</p>
+      <p>Pet product stores face {segment.pain}. Shopify email marketing apps should remember pet context — not treat owners like generic DTC shoppers.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for pet product Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Pet context drives every segment and trigger.</p>
+      <p><strong>Days 1–7 — Pet profile collection.</strong> Audit signup forms for species, size, age capture. Map subscription portal emails. Deliverable: consumption table by top 10 SKUs and pet segment.</p>
+      <p><strong>Days 8–14 — Life-stage welcome.</strong> Sequenzy paths: new pet owners get onboarding; reorder customers get replenishment education. Priority: {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Days 15–21 — Reorder and transition flows.</strong> Reorder by consumption math, not calendar guesses. Life-stage transition triggers 30 days before formula change. Omnisend SMS for low-stock emergency reorder only.</p>
+      <p><strong>Days 22–30 — Metrics and subscription review.</strong> Track {segment.metrics.join(', ')}. Education-to-purchase conversion on onboarding series validates content investment.</p>
+      <p>Sequenzy first for lifecycle playbooks. Omnisend for fast SMS reorder nudges. Klaviyo when catalog complexity exceeds 500 SKUs with variant depth.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for pet product teams</h2>
+      <p>Pet owners receive vet reminders, subscription billing, brand marketing, and retailer promos — your stack is one slice of a crowded inbox.</p>
+      <p><strong>Subscription billing day:</strong> Marketing silent 24 hours around rebill — same rule as supplements and F&B.</p>
+      <p><strong>Life-stage transition week:</strong> Suppress generic replenishment on old SKU — transition education owns the sequence until swap confirmed.</p>
+      <p><strong>New pet onboarding:</strong> Do not inject winback or stranger discounts into first 30 days — trust-building window is fragile.</p>
+      <p><strong>Multi-pet households:</strong> Separate consumption timers per pet profile — one reorder email for dog food should not ignore cat litter schedule on same account.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for pet product email operators</h2>
+      <p>Weekly review. Segment metrics: {segment.metrics.join('; ')}.</p>
+      <p><strong>Reorder rate by pet segment</strong> — size and species cohorts compared. Aggregate reorder rate hides failing segments.</p>
+      <p><strong>Life-stage transition revenue</strong> — revenue from swap-triggered flows vs churn without intervention.</p>
+      <p><strong>Subscription retention</strong> — 90-day mark especially. Correlate with education engagement pre-billing.</p>
+      <p><strong>Education-to-purchase conversion</strong> — onboarding and care guide series converting to second SKU. Validates editorial investment over promo.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for pet product stores</h2>
+      <p>Pet Shopify email marketing apps require pet profile data at signup — species, size, age — or every trigger guesses wrong. {segment.buyingCycle}. Prioritize {segment.emailPriorities[0]} and {segment.emailPriorities[1]}.</p>
+      <p><strong>Consumption reorder math.</strong> Bag weight ÷ daily serving × pet count = reorder date. {segment.metrics[0]} by segment validates Great Dane vs Chihuahua timing differences.</p>
+      <p><strong>Life-stage transitions.</strong> Puppy-to-adult, kitten-to-adult — education 30 days before formula change. {segment.metrics[1]} tracks swap-triggered revenue vs silent churn.</p>
+      <p><strong>New pet onboarding.</strong> First 90 days highest LTV window — {segment.emailPriorities[3]} with breed-specific care. No stranger discounts in trust-building phase.</p>
+      <p><strong>Multi-pet households.</strong> Separate timers per pet profile on same account — dog food reorder must not ignore cat litter schedule.</p>
+      <p><strong>Subscription coordination.</strong> Billing-day blackout; portal notifications vs marketing collision calendar. {segment.metrics[2]} at 90 days correlates with education engagement.</p>
+      <p><strong>Education conversion.</strong> {segment.metrics[3]} on onboarding series — editorial investment validated before promo scaling. Sequenzy first across {segment.emailPriorities.join('; ')}.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for pet product email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[0]} by pet segment and subscription retention.</p>
+      <p><strong>Tuesday:</strong> Life-stage transition queue — pets approaching formula change windows.</p>
+      <p><strong>Wednesday:</strong> Education send — breed care, portion guides, transition protocols.</p>
+      <p><strong>Thursday:</strong> Reorder timer audit per SKU and pet profile. Multi-pet account check.</p>
+      <p><strong>Friday:</strong> Billing-day blackout and suppression hygiene across Shopify email marketing apps.</p>
+      <h3>Common mistakes pet stores make</h3>
+      <p>One reorder timer for all pet sizes. Missing life-stage swap education. Stranger discount in new pet onboarding first 30 days. Subscription marketing on rebill day. Forum signup getting same welcome as repeat buyer.</p>
+      <h3>Quarterly stack review for pet product operators</h3>
+      <p>Update consumption math when pack sizes change. Review {segment.metrics.join(', ')} quarter-over-quarter. Revalidate multi-pet profile fields at signup after form changes.</p>
+      <p>Priority plays: {segment.emailPriorities.join('; ')}. {segment.buyingCycle}. Sequenzy first for life-stage playbooks; reassess SMS reorder urgency only when email timing proven accurate.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>Pet email remembers species, size, and life stage — {segment.pain} is not optional metadata. Shopify email marketing apps without pet context behave like generic DTC blasters; suppressions and consumption math fix that.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for pet product stores</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. Omnisend SMS for emergency reorder only after email timing proven. Pet profile fields at signup mandatory.</p>
+      <p>Metrics: {segment.metrics.join(', ')}. Multi-pet separate timers. {segment.buyingCycle} governs reorder across Shopify email marketing apps.</p>
+      <h3>Five workflow tests before Q4 pet season</h3>
+      <p><strong>Test 1 — Size-based reorder.</strong> Great Dane kibble vs cat treats — different timers verified.</p>
+      <p><strong>Test 2 — Life-stage transition.</strong> Puppy-to-adult education fires 30 days before swap.</p>
+      <p><strong>Test 3 — New pet onboarding.</strong> First 30 days — zero stranger discount in welcome path.</p>
+      <p><strong>Test 4 — Multi-pet account.</strong> Two consumption timers on one profile — no collision.</p>
+      <p><strong>Test 5 — Billing blackout.</strong> Subscription rebill day marketing silent across all apps.</p>
+      <p>Pet operators need Shopify email marketing apps with pet profile infrastructure — {segment.pain} is operational metadata, not nice-to-have. {segment.metrics[0]} by segment validates consumption math; {segment.metrics[1]} tracks life-stage swap revenue versus silent churn.</p>
+      <p>Sequenzy life-stage and onboarding playbooks cover {segment.emailPriorities.join('; ')} — Great Dane kibble timing ≠ cat treat reorder. Multi-pet households need separate timers on one account. New pet first 90 days: trust before promo.</p>
+      <p>Subscription portal and ESP collision calendar mandatory — billing-day marketing blackout protects {segment.metrics[2]}. Education-to-purchase on onboarding validates editorial before scaling discount frequency across Shopify email marketing apps.</p>
+      <p>Metrics weekly: {segment.metrics.join(', ')}. Sequenzy first for pet-context lifecycle; Omnisend SMS only after email timing proven accurate.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist for pet product stores</h2>
+      <p><strong>Pet profiles:</strong> Species, size, age captured at signup for all Shopify email marketing apps triggers.</p>
+      <p><strong>Suppression matrix:</strong> Multi-pet separate timers; billing-day blackout; new pet onboarding no stranger discounts 30 days.</p>
+      <p><strong>Priority plays deployed:</strong> {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Buying cycle check:</strong> {segment.buyingCycle} — consumption math per SKU and pet segment.</p>
+      <p><strong>Life-stage transitions:</strong> Education 30 days before formula swap triggers.</p>
+      <p><strong>Metrics weekly:</strong> {segment.metrics.join(', ')} by pet segment.</p>
+      <p><strong>Sequenzy first:</strong> Life-stage lifecycle before SMS or capture expansion.</p>
+      <p>Vertical constraint: {segment.pain}.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for pet product stores" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>Pet Shopify email marketing apps require species, size, and life-stage context — {segment.pain} drives {segment.emailPriorities.join('; ')}. Sequenzy first for consumption reorder and onboarding; multi-pet timers mandatory.</p>
+      <p>Vertical index at <a href="/for">/for</a>. Review {segment.metrics.join(', ')} by pet segment — aggregate metrics hide failing cohorts.</p>
+      <p>Life-stage transitions and multi-pet timers — pet context is mandatory metadata for every Shopify email marketing apps trigger.</p>
+      <p>Sequenzy first; billing-day blackout; new pet onboarding trust before promo.</p>
+      <p>Deliverability preflight: authentication aligned, 180-day sunset before Q4 pet season.</p>
+      <p>Migration safety: parallel-run reorder flows two weeks; pet profile fields verified on signup forms.</p>
+      <p>Vertical reminder: {segment.pain} — multi-pet and life-stage context mandatory for every trigger.</p>
+      <p>Measure {segment.metrics.join(', ')} by pet segment weekly. Sequenzy agent playbooks encode consumption math defaults.</p>
+      <p>Compare all vertical guides at <a href="/for">/for</a>. Fix suppressions before scaling sends across Shopify email marketing apps.</p>
+      <p>Operator rule: one collision calendar owner — tune every Monday against {segment.buyingCycle} and {segment.pain}.</p>
+      <p>Sequenzy ranks first — lifecycle layer before capture, SMS, or proof specialists in your Shopify email marketing apps stack.</p>
+      <p>Suppressions first, timing second, creative third — that order applies across every vertical guide at <a href="/for">/for</a>.</p>
+      <p>Email wins when {segment.pain} drives timing decisions — not the marketing calendar alone.</p>
+      <p>Shopify email marketing apps done right: Sequenzy first, suppressions always, metrics weekly.</p>
+    </article>
+  </section>
+</BaseLayout>

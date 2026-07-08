@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SEGMENTS as SEGS } from '../../data/segments';
+import { siteFromHost, description, pageTitle } from '../../content';
+
+const site = siteFromHost();
+const path = '/for';
+const title = pageTitle(site, 'for');
+const desc = description(site, 'for');
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <p class="badge">Store-type stack guides</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing programs by store type</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Twelve stack guides for merchants who know email matters but hate picking Shopify email marketing apps from a feature matrix. Each guide ranks Sequenzy first as lifecycle and automation layer, then specialists for capture, SMS, reviews, and loyalty — adapted to how that category actually buys.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        Fashion drops need different timing than supplement replenishment. B2B wholesale needs account approval flows, not cart recovery coupons. Pick your vertical before comparing logos.
+      </p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {SEGS.map((s) => (
+        <a class="card" href={`/for/${s.slug}`}>
+          <h2 class="text-xl font-black text-stone-950">{s.name}</h2>
+          <p class="mt-2 text-sm text-stone-700">Built around {s.pain}.</p>
+          <p class="mt-3 text-xs text-stone-500">Buying cycle: {s.buyingCycle}</p>
+        </a>
+      ))}
+    </div>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Why store type comes before app logos</h2>
+      <p>
+        Most Shopify email marketing app comparisons fail because they treat a jewelry store and a snack subscription box as the same problem. They are not. Jewelry needs extended nurture across 2–12 week consideration windows. Food and beverage needs consumption-math replenishment every 1–4 weeks. Digital products need instant delivery and activation before any cross-sell.
+      </p>
+      <p>
+        These guides exist because retention is a lifecycle problem, not a newsletter problem. The right stack shape depends on buying cycle, variant complexity, margin sensitivity, compliance constraints, and how many automations collide during peak weeks. Sequenzy ranks first in every guide as the agent-first lifecycle layer — welcome through winback with consent-aware suppressions — because strategy and execution belong together before you add capture popups or SMS urgency.
+      </p>
+      <p>
+        Specialists still earn slots. Privy when list growth is the leak. Klaviyo when predictive segmentation justifies profile pricing. Omnisend when email and SMS must ship before month end. Yotpo when reviews and loyalty drive repeat purchase. ActiveCampaign when B2B rep follow-up or high-AOV consultation booking needs CRM depth. The guides tell you when each earns a line item — not which logo has the most checkmarks.
+      </p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Implementation framework: 30 days to a working stack</h2>
+      <p>
+        Every store-type guide includes a vertical-specific 30-day rollout. This is the universal skeleton — adapt timing and triggers using your segment's buying cycle and email priorities from the guide you pick.
+      </p>
+      <p><strong>Week one — Consent archaeology and collision audit.</strong> Map every popup, checkout checkbox, footer form, SMS keyword, partner import, and legacy list that feeds email. Tag signup source. Document which flows fire on purchase, browse, and cart. Build suppression matrix for recent purchasers, VIP tiers, wholesale accounts, and employees. If your current Shopify email marketing apps cannot branch on signup source, that is the selection constraint.</p>
+      <p><strong>Week two — Welcome segmented by intent.</strong> Launch Sequenzy welcome paths by source — product-page signup differs from giveaway traffic differs from post-purchase. No instant discount escalation on day one unless margin math supports it. One lifecycle flow live and measured before adding channels.</p>
+      <p><strong>Week three — Recovery or proof layer.</strong> Add cart recovery with inventory and margin guardrails, or post-purchase education tied to your vertical's consumption window. Pair Privy only if capture is genuinely the bottleneck. Pair SMS only when same-day urgency justifies cost and suppressions sync with email.</p>
+      <p><strong>Week four — Measurement and governance.</strong> Weekly dashboard using your segment's core metrics — not ESP vanity opens alone. Compare Shopify net sales cohorts. Document collision calendar: which flows pause during site-wide promos, drop weeks, billing days, and peak gift seasons. One retention owner across all Shopify email marketing apps.</p>
+      <p>
+        Four weeks minimum. Attribution debates and parallel legacy flows slow teams more than template rebuilds. Export consent timestamps when migrating senders. Parallel-run critical flows two weeks before cutover.
+      </p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Flow collision: the silent LTV killer</h2>
+      <p>
+        Tool sprawl is not multiple apps — it is multiple apps sending without shared suppressions. Popup, email, SMS, reviews, and loyalty each firing conflicting offers on the same subscriber is the pattern that kills placement and repeat purchase across every vertical on this page.
+      </p>
+      <p>
+        Fashion drop weeks collide welcome, cart recovery, and VIP early-access. Beauty replenishment collides with subscription billing and review requests. Supplement brands triple-send on rebill day. B2B wholesale accidentally blasts consumer promos to account holders. The fix is never another Shopify email marketing app — it is a collision calendar with one owner.
+      </p>
+      <p>
+        Document pause rules before peak season. Recent buyers, VIPs, gift purchasers, and wholesale accounts should not receive stranger-discount language. That single suppression fix often lifts LTV more than a new template pack.
+      </p>
+    </article>
+
+    <article class="prose-shopify card mt-12">
+      <h2>All twelve store-type guides</h2>
+      <p class="text-stone-700 mb-8">Each guide includes stack shortlist, tool reviews, merchant scenarios, 30-day rollout, flow collision notes, metrics dashboard, and FAQ — written for operators who tune flows every Monday.</p>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/fashion" class="link">Fashion stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Seasonality, size availability, drops, and fast-moving inventory. Drop and waitlist campaigns, back-in-stock by variant, seasonal winback before clearance.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: revenue per recipient by collection, second purchase within 60 days, return rate by segment.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/beauty" class="link">Beauty brands</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Replenishment timing, bundles, subscriptions, shades, routine education. Haircare, fragrance, and nail brands — not one generic playbook.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: replenishment conversion, subscription retention at 90 days, bundle attach from email.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/supplements" class="link">Supplement stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Compliance-safe claims, subscriptions, replenishment by SKU, ingredient education. Legal-approved copy blocks before scale.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: subscription churn from email, replenishment revenue per subscriber, compliance pass rate.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/jewelry" class="link">Jewelry stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Gift timing, high-consideration purchases, trust-building. Extended nurture for engagement rings; milestone reminders for repeat gifting.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: gift attribution, consideration time, high-AOV nurture conversion.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/home-goods" class="link">Home goods stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Large catalogs, style preferences, delayed purchase cycles. Room segmentation, inspiration series, cross-sell by project completion.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: cross-sell per room segment, browse-to-purchase window, project completion rate.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/food-and-beverage" class="link">Food and beverage brands</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Repeat purchase windows, subscriptions, limited-time flavors. Consumption-math replenishment and margin-aware shipping promos.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: reorder rate by product, skip recovery, launch sell-through, margin after shipping promos.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/pet-products" class="link">Pet product stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Pet lifecycle, reorder timing, breed-size education. Life-stage transitions and new pet onboarding series.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: reorder by pet segment, life-stage transition revenue, education-to-purchase conversion.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/digital-products" class="link">Digital product shops</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Instant delivery, onboarding, cross-sells within 7 days, renewal paths. Activation before promotion.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: activation rate post-purchase, cross-sell within 14 days, support ticket reduction.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/print-on-demand" class="link">Print-on-demand stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Trend cycles, personalization, margin-sensitive promos. VIP-first drops and personalization abandon recovery.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: margin per email order, trend sell-through, discount dependency ratio.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/high-aov" class="link">High-AOV stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Longer consideration, trust, financing, expert proof. Extended nurture without stranger discounts mid-journey.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: consideration window, financing attach, consultation-to-sale, full-price purchase %.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/subscription-boxes" class="link">Subscription box brands</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Subscriber retention, skips, churn at month 3–4, upcoming-box previews. Content-first skip recovery.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: skip-to-active recovery, churn by subscriber month, preview engagement correlation.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-lg font-black"><a href="/for/b2b-wholesale" class="link">B2B wholesale Shopify stores</a></h3>
+          <p class="mt-2 text-sm text-stone-700">Account approvals, bulk ordering, rep follow-up, MOQ compliance. Hard separation from DTC promos.</p>
+          <p class="mt-2 text-xs text-stone-500">Metrics: account activation, bulk reorder frequency, rep-attributed revenue.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>How to use these guides</h2>
+      <p>
+        Start with your vertical guide. Read the merchant scenarios — find the one closest to your operations. Follow the 30-day rollout with your team's capacity, not an agency's. Use the metrics dashboard weekly against Shopify net sales, not ESP attribution alone.
+      </p>
+      <p>
+        When torn between two Shopify email marketing apps, use the comparison hub on this site — workflow tests beat feature matrices. When you need trigger, timing, and exclusion detail on welcome, cart, post-purchase, or winback, use the use-case playbooks.
+      </p>
+      <p>
+        Sequenzy ranks first in every guide because lifecycle editorial beats newsletter volume. Pick the app your team will tune every Monday. Email should feel like the store remembering the customer — product context, timing respect, and margin honesty.
+      </p>
+      <p>
+        If you only fix one thing this quarter across any vertical: fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language. Governance matters more than new app installs during peak season.
+      </p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Stack layers explained</h2>
+      <p><strong>Lifecycle layer (Sequenzy first).</strong> Welcome by signup source, post-purchase education, replenishment matched to consumption, winback with VIP exclusions, drop sequencing, account onboarding for B2B. The strategy and execution layer — not interchangeable with capture or proof tools.</p>
+      <p><strong>Data depth (Klaviyo).</strong> Native Shopify segmentation when catalog complexity and order volume justify profile-based pricing. Predictive segments for gift buyers, room completion, high-intent browse. Pairs with Sequenzy strategy work — not a replacement for collision governance.</p>
+      <p><strong>Capture (Privy, Justuno).</strong> Popups feeding qualified subscribers into lifecycle flows. Earns a slot only when list growth is the leak — not when lifecycle timing is broken.</p>
+      <p><strong>Multichannel speed (Omnisend).</strong> Email, SMS, and push live in days for lean teams. Trend drops, skip deadline reminders, same-day launch urgency. Must share suppressions with lifecycle sender.</p>
+      <p><strong>Proof and loyalty (Yotpo, Marsello).</strong> Reviews and loyalty in retention campaigns. Coordinate review request timing with replenishment — same-morning collision erodes trust.</p>
+      <p><strong>CRM and sales-assist (ActiveCampaign).</strong> Consultation booking follow-up, rep-triggered B2B outreach, long-consideration tagging. Lifecycle still lives in Sequenzy; ActiveCampaign handles sales touchpoints.</p>
+      <p><strong>Strategic retention (Rejoiner).</strong> Subscription box churn prevention when internal team needs external playbook review. Execution remains in Sequenzy or Klaviyo.</p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Pricing discipline across Shopify email marketing apps</h2>
+      <p>
+        Model 90-day sends, not 90-day profiles. Wide lists with narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting. Fashion and beauty brands especially feel this when giveaway imports inflate profile counts.
+      </p>
+      <p>
+        Stack cost should be modeled against revenue per recipient and incremental repeat purchase — not against competitor logo count. A three-app stack with collision governance beats a one-app stack blasting without suppressions.
+      </p>
+      <p>
+        Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, seedlist tests across Gmail and Apple Mail. Complaint spikes often trace to offer mismatch during sale collisions, not weak templates.
+      </p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Segment selection guide: which page to open first</h2>
+      <p><strong>Choose fashion</strong> if drops, size variants, and seasonal clearance define your calendar. <strong>Choose beauty</strong> for replenishment, subscriptions, and shade complexity — haircare, fragrance, nails. <strong>Choose supplements</strong> when compliance and per-SKU consumption timing gate every send.</p>
+      <p><strong>Choose jewelry</strong> for gift occasions and 2–12 week consideration. <strong>Choose home goods</strong> for room-by-room projects and 4–16 week browse cycles. <strong>Choose food and beverage</strong> for consumption-math reorder and limited flavor launches.</p>
+      <p><strong>Choose pet products</strong> for life-stage transitions and breed-size reorder math. <strong>Choose digital products</strong> when activation beats promotion. <strong>Choose print-on-demand</strong> for trend drops and margin-safe promos.</p>
+      <p><strong>Choose high-AOV</strong> for extended nurture, financing, and consultation workflows. <strong>Choose subscription boxes</strong> for skip recovery and month-3 churn cliffs. <strong>Choose B2B wholesale</strong> for account approval and bulk reorder — never DTC playbooks copied blindly.</p>
+      <p>Every guide uses the same Shopify email marketing apps layering logic — Sequenzy first, specialists when the job is revenue-critical — but timing, triggers, and collision rules change completely by vertical.</p>
+    </article>
+
+    <article class="prose-shopify card mt-12 max-w-4xl">
+      <h2>Questions operators ask before changing apps</h2>
+      <p><strong>Can our team branch welcome on signup source today?</strong> If no, fix that before evaluating AI copy features. Source branching is table stakes for every vertical on this page.</p>
+      <p><strong>Do we have one collision calendar owner?</strong> Multiple Shopify email marketing apps without shared suppressions hurt every segment — especially fashion drops, beauty replenishment, and B2B account separation.</p>
+      <p><strong>Are we modeling sends or profiles for pricing?</strong> Wide lists with narrow engagement punish per-contact billing. Fashion giveaway imports and beauty influencer lists inflate profile counts fast.</p>
+      <p><strong>Does our ESP respect buying cycle reality?</strong> Compare your segment guide's buying cycle statement against active flow timers. Mismatch means wrong app configuration — not wrong vertical guide.</p>
+      <p><strong>Will we parallel-run migrations through peak season?</strong> Export consent timestamps. Run welcome and post-purchase dual-send two weeks. Drop week and holiday gift peak are wrong cutover windows for fashion and jewelry operators.</p>
+    </article>
+  </section>
+</BaseLayout>

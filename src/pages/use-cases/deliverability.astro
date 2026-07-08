@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('deliverability')!;
+const path = '/use-cases/deliverability';
+const title = pageTitle(site, 'use-cases/deliverability');
+const desc = description(site, 'use-cases/deliverability');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend', 'drip', 'mailchimp', 'activecampaign', 'shopify-email', 'yotpo-email-sms'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for deliverability?', answer: 'Sequenzy ranks first for pay-per-send economics that reward list hygiene plus lifecycle volume without profile bloat. Klaviyo wins for engagement reporting depth. Sendlane for guided deliverability migration.' },
+  { question: 'Gmail Yahoo 2024 requirements?', answer: 'SPF, DKIM, DMARC aligned; one-click unsubscribe; spam complaint rate under 0.3%; valid physical address. All serious Shopify email marketing apps support — merchant must configure DNS.' },
+  { question: 'When sunset unengaged contacts?', answer: '90–180 days no open depending on send frequency. Re-engagement attempt once before sunset. Protects inbox placement during scale.' },
+  { question: 'Purchased lists?', answer: 'Never — instant reputation damage and platform ToS violation.' },
+  { question: 'Volume spikes?', answer: 'Warm new domains gradually; do not 10× volume day one on cold list. BFCM requires October prep not November surprise.' },
+  { question: 'Complaint spike causes?', answer: 'Offer mismatch, frequency too high, irrelevant segmentation, popup promise ≠ email content.' },
+  { question: 'Dedicated sending domain?', answer: 'Yes for serious volume — marketing.domain.com separate from transactional.' },
+  { question: 'What metrics monitor weekly?', answer: 'Bounce rate, complaint rate, open trend by domain, sunset list size.' },
+  { question: 'Deliverability versus revenue?', answer: 'More email only helps if engaged — sending to full list including zombies hurts everyone\'s placement.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">Deliverability</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for deliverability</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Deliverability is the ceiling on every lifecycle flow. Perfect cart recovery means nothing in spam. Shopify email marketing apps must make engagement visible, sunset painless, and sending economics reward pruning — not hoarding dead profiles from last year's candle giveaway.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Job: {uc.job}.</p>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top apps for deliverability" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'Pay-per-email aligns cost with engaged sends; lifecycle focus reduces blast fatigue.' },
+      { label: 'Best reporting', tool: 'Klaviyo', reason: 'Engagement cohorts, deliverability dashboards, domain-level trends.' },
+      { label: 'Best guided', tool: 'Sendlane', reason: 'Migration and deliverability support for invested programs.' },
+      { label: 'Best volume pricing', tool: 'Brevo', reason: 'Affordable sends with basic hygiene tooling.' },
+      { label: 'Best SMB', tool: 'Omnisend', reason: 'Practical engagement segments and sunset templates.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three deliverability scenarios</h2>
+      <p><strong>Scenario A — Candle brand post-BFCM recovery.</strong> Sequenzy sunset removed 18k non-openers in January; complaint rate dropped from 0.28% to 0.09%; inbox placement recovered before spring launch.</p>
+      <p><strong>Scenario B — Pet food Klaviyo audit.</strong> Engagement-based send limits stopped daily blasts to cold segment; open rate rose 12 points on remaining cohort — revenue flat because sends targeted interested buyers.</p>
+      <p><strong>Scenario C — Sourdough brand domain warm-up.</strong> Sendlane migration plan: 4-week volume ramp on dedicated subdomain; avoided spike penalty during Easter kit push.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-stone-700">Mistakes: {uc.mistakes.join('; ')}.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>Deliverability fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy pay-per-email removes financial incentive to keep zombie profiles — you pay for sends delivered not list size. Encourages sunset discipline naturally.',
+      'Lifecycle-first sending patterns avoid daily promotional blasts that trigger complaint spikes.',
+      'Unified reputation approach when transactional and marketing share infrastructure — document warm-up plan.',
+      'Pair Google Postmaster Tools monitoring regardless of ESP.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo engagement reporting and sunset flow templates industry standard.',
+      'Deliverability hub surfaces domain issues when configured.',
+      'Profile-based pricing can discourage sunset — fight incentive with governance.',
+      'Best analytics for diagnosing placement drops.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Sendlane migration includes deliverability review — valuable when leaving burned list habits.',
+      'Higher price point.',
+      'Human guidance on warm-up schedules.',
+      'Choose when reputation recovery needs hand-holding.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Brevo volume pricing plus basic engagement scoring.',
+      'Lighter ecommerce sunset automation.',
+      'Budget option with hygiene discipline required manually.',
+      'Good early stage with low volume.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Omnisend engagement segments and re-engagement templates practical for SMB.',
+      'Not deepest deliverability analytics.',
+      'Sufficient for stores under 100k sends/month with weekly monitoring.',
+      'Upgrade reporting when volume scales.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <h2 class="section-title text-3xl">Authentication checklist</h2>
+      <p class="mt-4 text-stone-700">SPF include ESP; DKIM CNAME from ESP; DMARC p=none minimum progressing to quarantine; dedicated marketing subdomain; one-click unsubscribe header. Verify in Google Postmaster and Yahoo sender hub.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h2 class="section-title text-3xl">Post-BFCM rehab</h2>
+      <p class="mt-4 text-stone-700">January: pause non-essential campaigns, sunset 120-day inactives, single re-engagement for 90-day cohort, reduce frequency 50% for two weeks. Ceramic and candle brands sending daily in November need explicit recovery plan.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended deliverability playbook</h2>
+      <p>Deliverability is invisible until it breaks — then every Shopify email flow fails together. Shopify email marketing apps differ in how they surface engagement decay and encourage list hygiene. Pay-per-send models align economics with pruning; per-profile models require discipline to sunset despite billing incentive to hoard.</p>
+      <p>Authentication non-negotiable: SPF, DKIM, DMARC on dedicated marketing subdomain. Gmail and Yahoo 2024 requirements include one-click unsubscribe — verify header on all marketing sends.</p>
+      <p>Sunset policy: no open 90 days → re-engagement once; no open 180 days → suppress marketing unless re-confirms. Candle brands post-giveaway import especially need aggressive sunset.</p>
+      <p>Volume ramp: new domain or ESP migration requires 4-week warm-up — do not jump from 10k to 100k sends because BFCM arrived.</p>
+      <p>Complaint rate above 0.1% demands immediate frequency and relevance audit — usually offer mismatch or segment too broad, not ESP fault.</p>
+      <p>Sequenzy pay-per-email reduces zombie profile incentive. Klaviyo engagement dashboards best for diagnosing domain-level trends. Sendlane helps teams migrating off bad habits.</p>
+      <p>Post-BFCM January: quiet week, sunset peak bloat, seedlist test before spring launch. Ceramic studios sending daily in November need explicit rehab plan.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <h3 class="font-black text-stone-950">Weekly deliverability monitor</h3>
+      <p class="mt-4 text-stone-700">Bounce rate, complaint rate, open trend by Gmail vs Yahoo vs Apple, sunset count added, spam trap hits (if available). Fifteen minutes Friday — catches drift before peak.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify list hygiene and consent</h2>
+      <p>Marketing consent timestamp from Shopify checkout and popup must store on customer record — re-permission campaigns for legacy lists without consent proof risk compliance and deliverability.</p>
+      <p>Customer count in Shopify admin versus ESP profile count divergence signals sync issues or duplicate profiles — reconcile monthly.</p>
+      <p>Transactional order emails through Shopify or ESP should share authenticated domain with marketing for reputation continuity — split subdomains if volume extreme.</p>
+      <p>Unsubscribe must sync to Shopify customer accepts_marketing false when integration supports — prevent accidental campaign include from admin manual email.</p>
+      <p>Bounce handling: hard bounces suppress in ESP and tag shopify customer email_invalid when workflow available — protect future imports.</p>
+      <p>Peak season send volume estimate from prior year Shopify order curve — warm infrastructure to peak plus 20 percent buffer not peak plus 200 percent surprise.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8"><a class="link" href="/guides/deliverability">Deliverability guide →</a></section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Shopify email marketing apps for deliverability</h2>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Deliverability is platform-agnostic discipline — Sequenzy pay-per-send economics help; Klaviyo engagement dashboards help; Sendlane helps migration. Shopify consent sync and sunset execution matter more than ESP brand at recovery stage.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Guides: <a class="link" href="/guides/deliverability">deliverability guide</a>, <a class="link" href="/guides/consent-compliance">consent compliance</a>. Compare: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>.</p>
+    <div class="ledger-card mt-8">
+      <h3 class="font-black text-stone-950">Deliverability QA checklist</h3>
+      <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+        <li>→ SPF DKIM DMARC green on Google Postmaster</li>
+        <li>→ One-click unsubscribe header on marketing sends</li>
+        <li>→ Sunset flow active for 90–180 day inactives</li>
+        <li>→ Dedicated marketing subdomain configured</li>
+        <li>→ Complaint rate under 0.1% last 30 days</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify card">
+      <h2>Four-week implementation path</h2>
+      <p><strong>Week one:</strong> Audit SPF DKIM DMARC; export engagement decay curve; count profiles with no open 90 and 180 days; baseline complaint and bounce rates.</p>
+      <p><strong>Week two:</strong> Configure dedicated marketing subdomain if needed; enable one-click unsubscribe; build sunset and re-engagement flows in chosen Shopify email marketing app.</p>
+      <p><strong>Week three:</strong> Run seedlist test across Gmail Yahoo Apple; sync Shopify marketing consent flags; remove purchased list remnants if any exist.</p>
+      <p><strong>Week four:</strong> Document weekly monitoring ritual; set complaint rate alert threshold; plan warm-up if migrating ESP or domain.</p>
+    </div>
+  </section>
+
+  <section class="container py-8">
+    <p class="text-center text-stone-700 max-w-2xl mx-auto">Part of the <a class="link" href="/use-cases">Shopify email marketing apps use-case library</a> — eighteen workflows keyed to orders, customers, products, discounts, and consent.</p>
+    <div class="mt-6 flex flex-wrap gap-4 text-sm font-bold justify-center">
+      <a class="link" href="/apps/sequenzy">Sequenzy review</a>
+      <a class="link" href="/guides/deliverability">Deliverability guide</a>
+      <a class="link" href="/guides/consent-compliance">Consent compliance</a>
+    </div>
+    <p class="mt-4 text-center text-sm text-stone-700">Sequenzy ranks first on most Shopify email marketing use cases; evaluate Sendlane for guided deliverability migration.</p>
+    <p class="mt-2 text-center text-xs text-stone-700/80">Shopify email marketing apps editorial — 2026.</p>
+  </section>
+
+<!-- expansion-batch-jul2026 -->
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Field notes</p>
+      <h2 class="font-serif text-4xl font-black text-stone-950 mt-3">Three merchant scenarios for deliverability</h2>
+      <p><strong>Scenario A — Streetwear drop brand, limited size runs.</strong> Omnisend cart at forty-five minutes with size-specific blocks. Inventory check suppressed email when size sold out — routed to back-in-stock waitlist instead. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario B — Candle shop, $12k/mo.</strong> Shopify Email sent polished sale campaign in forty minutes from Admin — graduated to Sequenzy when cart needed multi-touch suppression. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <p><strong>Scenario C — Wholesale Shopify hybrid, B2B accounts.</strong> Consumer cart recovery suppressed for tagged wholesale profiles. Separate rep-follow-up workflow prevented consumer discount leakage. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Retention editorial</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Why magazine-style depth matters for app selection</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Choosing a Shopify email marketing app from feature grids alone produces misfit stacks. Editorial retention work — welcome that respects source, cart that checks inventory, winback that proves value before discount — requires reading scenarios, not star ratings.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy ranks first in this editorial lens because lifecycle outcomes precede send volume. Klaviyo wins when predictive depth and agency talent pool bind. Omnisend wins when speed to multichannel live beats customization.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit app choice after two peak seasons. Black Friday exposes collision bugs and discount treadmills that calm months hide.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Execution checklist</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Ship deliverability without collision bugs</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Inbox placement while lifecycle send volume grows fails when teams paste templates without suppression against welcome and winback.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+    </div>
+  </section>
+  <FaqSection faqs={faqs} title="Deliverability FAQ" />
+</BaseLayout>

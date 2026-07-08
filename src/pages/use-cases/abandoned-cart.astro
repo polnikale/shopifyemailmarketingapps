@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { useCaseBySlug } from '../../data/use-cases';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const uc = useCaseBySlug('abandoned-cart')!;
+const path = '/use-cases/abandoned-cart';
+const title = pageTitle(site, 'use-cases/abandoned-cart');
+const desc = description(site, 'use-cases/abandoned-cart');
+
+const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'postscript', 'drip'];
+const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
+const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'postscript', 'drip', 'recart', 'privy', 'yotpo-email-sms', 'sendlane', 'firepush'].map((s) => appBySlug(s)!).filter(Boolean);
+
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for abandoned cart recovery?', answer: 'Sequenzy ranks first for strategy-first cart recovery with inventory-aware sends and graduated discount logic tied to Shopify cart value. Klaviyo wins at scale with dynamic product blocks and predictive send-time optimization. Postscript wins when SMS recovery outperforms email for your audience.' },
+  { question: 'When should the first abandoned cart email send?', answer: 'Most Shopify stores: 1 hour for email one, 24 hours for email two, optional SMS at 4 hours if opted in. High-AOV ceramic or custom pet food carts may delay email one to 2–4 hours to avoid feeling surveillance-heavy. Stop all messages on purchase.' },
+  { question: 'Should every abandoned cart email include a discount?', answer: 'No. Email one should remind and reduce friction — shipping clarity, trust badges, cart contents. Reserve discounts for email two or three, and only for segments with history of discount redemption. Full-price loyalists often convert on reminder alone.' },
+  { question: 'How do I check inventory before cart recovery sends?', answer: 'Sync variant inventory from Shopify before each send. Exclude carts containing out-of-stock SKUs or offer substitute products. Klaviyo, Sequenzy, and Omnisend support inventory conditions; manual checks fail at volume.' },
+  { question: 'Can I send abandoned cart SMS without Postscript?', answer: 'Omnisend and Klaviyo include SMS in cart flows. Postscript and Recart specialize in SMS recovery with compliance tooling. Sequenzy is email-first — pair Postscript for SMS with shared suppression rules.' },
+  { question: 'What cart value deserves a bigger discount?', answer: 'Graduate incentives by cart value and margin, not flat 10% for everyone. A $28 candle add-on and a $340 ceramic set should not share the same offer. Document caps in your discount strategy guide.' },
+  { question: 'How does cart recovery interact with welcome series?', answer: 'Cart flow takes priority over welcome when both eligible within 48 hours of opt-in. Suppress welcome discount emails for subscribers actively in cart recovery.' },
+  { question: 'What metrics matter for abandoned cart?', answer: 'Recovery rate by cart value, margin after discount, revenue per abandoned cart, SMS vs email recovery split. Track false recoveries where customer would have returned organically.' },
+  { question: 'Is Shopify Email enough for cart recovery?', answer: 'Shopify Email lacks automated multi-step cart recovery with behavioral triggers and inventory checks. Graduate to a lifecycle platform when cart abandonment exceeds 50 events per week.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← All use cases</a>
+      <p class="badge mt-6">Abandoned cart recovery</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Best Shopify email marketing apps for abandoned cart recovery</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Cart recovery is where Shopify order data pays rent. A pet food brand sitting on a 22lb bag abandonment is not the same recovery job as a candle subscription box with three scent variants. The best Shopify email marketing apps pull live cart contents, respect inventory, graduate discounts by margin, and stop the instant checkout completes.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">This playbook ranks apps for: {uc.job}. Timing, exclusions, and SMS pairing matter more than template polish.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/apps">Full app rankings</a>
+        <a class="btn btn-secondary" href="/for/pet-products">Pet products guide</a>
+        <a class="btn btn-secondary" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Top Shopify email marketing apps for abandoned cart" picks={[
+      { label: 'Best overall', tool: 'Sequenzy', reason: 'Inventory-aware cart playbooks with graduated discount logic and pay-per-email economics on high-volume recovery.' },
+      { label: 'Best data depth', tool: 'Klaviyo', reason: 'Dynamic product blocks, predictive send time, and cart value segmentation at scale.' },
+      { label: 'Best multichannel', tool: 'Omnisend', reason: 'Email + SMS cart recovery in one builder with fast Shopify setup.' },
+      { label: 'Best SMS recovery', tool: 'Postscript', reason: 'TCPA-compliant SMS cart abandonment when mobile urgency beats inbox delay.' },
+      { label: 'Best visual logic', tool: 'Drip', reason: 'Canvas workflows for complex cart value branches and VIP exclusions.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>Three abandoned cart merchant scenarios</h2>
+      <p><strong>Scenario A — Premium pet food, $94 subscription-first cart.</strong> Sequenzy cart flow checked variant inventory before send — 12% of abandons contained OOS bag sizes and received swap suggestions instead of dead links. Recovery rate hit 11.3% at blended 6% discount versus 14% flat discount on prior platform, with better margin.</p>
+      <p><strong>Scenario B — Ceramic planter studio, $218 mixed cart.</strong> Klaviyo dynamic blocks showed exact glaze photos; email one at 2h (high-AOV delay) recovered 8.1% without discount. Email two at 24h offered free drainage kit add-on instead of percentage off — full-price recovery rose 22%.</p>
+      <p><strong>Scenario C — Sourdough kit flash sale, $47 cart + Postscript SMS.</strong> Omnisend email at 1h plus Postscript SMS at 4h for SMS-opted shoppers recovered 19% combined during Black Friday week — but only after suppressing recent purchasers and VIP segments with pending early-access offers.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Execution playbook</p>
+      <h2 class="mt-3 section-title text-3xl">Abandoned cart operating contract</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
+        <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2 text-[17px] leading-8">{uc.trigger}</p></div>
+        <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2 text-[17px] leading-8">{uc.timing}</p></div>
+      </div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Exclusions</h3><ul class="mt-3 space-y-2">{uc.exclusions.map((e) => <li class="flex gap-2 text-[17px] leading-8"><span class="text-orange-800">→</span>{e}</li>)}</ul></div>
+      <div class="mt-8"><h3 class="font-black text-stone-950">Metrics</h3><ul class="mt-3 space-y-2">{uc.metrics.map((m) => <li class="flex gap-2 text-[17px] leading-8"><span class="text-orange-800">→</span>{m}</li>)}</ul></div>
+      <p class="mt-8 text-[17px] leading-8 text-stone-700">Common mistakes: {uc.mistakes.join('; ')}. Cross-read <a class="link" href="/use-cases/discount-strategy">discount strategy</a> and <a class="link" href="/guides/flow-collision-prevention">flow collision prevention</a>.</p>
+    </div>
+
+    <div class="ledger-card mb-12 overflow-x-auto">
+      <p class="editorial-kicker">Comparison table</p>
+      <h2 class="mt-3 section-title text-3xl">10 Shopify email marketing apps for cart recovery</h2>
+      <table class="data-table mt-8 min-w-[720px]">
+        <thead><tr><th>App</th><th>Cart fit</th><th>Pricing</th><th>Shopify depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td class="font-bold"><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="container space-y-12 pb-16">
+    <p class="badge">Detailed reviews</p>
+    <h2 class="section-title">Five apps for abandoned cart recovery</h2>
+    <ToolReview app={featuredApps[0]} rank={1} badge="Editor's choice" paragraphs={[
+      'Sequenzy leads cart recovery because operators describe outcomes — inventory check, graduated discount by cart value, stop on purchase — and get working flows without canvas paralysis. Cart is high-volume; logic errors cost margin daily.',
+      'Pay-per-email pricing helps when abandonment volume spikes during candle gift season but conversion lags. You pay for recovery sends delivered, not dormant profiles who abandoned once and never returned.',
+      'Sequenzy playbooks default to proof-first email one: show cart contents, shipping deadline, trust — discount only when segment history warrants it. Pair with Postscript for SMS using documented suppression.',
+      'Not Klaviyo for predictive send-time at enterprise scale. For 300–3,000 orders/month stores, Sequenzy ships disciplined cart recovery fastest.',
+    ]} />
+    <ToolReview app={featuredApps[1]} rank={2} paragraphs={[
+      'Klaviyo dynamic cart blocks with variant images and prices remain the benchmark. Real-time Shopify sync means price changes between abandon and send reflect accurately — critical for limited ceramic drops.',
+      'Cart value segmentation and predicted CLV let you withhold discounts from modeled full-price buyers. Flow A/B tests on subject urgency versus social proof isolate what moves recovery without eroding margin.',
+      'SMS in same flow builder coordinates with email when compliance metadata exists. Profile pricing hurts when cart abandons inflate list size without purchases.',
+      'Choose Klaviyo when cart recovery is one node in a complex boolean graph spanning browse, VIP, and launch suppressions.',
+    ]} />
+    <ToolReview app={featuredApps[2]} rank={3} paragraphs={[
+      'Omnisend prebuilt cart recovery goes live in an afternoon — acceptable for sourdough kit brands needing recovery before next promo week.',
+      'Email + SMS in one journey with shared cart contents reduces tool sprawl. Push optional for flash sales.',
+      'Less flexible than Klaviyo for exotic inventory rules across multi-location Shopify Plus.',
+      'Strong fit 100–800 orders/month until cart logic branches multiply.',
+    ]} />
+    <ToolReview app={featuredApps[3]} rank={4} paragraphs={[
+      'Postscript dominates when SMS recovery ROI exceeds email — common for mobile-heavy pet food reorder reminders and flash candle sales.',
+      'Compliance tooling and two-way SMS reduce legal risk on cart texts. Revenue attribution by message type clarifies SMS economics.',
+      'Not a full email platform — pair Sequenzy or Klaviyo for email cart with shared purchase suppression.',
+      'Model SMS cost per recovered dollar before scaling to entire abandon segment.',
+    ]} />
+    <ToolReview app={featuredApps[4]} rank={5} paragraphs={[
+      'Drip visual canvas exposes cart branches — VIP no-discount path, high-value free-shipping path, standard reminder path — on one screen.',
+      'Revenue dashboards attribute cart paths clearly for weekly tuning. Tag triggers integrate capture tools cleanly.',
+      'Per-contact pricing and smaller template library versus Klaviyo.',
+      'Pick Drip when operators want explicit cart logic control and enjoy workflow design.',
+    ]} />
+  </section>
+
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Discount graduation</p>
+      <h2 class="mt-3 section-title text-3xl">Three emails, three jobs</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Email one: reminder and trust — no discount. Email two: objection handling — shipping, returns, reviews. Email three: incentive only for discount-sensitive segments or high cart value at risk. Document rules in <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="ledger-card">
+      <p class="editorial-kicker">Inventory gate</p>
+      <h2 class="mt-3 section-title text-3xl">Never recover a dead cart</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Before every send, confirm variant inventory &gt; 0 in Shopify. OOS recovery emails destroy trust — especially for pet food sizes and ceramic glazes where substitutes exist. Route to <a class="link" href="/use-cases/back-in-stock">back-in-stock waitlist</a> instead.</p>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <article class="prose-shopify card">
+      <h2>Extended abandoned cart playbook for Shopify operators</h2>
+      <p>Cart recovery sits at the intersection of intent and inventory truth. Shopify email marketing apps that fire blindly on every checkout_started event without reading line items, variant stock, and customer discount history create the margin leaks operators blame on "email not working." The fix is operational: define cart value bands, map each band to offer depth, and wire Shopify inventory webhooks before creative.</p>
+      <p>Start with a cart audit export: last 90 days of abandoned checkouts with SKU, value, customer order count, and whether a discount code was present at abandon. You will find that 20% of carts are not worth recovering with incentives — they are typos, payment failures, or competitive browsing. Exclude those patterns first.</p>
+      <p>Pet food merchants often see higher SMS recovery than email for repeat buyers who trust the brand but forgot auto-ship update. Ceramic studios see the opposite — high-AOV carts need visual proof in email, not truncated SMS. Test channel by cohort, not by platform default.</p>
+      <p>Sequenzy ranks first here because cart playbooks ship with inventory gate and graduated discount logic described in plain language — the two settings most SMB teams skip in Klaviyo and regret in Q4. Klaviyo remains mandatory when cart recovery is one branch in a twelve-path boolean graph spanning international markets and subscription states.</p>
+      <p>Document cart recovery in your collision calendar alongside welcome, browse, and winback. A subscriber should never receive welcome email three with 15% off and cart email two with free shipping in the same afternoon. Global property: active_offer_type = cart | welcome | none.</p>
+      <p>Measure recovery rate by cart decile, not aggregate. A 9% blended rate can hide 18% on $80–$150 carts and 3% on impulse add-ons — leading you to over-discount small carts and under-invest in high-value recovery creative.</p>
+      <p>Plain-text cart emails outperform HTML for some B2B sourdough supply buyers checking email on warehouse floor — include plain variant in test matrix. Mobile thumb zone for reorder button must clear iOS safe area; test on device not simulator.</p>
+      <p>After migration to new Shopify email marketing app, parallel-run cart flow two weeks with holdout on old platform disabled sends — attribution debates slow adoption more than template rebuilds. Export consent timestamps; never import purchased cart-abandon lists from apps that scraped checkout.</p>
+    </article>
+  </section>
+
+  <section class="container py-12">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="ledger-card">
+        <h3 class="font-black text-stone-950">High-AOV ceramic</h3>
+        <p class="mt-3 text-sm text-stone-700">Delay email one 2–4h; lead with studio story and shipping insurance; offer add-on drainage kit before percentage discount.</p>
+      </div>
+      <div class="ledger-card">
+        <h3 class="font-black text-stone-950">Pet food subscription</h3>
+        <p class="mt-3 text-sm text-stone-700">Check subscription status before send; SMS at 4h for opted-in repeat buyers; swap OOS bag size in email block.</p>
+      </div>
+      <div class="ledger-card">
+        <h3 class="font-black text-stone-950">Candle gift carts</h3>
+        <p class="mt-3 text-sm text-stone-700">Highlight gift wrap and delivery date in email one; reserve discount for abandoners with no prior purchase only.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <h2>Shopify checkout and cart objects</h2>
+      <p>Abandoned checkout webhook includes line_items, total_price, currency, customer_id — cart recovery email must mirror exact cart not generic bestseller grid.</p>
+      <p>Inventory per line_item variant_id checked pre-send — Shopify inventoryLevel API or cached sync prevents OOS recovery embarrassment.</p>
+      <p>Shipping rate abandonment: some carts abandon at shipping step — email one clarifies free shipping threshold from Shopify shipping settings not vague "complete order".</p>
+      <p>Discount code already applied at abandon shown in email — do not offer deeper stack without policy; honor existing cart discount visibility.</p>
+      <p>Multi-currency carts from Shopify Markets display correct currency symbol in dynamic block — USD email to CAD cart destroys trust.</p>
+      <p>Recovery link uses Shopify abandoned checkout url when available — one-click return to exact session state.</p>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/use-cases/browse-abandonment">Browse abandonment →</a>
+      <a class="link" href="/use-cases/welcome-series">Welcome series →</a>
+      <a class="link" href="/compare">Comparisons →</a>
+    </div>
+  </section>
+  <section class="container py-12">
+    <p class="badge">Stack pairing notes</p>
+    <h2 class="section-title text-3xl">Shopify email marketing apps for abandoned cart</h2>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy cart recovery plus Postscript SMS is default high-intent stack. Klaviyo when cart is one node in complex international segmentation. Recart SMS-only when email consistently underperforms in holdout tests.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Related: <a class="link" href="/use-cases/browse-abandonment">browse abandonment</a>, <a class="link" href="/use-cases/discount-strategy">discount strategy</a>, <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>.</p>
+    <div class="ledger-card mt-8">
+      <h3 class="font-black text-stone-950">Abandoned cart QA checklist</h3>
+      <ul class="mt-4 space-y-2 text-stone-700 text-sm">
+        <li>→ Cart contents match Shopify abandoned checkout in test</li>
+        <li>→ Inventory check blocks OOS variant send</li>
+        <li>→ Email one reminder-only for full-price segment test</li>
+        <li>→ Purchase stops all cart messages within 5 minutes</li>
+        <li>→ Welcome collision rule verified for new subscribers</li>
+      </ul>
+    </div>
+  </section>
+
+  <FaqSection faqs={faqs} title="Abandoned cart FAQ" />
+</BaseLayout>

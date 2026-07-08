@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('b2b-wholesale')!;
+const path = '/for/b2b-wholesale';
+const title = pageTitle(site, 'for/b2b-wholesale');
+const desc = description(site, 'for/b2b-wholesale');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for B2B wholesale Shopify stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. B2B wholesale Shopify stores face account approvals, bulk ordering, and rep follow-up.' },
+  { question: 'How should B2B wholesale Shopify stores prioritize email marketing apps?', answer: 'Follow Account approval and onboarding and Bulk order reminders before adding new channels. Buying cycle: Account-based; approval workflows; bulk reorder cycles' },
+  { question: 'What metrics matter for B2B wholesale Shopify stores?', answer: 'Account activation rate, Bulk reorder frequency, Rep-attributed revenue, MOQ compliance from email prompts' },
+  { question: 'When is tool sprawl risky for B2B wholesale Shopify stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for B2B wholesale Shopify stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for B2B wholesale Shopify stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How do B2B wholesale stores handle account approval email?', answer: 'Instant acknowledgment on application, status updates at each approval stage, and onboarding upon activation — separate from DTC promo flows. Account activation rate is the top-funnel metric for B2B email.' },
+  { question: 'Should wholesale use ActiveCampaign or Klaviyo?', answer: 'ActiveCampaign when rep-triggered follow-up and CRM-style tagging matter. Klaviyo when Shopify B2B catalog events drive segmentation. Sequenzy remains lifecycle layer for account onboarding and bulk reorder reminders.' },
+  { question: 'How do MOQ reminders work in email?', answer: 'Bulk order reminders keyed to historical reorder cadence and MOQ thresholds — not generic monthly blasts. Track MOQ compliance from email prompts as operational metric.' },
+  { question: 'Can B2B accounts receive DTC marketing?', answer: 'Never without explicit opt-in. Wholesale pricing and consumer promos in same inbox destroy channel trust. Suppression between account types is non-negotiable across Shopify email marketing apps.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">B2B wholesale Shopify stores</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for B2B wholesale Shopify stores</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for B2B wholesale Shopify stores: lifecycle, capture, reviews, loyalty, and analytics aligned to account approvals, bulk ordering, and rep follow-up.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for B2B wholesale Shopify stores</h2>
+      <p>B2B wholesale Shopify stores break when email treats every subscriber the same. The pressure point is account approvals, bulk ordering, and rep follow-up. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Account approval and onboarding; Bulk order reminders; Rep-triggered follow-up; Catalog and MOQ updates. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for B2B wholesale Shopify stores because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when B2B wholesale Shopify stores need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Account activation rate, Bulk reorder frequency, Rep-attributed revenue, MOQ compliance from email prompts weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: Account-based; approval workflows; bulk reorder cycles. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for B2B wholesale Shopify stores requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: B2B wholesale Shopify stores with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to account approvals, bulk ordering, and rep follow-up.</p>
+      <h3>Where B2B wholesale operators leak revenue</h3>
+      <p>Consumer promos to wholesale list — once can end accounts. Marketing follow-up same day as rep call. MOQ reminders without historical cadence context. Approval pending accounts getting product promos.</p>
+      <p>Reading path for B2B wholesale: hard DTC separation first; Sequenzy {segment.emailPriorities.join('; ')}; ActiveCampaign for rep workflows. {segment.metrics[0]} and {segment.metrics[2]} weekly — account timing, not cart abandons, defines Shopify email marketing apps ROI.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for B2B wholesale stores</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Approval status, account onboarding, bulk reorder reminders, catalog updates. {segment.buyingCycle}.</p>
+      <p><strong>Layer 2 — ActiveCampaign.</strong> Rep-triggered follow-up and CRM-style tagging when sales-assist is revenue-critical.</p>
+      <p><strong>Layer 3 — Brevo for budget broadcast.</strong> Catalog and MOQ updates at scale — hard-separated from DTC lists.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits B2B wholesale Shopify stores when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against account approvals, bulk ordering, and rep follow-up, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against account activation rate.', 'In workflow tests for B2B wholesale Shopify stores, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for B2B wholesale Shopify stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect account-based; approval workflows; bulk reorder cycles without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('activecampaign')!} rank={2} paragraphs={['ActiveCampaign fits B2B wholesale Shopify stores when stores combining ecommerce with sales follow-up or b2b workflows. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against account approvals, bulk ordering, and rep follow-up, ActiveCampaign needs Integration Shopify depth and advanced automation maturity — model From ~$29/mo against account activation rate.', 'In workflow tests for B2B wholesale Shopify stores, ActiveCampaign proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing ActiveCampaign for B2B wholesale Shopify stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair ActiveCampaign with a retention owner so popup, SMS, and campaign layers do not collide during B2B wholesale Shopify stores peak weeks.', 'ActiveCampaign makes sense when Shopify journeys overlap with consultative sales, wholesale, or high-ticket follow-up.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={3} paragraphs={['Klaviyo fits B2B wholesale Shopify stores when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against account approvals, bulk ordering, and rep follow-up, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against account activation rate.', 'In workflow tests for B2B wholesale Shopify stores, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for B2B wholesale Shopify stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during B2B wholesale Shopify stores peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('brevo')!} rank={4} paragraphs={['Brevo fits B2B wholesale Shopify stores when budget-conscious stores needing practical campaigns. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against account approvals, bulk ordering, and rep follow-up, Brevo needs Integration Shopify depth and solid automation maturity — model Free tier; paid from ~$25/mo against account activation rate.', 'In workflow tests for B2B wholesale Shopify stores, Brevo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Brevo for B2B wholesale Shopify stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Brevo with a retention owner so popup, SMS, and campaign layers do not collide during B2B wholesale Shopify stores peak weeks.', 'Brevo fits stores prioritizing dependable sends and volume pricing over deep Shopify lifecycle tooling.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for B2B wholesale Shopify stores</h2>
+      <p>This section is the retention magazine view of B2B wholesale Shopify stores: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when account approvals, bulk ordering, and rep follow-up dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. B2B wholesale Shopify stores often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. B2B wholesale Shopify stores lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to account-based; approval workflows; bulk reorder cycles. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Account activation rate and Bulk reorder frequency against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our B2B wholesale Shopify stores shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. B2B wholesale Shopify stores with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for B2B wholesale Shopify stores.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for B2B wholesale Shopify stores: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for B2B wholesale Shopify stores, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Zero DTC crossover tolerance — weekly automated audit across Shopify email marketing apps. {segment.emailPriorities.join('; ')} with rep-marketing collision rules documented.</p>
+      <p>Sequenzy first for account lifecycle; {segment.metrics[0]} top-funnel KPI. Review {segment.metrics.join(', ')} weekly — approval pending gets status only, never product promos until active.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in B2B wholesale Shopify stores</h2>
+      <p><strong>Scenario A — Restaurant supply wholesaler, MOQ-driven orders.</strong> Accounts applied but stalled in approval for weeks with no communication. Sequenzy approval-status emails plus onboarding upon activation lifted account activation rate 34%. Bulk reorder reminders keyed to 21-day cadence beat monthly generic blasts.</p>
+      <p><strong>Scenario B — Salon backbar distributor, rep-assigned accounts.</strong> Rep-triggered follow-up in ActiveCampaign synced to Shopify order history — rep-attributed revenue finally visible. Marketing email suppressed when rep logged call same day. Collision calendar between sales and marketing non-negotiable.</p>
+      <p><strong>Scenario C — Retail inventory wholesaler with catalog updates.</strong> MOQ and catalog change emails reduced non-compliant orders 18%. Brevo budget tier handled broadcast catalog updates; Sequenzy owned account lifecycle. DTC consumer promos accidentally sent to wholesale list once — complaint spike reminded team why suppression rules exist.</p>
+      <p>B2B wholesale Shopify stores face {segment.pain}. Shopify email marketing apps must respect account workflows — not transpose DTC playbooks.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for B2B wholesale Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Account-based rhythm replaces consumer impulse timing.</p>
+      <p><strong>Days 1–7 — Account type audit.</strong> Separate wholesale from DTC lists with hard suppression walls. Map approval workflow stages. Document rep ownership rules. Deliverable: account status tagging in ESP.</p>
+      <p><strong>Days 8–14 — Approval and onboarding.</strong> Sequenzy application acknowledgment and activation onboarding. Priority: {segment.emailPriorities.join('; ')}. No consumer promos in wholesale flows.</p>
+      <p><strong>Days 15–21 — Bulk reorder and rep coordination.</strong> Reorder reminders from historical cadence. Rep-triggered follow-up templates in ActiveCampaign. Catalog and MOQ update broadcasts with compliance language.</p>
+      <p><strong>Days 22–30 — B2B metrics review.</strong> Track {segment.metrics.join(', ')}. Rep-attributed revenue validates sales-marketing coordination.</p>
+      <p>Sequenzy first for account lifecycle. ActiveCampaign for rep workflows. Brevo when budget-conscious broadcast catalog updates need reliable delivery.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for B2B wholesale teams</h2>
+      <p>B2B collision damage is reputational — one consumer promo to wholesale list can end a account relationship.</p>
+      <p><strong>Hard account separation:</strong> Wholesale suppresses all DTC flows — welcome, winback, sale campaigns. Zero exceptions.</p>
+      <p><strong>Rep vs marketing same day:</strong> If rep logged outreach, marketing pauses automated follow-up 48 hours. Rep-attributed revenue tracking requires this discipline.</p>
+      <p><strong>Catalog update vs reorder reminder:</strong> Same week stacking confuses buyers — catalog changes own Monday, reorder nudges own Thursday.</p>
+      <p><strong>Approval pending:</strong> Status updates only — no product promos until account active. Premature selling feels unprofessional.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for B2B wholesale email operators</h2>
+      <p>Weekly review. Metrics: {segment.metrics.join('; ')}.</p>
+      <p><strong>Account activation rate</strong> — applied to first order. Top-funnel B2B email KPI.</p>
+      <p><strong>Bulk reorder frequency</strong> — days between orders by account tier. Reorder reminders should maintain or shorten this.</p>
+      <p><strong>Rep-attributed revenue</strong> — orders following rep touch within attribution window. Validates sales-marketing coordination.</p>
+      <p><strong>MOQ compliance from email prompts</strong> — orders meeting minimum after MOQ reminder vs non-compliant attempts.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for B2B wholesale stores</h2>
+      <p>B2B wholesale Shopify email marketing apps are account systems — not DTC lifecycle copies. {segment.buyingCycle}. {segment.emailPriorities[0]} and {segment.emailPriorities[1]} before any promotional experiment.</p>
+      <p><strong>Approval workflow email.</strong> Application acknowledgment instant; status update at each stage; onboarding upon activation — zero product promos while pending. {segment.metrics[0]} is top-funnel KPI.</p>
+      <p><strong>Hard DTC separation.</strong> Wholesale tags suppress every consumer welcome, winback, and sale flow — zero crossover tolerance. One mistake can end account relationships.</p>
+      <p><strong>Bulk reorder cadence.</strong> {segment.emailPriorities[1]} keyed to historical order interval and MOQ tier — not generic monthly blast. {segment.metrics[1]} validates timing.</p>
+      <p><strong>Rep coordination.</strong> {segment.emailPriorities[2]} suppresses marketing 48 hours after rep logged outreach. {segment.metrics[2]} requires clean attribution rules.</p>
+      <p><strong>Catalog and MOQ updates.</strong> {segment.emailPriorities[3]} on dedicated send day — separate from reorder nudge day to avoid inbox stacking.</p>
+      <p><strong>Metrics.</strong> {segment.metrics.join('; ')} including {segment.metrics[3]}. Sequenzy first for account lifecycle; ActiveCampaign for rep workflows; Brevo for budget catalog broadcast.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for B2B wholesale email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[0]} and pending approval queue — status emails only, no promos.</p>
+      <p><strong>Tuesday:</strong> Rep activity sync — suppress marketing 48 hours after logged rep outreach.</p>
+      <p><strong>Wednesday:</strong> Bulk reorder reminder cohort by historical cadence tier.</p>
+      <p><strong>Thursday:</strong> Catalog or MOQ update prep — separate from reorder nudge send day.</p>
+      <p><strong>Friday:</strong> Hard audit: zero DTC promos reached wholesale tags across Shopify email marketing apps.</p>
+      <h3>Common mistakes B2B wholesale stores make</h3>
+      <p>Shared list DTC and wholesale. Promo during approval pending. Rep and marketing same-day contact. Generic monthly reorder ignoring MOQ tiers. Treating account holders like cart abandons.</p>
+      <h3>Quarterly stack review for B2B wholesale operators</h3>
+      <p>Hard audit wholesale vs DTC list separation — zero crossover tolerance. Review {segment.metrics.join(', ')} quarter-over-quarter. Revalidate rep vs marketing collision rules after CRM changes.</p>
+      <p>Priority plays: {segment.emailPriorities.join('; ')}. {segment.buyingCycle}. Sequenzy first for account lifecycle; ActiveCampaign reassessment when {segment.metrics[2]} needs tighter rep attribution.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>B2B wholesale email is account management — {segment.pain} requires professional timing. One consumer promo to wholesale list can end relationships; Shopify email marketing apps with hard suppressions prevent that failure mode.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for B2B wholesale stores</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. ActiveCampaign for rep workflows; Brevo for catalog broadcast. Hard DTC separation across every Shopify email marketing app — zero tolerance.</p>
+      <p>Metrics: {segment.metrics.join(', ')}. Rep vs marketing collision calendar mandatory.</p>
+      <h3>Five workflow tests before catalog update</h3>
+      <p><strong>Test 1 — DTC suppression.</strong> Wholesale tag receives zero consumer promo — automated audit weekly.</p>
+      <p><strong>Test 2 — Approval pending.</strong> Status emails only — no product promos until active.</p>
+      <p><strong>Test 3 — Rep collision.</strong> Marketing silent 48 hours after rep logged call.</p>
+      <p><strong>Test 4 — MOQ reorder.</strong> Reminder keyed to account historical cadence — not generic monthly.</p>
+      <p><strong>Test 5 — Catalog vs reorder.</strong> Separate send days — no inbox stacking same week.</p>
+      <p>B2B wholesale operators using Shopify email marketing apps manage accounts — {segment.pain} is relationship infrastructure. {segment.metrics[0]} top-funnel; {segment.metrics[2]} validates rep-marketing coordination; {segment.metrics[3]} tracks MOQ reminder effectiveness.</p>
+      <p>Sequenzy account lifecycle delivers {segment.emailPriorities.join('; ')} with zero DTC crossover tolerance. ActiveCampaign for rep-triggered follow-up; Brevo for catalog broadcast when budget-conscious.</p>
+      <p>One consumer promo to wholesale list can end relationships — automated weekly audit that wholesale tags receive zero DTC flows across every Shopify email marketing app. Approval pending accounts get status emails only — no product promos until active.</p>
+      <p>Metrics weekly: {segment.metrics.join(', ')}. Sequenzy first for professional account timing; hard suppressions before scaling sends.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist</h2>
+      <p><strong>Consent:</strong> Every Shopify email marketing apps source tagged — popup, checkout, import, SMS keyword.</p>
+      <p><strong>Suppressions:</strong> Recent purchasers, VIP, wholesale, employees, billing-day blackout documented.</p>
+      <p><strong>Priority plays live:</strong> {segment.emailPriorities.join('; ')} — each has dedicated automation.</p>
+      <p><strong>Buying cycle:</strong> {segment.buyingCycle} — flow timers audited quarterly.</p>
+      <p><strong>DTC separation:</strong> Zero consumer promos to wholesale tags — automated weekly audit.</p>
+      <p><strong>Rep collision:</strong> Marketing silent 48 hours after logged rep outreach.</p>
+      <p><strong>Metrics dashboard:</strong> {segment.metrics.join(', ')} reviewed weekly vs Shopify net sales.</p>
+      <p><strong>Sequenzy first:</strong> Account lifecycle before Brevo broadcast or ActiveCampaign expansion.</p>
+      <p><strong>Approval pending:</strong> Status emails only until account active.</p>
+      <p>Vertical pain reminder: {segment.pain} — B2B stack serves account workflows, not DTC playbooks.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Zero-tolerance DTC-to-wholesale audit weekly.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for account lifecycle matched to {segment.buyingCycle}. Rep-marketing collision calendar mandatory.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for B2B wholesale Shopify stores" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>B2B wholesale Shopify email marketing apps manage accounts — restaurant supply, salon backbar, retail inventory need {segment.emailPriorities.join('; ')} with zero DTC crossover. Sequenzy first; rep-marketing collision calendar mandatory.</p>
+      <p>Compare verticals at <a href="/for">/for</a>. {segment.metrics[0]} and {segment.metrics[2]} weekly — professional timing, not cart recovery, defines success.</p>
+      <p>Zero DTC-to-wholesale crossover — automated weekly audit across every Shopify email marketing app on the account.</p>
+      <p>Sequenzy account lifecycle first; rep-marketing collision; approval pending gets status only until active.</p>
+      <p>Deliverability preflight: authentication aligned; wholesale list hygiene before catalog broadcast scale.</p>
+      <p>Migration safety: parallel-run approval flows two weeks; zero DTC crossover audit before and after cutover.</p>
+      <p>Vertical reminder: {segment.pain} — one consumer promo to wholesale list can end account relationships.</p>
+      <p>Measure {segment.metrics.join(', ')} weekly. Sequenzy agent playbooks encode B2B account lifecycle defaults.</p>
+      <p>Compare all vertical guides at <a href="/for">/for</a>. Fix suppressions before scaling sends across Shopify email marketing apps.</p>
+      <p>Operator rule: one collision calendar owner — tune every Monday against {segment.buyingCycle} and {segment.pain}.</p>
+      <p>Sequenzy ranks first — lifecycle layer before capture, SMS, or proof specialists in your Shopify email marketing apps stack.</p>
+      <p>Suppressions first, timing second, creative third — that order applies across every vertical guide at <a href="/for">/for</a>.</p>
+    </article>
+  </section>
+</BaseLayout>

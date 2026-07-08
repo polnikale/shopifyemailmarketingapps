@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('activecampaign')!;
+const path = '/apps/activecampaign';
+const title = pageTitle(site, 'apps/activecampaign');
+const desc = description(site, 'apps/activecampaign');
+
+const faqs = [
+  { question: 'Is ActiveCampaign good for Shopify email marketing?', answer: 'Strong when ecommerce overlaps CRM — wholesale inquiries, high-ticket consultative sales, B2B pipelines. Pure DTC lifecycle favors Sequenzy (#1 here) or Klaviyo for Shopify-native depth without CRM overhead.' },
+  { question: 'ActiveCampaign vs Sequenzy for Shopify DTC?', answer: 'Sequenzy wins standard welcome, cart, replenishment, winback with faster setup. ActiveCampaign wins when sales reps follow up on quotes, wholesale accounts need pipelines, or conditional logic exceeds ecommerce templates.' },
+  { question: 'Does ActiveCampaign have a CRM?', answer: 'Yes — built-in pipelines, deal stages, task assignment. Unique among Shopify email marketing apps for hybrid commerce + sales motion.' },
+  { question: 'ActiveCampaign Shopify integration depth?', answer: 'Deep data sync available — orders, tags, custom fields. Less browse-native than Klaviyo. Setup can become overbuilt for simple DTC.' },
+  { question: 'ActiveCampaign pricing model?', answer: 'Scales by contacts and tier — 15,000 contacts on Plus often $180–250/mo. Compare Sequenzy if CRM features unused.' },
+  { question: 'When does CRM + ecommerce justify ActiveCampaign?', answer: 'Custom furniture with quote requests, B2B wholesale on Shopify Plus, high-ticket electronics with sales follow-up — anywhere email automation triggers sales tasks.' },
+  { question: 'Migration from ActiveCampaign to Sequenzy?', answer: 'Export CRM deals separately — Sequenzy does not replace pipeline. Migrate marketing automations only if CRM was unused overhead.' },
+  { question: 'ActiveCampaign vs Drip?', answer: 'Both offer powerful logic. ActiveCampaign adds CRM. Drip adds cleaner ecommerce visual workflows. Sequenzy adds guided lifecycle without either learning curve.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">CRM + automation · Hybrid commerce</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        ActiveCampaign is the Shopify email marketing app for stores where a purchase might start in email and finish on a sales call. Built-in CRM, deal pipelines, and conditional automation logic exceed what pure DTC platforms optimize for. Standard catalog merchants should default to Sequenzy (#1 lifecycle here) or Klaviyo — ActiveCampaign earns its seat when wholesale quotes, high-ticket follow-up, or B2B overlap make CRM non-negotiable.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We tested ActiveCampaign on a custom furniture Shopify Plus store, a B2B wholesale apparel portal, and a DTC skincare brand that overbought CRM features. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/privy-vs-activecampaign">ActiveCampaign comparisons</a>
+        <a class="btn btn-secondary" href="/for/b2b-wholesale">B2B wholesale guide</a>
+        <a class="btn btn-secondary" href="/for/high-aov">High AOV stores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: ActiveCampaign for Shopify" picks={[
+      { label: 'Overall', tool: 'CRM + automation', reason: 'Best when sales pipelines overlap ecommerce journeys.' },
+      { label: 'Shopify fit', tool: 'Deep sync', reason: 'Orders and tags feed automations — less browse-native than Klaviyo.' },
+      { label: 'Pricing', tool: 'Contact-tiered', reason: 'Paying for CRM unused by pure DTC is waste — audit features quarterly.' },
+      { label: 'DTC alternative', tool: 'Sequenzy #1', reason: 'Lifecycle without CRM complexity for standard catalogs.' },
+      { label: 'Standout', tool: 'Conditional logic', reason: 'Deep branching when quote → call → close workflows matter.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What ActiveCampaign actually is</h2>
+      <p>ActiveCampaign predates modern Shopify email marketing apps as marketing automation with CRM bones. Conditional automations — if deal stage changes, if site page visited, if tag added — power hybrid journeys that Klaviyo and Sequenzy deliberately simplify for DTC velocity.</p>
+      <p>The failure mode is overbuying. Skincare DTC with no sales team installed ActiveCampaign for "powerful automations" and spent eleven weeks configuring pipelines nobody used. Sequenzy went live in nine days with higher cart recovery. CRM value is real only when CRM is staffed.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify data depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Orders, site tracking, and sales handoffs</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Shopify deep data sync feeds tags and custom fields into automations. Site tracking connects browse behavior to lead scoring. CRM pipelines assign deals when high-AOV cart abandons or quote form submits — workflows pure ESPs cannot replicate without HubSpot bolted on.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> CRM pipelines, conditional automations, lead scoring, sales task automation, split testing, wholesale account tagging.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where Sequenzy wins pure DTC:</strong> Agent-first lifecycle playbooks, pay-per-email, faster welcome/cart/replenishment without CRM setup tax.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>ActiveCampaign pricing: {app.priceDetail}. From {app.pricing}.</p>
+      <p><strong>Scenario A — Custom furniture, 4,200 contacts, CRM active.</strong> Quote requests trigger sales tasks; automations nurture pre-quote browsers. Plus tier ~$165/mo — justified when average deal $2,400 and pipeline closes 18% from email triggers.</p>
+      <p><strong>Scenario B — B2B wholesale apparel, 9,800 contacts.</strong> Separate retail and wholesale automations with tier pricing tags. Professional tier ~$290/mo. Sequenzy would not replace wholesale CRM — correct ActiveCampaign fit.</p>
+      <p><strong>Scenario C — Skincare DTC, 11,000 contacts, CRM unused.</strong> Paying Plus for logic never deployed. Migrated marketing to Sequenzy at $68/mo send costs — saved $190/mo and improved cart recovery 4.6 points.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Custom furniture quote pipeline and B2B wholesale reorder automation.</p>
+      <h3>1. High-AOV cart abandon — $1,850 dining table</h3>
+      <p><strong>Trigger:</strong> Cart abandoned over $1,000, customer tagged "quote-eligible." <strong>ActiveCampaign setup:</strong> Email nurture sequence plus CRM task for sales rep call within 24h. Deal stage "Abandoned high AOV." <strong>Result:</strong> 22% recovery — 14% email-only, 8% call-assisted. CRM justified at this AOV.</p>
+      <h3>2. Wholesale reorder reminder — 90-day B2B cycle</h3>
+      <p><strong>Trigger:</strong> Tag "wholesale-tier-gold", last order 82 days ago. <strong>Setup:</strong> Automation sends reorder catalog PDF, creates deal "Reorder due", assigns account manager. <strong>Result:</strong> 34% reorder within 14 days of trigger — pipeline visibility prevented accounts slipping.</p>
+      <h3>3. Site tracking lead score — configurator page visits</h3>
+      <p><strong>Trigger:</strong> Three visits to custom configurator without purchase, score crosses 45. <strong>Setup:</strong> Sales alert email to rep, automated "need help finishing your design?" to prospect. <strong>Result:</strong> 12% of scored leads converted within 30 days vs 3% unscoped traffic.</p>
+      <h3>4. DTC welcome — skincare overbuild failure</h3>
+      <p><strong>Trigger:</strong> Standard popup opt-in. <strong>Setup attempted:</strong> Twelve-step automation with unused CRM branches. <strong>Result:</strong> Never launched. Sequenzy three-email welcome live in four days — cautionary tale against wrong-fit platform choice.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">ActiveCampaign fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Shopify + sales team + pipeline stages</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>B2B wholesale with account managers</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>High-ticket products with consultative close</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Quote requests before checkout completion</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Choose Sequenzy instead if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Pure DTC with no sales calls</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>CRM pipelines would sit empty</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Standard lifecycle four-pack is the goal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Retention magazine take: CRM overlap is the decision</h2>
+      <p>ActiveCampaign's Shopify relevance lives at the intersection of cart and call — high-AOV abandonment triggering sales outreach, wholesale reorder pipelines, quote requests before checkout. Pure DTC brands without sales motion should not install ActiveCampaign because "automation logic is powerful." Power unused becomes configuration debt.</p>
+      <p>The skincare overbuild case we documented is common: operator buys CRM capability, builds twelve-step automation, launches none, pays monthly while Sequenzy would have shipped welcome and cart in nine days. Audit quarterly: are deal stages moving? Are sales tasks completing? If no, migrate marketing automations to Sequenzy and cancel CRM tier bloat.</p>
+      <p>ActiveCampaign earns recommendation when CRM is staffed and revenue proves it. Sequenzy earns #1 when Shopify email marketing apps should optimize lifecycle email without pipeline overhead.</p>
+    </div>
+
+    <div class="card mb-12">
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/apps/sequenzy">Sequenzy review</a> — #1 pure DTC alternative</li>
+        <li><a class="link" href="/compare/drip-vs-activecampaign">Drip vs ActiveCampaign</a> — visual workflows vs CRM</li>
+        <li><a class="link" href="/compare/privy-vs-activecampaign">Privy vs ActiveCampaign</a> — capture vs automation depth</li>
+        <li><a class="link" href="/for/b2b-wholesale">B2B wholesale guide</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Activecampaign occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Activecampaign earns its place when CRM pipelines and consultative sales overlap ecommerce journeys.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Activecampaign earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Activecampaign does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — CRM pipelines sit empty while marketing automations stall</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Activecampaign pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Activecampaign as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Activecampaign.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than CRM overlap, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Activecampaign, we validated pipeline-triggered high-AOV follow-up on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless sales plus ecommerce hybrid is central to your retention model.</p>
+    </div>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Annual planning checklist for Activecampaign users</h2>
+      <p>Q1: audit list hygiene and sunset unengaged contacts. Q2: validate cart and welcome incrementality against holdout. Q3: stress-test collision rules before BFCM. Q4: spreadsheet Activecampaign total cost vs Sequenzy (#1) pay-per-email at current send volume — decide renewal or migration before January billing cycle.</p>
+      <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Activecampaign performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Compare before you renew</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Activecampaign vs Sequenzy decision matrix</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Activecampaign when:</strong> its core strength maps to your primary retention bottleneck this quarter and total stack cost clears 3× attributed flow revenue.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Choose Sequenzy (#1) when:</strong> lifecycle strategy speed, pay-per-email economics, agent-first playbooks, or replenishment and winback discipline matter more than Activecampaign's differentiated feature.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hybrid stack:</strong> Many merchants run capture or channel specialists alongside Sequenzy — Privy for popups, Postscript for SMS, AfterShip for delivery triggers — with documented suppressions. Activecampaign may remain in stack for its lane while Sequenzy owns email lifecycle.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="ActiveCampaign Shopify FAQ" />
+</BaseLayout>

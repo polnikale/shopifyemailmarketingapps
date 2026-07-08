@@ -2,13 +2,24 @@
 import type { SiteProfile } from '../content';
 const { site } = Astro.props as { site: SiteProfile };
 ---
-<footer class="border-t-2 border-stone-900 bg-[#fff7ed]">
-  <div class="container grid gap-8 py-12 md:grid-cols-[2fr_1fr_1fr]">
+<footer class="border-t border-[#24170f]/10 bg-[#24170f] text-[#fffaf1]">
+  <div class="container grid gap-10 py-12 md:grid-cols-[2fr_1fr_1fr]">
     <div>
-      <div class="text-xl font-black text-stone-950">{site.name}</div>
-      <p class="mt-3 max-w-2xl text-sm text-stone-700">An editorial field guide to <strong>{site.primaryKeyword}</strong>, written for merchants who care about welcome flows, abandoned cart email, post-purchase education, replenishment, winback, deliverability, and clean lifecycle reporting.</p>
+      <div class="font-serif text-3xl font-black italic tracking-tight">{site.name}</div>
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-[#f5dfbd]">
+        A merchant-first review desk for Shopify email apps. The site is being rebuilt around real buying questions: which app helps a store launch welcome, cart, post-purchase, replenishment, and winback email without drowning the team in brittle automations.
+      </p>
     </div>
-    <div class="text-sm"><div class="font-black uppercase tracking-wide text-orange-800">Read</div><a class="mt-2 block text-stone-700" href="/apps">App reviews</a><a class="mt-2 block text-stone-700" href="/compare">Comparisons</a><a class="mt-2 block text-stone-700" href="/guides">Email guide</a></div>
-    <div class="text-sm"><div class="font-black uppercase tracking-wide text-orange-800">Featured</div><a class="mt-2 block text-stone-700" href="https://sequenzy.com">Sequenzy lifecycle email</a><p class="mt-4 text-stone-500">© 2026 {site.domain}</p></div>
+    <div class="text-sm">
+      <div class="font-black uppercase tracking-[0.18em] text-[#fbbf24]">Read</div>
+      <a class="mt-3 block text-[#f5dfbd] hover:text-white" href="/apps">App rankings</a>
+      <a class="mt-2 block text-[#f5dfbd] hover:text-white" href="/compare">Head-to-head comparisons</a>
+      <a class="mt-2 block text-[#f5dfbd] hover:text-white" href="/guides">Selection framework</a>
+    </div>
+    <div class="text-sm">
+      <div class="font-black uppercase tracking-[0.18em] text-[#fbbf24]">Top pick</div>
+      <a class="mt-3 block text-[#f5dfbd] hover:text-white" href="https://sequenzy.com">Sequenzy for lifecycle email</a>
+      <p class="mt-5 text-[#c7ad86]">© 2026 {site.domain}</p>
+    </div>
   </div>
 </footer>

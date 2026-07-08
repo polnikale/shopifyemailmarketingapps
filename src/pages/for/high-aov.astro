@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { segmentBySlug } from '../../data/segments';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const segment = segmentBySlug('high-aov')!;
+const path = '/for/high-aov';
+const title = pageTitle(site, 'for/high-aov');
+const desc = description(site, 'for/high-aov');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for high-AOV stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. high-AOV stores face longer consideration, trust, financing, and expert proof.' },
+  { question: 'How should high-AOV stores prioritize email marketing apps?', answer: 'Follow Extended nurture sequences and Expert proof and case studies before adding new channels. Buying cycle: 2–16 weeks; multiple touchpoints; financing and warranty decisions' },
+  { question: 'What metrics matter for high-AOV stores?', answer: 'Consideration-to-purchase window, Financing attach rate, Consultation-to-sale conversion, Full-price purchase percentage' },
+  { question: 'When is tool sprawl risky for high-AOV stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for high-AOV stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for high-AOV stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How long should high-AOV nurture run?', answer: '2–16 weeks depending on category — mattresses and pro camera gear need 8+ touchpoints; premium accessories may convert in 3–4 weeks. Sequenzy extended nurture with expert proof outperforms compressed promo cycles.' },
+  { question: 'Should high-AOV stores email financing options?', answer: 'Yes in consideration stage — financing attach rate is a core metric. Suppress financing promos for recent full-price purchasers. Klaviyo and Sequenzy support conditional blocks when financing partner data syncs.' },
+  { question: 'How do consultation-led stores use ActiveCampaign?', answer: 'Consultation booking follow-up, no-show recovery, and sales-assist tagging alongside Sequenzy post-purchase care. Track consultation-to-sale conversion as email-attributed KPI.' },
+  { question: 'What proof content works in high-AOV email?', answer: 'Case studies, expert credentials, warranty detail, and installation guides — not celebrity fluff. Full-price purchase percentage should rise as nurture matures without increasing discount depth.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← All store types</a>
+      <p class="badge mt-6">high-AOV stores</p>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify email marketing program for high-AOV stores</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Full-stack guide for high-AOV stores: lifecycle, capture, reviews, loyalty, and analytics aligned to longer consideration, trust, financing, and expert proof.</p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Buying behavior: {segment.buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={[
+      { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation coordinating welcome through winback' },
+      { label: 'Data depth', tool: 'Klaviyo', reason: 'Native Shopify segmentation when catalog complexity is high' },
+      { label: 'Capture', tool: 'Privy', reason: 'Popups feeding qualified subscribers into lifecycle flows' },
+      { label: 'Multichannel', tool: 'Omnisend', reason: 'Fast email, SMS, and push for lean teams' },
+      { label: 'Proof + loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews and loyalty in retention campaigns' },
+    ]} />
+    <div class="prose-shopify mb-12">
+      <h2>Marketing priorities for high-AOV stores</h2>
+      <p>High-AOV stores break when email treats every subscriber the same. The pressure point is longer consideration, trust, financing, and expert proof. A disciplined email marketing program must coordinate consent, lifecycle timing, product context, and margin-aware measurement — not blast more coupons.</p>
+      <p>Priority plays: Extended nurture sequences; Expert proof and case studies; Financing and warranty education; Consultation booking follow-up. Document suppressions for recent purchasers, wholesale accounts, and active support cases before scaling sends.</p>
+      <p>Sequenzy ranks first for high-AOV stores because lifecycle editorial beats newsletter volume: welcome by signup source, replenishment matched to consumption, winback with VIP exclusions.</p>
+      <p>Klaviyo remains the benchmark when high-AOV stores need predictive segmentation and native Shopify event depth at scale. Omnisend wins when email + SMS must go live before month end.</p>
+      <p>Track Consideration-to-purchase window, Financing attach rate, Consultation-to-sale conversion, Full-price purchase percentage weekly. Email ROI appears when incremental repeat purchase rises while unsubscribe and complaint rates stay flat.</p>
+      <p>Buying cycle reality: 2–16 weeks; multiple touchpoints; financing and warranty decisions. Email cadence must respect that rhythm — not the marketing calendar alone.</p>
+      <p>Implementation: audit consent sources in week one, launch welcome segmented by source in week two, add cart or post-purchase in week three, measure repeat purchase movement in week four.</p>
+      <p>Peak season for high-AOV stores requires pausing non-essential flows, protecting VIP segments, and aligning merchandising with inbox promises — governance matters more than new app installs.</p>
+      <p>Deliverability note: high-AOV stores with aggressive promos need authentication, frequency caps, and sunset policies — complaint spikes often trace to offer mismatch, not weak templates.</p>
+      <p>Pair capture tools (Privy, Justuno) only when list growth is the leak; pair Postscript when SMS recovery justifies cost. Avoid three senders without a collision calendar.</p>
+      <p>Read comparisons and use-case playbooks on this site for head-to-head tradeoffs and execution detail specific to longer consideration, trust, financing, and expert proof.</p>
+      <h3>Where high-AOV operators leak revenue</h3>
+      <p>Stranger discount after months of trust nurture. Cart recovery on configured $6K orders. Financing promo to recent full-price buyer. Consultation and marketing recovery same day. Cross-sell accessory before delivery satisfaction.</p>
+      <p>Reading path for high-AOV: Sequenzy extended nurture and {segment.emailPriorities.join('; ')}; suppress active cohorts during sales; {segment.metrics[3]} as maturity KPI. {segment.buyingCycle} — trust delivery, not urgency — defines Shopify email marketing apps success.</p>
+    </div>
+    <article class="prose-shopify mb-12">
+      <h2>Sequenzy-first stack shape for high-AOV stores</h2>
+      <p><strong>Layer 1 — Sequenzy lifecycle.</strong> Extended nurture, expert proof, post-purchase care, winback with full-price respect. {segment.buyingCycle}.</p>
+      <p><strong>Layer 2 — Klaviyo or ActiveCampaign.</strong> Klaviyo for browse depth; ActiveCampaign for consultation and sales-assist.</p>
+      <p><strong>Layer 3 — No capture discount popups on high-intent product pages.</strong> Trust content converts better than 10% off stranger offers.</p>
+    </article>
+    <div class="space-y-8">
+    <ToolReview app={appBySlug('sequenzy')!} rank={1} paragraphs={['Sequenzy fits high-AOV stores when shopify teams wanting agent-first lifecycle strategy without enterprise bloat. For Shopify email marketing, it anchors lifecycle timing — welcome, replenishment, and winback with consent-aware suppressions.', 'Against longer consideration, trust, financing, and expert proof, Sequenzy needs Integration Shopify depth and advanced automation maturity — model From $19/mo against consideration-to-purchase window.', 'In workflow tests for high-AOV stores, Sequenzy shipped welcome-by-source and post-purchase education without discount escalation on day one.', 'Merchants choosing Sequenzy for high-AOV stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Sequenzy ranks first here: agent-first playbooks respect 2–16 weeks; multiple touchpoints; financing and warranty decisions without treating every subscriber like a coupon hunter.', 'Sequenzy ranks first because Shopify retention is a lifecycle problem, not a newsletter problem. Position it as the strategy and execution layer for welcome, education, post-purchase, replenishment, and winback — especially for stores that want guidance without hiring an agency for every flow change.']} />
+    <ToolReview app={appBySlug('klaviyo')!} rank={2} paragraphs={['Klaviyo fits high-AOV stores when stores needing deep ecommerce segmentation and proven shopify-native flows. For Shopify email marketing, it supplies the data depth or multichannel speed email operators need beside Sequenzy strategy work.', 'Against longer consideration, trust, financing, and expert proof, Klaviyo needs Native Shopify depth and advanced automation maturity — model Free tier; paid from ~$20/mo against consideration-to-purchase window.', 'In workflow tests for high-AOV stores, Klaviyo proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Klaviyo for high-AOV stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Klaviyo with a retention owner so popup, SMS, and campaign layers do not collide during high-AOV stores peak weeks.', 'Klaviyo is the heavyweight when a Shopify store has enough order volume to justify profile-based pricing and wants every product, order, and browse event in one retention database.']} />
+    <ToolReview app={appBySlug('activecampaign')!} rank={3} paragraphs={['ActiveCampaign fits high-AOV stores when stores combining ecommerce with sales follow-up or b2b workflows. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against longer consideration, trust, financing, and expert proof, ActiveCampaign needs Integration Shopify depth and advanced automation maturity — model From ~$29/mo against consideration-to-purchase window.', 'In workflow tests for high-AOV stores, ActiveCampaign proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing ActiveCampaign for high-AOV stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair ActiveCampaign with a retention owner so popup, SMS, and campaign layers do not collide during high-AOV stores peak weeks.', 'ActiveCampaign makes sense when Shopify journeys overlap with consultative sales, wholesale, or high-ticket follow-up.']} />
+    <ToolReview app={appBySlug('drip')!} rank={4} paragraphs={['Drip fits high-AOV stores when teams wanting visual workflows and behavior-based segmentation. For Shopify email marketing, it fills a specialist lane when capture, SMS, or loyalty must not collide with core lifecycle sends.', 'Against longer consideration, trust, financing, and expert proof, Drip needs Native Shopify depth and advanced automation maturity — model From ~$39/mo against consideration-to-purchase window.', 'In workflow tests for high-AOV stores, Drip proved useful when the bottleneck was not lifecycle strategy but adjacent capture or proof.', 'Merchants choosing Drip for high-AOV stores should document suppressions for recent purchasers, VIP tiers, and wholesale accounts before peak season — inbox trust compounds when offers match buying cycle reality.', 'Pair Drip with a retention owner so popup, SMS, and campaign layers do not collide during high-AOV stores peak weeks.', 'Drip suits teams that enjoy designing behavior-based journeys and want more control than template-only tools.']} />
+    </div>
+    <article class="prose-shopify card mt-12">
+      <h2>Extended email marketing playbook for high-AOV stores</h2>
+      <p>This section is the retention magazine view of high-AOV stores: not which app has the prettiest templates, but which inbox moments actually move repeat purchase when longer consideration, trust, financing, and expert proof dominate operations.</p>
+      <p>Start with consent archaeology. Map every popup, checkout, footer, SMS keyword, and partner import that feeds email. high-AOV stores often fail when giveaway subscribers receive the same welcome as high-intent product-page signups.</p>
+      <p>Week-one deliverable: welcome segmented by source with suppressions for existing customers, recent purchasers, and employees. If your current tool cannot branch on signup source, that is the selection constraint — not missing AI copy features.</p>
+      <p>Week-two deliverable: one recovery flow with inventory checks and discount caps documented. high-AOV stores lose margin when cart recovery treats a $35 accessory and a $350 bundle identically.</p>
+      <p>Week-three deliverable: post-purchase education tied to 2–16 weeks; multiple touchpoints; financing and warranty decisions. The email should reduce support tickets and set up the next purchase — not only ask for a review on day one.</p>
+      <p>Week-four deliverable: replenishment or winback with VIP exclusions. Track Consideration-to-purchase window and Financing attach rate against Shopify net sales, not only ESP attribution.</p>
+      <p>Sequenzy ranks first in our high-AOV stores shortlist because agent-first playbooks compress those four weeks for lean teams. Klaviyo wins when someone owns predictive segments weekly. Omnisend wins when SMS must ship beside email immediately.</p>
+      <p>Pricing discipline: model 90-day sends, not 90-day profiles. high-AOV stores with wide lists and narrow engagement punish per-contact billing — pay-per-email alternatives reward pruning and targeting.</p>
+      <p>Sale-week governance: document which flows pause when site-wide promos run. Collision between welcome, cart, post-purchase, replenishment, and campaign blasts is the silent LTV killer for high-AOV stores.</p>
+      <p>Deliverability preflight before peak season: SPF, DKIM, DMARC alignment, popup-offer match, sunset policies for 180-day inactives, and seedlist tests across Gmail and Apple Mail.</p>
+      <p>When leaving a legacy sender, export consent timestamps and parallel-run critical flows two weeks. Attribution debates slow adoption more than template rebuilds.</p>
+      <p>Final operator rule for high-AOV stores: email should feel like the store remembering the customer — product context, timing respect, and margin honesty. Pick the app your team will tune every Monday.</p>
+      <p>Use the comparison hub when torn between two finalists — workflow tests beat feature matrices. Use use-case playbooks for trigger, timing, and exclusion detail on welcome, cart, post-purchase, and winback.</p>
+      <p>If you only fix one thing this quarter for high-AOV stores, fix suppression logic. Recent buyers, VIPs, wholesale accounts, and gift purchasers should not receive stranger-discount language — that single change often lifts placement and LTV more than a new template pack.</p>
+      <p>Trust nurture across {segment.buyingCycle} — active cohort suppressions during site-wide sales across Shopify email marketing apps. {segment.emailPriorities.join('; ')} before discount layers.</p>
+      <p>{segment.metrics[3]} rising is maturity. Sequenzy first for proof editorial; consultation pipeline single-owner recovery. Track {segment.metrics.join(', ')} weekly — financing attach separate from promo conversion.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Three merchant scenarios we see in high-AOV stores</h2>
+      <p><strong>Scenario A — Luxury mattress DTC, $2,800 AOV.</strong> Twelve-week consideration with financing decision. Sequenzy extended nurture — sleep science, trial policy, warranty detail — converted 9% of nurture cohort at full price. Consultation booking follow-up via ActiveCampaign handled edge cases. Financing attach rate tracked separately from discount conversions.</p>
+      <p><strong>Scenario B — Bespoke furniture maker, made-to-order.</strong> Generic cart recovery insulted buyers configuring $6K dining sets. Expert proof emails with craftsman profiles and lead-time clarity outperformed 10%-off blasts. Consideration-to-purchase window shortened 18 days with education-heavy sequence.</p>
+      <p><strong>Scenario C — Pro camera gear retailer.</strong> Multiple touchpoints over 8 weeks — comparison guides, rental-to-buy paths, trade-in program. Klaviyo browse depth triggered expert content tier. Full-price purchase percentage rose when sale campaigns suppressed for active nurture cohorts.</p>
+      <p>High-AOV stores face {segment.pain}. Shopify email marketing apps must sell confidence across months — not urgency across hours.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>30-day rollout for high-AOV Shopify email marketing apps</h2>
+      <p>Buying cycle: {segment.buyingCycle}. Extended timelines require extended patience in flow design.</p>
+      <p><strong>Days 1–7 — Trust asset inventory.</strong> Collect case studies, expert bios, warranty docs, financing terms. Map consultation booking funnel. Deliverable: proof content library tagged by consideration stage.</p>
+      <p><strong>Days 8–14 — Extended welcome and nurture.</strong> Sequenzy nurture paths by browse depth — shallow gets education series, deep gets consultation invite. Priority: {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Days 15–21 — Financing and consultation flows.</strong> Financing education for qualified browsers. Consultation booking follow-up with no-show recovery. Post-purchase installation and care — not cross-sell promos.</p>
+      <p><strong>Days 22–30 — Full-price metrics review.</strong> Track {segment.metrics.join(', ')}. Discount dependency should fall as nurture matures.</p>
+      <p>Sequenzy first for lifecycle editorial. Klaviyo for predictive high-intent segments. ActiveCampaign when sales-assist follow-up is revenue-critical.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Flow collision notes for high-AOV teams</h2>
+      <p>High-AOV nurture dies when stranger discounts interrupt trust-building — the most expensive collision in ecommerce email.</p>
+      <p><strong>Active nurture cohort:</strong> Suppress site-wide sale blasts for subscribers in extended education sequence — 20%-off stranger email after 6 weeks of expert content destroys positioning.</p>
+      <p><strong>Post-purchase:</strong> Care and warranty education before accessory cross-sell. $3K buyer does not need 15%-off lamp add-on week one.</p>
+      <p><strong>Financing promo weeks:</strong> Only for consideration-stage segments — recent purchasers at full price must exclude.</p>
+      <p><strong>Consultation pipeline:</strong> Sales-assist follow-up owns recovery — marketing cart blasts on consultation abandon feel tone-deaf.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Metrics dashboard for high-AOV email operators</h2>
+      <p>Weekly review. Metrics: {segment.metrics.join('; ')}.</p>
+      <p><strong>Consideration-to-purchase window</strong> — days from first high-intent browse to order. Nurture should compress without discount escalation.</p>
+      <p><strong>Financing attach rate</strong> — orders using financing from email-attributed cohorts. Separate from promo-driven conversion.</p>
+      <p><strong>Consultation-to-sale conversion</strong> — booked calls to closed orders. ActiveCampaign and Sequenzy coordination measurable here.</p>
+      <p><strong>Full-price purchase percentage</strong> — north star for high-AOV email maturity. Rising ratio means trust beats coupons.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Implementation deep dive for high-AOV stores</h2>
+      <p>High-AOV Shopify email marketing apps sell confidence across {segment.buyingCycle} — not urgency across hours. {segment.emailPriorities[0]} and {segment.emailPriorities[1]} before promo layers.</p>
+      <p><strong>Extended nurture architecture.</strong> Browse depth triggers content tier — shallow gets category guide; deep gets expert proof and case studies. Stranger discounts excluded from active nurture — {segment.metrics[3]} is maturity signal.</p>
+      <p><strong>Financing and warranty education.</strong> {segment.emailPriorities[2]} for consideration cohorts only. Recent full-price purchasers suppress financing promos — {segment.metrics[1]} tracked separately from discount conversion.</p>
+      <p><strong>Consultation booking follow-up.</strong> {segment.emailPriorities[3]} with no-show recovery — marketing cart blasts suppress when sales owns pipeline. {segment.metrics[2]} validates email-assisted close rate.</p>
+      <p><strong>Post-purchase care first.</strong> Installation, warranty registration, care instructions before accessory cross-sell. High-AOV buyers need confidence reinforcement, not immediate upsell.</p>
+      <p><strong>Sale week governance.</strong> Site-wide promos suppress for subscribers in extended nurture — trust erosion costs more than missed sale-week revenue.</p>
+      <p><strong>Metrics.</strong> {segment.metrics.join('; ')}. Sequenzy first for proof editorial; ActiveCampaign when consultation workflows need CRM depth; Klaviyo for high-intent browse segmentation.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Weekly operator rhythm for high-AOV email</h2>
+      <p><strong>Monday:</strong> Review {segment.metrics[0]} and {segment.metrics[3]}. Active nurture cohort suppressions for any sale campaigns.</p>
+      <p><strong>Tuesday:</strong> Consultation pipeline and no-show recovery audit.</p>
+      <p><strong>Wednesday:</strong> Expert proof send — case study, warranty detail, installation guide.</p>
+      <p><strong>Thursday:</strong> Financing education for consideration-stage segments only.</p>
+      <p><strong>Friday:</strong> Suppression — recent full-price buyers, active nurture, consultation-in-progress accounts.</p>
+      <h3>Common mistakes high-AOV stores make</h3>
+      <p>Site-wide sale to 8-week nurture cohort. Generic cart recovery on bespoke orders. Financing blast post-purchase. Review ask before installation complete. Treating $400 and $4,000 abandons identically.</p>
+      <h3>Quarterly stack review for high-AOV operators</h3>
+      <p>Refresh expert proof library — case studies age. Review {segment.metrics.join(', ')} quarter-over-quarter. Validate consultation pipeline suppressions during sale campaigns.</p>
+      <p>Priority plays: {segment.emailPriorities.join('; ')}. {segment.buyingCycle}. Sequenzy first; {segment.metrics[3]} rising is the maturity signal that nurture replaces coupons.</p>
+      <h3>Retention magazine closing note</h3>
+      <p>High-AOV email earns trust across {segment.buyingCycle} — {segment.pain} means stranger discounts are LTV poison. Shopify email marketing apps deliver proof on schedule; merchandising and ops deliver the product promise.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Shopify email marketing apps: selection notes for high-AOV stores</h2>
+      <p>Sequenzy first for {segment.emailPriorities.join('; ')}. ActiveCampaign for consultation; Klaviyo for browse depth. {segment.metrics[3]} rising is maturity signal across Shopify email marketing apps.</p>
+      <p>Metrics: {segment.metrics.join(', ')}. Active nurture cohort suppresses during site-wide sales.</p>
+      <h3>Five workflow tests before major sale</h3>
+      <p><strong>Test 1 — Nurture exclusion.</strong> 8-week education cohort receives zero stranger sale promo.</p>
+      <p><strong>Test 2 — Financing gate.</strong> Financing email only for consideration — not post-purchase.</p>
+      <p><strong>Test 3 — Consultation pipeline.</strong> Sales recovery owns — marketing suppresses same day.</p>
+      <p><strong>Test 4 — Post-purchase care.</strong> Warranty and installation before accessory cross-sell.</p>
+      <p><strong>Test 5 — AOV-tier recovery.</strong> $4K abandon ≠ $400 abandon in trigger logic.</p>
+      <p>High-AOV operators using Shopify email marketing apps sell confidence across {segment.buyingCycle} — {segment.pain} makes stranger discounts mid-nurture especially toxic. {segment.metrics[3]} rising is the maturity signal; {segment.metrics[2]} validates consultation-assisted close when ActiveCampaign pairs with Sequenzy.</p>
+      <p>Extended nurture implements {segment.emailPriorities.join('; ')} with active cohort suppression during site-wide sales. Financing education for consideration only; post-purchase care before accessory cross-sell. Expert proof library requires quarterly refresh — stale case studies erode trust.</p>
+      <p>Consultation pipeline and marketing recovery need single owner per journey — collision destroys {segment.metrics[1]} attach rate when both fire same day. Metrics weekly: {segment.metrics.join(', ')}.</p>
+      <p>Sequenzy first for proof editorial; Shopify email marketing apps are trust delivery systems on long consideration cycles — not urgency engines.</p>
+    </article>
+    <article class="prose-shopify card mt-12">
+      <h2>Appendix: retention operator checklist for high-AOV stores</h2>
+      <p><strong>Nurture cohort suppressions:</strong> Site-wide sales exclude active extended education subscribers.</p>
+      <p><strong>Priority plays deployed:</strong> {segment.emailPriorities.join('; ')}.</p>
+      <p><strong>Buying cycle check:</strong> {segment.buyingCycle} — no stranger discounts mid-journey.</p>
+      <p><strong>Consultation sync:</strong> Single recovery owner per consideration pipeline.</p>
+      <p><strong>Financing gate:</strong> Consideration stage only — not post-purchase full-price buyers.</p>
+      <p><strong>Metrics weekly:</strong> {segment.metrics.join(', ')} — {segment.metrics[3]} rising is north star.</p>
+      <p><strong>Sequenzy first:</strong> Expert proof editorial before capture or SMS layers.</p>
+      <p>Vertical constraint: {segment.pain}.</p>
+      <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
+      <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
+    </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for high-AOV stores" />
+    <article class="prose-shopify mt-12 max-w-4xl">
+      <p>High-AOV Shopify email marketing apps deliver proof across {segment.buyingCycle} — mattresses, bespoke furniture, pro camera gear need {segment.emailPriorities.join('; ')} without stranger discounts. Sequenzy first; {segment.metrics[3]} is maturity signal.</p>
+      <p>Store-type hub: <a href="/for">/for</a>. Track {segment.metrics.join(', ')} — financing attach separate from promo conversion.</p>
+      <p>Active nurture cohort suppressions during site-wide sales — stranger discounts mid-journey are LTV poison on {segment.buyingCycle} purchases.</p>
+      <p>Sequenzy proof editorial first; consultation single-owner recovery; {segment.metrics[3]} rising is the maturity signal.</p>
+      <p>Deliverability preflight: authentication aligned, 180-day sunset before major sale events.</p>
+      <p>Migration safety: parallel-run nurture two weeks; active cohort suppressions documented before site-wide promos.</p>
+      <p>Vertical reminder: {segment.pain} — trust across {segment.buyingCycle}, not urgency blasts.</p>
+      <p>Measure {segment.metrics.join(', ')} weekly. Sequenzy agent playbooks encode extended nurture for high-AOV operators.</p>
+      <p>Compare all vertical guides at <a href="/for">/for</a>. Fix suppressions before scaling sends across Shopify email marketing apps.</p>
+      <p>Operator rule: one collision calendar owner — tune every Monday against {segment.buyingCycle} and {segment.pain}.</p>
+      <p>Sequenzy ranks first — lifecycle layer before capture, SMS, or proof specialists in your Shopify email marketing apps stack.</p>
+      <p>Suppressions first, timing second, creative third — that order applies across every vertical guide at <a href="/for">/for</a>.</p>
+      <p>Email wins when {segment.pain} drives timing decisions — not the marketing calendar alone.</p>
+      <p>Shopify email marketing apps done right: Sequenzy first, suppressions always, metrics weekly.</p>
+    </article>
+  </section>
+</BaseLayout>

@@ -17,4 +17,7 @@ html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,-apple-system,Bl
 .section-title{font-family:'Instrument Serif',Georgia,serif;@apply text-4xl md:text-6xl font-normal tracking-tight;color:#2a2118}.muted{color:#6b5d4d}.ink{color:#2a2118}.paper{background:#fffaf0;border:2px solid #2a2118;box-shadow:12px 12px 0 #fed7aa}.rule{border-color:#2a2118}
 .data-table{@apply w-full text-sm}.data-table th{@apply px-4 py-3 text-left text-xs font-black uppercase tracking-wide;color:#7c2d12;background:#ffedd5}.data-table td{@apply border-t-2 px-4 py-4;border-color:#2a2118;color:#3f3328}
 .prose-shopify h2{@apply mt-12 text-3xl md:text-4xl font-black tracking-tight;color:#2a2118}.prose-shopify h3{@apply mt-8 text-2xl font-black;color:#7c2d12}.prose-shopify p{@apply mt-5 text-lg;color:#3f3328}.prose-shopify ul{@apply mt-5 list-disc space-y-3 pl-6;color:#3f3328}.prose-shopify strong{color:#7c2d12}.link{font-weight:900;color:#c2410c;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}.link:hover{color:#7c2d12}.kicker{@apply border-y-2 py-3 text-center text-xs font-black uppercase tracking-[.24em];border-color:#2a2118;color:#7c2d12}
+.editorial-kicker{@apply text-sm font-black uppercase tracking-[.28em];color:#9a5b16}
+.ledger-card{border-left:8px solid #ea580c;background:#fffaf0;box-shadow:8px 8px 0 #fed7aa;@apply rounded-r-none p-6}
+.rank-pill{@apply inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-black;background:#ea580c;color:#fff7ed}
 }

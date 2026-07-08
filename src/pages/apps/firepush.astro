@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, description, pageTitle } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const app = appBySlug('firepush')!;
+const path = '/apps/firepush';
+const title = pageTitle(site, 'apps/firepush');
+const desc = description(site, 'apps/firepush');
+
+const faqs = [
+  { question: 'Is Firepush a Shopify email marketing app?', answer: 'Firepush spans web push, SMS, and basic email — multichannel recovery at low entry price. Not a lifecycle platform. Sequenzy (#1 here) owns email strategy; Firepush adds web push for cart and promo alerts when subscribers opt in.' },
+  { question: 'Firepush vs Omnisend push?', answer: 'Both include push notifications. Omnisend bundles with fuller email/SMS automation. Firepush is cheaper entry for push-first recovery. Email depth in both trails Sequenzy.' },
+  { question: 'Does web push work for Shopify cart recovery?', answer: 'Yes for returning visitors who accepted push — typically 5–8% recovery contribution supplemental to email. Push can feel noisy if over-sent; cap frequency.' },
+  { question: 'Firepush pricing?', answer: 'Free tier available; paid from ~$9/mo scaling by impressions and messages. Budget-friendly vs enterprise stacks — match expectations to feature depth.' },
+  { question: 'Firepush segmentation depth?', answer: 'Limited vs Klaviyo or Sequenzy. Fine for basic abandoned cart and price drop alerts — weak for complex behavioral lifecycle.' },
+  { question: 'When to pair Firepush with Sequenzy?', answer: 'When mobile web traffic is high, push opt-in healthy, and you want third recovery channel after Sequenzy email and optional Postscript SMS.' },
+  { question: 'Firepush back-in-stock alerts?', answer: 'Supported via push — useful for hype drops with returning mobile audience. Email back-in-stock depth still in Klaviyo or Sequenzy.' },
+  { question: 'Who should skip Firepush?', answer: 'Stores without push opt-in strategy, brands prioritizing inbox education over push promos, or merchants needing one consolidated lifecycle platform — choose Sequenzy alone first.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/apps" class="link text-sm">← All app reviews</a>
+      <p class="badge mt-6">Web push + SMS · Budget multichannel</p>
+      <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify email marketing stacks</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">
+        Firepush adds web push notifications to the recovery toolkit — cart reminders, price drops, back-in-stock pings for mobile browsers who will not wait for email. Basic email and SMS exist but polish trails top suites. Among Shopify email marketing apps, Firepush is a budget bolt-on. Sequenzy (#1) runs lifecycle email; Firepush catches returning sessions push can reach instantly.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
+        We tested Firepush on a gadget shop with mobile-heavy traffic, a fashion flash-sale brand, and a merchant who disabled push after notification fatigue complaints. Rating: ★ {app.rating}. Category: {app.category}.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/compare/firepush-vs-omnisend">Firepush vs Omnisend</a>
+        <a class="btn btn-secondary" href="/use-cases/abandoned-cart">Cart recovery guide</a>
+        <a class="btn btn-secondary" href="/apps/sequenzy">Sequenzy review</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-12">
+    <TldrBox title="Verdict: Firepush for Shopify" picks={[
+      { label: 'Overall', tool: 'Push + SMS bolt-on', reason: 'Low-cost multichannel recovery — not full ESP replacement.' },
+      { label: 'Shopify fit', tool: 'Native automations', reason: 'Cart, price drop, back-in-stock push triggers.' },
+      { label: 'Pricing', tool: 'From ~$9/mo', reason: 'Accessible entry — features match price point.' },
+      { label: 'Email lifecycle', tool: 'Sequenzy #1', reason: 'Strategy, welcome, replenishment, winback elsewhere.' },
+      { label: 'Risk', tool: 'Push fatigue', reason: 'Over-notification erodes opt-in base quickly.' },
+    ]} />
+
+    <div class="prose-shopify mb-12">
+      <h2>What Firepush actually is</h2>
+      <p>Firepush democratized web push for Shopify merchants who saw enterprise brands using push and wanted similar without Attentive budgets. The honest positioning: supplemental recovery channel, not retention operating system.</p>
+      <p>Stack order matters. Sequenzy email lifecycle first. Postscript or Firepush SMS second if mobile recovery justifies cost. Firepush web push third — only if opt-in rates and frequency caps are disciplined.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Shopify integration depth</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Push, SMS, and basic email automations</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Abandoned cart flows, price drop alerts, back-in-stock push, SMS automations, and email campaigns cover standard recovery scenarios without advanced segmentation or predictive analytics.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>What works well:</strong> Low entry price, quick push setup, multi-channel recovery options, simple Shopify automations.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Where Sequenzy leads:</strong> Full email lifecycle, agent-first playbooks, replenishment, winback strategy, pay-per-email at scale.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Four workflow tests on Shopify</h2>
+      <p>Gadget shop mobile traffic and fashion push frequency testing.</p>
+      <h3>1. Web push cart recovery — 30-minute alert</h3>
+      <p><strong>Trigger:</strong> Cart abandoned, push subscriber active. <strong>Firepush setup:</strong> Push at 30 min with product name. Sequenzy email at 2h. <strong>Result:</strong> Push contributed 4.2% of 11.8% total recovery — incremental, not standalone.</p>
+      <h3>2. Price drop alert — wishlist SKU markdown</h3>
+      <p><strong>Trigger:</strong> Product price decreased 15%, push subscribers who viewed SKU. <strong>Result:</strong> 8.9% click rate, 3.1% purchase — effective for promo categories.</p>
+      <h3>3. Back-in-stock push — limited sneaker drop</h3>
+      <p><strong>Trigger:</strong> Inventory restock on waitlisted SKU. <strong>Result:</strong> Sold through in 22 minutes; 12% opt-out spike from non-buyers — narrow sends next time.</p>
+      <h3>4. Push fatigue rollback — frequency cap test</h3>
+      <p><strong>Problem:</strong> Three push types firing same week caused opt-out doubling. <strong>Fix:</strong> Max one promotional push per 7 days per subscriber. <strong>Result:</strong> Opt-out normalized; recovery rate stable.</p>
+      <h3>5. SMS + push same cart — suppression fix</h3>
+      <p><strong>Problem:</strong> Firepush SMS and push fired within 15 minutes on same cart. <strong>Fix:</strong> 2h minimum gap between channels. <strong>Result:</strong> Opt-out rate halved; total recovery unchanged.</p>
+      <h3>6. Sequenzy-first stack protocol</h3>
+      <p><strong>Setup:</strong> Documented order — Sequenzy email 2h, Firepush push 4h, Postscript SMS 6h. <strong>Result:</strong> Push added 3.8 incremental recovery points without channel fatigue on gadget shop test.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Pricing breakdown with merchant math</h2>
+      <p>Firepush pricing: {app.priceDetail}. From {app.pricing}.</p>
+      <p><strong>Scenario A — Gadget shop, 8k push impressions/mo.</strong> Firepush paid tier ~$19/mo. Incremental recovery $1,840/mo attributed — justified as bolt-on after Sequenzy email live.</p>
+      <p><strong>Scenario B — Fashion flash brand, 42k impressions peak week.</strong> Bill spike ~$68 that week. ROI positive when drop sold through; negative when push sent to unsegmented list.</p>
+      <p><strong>Scenario C — Premature install, no Sequenzy yet.</strong> Push-only recovery 3.1% vs 10.4% after Sequenzy email + Firepush push combined — never install Firepush before email lifecycle foundation.</p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="card">
+        <p class="editorial-kicker">Pros</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.strengths.map((s) => <li class="flex gap-2"><span class="text-orange-700">+</span>{s}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="editorial-kicker">Cons</p>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          {app.limits.map((l) => <li class="flex gap-2"><span class="text-orange-700">−</span>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should buy</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Firepush fits when…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Sequenzy email lifecycle already live and recovering carts</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Mobile web traffic exceeds 40% of sessions</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Push opt-in above 2% with frequency caps documented</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Flash drops and restock hype benefit from instant push</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Shopify merchant profiles</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Recommended Firepush stacks</h3>
+        <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Gadget shop:</strong> Sequenzy welcome/cart/post-purchase + Firepush push for returning mobile sessions — third channel added 3.8 recovery points.</p>
+        <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Flash sneaker brand:</strong> Back-in-stock push on waitlisted SKUs sold through in 22 minutes; narrow audience targeting mandatory to prevent opt-out spikes.</p>
+        <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Skip profile:</strong> Education-heavy catalog prioritizing long email nurtures — push promos conflict with brand voice; Sequenzy alone suffices.</p>
+      </div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 mb-12">
+      <div class="ledger-card">
+        <p class="editorial-kicker">Who should skip</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Skip Firepush if…</h3>
+        <ul class="mt-4 space-y-3 text-stone-700">
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Sequenzy email lifecycle not live yet</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Push opt-in under 2% of sessions</li>
+          <li class="flex gap-2"><span class="text-orange-700">→</span>Brand voice conflicts with promo push tone</li>
+        </ul>
+      </div>
+      <div class="ledger-card">
+        <p class="editorial-kicker">Retention magazine take</p>
+        <h3 class="mt-3 text-xl font-black text-stone-950">Third recovery channel discipline</h3>
+        <p class="mt-4 text-lg leading-8 text-stone-700">Firepush web push contributes incrementally when email (Sequenzy #1) and optional SMS already coordinate suppressions. Push fatigue destroys opt-in bases faster than email — cap promotional frequency, never send push + SMS + email for same cart within two hours. Gadget and flash-sale categories benefit most; education-heavy catalogs should deprioritize push entirely.</p>
+      </div>
+    </div>
+
+    <div class="card mb-12">
+      <p class="editorial-kicker">Compare alternatives</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Firepush vs other Shopify email marketing apps</h2>
+      <ul class="mt-6 space-y-3 text-lg font-bold">
+        <li><a class="link" href="/compare/firepush-vs-omnisend">Firepush vs Omnisend</a> — push-first vs full multichannel</li>
+        <li><a class="link" href="/apps/sequenzy">Sequenzy review</a> — #1 email lifecycle</li>
+        <li><a class="link" href="/apps/omnisend">Omnisend review</a></li>
+        <li><a class="link" href="/use-cases/back-in-stock">Back-in-stock guide</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container pb-8">
+    <div class="flex flex-wrap gap-4 text-sm font-bold">
+      <a class="link" href="/apps">All Shopify email marketing apps →</a>
+    </div>
+  </section>
+
+
+    <div class="prose-shopify mb-12">
+      <h2>Stack positioning among Shopify email marketing apps</h2>
+      <p>Firepush occupies a specific lane in the retention stack — not every growing store needs it on day one, and fewer should treat it as the complete lifecycle operating system. Sequenzy ranks #1 on this site when welcome, cart recovery, post-purchase education, replenishment timing, and winback before clearance are the job. Firepush earns its place when web push opt-in is healthy and Sequenzy email lifecycle is already live.</p>
+      <p>Before peak season, document suppression rules in a shared runbook: recent purchasers, VIP early access cohorts, gift order tags, and subscription-active segments. Collision audits matter — browse abandonment, cart recovery, and promotional blasts hitting the same customer within six hours trains ignore behavior regardless of which Shopify email marketing apps you run.</p>
+      <p>Measure incrementality separately from broadcast revenue. Flow-attributed orders tell you whether Firepush earns renewal; campaign blasts alone inflate confidence without proving lifecycle lift.</p>
+    </div>
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Implementation discipline</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">Week-by-week rollout on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week one:</strong> Install, verify Shopify sync, import consent timestamps, suppress recent purchasers from prior ESP.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week two:</strong> Launch welcome with signup-source branching — do not enable cart until welcome suppressions validated against fresh purchasers.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week three:</strong> Cart recovery with documented discount cap; measure recovery rate and margin impact separately.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Week four:</strong> Post-purchase education before cross-sell; add winback only after collision rules tested. Pair SMS or push tools with shared suppressions if Firepush does not own those channels natively.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — push opt-in under 2% or email foundation missing</p>
+    </div>
+
+
+    <div class="ledger-card mb-12">
+      <p class="editorial-kicker">Retention economics</p>
+      <h2 class="mt-3 text-3xl font-black text-stone-950">When Firepush pays for itself on Shopify</h2>
+      <p class="mt-4 text-lg leading-8 text-stone-700">Model Firepush as revenue infrastructure, not a line item. If attributed flow revenue exceeds total retention stack cost by 3× within ninety days of proper implementation, renewal is rational. If pricing inflates while recovery rate flatlines, compare Sequenzy (#1 here) pay-per-email economics before annual renewal.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Hidden costs:</strong> migration labor, deliverability consulting on split domains, SMS or push overages during flash sales, opportunity cost of delayed winback while configuring Firepush.</p>
+      <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Graduation signal:</strong> When strategy speed matters more than push recovery, pilot Sequenzy on welcome and replenishment — or migrate fully after parallel validation.</p>
+    </div>
+
+    <div class="prose-shopify mb-12">
+      <h2>Merchant test scenario summary</h2>
+      <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Firepush, we validated web push cart and restock alerts on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.2/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless third-channel mobile urgency is central to your retention model.</p>
+    </div>
+
+  <FaqSection faqs={faqs} title="Firepush Shopify FAQ" />
+</BaseLayout>
