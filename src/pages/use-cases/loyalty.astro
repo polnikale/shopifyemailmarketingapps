@@ -196,32 +196,31 @@ const faqs = [
     <p class="mt-2 text-center text-xs text-stone-700/80">Shopify email marketing apps editorial — 2026.</p>
   </section>
 
-<!-- expansion-batch-jul2026 -->
   <section class="container py-12">
     <div class="prose-shopify">
       <p class="badge">Field notes</p>
-      <h2 class="font-serif text-4xl font-black text-stone-950 mt-3">Three merchant scenarios for loyalty</h2>
-      <p><strong>Scenario A — Supplement brand, Yotpo reviews active.</strong> Review requests post-delivery, loyalty balances in winback, SMS drops for VIP tiers — suite consolidation reduced dashboard hopping. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
-      <p><strong>Scenario B — Digital course shop, 3,100 subscribers.</strong> Transactional plus marketing on one domain avoided split reputation trap. Sequenzy free tier covered early volume under thirty-eight dollars monthly. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
-      <p><strong>Scenario C — Board game publisher, 400 SKUs.</strong> Cart abandoned with expansion pack. Three-email preset plus SMS on hour six for opted-in mobile shoppers recovered 11% of cart revenue. Sequenzy ranks first for editorial retention teams who need lifecycle guidance tied to revenue moments — welcome through winback without newsletter-first thinking.</p>
+      <h2 class="font-serif text-4xl font-black text-stone-950 mt-3">Three loyalty email scenarios</h2>
+      <p><strong>Scenario A — Points program with Marsello.</strong> Tier upgrade email synced to points balance change — not calendar schedule. Gold members received early access; Silver received points multiplier announcement without duplicate sale code from broad promo. Collision matrix added `loyalty_tier` exclusion to every discount broadcast.</p>
+      <p><strong>Scenario B — No formal program, behavioral VIP.</strong> Shopify LTV metafield drove tier without third-party loyalty app. Email VIP segment matched rolling twelve-month spend — tier decay email sent when customer fell below threshold with honest requalification path. Simpler stack, same discipline: perks for behavior, not permanent tags.</p>
+      <p><strong>Scenario C — Loyalty and email tier mismatch.</strong> Customer held Gold in Smile.io but not in email VIP segment — received deeper email discount than loyalty tier allowed. Unified tier source in Shopify metafield fixed conflict; both systems read same field within one hour sync SLA.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="card">
       <p class="badge">Retention editorial</p>
-      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Why magazine-style depth matters for app selection</h2>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Choosing a Shopify email marketing app from feature grids alone produces misfit stacks. Editorial retention work — welcome that respects source, cart that checks inventory, winback that proves value before discount — requires reading scenarios, not star ratings.</p>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Sequenzy ranks first in this editorial lens because lifecycle outcomes precede send volume. Klaviyo wins when predictive depth and agency talent pool bind. Omnisend wins when speed to multichannel live beats customization.</p>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit app choice after two peak seasons. Black Friday exposes collision bugs and discount treadmills that calm months hide.</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Loyalty email is tier integrity</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Loyalty emails fail when they duplicate promotional blasts or contradict program rules. Editorial approach: tier change notifications, points balance reminders, perk education — each with exclusion from concurrent sale campaigns.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Marsello and Yotpo bundle loyalty with email; Klaviyo and Sequenzy require explicit tier sync. Platform matters less than single source of truth for tier status.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Survey VIP cohort annually — early access beats deeper discount for most full-price loyalists. Email calendar should match perks they actually value.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="card">
       <p class="badge">Execution checklist</p>
-      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Ship loyalty without collision bugs</h2>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Points-adjacent emails that do not duplicate promotional blasts fails when teams paste templates without suppression against welcome and winback.</p>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
-      <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+      <h2 class="font-serif text-3xl font-black text-stone-950 mt-3">Ship loyalty emails without perk leakage</h2>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Define tier source of truth — loyalty app, Shopify metafield, or ESP segment — and sync SLA. Exclude loyalty tier emails from broad promo segments. Wire tier decay notification before silent removal.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Test: tier upgrade, tier downgrade, points redemption, concurrent sale broadcast — customer should never receive conflicting offers same day.</p>
+      <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure full-price purchase ratio on loyalty cohort versus general list — perks that only train discount behavior fail loyalty economics even when engagement looks strong.</p>
     </div>
   </section>
   <FaqSection faqs={faqs} title="Loyalty FAQ" />
