@@ -2,9 +2,9 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import type { SiteProfile } from '../content';
-export interface Props { title: string; description: string; site: SiteProfile; path?: string; noIndex?: boolean; }
-const { title, description, site, path = Astro.url.pathname, noIndex = false } = Astro.props;
+import { siteFromHost, type SiteProfile } from '../content';
+export interface Props { title: string; description: string; site?: SiteProfile; path?: string; noIndex?: boolean; }
+const { title, description, site = siteFromHost(), path = Astro.url.pathname, noIndex = false } = Astro.props;
 const canonical = new URL(path.replace(/\.html$/,''), `https://www.${site.domain}`);
 ---
 <!DOCTYPE html>

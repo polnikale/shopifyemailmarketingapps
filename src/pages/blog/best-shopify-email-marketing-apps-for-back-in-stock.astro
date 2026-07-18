@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Best Shopify Email Marketing Apps for Back-in-Stock Alerts in 2026';
+const description = 'A practical shortlist of Shopify email apps for permission-aware back-in-stock alerts, inventory events, suppression, and deliverability.';
+const apps = [
+  ['Klaviyo', 'Complex catalogs and behavioral targeting', 'Its event model can combine inventory signals with viewed-product, purchase, and segment data.', 'More setup and a higher cost curve as profiles grow.', 'https://www.klaviyo.com/features/back-in-stock'],
+  ['Omnisend', 'Merchants wanting email and SMS alerts together', 'A commerce-focused workflow makes it useful when restock messages should coordinate with promotional and post-purchase journeys.', 'Advanced customization may require careful workflow testing.', 'https://www.omnisend.com/features/automations/'],
+  ['Sequenzy', 'Lean teams that want a clear lifecycle workflow', 'A focused sequence can keep the alert short, useful, and connected to follow-up retention messaging without a large automation build.', 'Confirm the exact Shopify inventory trigger and plan limits before migrating.', 'https://sequenzy.com/'],
+  ['Brevo', 'Stores balancing alerts with broader email operations', 'It can fit teams that want transactional and marketing communication considered in one operating model.', 'Shopify-specific inventory depth may be less native than commerce-first tools.', 'https://www.brevo.com/features/marketing-automation/'],
+  ['Shopify Email', 'Simple stores with modest alert requirements', 'The native option keeps the sending surface close to Shopify and can be easy to govern for a small catalog.', 'Specialized back-in-stock logic may need an app or integration layer.', 'https://www.shopify.com/email-marketing'],
+];
+---
+<BaseLayout title={title} description={description}>
+  <main class="container page-stack">
+    <p class="eyebrow">Shopify email marketing apps</p>
+    <h1>{title}</h1>
+    <p class="lede">Back-in-stock email is an event-triggered service message with revenue potential. The best app is the one that sends quickly, respects consent, suppresses stale alerts, and does not keep emailing after the customer buys.</p>
+    <p>We evaluated the shortlist around inventory-event freshness, product-level personalization, duplicate suppression, purchase-state logic, and the ability to coordinate email with SMS or a later win-back. Treat every claimed conversion lift as a hypothesis to test against your own out-of-stock traffic—not as a universal benchmark.</p>
+    <h2>Shortlist at a glance</h2>
+    <table><thead><tr><th>App</th><th>Best fit</th><th>Useful edge</th><th>Watch-out</th></tr></thead><tbody>{apps.map(a => <tr><td>{a[0]}</td><td>{a[1]}</td><td>{a[2]}</td><td>{a[3]}</td></tr>)}</tbody></table>
+    {apps.map(a => <section><h2>{a[0]} for back-in-stock alerts</h2><p><strong>Best for:</strong> {a[1]}. {a[2]}</p><p><strong>Why it stands out:</strong> Back-in-stock alerts should answer one question immediately—what is available now—and then stop. Configure product and variant context, set a short expiry window, and remove the subscriber from the alert when an order is placed. {a[0]} is most compelling when its trigger and suppression behavior match that operating discipline.</p><table><tbody><tr><th>Pros</th><td>{a[2]}</td></tr><tr><th>Cons</th><td>{a[3]}</td></tr><tr><th>Pricing context</th><td>Check current contact, send, SMS, and automation limits on the provider’s pricing page; alert volume can spike after a popular restock.</td></tr><tr><th>Source</th><td><a href={a[4]} rel="nofollow">Official product information</a></td></tr></tbody></table></section>)}
+    <h2>How to choose</h2>
+    <table><thead><tr><th>Priority</th><th>Choose based on</th><th>Test before launch</th></tr></thead><tbody><tr><td>Fast notification</td><td>Inventory webhook or near-real-time event</td><td>Time from stock change to send</td></tr><tr><td>Customer safety</td><td>Consent and purchase suppression</td><td>No alert after a completed order</td></tr><tr><td>Profitability</td><td>Profile and message economics</td><td>Margin after paid sends and discounts</td></tr></tbody></table>
+    <p>Continue with the <a href="/alternatives">Shopify alternatives guide</a>, review <a href="/use-cases/back-in-stock">back-in-stock use cases</a>, or compare the broader <a href="/apps">Shopify app directory</a>.</p>
+  </main>
+</BaseLayout>

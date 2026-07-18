@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const guideModules = import.meta.glob('./best-shopify-email-marketing-apps*.astro', { eager: true });
+const guides = Object.keys(guideModules).sort().map((file) => ({ href: `/blog/${file.split('/').pop()?.replace(/\.astro$/, '')}`, label: file.split('/').pop()?.replace(/^best-shopify-email-marketing-apps-for-/, '').replace(/\.astro$/, '').replace(/-/g, ' ') }));
+---
+<BaseLayout title="Shopify Email Marketing App Listicles" description="100 researched Shopify email marketing app guides organized by store type, lifecycle job, and operating constraint.">
+  <main class="container page-stack">
+    <p class="eyebrow">Shopify email marketing apps</p>
+    <h1>100 Shopify email marketing app guides</h1>
+    <p class="lede">A deep editorial library for merchants choosing email software by catalog, customer state, lifecycle job, and operating constraint—not by feature-count alone.</p>
+    <p>Each guide compares five practical options, explains best fit, tradeoffs, pricing context, and evidence sources, then links back into the app directory, alternatives, use cases, and store-type sections. Claims are framed as testable operating hypotheses rather than universal revenue promises.</p>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">{guides.map((guide, index) => <a class="card" href={guide.href}><span class="text-sm font-black text-orange-800">Guide {index + 1}</span><h2 class="mt-2 text-xl font-black capitalize text-stone-950">{guide.label}</h2><p class="mt-2 text-sm text-stone-700">Best-fit app selection with tables, source links, and lifecycle analysis.</p></a>)}</div>
+    <section class="prose-shopify mt-16 max-w-4xl"><h2>How to use the library</h2><p>Start with the guide closest to the store’s buying cycle, then read the relevant <a href="/use-cases">use-case playbooks</a> and <a href="/alternatives">alternative guides</a>. Validate the shortlist against <a href="/apps">app reviews</a>, <a href="/guides/deliverability">deliverability</a>, and <a href="/guides/selection-framework">the selection framework</a>.</p></section>
+  </main>
+</BaseLayout>
