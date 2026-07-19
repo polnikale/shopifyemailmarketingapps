@@ -1,202 +1,81 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
-import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
-import { siteFromHost, description, pageTitle } from '../../content';
-import { appBySlug } from '../../data/apps';
+import { siteFromHost } from '../../content';
 
 const site = siteFromHost();
 const path = '/guides/selection-framework';
-const title = pageTitle(site, 'guides/selection-framework');
-const desc = description(site, 'guides/selection-framework');
-const sequenzy = appBySlug('sequenzy')!;
-const klaviyo = appBySlug('klaviyo')!;
+const title = 'How to Choose a Shopify Email Marketing App in 2026';
+const description = 'A practical Shopify email app selection framework: compare 14 relevant tools by event depth, channels, pricing model, ownership, and migration risk, then run a safe pilot.';
 
-const faqs = [
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (1)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (2)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (3)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (4)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (5)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (6)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (7)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
-  { question: 'How does Selection framework apply to Shopify email marketing app selection (8)?', answer: 'Treat Selection framework as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' }
+const apps = [
+  { name: 'Klaviyo', best: 'deep Shopify event data and advanced segmentation', profile: 'Klaviyo is a strong candidate when product, browse, purchase, and predicted-value signals need to share one customer profile. It suits a retention team that can maintain event naming, suppression logic, and a regular reporting cadence.', caveat: 'Profile-based billing and implementation depth deserve a forecast before importing every historical contact.', pros: 'Rich behavioral data and segmentation.', cons: 'More setup and a potentially steep profile cost curve.', price: 'Verify current active-profile tiers, email volume, SMS credits, and add-ons.', url: 'https://www.klaviyo.com/features' },
+  { name: 'Omnisend', best: 'fast email, SMS, and push workflows for ecommerce', profile: 'Omnisend is a practical fit when the store wants welcome, cart, browse, and post-purchase journeys in one commerce-oriented workspace. Its appeal is speed: a small team can start with familiar ecommerce triggers before adding more branches.', caveat: 'Test event timing, product blocks, and channel collision rules on the actual theme and catalog.', pros: 'Commerce-focused multichannel automation.', cons: 'Advanced branching still needs careful QA.', price: 'Check contacts, sends, SMS credits, push limits, and plan-level automation features.', url: 'https://www.omnisend.com/features/automations/' },
+  { name: 'Shopify Email', best: 'small stores wanting native campaign governance', profile: 'Shopify Email is a sensible baseline when the catalog is manageable and the team values a sending surface close to Shopify admin. It can be enough for campaigns and straightforward customer journeys without introducing another large operating system.', caveat: 'Confirm whether the required trigger, segmentation, reporting, and template controls exist before retiring a specialist tool.', pros: 'Native context and a low ownership burden.', cons: 'Less suited to complex event orchestration.', price: 'Review the current included-send allowance and paid-volume terms.', url: 'https://www.shopify.com/email-marketing' },
+  { name: 'Brevo', best: 'volume-conscious email plus transactional operations', profile: 'Brevo deserves a look when marketing email, transactional messaging, and contact operations need to be planned together. Its volume-oriented model can be attractive for a store that sends regularly but does not need every advanced ecommerce prediction feature.', caveat: 'Validate the Shopify connector, event coverage, automation limits, and data residency requirements for the intended workflow.', pros: 'Broad email and transactional operating model.', cons: 'Some commerce-specific depth may require connector work.', price: 'Model email volume, contacts, automation, transactional, and SMS allowances separately.', url: 'https://www.brevo.com/features/marketing-automation/' },
+  { name: 'Drip', best: 'explicit ecommerce workflows and lifecycle logic', profile: 'Drip fits operators who want visual ecommerce workflows that make triggers, waits, branches, and purchase suppression easy to inspect. It is a good shortlist entry when the team is prepared to own its event hygiene rather than expect the integration to solve every data question.', caveat: 'Check current Shopify event payloads and subscriber economics with a representative list export.', pros: 'Clear ecommerce workflow model.', cons: 'Contact pricing and workflow maintenance require discipline.', price: 'Check current subscriber tiers, sending rules, and feature packaging.', url: 'https://www.drip.com/features/marketing-automation' },
+  { name: 'Sendlane', best: 'DTC teams wanting lifecycle support and onboarding', profile: 'Sendlane is relevant for a DTC team that wants lifecycle automation plus a more guided implementation process. It can support a deliberate welcome-to-repeat-purchase program when the merchant documents which product and order fields matter.', caveat: 'Do not assume a Shopify connection supplies every product or inventory field; inspect the real payload.', pros: 'Lifecycle focus and onboarding options.', cons: 'May be more platform than a simple campaign program needs.', price: 'Ask for a current quote based on contacts, sends, and onboarding scope.', url: 'https://www.sendlane.com/features/marketing-automation' },
+  { name: 'Mailchimp', best: 'familiar campaign teams with moderate automation needs', profile: 'Mailchimp can work when a team values a familiar campaign workflow and needs practical segmentation around a stable product feed. It is worth comparing when migration risk and staff familiarity matter more than highly modeled behavioral orchestration.', caveat: 'Verify the current Shopify integration and automation trigger coverage rather than inferring it from general ecommerce positioning.', pros: 'Accessible campaign operations and broad ecosystem.', cons: 'Specialized event logic may need a connector or companion app.', price: 'Model contacts, monthly sends, automation features, and integration costs together.', url: 'https://mailchimp.com/features/marketing-automation/' },
+  { name: 'ActiveCampaign', best: 'stores with CRM-style handoffs or wholesale leads', profile: 'ActiveCampaign makes more sense when Shopify activity needs to inform sales, support, or high-value customer follow-up as well as marketing. Its automation and CRM framing can connect a product signal to a human process that a retail-only tool may not cover.', caveat: 'Keep time-sensitive customer messages lightweight; CRM complexity can slow a simple lifecycle launch.', pros: 'Broad automation and CRM-style branching.', cons: 'More moving parts and administration.', price: 'Recheck contact tiers, feature packaging, and transactional-send requirements.', url: 'https://www.activecampaign.com/automation' },
+  { name: 'Privy', best: 'capture-led stores pairing popups with recovery', profile: 'Privy is a candidate when the same team owns popups, email capture, and conversion recovery. It is particularly relevant when a signup or waitlist should preserve consent source and product interest before entering a welcome or recovery path.', caveat: 'Define the system of record and suppression behavior so capture does not create duplicate profiles or overlapping sends.', pros: 'Strong capture-to-commerce context.', cons: 'May need a broader email platform for advanced lifecycle depth.', price: 'Review current plan, contact, message, and feature limits.', url: 'https://www.privy.com/features' },
+  { name: 'Yotpo Email & SMS', best: 'retention teams already using the Yotpo suite', profile: 'Yotpo Email & SMS belongs on the shortlist when reviews, loyalty, SMS, and email already share a retention roadmap. The suite can reduce handoffs, but only if the store will genuinely use the adjacent modules and keep channel ownership clear.', caveat: 'Do not pay suite pricing for unused features; test consent, identity, and suppression across the modules.', pros: 'Email, SMS, and retention-suite context.', cons: 'Potentially excessive scope for email-only needs.', price: 'Request current pricing for email, SMS, contacts, and bundled modules.', url: 'https://www.yotpo.com/products/email-sms/' },
+  { name: 'Postscript', best: 'SMS-first commerce programs', profile: 'Postscript is relevant when SMS is the primary recovery or replenishment channel and the store has a clear email companion. It should own a defined mobile lane, with consent, quiet hours, opt-outs, and frequency caps documented before launch.', caveat: 'Treat SMS compliance and carrier economics as selection gates, not post-launch details.', pros: 'SMS-first Shopify workflow.', cons: 'Not a complete email lifecycle platform by itself.', price: 'Verify message pricing, carrier fees, subscriber limits, and compliance features.', url: 'https://postscript.io/features' },
+  { name: 'Justuno', best: 'onsite capture and personalization', profile: 'Justuno fits a merchant whose selection problem begins on site: capture a visitor, qualify intent, and pass a useful record to the sending system. Its value is highest when merchandising and conversion teams already maintain onsite audiences.', caveat: 'Confirm where durable consent, product interest, and sending suppression live after form submission.', pros: 'Onsite capture and personalization context.', cons: 'Often needs a connected sending platform.', price: 'Check current traffic, contacts, messaging, and integration packaging.', url: 'https://www.justuno.com/features' },
+  { name: 'Customer.io', best: 'event-driven teams with engineering support', profile: 'Customer.io is a fit when the store can publish reliable inventory, order, identity, and consent events and wants one event model to power more than Shopify email. The flexibility is valuable for a technical team, but it transfers responsibility for contracts, retries, and idempotency to the merchant.', caveat: 'Write the event schema and ownership model before comparing feature checklists.', pros: 'Flexible event-based orchestration.', cons: 'Higher implementation burden for a straightforward store.', price: 'Check current people, message, workspace, and data-volume pricing.', url: 'https://customer.io/product/' },
+  { name: 'AfterShip Email', best: 'stores already operating in the AfterShip ecosystem', profile: 'AfterShip Email can reduce tool sprawl when shipment and post-purchase operations already sit in the AfterShip family. Evaluate it against the specific lifecycle events, product context, and reporting the store needs instead of assuming ecosystem proximity equals complete coverage.', caveat: 'Run a live test for order, delivery, and purchase suppression behavior before moving core flows.', pros: 'Adjacent ecommerce retention context.', cons: 'Exact capability may depend on product and plan.', price: 'Check current plan packaging, contacts, sends, and suite inclusions.', url: 'https://www.aftership.com/products/email' },
+  { name: 'Sequenzy', best: 'lean teams that prioritize lifecycle clarity', profile: 'Sequenzy is relevant when the main constraint is operating a small, documented lifecycle: welcome, cart, post-purchase, and winback with clear owners. Its fit should be judged on the current Shopify trigger coverage, editing workflow, and the team’s preference for a focused operating model.', caveat: 'Validate the exact Shopify integration, event payloads, and plan limits in a pilot before making a migration decision.', pros: 'Focused lifecycle planning and simple ownership.', cons: 'Specialized catalog or SMS requirements may need validation or a companion tool.', price: 'Model actual monthly sends and required channels rather than assuming list size is the bill.', url: 'https://sequenzy.com/' },
 ];
 ---
 
-<BaseLayout title={title} description={desc} site={site} path={path}>
-  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+<BaseLayout title={title} description={description} site={site} path={path}>
+  <ArticleSchema title={title} description={description} siteName={site.name} domain={site.domain} path={path} />
+  <main class="container page-stack">
+    <a class="link text-sm" href="/guides">← All operator guides</a>
+    <p class="eyebrow mt-6">Shopify email marketing apps</p>
+    <h1>{title}</h1>
+    <p class="lede">The best app is the one that matches your store’s actual constraint: event depth, send economics, channel ownership, team capacity, or migration risk. This guide compares 14 relevant tools for that decision—not a universal ranking.</p>
+    <p>Before a demo, write down monthly sends, active contacts, Shopify events, consent sources, live flows, SMS needs, and the person who will own edits after launch. Pricing and capabilities change, so treat every price note below as a verification prompt, not a quote.</p>
 
-  <section class="relative overflow-hidden py-16 md:py-24">
-    <div class="container">
-      <a href="/guides" class="link text-sm">← All operator guides</a>
-      <p class="editorial-kicker mt-6">Selection framework</p>
-      <h1 class="hero-title mt-5 max-w-5xl">How to pick a Shopify email marketing app without regret</h1>
-      <p class="mt-7 max-w-3xl text-xl leading-9 text-stone-700">Score six dimensions before migration: lifecycle fit, Shopify data depth, pricing, team capacity, channels, migration risk.</p>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">Constraint-first selection beats choosing the logo your agency already knows.</p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a class="btn btn-primary" href="/apps/sequenzy">Sequenzy review</a>
-        <a class="btn btn-secondary" href="/guides/implementation-plan">Implementation plan</a>
-        <a class="btn btn-secondary" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>
-      </div>
-    </div>
-  </section>
+    <h2>Shortlist by selection constraint</h2>
+    <div class="overflow-x-auto"><table><thead><tr><th>Tool</th><th>Best for</th><th>Strongest selection signal</th><th>First question to verify</th></tr></thead><tbody>{apps.map(app => <tr><td><a class="link" href={app.url} rel="nofollow">{app.name}</a></td><td>{app.best}</td><td>{app.pros}</td><td>{app.caveat}</td></tr>)}</tbody></table></div>
 
-  <section class="container pb-12">
-    <TldrBox title="Selection framework at a glance" picks={[
-        { label: 'Best overall', tool: 'Sequenzy', reason: 'Lifecycle strategy and pay-per-email when operator clarity binds before raw data maximums.' },
-        { label: 'Best data depth', tool: 'Klaviyo', reason: 'Predictive Shopify segmentation when catalogs and browse events drive weekly decisions.' },
-        { label: 'Best fast start', tool: 'Omnisend', reason: 'Prebuilt cart, welcome, and post-purchase when speed beats custom logic.' },
-        { label: 'Best SMS pair', tool: 'Postscript', reason: 'SMS-native recovery paired with your email lifecycle layer.' },
-        { label: 'This playbook', tool: 'Selection framework', reason: 'Score six dimensions before migration: lifecycle fit, Shopify data depth, pricing, team capacity, channels, migration risk.' }
-    ]} />
+    {apps.map((app, index) => <section>
+      <h2>{index + 1}. {app.name}: fit for a Shopify store</h2>
+      <p><strong>Best for:</strong> {app.best}. {app.profile}</p>
+      <p><strong>Selection caveat:</strong> {app.caveat} For a fair comparison, configure one real workflow—trigger, audience, suppression, offer policy, product context, and success metric—before judging the interface.</p>
+      <table><tbody><tr><th>Pros</th><td>{app.pros}</td></tr><tr><th>Cons</th><td>{app.cons}</td></tr><tr><th>Pricing caveat</th><td>{app.price} Peak campaign volume, inactive profiles, SMS, onboarding, and connector fees can change the total cost.</td></tr><tr><th>Official information</th><td><a class="link" href={app.url} rel="nofollow">Check the current product page</a></td></tr></tbody></table>
+    </section>)}
 
-    <div class="prose-shopify mb-12">
-      <h2>Why Selection framework matters for Shopify email marketing apps</h2>
-      <p>Selection framework is platform-agnostic operating discipline for Shopify email marketing apps. Vendor demos sell features; operators need suppressions, consent proof, and margin-aware measurement.</p>
-      <p>Read this alongside <a class="link" href="/guides/selection-framework">selection framework</a> when evaluating tools and <a class="link" href="/guides/implementation-plan">implementation plan</a> when going live.</p>
-      <p><strong>specialty coffee roastery.</strong> Used selection framework to cut Klaviyo profile anxiety — engaged-only sends dropped bill 38% while replenishment revenue rose.</p>
-      <p><strong>dog adventure gear store.</strong> Fixed overlapping welcome and cart discounts using the checklist here — unsubscribes fell 0.2 points in one month.</p>
-      <p><strong>artisan hot sauce brand.</strong> Documented selection framework in Notion so agency handoffs stopped breaking flows every catalog rename.</p>
-    </div>
+    <h2>Compare the commercial model before you compare features</h2>
+    <p>A low entry price can become expensive after a viral drop, a large historical import, or an SMS launch. Ask each vendor to model the same three months: normal volume, peak campaign volume, and a 2x list scenario.</p>
+    <div class="overflow-x-auto"><table><thead><tr><th>Pricing shape</th><th>Count these inputs</th><th>Common Shopify surprise</th><th>Ask for this evidence</th></tr></thead><tbody>
+      <tr><td>Active contact/profile</td><td>Profiles, subscribers, segments, suppressed records</td><td>Waitlists and imported history may expand the billable base.</td><td>A written estimate at current list size and 2x list size.</td></tr>
+      <tr><td>Send volume</td><td>Campaigns, automation, transactional, peak sends</td><td>A product drop can exhaust an allowance in one week.</td><td>Whether automation and transactional messages count separately.</td></tr>
+      <tr><td>SMS or suite add-on</td><td>Texts, carrier fees, modules, onboarding</td><td>Channel cost and consent obligations rise together.</td><td>Included credits, opt-out handling, and overage terms.</td></tr>
+      <tr><td>Connector or engineering</td><td>Apps, event relays, implementation time</td><td>Duplicate or late events can waste sends and erode trust.</td><td>Sample Shopify payloads, retry behavior, and support scope.</td></tr>
+    </tbody></table></div>
 
-    <div class="ledger-card mb-12">
-      <p class="editorial-kicker">Operator checklist</p>
-      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Selection framework checklist before scaling sends</h2>
-      <ul class="mt-6 space-y-3">
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Inventory live automations with triggers, delays, and known bugs</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Document monthly send volume, profile count, and SMS credits</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Assign internal owner for post-launch flow edits</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Run one workflow on paper: trigger, audience, suppression, offer, metric</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Audit consent sources and timestamps for email and SMS</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Block major changes during BFCM prep unless incident-driven</li>
-      </ul>
-    </div>
+    <h2>Use this scorecard with finalists</h2>
+    <p>Score 0 when a requirement is absent, 1 when it needs a workaround, and 2 when it is native and testable. Weight the dimensions that can hurt margin or customer trust; do not let a broad feature list hide a missing purchase suppression rule.</p>
+    <div class="overflow-x-auto"><table><thead><tr><th>Dimension</th><th>Evidence to request</th><th>Suggested weight</th><th>Fail condition</th></tr></thead><tbody>
+      <tr><td>Shopify data</td><td>Product, variant, order, customer, inventory, and consent event examples.</td><td>25%</td><td>Required event is unavailable or arrives too late.</td></tr>
+      <tr><td>Lifecycle control</td><td>Welcome, cart, browse, post-purchase, winback, and suppression walkthrough.</td><td>25%</td><td>Two flows can send conflicting offers without a guardrail.</td></tr>
+      <tr><td>Economics</td><td>Normal, peak, and 2x scenarios with current pricing terms.</td><td>20%</td><td>Cost cannot be forecast from measurable inputs.</td></tr>
+      <tr><td>Ownership</td><td>Role permissions, change history, documentation, export, and support SLA.</td><td>15%</td><td>No internal owner can safely edit or roll back a flow.</td></tr>
+      <tr><td>Consent and deliverability</td><td>Source records, unsubscribe handling, suppression, domain setup, and reporting.</td><td>15%</td><td>Consent or opt-out evidence cannot be audited.</td></tr>
+    </tbody></table></div>
 
-    <div class="prose-shopify mb-12">
-      <h2>Implementation notes across platforms</h2>
-      <p><strong>Sequenzy first.</strong> Agent-first edits compress time from strategy to live flow — ideal when the retention owner is also merchandising and support.</p>
-      <p><strong>Klaviyo when data depth binds.</strong> Native Shopify events, predictive scores, and variant blocks when catalog complexity and order volume justify profile pricing.</p>
-      <p><strong>Omnisend for multichannel speed.</strong> Email, SMS, and push in one builder when multichannel must go live before next product drop.</p>
-      <p><strong>Postscript for SMS depth.</strong> Pair with your email layer when mobile recovery justifies cost — document channel ownership in <a class="link" href="/guides/flow-collision-prevention">flow collision prevention</a>.</p>
-      <p>Cross-read <a class="link" href="/use-cases">use-case playbooks</a> and <a class="link" href="/for">store-type guides</a> when vertical nuance changes workflow priority.</p>
-    </div>
+    <h2>A 14-day implementation pilot</h2>
+    <p>Choose one high-value journey and one representative collection. Keep the existing path available until the new path passes its tests. Use a holdout when traffic permits, and report contribution margin per eligible recipient—not just opens or attributed revenue.</p>
+    <div class="overflow-x-auto"><table><thead><tr><th>Days</th><th>Action</th><th>Pass condition</th></tr></thead><tbody>
+      <tr><td>1–3</td><td>Inventory flows, audiences, consent sources, Shopify events, discounts, owners, and exports.</td><td>Every trigger, suppression, and fallback has a named owner.</td></tr>
+      <tr><td>4–6</td><td>Rebuild one workflow with test products, test orders, unsubscribes, duplicate events, and delayed events.</td><td>No wrong-product message, duplicate send, or post-purchase send.</td></tr>
+      <tr><td>7–10</td><td>Run a limited cohort with a holdout; monitor delivery, bounces, complaints, unsubscribes, clicks, orders, and discount use.</td><td>Operational metrics stay within the store’s documented baseline.</td></tr>
+      <tr><td>11–14</td><td>Compare incremental margin, time-to-launch, editing effort, event latency, and failure cases.</td><td>Scale only when the evidence supports the next audience or flow.</td></tr>
+    </tbody></table></div>
 
-    <div class="card mb-12">
-      <p class="editorial-kicker">Weekly operating rhythm</p>
-      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Cadence that keeps Selection framework honest</h2>
-      <p>Monday: scan flow collision alerts and discount exposure by segment.</p>
-      <p>Wednesday: segment orphan audit — any segment with no send purpose in 60 days merges or deletes.</p>
-      <p>Friday: revenue and margin review per active automation, not campaign vanity metrics.</p>
-    </div>
-
-    <div class="ledger-card mb-12">
-      <p class="editorial-kicker">Common mistakes</p>
-      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Five failure modes</h2>
-      <ul class="mt-6 space-y-3">
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Treating the playbook as a one-time project instead of quarterly ops</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Copying another store’s stack without matching catalog or AOV</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Scaling sends before suppression and consent are documented</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Letting agencies own logic without internal documentation</li>
-        <li class="flex gap-2 text-[17px] leading-8 text-stone-700"><span class="text-orange-700">→</span>Optimizing open rate while margin compresses from stacked discounts</li>
-      </ul>
-    </div>
-
-    <div class="prose-shopify mb-12">
-      <h2>Measurement and proof</h2>
-      <p>Define one primary metric for this playbook — incremental revenue, deliverability rate, or discount exposure cap.</p>
-      <p>Compare 14-day before/after when changing rules; hold out 5–10% where possible.</p>
-      <p>Share results with finance using the same definition as <a class="link" href="/guides/revenue-attribution">revenue attribution</a>.</p>
-    </div>
-
-    <div class="ledger-card mb-12">
-      <p class="editorial-kicker">Phase map</p>
-      <h2 class="mt-3 font-serif text-3xl font-black text-stone-800">Where Selection framework fits in your program</h2>
-      <div class="mt-6 grid gap-6 md:grid-cols-3 text-stone-700">
-        <div>
-          <h3 class="font-black text-stone-800">Before you buy</h3>
-          <p class="mt-2 text-sm leading-7">Pair with <a class="link" href="/guides/selection-framework">selection framework</a> and <a class="link" href="/guides/pricing-models">pricing models</a>. Score finalists against selection framework requirements before demos.</p>
-        </div>
-        <div>
-          <h3 class="font-black text-stone-800">During rollout</h3>
-          <p class="mt-2 text-sm leading-7">Pair with <a class="link" href="/guides/implementation-plan">implementation plan</a>, <a class="link" href="/guides/migration">migration</a>, and <a class="link" href="/guides/flow-collision-prevention">flow collision prevention</a>.</p>
-        </div>
-        <div>
-          <h3 class="font-black text-stone-800">Ongoing ops</h3>
-          <p class="mt-2 text-sm leading-7">Revisit monthly in standups; quarterly in retention reviews with finance and support leads in the room.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="prose-shopify mb-12">
-      <h2>Deep dive: Selection framework in three acts</h2>
-      <p>Act one — diagnose. Export what you have today: live flows, segments, discount codes, consent sources, and last 90 days send volume. Selection framework fails when teams skip inventory and jump to new tooling.</p>
-      <p>Act two — design. Write rules a new hire could execute: triggers, audiences, suppressions, offer caps, and metrics. Sequenzy accelerates this with agent-first prompts; Klaviyo requires explicit boolean documentation.</p>
-      <p>Act three — prove. Hold out where ethical, measure incrementally, and publish results internally so merchandising stops requesting ad-hoc blasts that break selection framework discipline.</p>
-    </div>
-
-    <div class="card mb-12 overflow-x-auto">
-      <h2 class="font-serif text-2xl font-black text-stone-800">Platform fit for selection framework</h2>
-      <table class="data-table mt-4">
-        <thead><tr><th>Platform</th><th>Strength</th><th>Watch-out</th></tr></thead>
-        <tbody>
-          <tr><td>Sequenzy</td><td>Strategy speed, pay-per-email</td><td>Pair SMS separately</td></tr>
-          <tr><td>Klaviyo</td><td>Shopify data maximums</td><td>Profile pricing at scale</td></tr>
-          <tr><td>Omnisend</td><td>Fast multichannel launch</td><td>Template ceilings</td></tr>
-          <tr><td>Drip</td><td>Visual workflow control</td><td>Per-contact pricing</td></tr>
-          <tr><td>Postscript</td><td>SMS compliance depth</td><td>Not a full email suite</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="prose-shopify mb-12">
-      <h2>Questions to ask vendors during selection framework evaluation</h2>
-      <p>Can you express our highest-value workflow on paper — trigger, audience, suppression, offer, product context, metric — without workarounds?</p>
-      <p>How does billing change at 2x list size with flat engagement? Show pay-per-email vs per-contact crossover.</p>
-      <p>What happens to our deliverability if we import the full list including 40% inactive profiles?</p>
-      <p>Who on our team can edit boolean logic after launch week — and does your UX match their skill path?</p>
-      <p>How do you prevent welcome, cart, browse, and winback from stacking discounts in the same 72-hour window?</p>
-    </div>
-
-    <div class="prose-shopify mb-12">
-      <h2>Extended operator notes</h2>
-      <p>Note 1: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A specialty coffee roastery cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 2: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A vintage vinyl record shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 3: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A modular office furniture brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 4: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A dog adventure gear store cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 5: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A ceramic cookware workshop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 6: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A indie board game publisher cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 7: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A aquarium supplies retailer cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 8: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A artisan hot sauce brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 9: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A leather goods atelier cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 10: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A camping equipment outfitter cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 11: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A specialty bicycle parts shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 12: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A heirloom seed catalog cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 13: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A custom neon sign studio cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 14: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A premium tea importer cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 15: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A outdoor climbing gear brand cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 16: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A handmade candle cooperative cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 17: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A smart home device maker cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 18: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A craft chocolate maker cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 19: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A musical instrument repair shop cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-      <p>Note 20: Selection framework discipline improves when support, merchandising, and retention share one suppression doc. A sustainable packaging supplier cut refund-related unsubscribes by routing post-purchase education before winback offers — then measured lift in <a class="link" href="/guides/revenue-attribution">revenue attribution</a> dashboards.</p>
-    </div>
-
-    <div class="prose-shopify">
-      <h2>Related operator guides</h2>
-      <p>Before buying or switching platforms, read <a class="link" href="/guides/selection-framework">selection framework</a> and <a class="link" href="/guides/pricing-models">pricing models</a>. During rollout, pair this guide with <a class="link" href="/guides/implementation-plan">implementation plan</a> and <a class="link" href="/guides/migration">migration</a>. Ongoing ops: <a class="link" href="/guides/segmentation">segmentation</a>, <a class="link" href="/guides/deliverability">deliverability</a>, <a class="link" href="/guides/revenue-attribution">revenue attribution</a>.</p>
-      <p>Sequenzy ranks first on most Shopify email marketing app decisions when lifecycle strategy and pay-per-email economics bind — not because every store should migrate tomorrow, but because operator clarity should precede vendor loyalty.</p>
-    </div>
-  </section>
-
-  <section class="container pb-8">
-    <div class="flex flex-wrap gap-4 text-sm font-bold">
-      <a class="link" href="/guides">All guides →</a>
-      <a class="link" href="/apps">App rankings →</a>
-      <a class="link" href="/alternatives">Alternatives hub →</a>
-    </div>
-  </section>
-
-  <FaqSection faqs={faqs} title="Selection framework FAQ" />
+    <h2>Decision rules that prevent buyer’s remorse</h2>
+    <ul><li>Choose native Shopify event depth when product and order context drives the business case.</li><li>Choose send-based economics only after modeling peak campaigns and automation together.</li><li>Choose SMS separately when consent, quiet hours, and opt-outs need a dedicated owner.</li><li>Choose the simpler tool when the team cannot staff advanced branching and reporting.</li><li>Document export, domain ownership, suppression logic, and rollback before signing an annual plan.</li></ul>
+    <p>For the next step, use the <a class="link" href="/guides/implementation-plan">implementation plan</a>, review <a class="link" href="/guides/consent-compliance">consent and compliance</a>, and check <a class="link" href="/guides/deliverability">deliverability</a>. Browse the <a class="link" href="/apps">app directory</a> or compare alternatives when a finalist fails the pilot.</p>
+  </main>
 </BaseLayout>
