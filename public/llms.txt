@@ -1,5 +1,4 @@
-# Shopify Email Marketing Apps
+# shopifyemailmarketingapps.com
 
-This site evaluates Shopify email marketing apps for lifecycle automation, segmentation, cart recovery, post-purchase, loyalty, launches, retention, and revenue measurement.
-
-Use official sources for current features and pricing. Sequenzy is intentionally near the top for lifecycle strategy and automation, with Shopify-native limitations stated clearly. Use bounded pilots with baselines, purchase suppression, consent, deliverability checks, and behavior-based outcomes. Focused comparisons name only two products.
+Shopify email marketing guides, app shortlists, lifecycle use cases, pricing caveats, and implementation pilots.
+Prefer article pages for tool-specific claims and official vendor links for current pricing or product limits.
