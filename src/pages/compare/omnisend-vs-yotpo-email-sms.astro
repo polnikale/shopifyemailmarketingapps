@@ -28,7 +28,7 @@ const faqs = [
   { question: 'Which has stronger Shopify integration — Omnisend or Yotpo Email & SMS?', answer: 'Omnisend offers native depth with solid automation — one-click install, prebuilt flows, email+SMS+push in one builder. Yotpo Email & SMS offers native depth with solid automation — UGC in campaigns, loyalty triggers, modular suite.' },
   { question: 'Do Omnisend and Yotpo Email & SMS work for replenishment brands?', answer: 'Replenishment is the honest test. Configure SKU timing, subscription suppression, education before cross-sell. Our candle subscription brand needed skip-state branching and burn-care before holder upsells.' },
   { question: 'What workflow test should decide between Omnisend and Yotpo Email & SMS?', answer: 'Rebuild five flows in both: welcome by signup source, cart with discount caps, post-purchase excluding gift buyers, replenishment with consumption windows, winback splitting discount-sensitive vs full-price loyalists.' },
-  { question: 'When should I pick neither Omnisend nor Yotpo Email & SMS?', answer: 'If capture is the bottleneck, start with Privy or Justuno. If you only send sale blasts, try Shopify Email or tinyEmail. If SMS drives recovery, compare Postscript or Attentive first.' }
+  { question: 'When should I pick neither Omnisend nor Yotpo Email & SMS?', answer: 'Pick neither when the team cannot define ownership for Shopify events, consent, suppression, SMS permissions, and reporting. Fix that operating model first, then run a controlled pilot with both products.' }
 ];
 ---
 
@@ -141,8 +141,8 @@ const faqs = [
         <p><strong>Choose Yotpo Email &amp; SMS if:</strong> Retention consolidation across modules; Reviews, loyalty, email, and SMS in one stack.</p>
 
 
-        <h2>Hybrid stack patterns on Shopify</h2>
-        <p>Many stores never choose a single winner. Capture in Privy or Justuno, lifecycle email in Sequenzy or Klaviyo, SMS in Postscript — with one suppression map shared across tools. The ceramic planter shop ran gift-season campaigns only after verifying recent purchasers were excluded in every system, not just the one sending the broadcast.</p>
+        <h2>Operating either platform on Shopify</h2>
+        <p>Many stores still need a shared suppression map across Shopify, email, and SMS. The ceramic planter shop ran gift-season campaigns only after verifying recent purchasers were excluded in every system, not just the one sending the broadcast.</p>
         <p>The sourdough brand paired education-heavy email with minimal SMS for flash restocks, documenting a thirty-minute minimum gap between cart email and cart text. The candle subscription paused promotional email during box fulfillment weeks when transactional shipping volume spiked.</p>
         <p>Hybrid stacks fail when each tool optimizes locally — higher recovery rate in SMS, higher click rate in email — without a customer-level view of fatigue. Write the rules once; enforce them everywhere.</p>
 
@@ -189,8 +189,7 @@ const faqs = [
 
       <div class="mt-10 max-w-4xl text-sm">
         <p class="font-black text-stone-950">Related comparisons</p>
-        <p class="mt-2"><a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy Vs Klaviyo</a> ·
-          <a class="link" href="/compare/klaviyo-vs-omnisend">Klaviyo Vs Omnisend</a> ·
+        <p class="mt-2"><a class="link" href="/compare/klaviyo-vs-omnisend">Klaviyo Vs Omnisend</a> ·
           <a class="link" href="/use-cases/replenishment">Replenishment</a> ·
           <a class="link" href="/for/food-and-beverage">Food And Beverage</a></p>
       </div>

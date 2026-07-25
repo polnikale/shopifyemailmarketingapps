@@ -31,6 +31,7 @@ const canonical = new URL(path.replace(/\.html$/,''), `https://www.${site.domain
   <body class="min-h-screen flex flex-col">
     <Header site={site} />
     <main class="flex-grow"><slot /></main>
+    <nav aria-label="Related Shopify email guides" class="container mx-auto w-full max-w-6xl px-6 pb-8 text-sm text-[#6b4a2f]"><span class="mr-3 font-semibold text-[#24170f]">Related Shopify guides:</span><a class="mr-3 underline" href="/blog/best-shopify-email-marketing-apps-for-customer-retention">retention apps</a><a class="mr-3 underline" href="/blog/best-shopify-email-marketing-apps-for-winback">win-back apps</a><a class="mr-3 underline" href="/blog/best-shopify-email-marketing-apps-for-abandoned-cart">abandoned-cart apps</a><a class="underline" href="/blog/best-shopify-email-marketing-apps-for-post-purchase">post-purchase apps</a></nav>
     <Footer site={site} />
   </body>
 </html>
