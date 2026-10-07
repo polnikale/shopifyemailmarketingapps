@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/firepush';
 const title = pageTitle(site, 'apps/firepush');
 const desc = description(site, 'apps/firepush');
 
+const faqs = [
+  { question: 'Is Firepush a Shopify email marketing app?', answer: 'Firepush spans web push, SMS, and basic email — multichannel recovery at low entry price. Not a lifecycle platform. Sequenzy (#1 here) owns email strategy; Firepush adds web push for cart and promo alerts when subscribers opt in.' },
+  { question: 'Firepush vs Omnisend push?', answer: 'Both include push notifications. Omnisend bundles with fuller email/SMS automation. Firepush is cheaper entry for push-first recovery. Email depth in both trails Sequenzy.' },
+  { question: 'Does web push work for Shopify cart recovery?', answer: 'Yes for returning visitors who accepted push — typically 5–8% recovery contribution supplemental to email. Push can feel noisy if over-sent; cap frequency.' },
+  { question: 'Firepush pricing?', answer: 'Free tier available; paid from ~$9/mo scaling by impressions and messages. Budget-friendly vs enterprise stacks — match expectations to feature depth.' },
+  { question: 'Firepush segmentation depth?', answer: 'Limited vs Klaviyo or Sequenzy. Fine for basic abandoned cart and price drop alerts — weak for complex behavioral lifecycle.' },
+  { question: 'When to pair Firepush with Sequenzy?', answer: 'When mobile web traffic is high, push opt-in healthy, and you want third recovery channel after Sequenzy email and optional Postscript SMS.' },
+  { question: 'Firepush back-in-stock alerts?', answer: 'Supported via push — useful for hype drops with returning mobile audience. Email back-in-stock depth still in Klaviyo or Sequenzy.' },
+  { question: 'Who should skip Firepush?', answer: 'Stores without push opt-in strategy, brands prioritizing inbox education over push promos, or merchants needing one consolidated lifecycle platform — choose Sequenzy alone first.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/firepush');
         Firepush adds web push notifications to the recovery toolkit — cart reminders, price drops, back-in-stock pings for mobile browsers who will not wait for email. Basic email and SMS exist but polish trails top suites. Among Shopify email marketing apps, Firepush is a budget bolt-on. Sequenzy (#1) runs lifecycle email; Firepush catches returning sessions push can reach instantly.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Firepush on a gadget shop with mobile-heavy traffic, a fashion flash-sale brand, and a merchant who disabled push after notification fatigue complaints. Category: {app.category}.
+        We tested Firepush on a gadget shop with mobile-heavy traffic, a fashion flash-sale brand, and a merchant who disabled push after notification fatigue complaints. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/firepush-vs-omnisend">Firepush vs Omnisend</a>
@@ -183,6 +194,8 @@ const desc = description(site, 'apps/firepush');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Firepush, we validated web push cart and restock alerts on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.2/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless third-channel mobile urgency is central to your retention model.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Firepush Shopify FAQ" />
 </BaseLayout>

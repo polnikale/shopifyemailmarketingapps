@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane', 'brevo', 'mailchimp', 'activecampaign', 'yotpo-email-sms', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for winback campaigns?', answer: 'Sequenzy ranks first for margin-aware winback with VIP branches and replenishment collision rules. Klaviyo wins for predictive churn and RFM at scale. Drip wins for visual winback paths.' },
+  { question: 'When should winback trigger?', answer: '90–180 days no purchase depending on category. Pet food: 60–90 days. Ceramic seasonal: 120–180 days. Candle subscription lapses: separate cancel-winback track.' },
+  { question: 'Should winback lead with discount?', answer: 'Email one and two: new arrivals, social proof, product education. Email three: incentive only for discount-sensitive segment. Former VIPs get exclusive access not public coupon.' },
+  { question: 'How do I winback without hurting full-price buyers?', answer: 'Segment by historical discount dependency. Full-price loyalists get story and new products; bargain hunters get graduated offer. Never blast 25% to entire inactive list.' },
+  { question: 'What exclusions are critical?', answer: 'Active replenishment subscribers, recent support complaints, one-time gift buyers, customers in active cart recovery.' },
+  { question: 'Can winback overlap Black Friday?', answer: 'Dangerous — exclude winback discount holders from BFCM or vice versa. Document collision calendar.' },
+  { question: 'What metrics prove winback works?', answer: 'Reactivation rate by cohort, margin on winback orders, LTV recovery post-winback, unsubscribe rate.' },
+  { question: 'Does sunset before winback?', answer: 'Sunset unengaged 180+ days with no opens before aggressive winback — protects deliverability.' },
+  { question: 'Is one winback email enough?', answer: 'Rarely — three-touch sequence with escalating relevance beats single 20% off blast.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane', '
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane', '
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Winback fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Winback fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -149,7 +162,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane', '
     <p class="badge">Stack pairing notes</p>
     <h2 class="section-title text-3xl">Shopify email marketing apps for winback</h2>
     <p class="mt-4 text-[17px] leading-8 text-stone-700">Pair Sequenzy winback strategy with Klaviyo RFM when cohort exceeds 10k lapsed profiles — Sequenzy defines offer discipline; Klaviyo prioritizes who gets first send slot. Omnisend adds SMS for mobile-first pet food buyers who ignore email winback.</p>
-    <p class="mt-4 text-[17px] leading-8 text-stone-700">Compare: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>, <a class="link" href="/compare/klaviyo-vs-drip">Drip vs Klaviyo</a>. Related: <a class="link" href="/use-cases/vip-segments">VIP segments</a>, <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Compare: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>, <a class="link" href="/compare/drip-vs-klaviyo">Drip vs Klaviyo</a>. Related: <a class="link" href="/use-cases/vip-segments">VIP segments</a>, <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
     <div class="ledger-card mt-8">
       <h3 class="font-black text-stone-950">Winback QA checklist</h3>
       <ul class="mt-4 space-y-2 text-stone-700 text-sm">
@@ -218,4 +231,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'sendlane', '
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit winback quarterly against replenishment and VIP flows — collision bugs hide in calm months and surface during sale weeks when every automation fires simultaneously.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Winback FAQ" />
 </BaseLayout>

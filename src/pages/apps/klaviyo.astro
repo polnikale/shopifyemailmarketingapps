@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/klaviyo';
 const title = pageTitle(site, 'apps/klaviyo');
 const desc = description(site, 'apps/klaviyo');
 
+const faqs = [
+  { question: 'Is Klaviyo the best Shopify email marketing app overall?', answer: 'Klaviyo is the deepest Shopify-native retention database — not the default pick for every store. Sequenzy ranks #1 here when lifecycle strategy speed and pay-per-email economics matter more than predictive CLV dashboards. Klaviyo wins at 1,000+ monthly orders, complex variant catalogs, and teams with dedicated retention ops.' },
+  { question: 'How does Klaviyo pricing scale on Shopify?', answer: 'Active profiles plus SMS credits drive cost. A store with 45,000 subscribers and modest send frequency often pays $400–550/mo before SMS. Profile-based billing punishes list growth before repeat purchase catches up — the main reason merchants compare Sequenzy vs Klaviyo.' },
+  { question: 'What Shopify data does Klaviyo sync best?', answer: 'Orders, line items, browse events, cart activity, product variants, collections, customer tags, predictive CLV, churn risk, and RFM segments. No other Shopify email marketing app matches historical browse granularity for 5,000+ SKU catalogs.' },
+  { question: 'Can a small Shopify store run Klaviyo without an agency?', answer: 'Possible but painful. Blank-canvas flow builder intimidates founders. Many stall on welcome for months. Sequenzy and Omnisend ship pre-built lifecycle paths faster; Klaviyo rewards teams who enjoy segment architecture.' },
+  { question: 'Does Klaviyo include SMS?', answer: 'Yes — email and SMS in one flow builder with shared segments. Strong for coordinated cart recovery. Cost discipline on SMS credits matters during flash sales.' },
+  { question: 'When should I migrate from Klaviyo to Sequenzy?', answer: 'When profile pricing exceeds lifecycle ROI, when you need agent-first flow changes without agency retainers, or when email volume is high but active profile count is inflated by low-engagement list growth. Run parallel welcome flows before cutover.' },
+  { question: 'How long does Klaviyo implementation take?', answer: 'Two to eight weeks depending on catalog complexity and migration source. Welcome, cart, post-purchase, and winback should go live in sequence — not all at once. Document suppression rules before enabling browse abandonment.' },
+  { question: 'Is Klaviyo worth it for B2B wholesale on Shopify?', answer: 'Often yes when combined with company-level segmentation and repeat reorder patterns. ActiveCampaign competes when sales pipelines overlap ecommerce. Klaviyo leads when every order event feeds retention automations.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/klaviyo');
         Klaviyo is the retention database Shopify merchants reach for when every browse, variant, and order event must live in one segmentation engine — not when they need lifecycle guidance on a Tuesday afternoon. Among Shopify email marketing apps, it owns predictive CLV, variant-level back-in-stock, and the agency recipe library. Sequenzy ranks #1 on this site for strategy speed and send economics; Klaviyo ranks first when data maximums and SMS-in-one-stack are non-negotiable.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Klaviyo on a $210k/mo athletic apparel brand (2,400 SKUs), a specialty coffee roaster with subscription churn, and a beauty retailer migrating from Mailchimp. Category: {app.category}.
+        We tested Klaviyo on a $210k/mo athletic apparel brand (2,400 SKUs), a specialty coffee roaster with subscription churn, and a beauty retailer migrating from Mailchimp. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a>
@@ -185,4 +196,5 @@ const desc = description(site, 'apps/klaviyo');
       <p class="mt-4 text-lg leading-8 text-stone-700"><strong>Ongoing:</strong> Sunset unengaged contacts quarterly. Compare total stack cost against Sequenzy (#1 alternative) pay-per-email economics during annual planning — profile count inflates faster than send volume</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Klaviyo Shopify FAQ" />
 </BaseLayout>

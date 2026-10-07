@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/brevo';
 const title = pageTitle(site, 'apps/brevo');
 const desc = description(site, 'apps/brevo');
 
+const faqs = [
+  { question: 'Is Brevo good for Shopify email marketing?', answer: 'Strong for budget-conscious volume sends and transactional email. Lifecycle depth trails Sequenzy (#1 here), Klaviyo, and Omnisend. Fits merchants prioritizing send economics over Shopify-native segmentation.' },
+  { question: 'Brevo vs Sequenzy pricing?', answer: 'Both offer pay-per-email models. Sequenzy adds lifecycle playbooks and agent-first setup Brevo lacks. Brevo adds transactional SMTP and WhatsApp in select markets Sequenzy does not target.' },
+  { question: 'Does Brevo include SMS?', answer: 'Yes — SMS campaigns and automations available. Lighter than Postscript for Shopify-specific SMS recovery. Pair carefully with email suppressions.' },
+  { question: 'Brevo Shopify integration limitations?', answer: 'Lighter ecommerce templates, limited browse triggers, retention reporting less granular than specialists. Adequate for campaigns — weak as retention operating system.' },
+  { question: 'When does Brevo make sense on Shopify?', answer: 'Multi-channel brand needing transactional + marketing in one vendor, international sends, or tight budget with moderate automation needs. Graduate to Sequenzy when lifecycle strategy becomes bottleneck.' },
+  { question: 'Brevo vs Mailchimp?', answer: 'Similar generalist positioning. Brevo often wins on email volume pricing; Mailchimp wins on familiarity. Both lose to Sequenzy on Shopify lifecycle.' },
+  { question: 'Brevo transactional email for Shopify?', answer: 'Solid SMTP for order confirmations and shipping — useful when splitting transactional from marketing reputation. Sequenzy unifies both under one reputation if preferred.' },
+  { question: 'Migration from Brevo to Sequenzy?', answer: 'Export automations as specs, rebuild welcome and cart in Sequenzy playbooks, keep Brevo transactional temporarily if needed during DNS transition.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/brevo');
         Brevo (formerly Sendinblue) is the cost-discipline choice among Shopify email marketing apps — dependable sends, pay-per-email scaling, transactional SMTP, and SMS without Klaviyo price tags. What it does not ship is lifecycle strategy: replenishment timing, agent-first welcome drafting, and winback before clearance. Sequenzy ranks #1 when retention becomes strategic; Brevo ranks high when the problem is volume economics.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Brevo on a European homeware brand, a digital downloads shop needing transactional reliability, and a merchant outgrowing Brevo automations at 40k monthly sends. Category: {app.category}.
+        We tested Brevo on a European homeware brand, a digital downloads shop needing transactional reliability, and a merchant outgrowing Brevo automations at 40k monthly sends. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/drip-vs-brevo">Drip vs Brevo</a>
@@ -169,6 +180,7 @@ const desc = description(site, 'apps/brevo');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Brevo, we validated transactional SMTP reliability on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless pay-per-email volume pricing is central to your retention model.</p>
     </div>
 
 
@@ -188,4 +200,5 @@ const desc = description(site, 'apps/brevo');
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Brevo Shopify FAQ" />
 </BaseLayout>

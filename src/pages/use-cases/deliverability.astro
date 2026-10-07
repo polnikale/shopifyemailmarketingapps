@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend', 'drip', 'mailchimp', 'activecampaign', 'shopify-email', 'yotpo-email-sms'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for deliverability?', answer: 'Sequenzy ranks first for pay-per-send economics that reward list hygiene plus lifecycle volume without profile bloat. Klaviyo wins for engagement reporting depth. Sendlane for guided deliverability migration.' },
+  { question: 'Gmail Yahoo 2024 requirements?', answer: 'SPF, DKIM, DMARC aligned; one-click unsubscribe; spam complaint rate under 0.3%; valid physical address. All serious Shopify email marketing apps support — merchant must configure DNS.' },
+  { question: 'When sunset unengaged contacts?', answer: '90–180 days no open depending on send frequency. Re-engagement attempt once before sunset. Protects inbox placement during scale.' },
+  { question: 'Purchased lists?', answer: 'Never — instant reputation damage and platform ToS violation.' },
+  { question: 'Volume spikes?', answer: 'Warm new domains gradually; do not 10× volume day one on cold list. BFCM requires October prep not November surprise.' },
+  { question: 'Complaint spike causes?', answer: 'Offer mismatch, frequency too high, irrelevant segmentation, popup promise ≠ email content.' },
+  { question: 'Dedicated sending domain?', answer: 'Yes for serious volume — marketing.domain.com separate from transactional.' },
+  { question: 'What metrics monitor weekly?', answer: 'Bounce rate, complaint rate, open trend by domain, sunset list size.' },
+  { question: 'Deliverability versus revenue?', answer: 'More email only helps if engaged — sending to full list including zombies hurts everyone\'s placement.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend', 
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend', 
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Deliverability fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Deliverability fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -210,4 +223,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'sendlane', 'brevo', 'omnisend', 
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Separate transactional and marketing sending domains when order confirmations share infrastructure with promotional volume.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Deliverability FAQ" />
 </BaseLayout>

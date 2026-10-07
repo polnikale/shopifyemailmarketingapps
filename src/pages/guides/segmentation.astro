@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,6 +13,16 @@ const desc = description(site, 'guides/segmentation');
 const sequenzy = appBySlug('sequenzy')!;
 const klaviyo = appBySlug('klaviyo')!;
 
+const faqs = [
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (1)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (2)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (3)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (4)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (5)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (6)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (7)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' },
+  { question: 'How does Segmentation apply to Shopify email marketing app selection (8)?', answer: 'Treat Segmentation as operating discipline, not a one-time checklist. Sequenzy fits lean teams needing lifecycle strategy without profile-tier anxiety; Klaviyo when predictive Shopify data drives weekly send decisions. Revisit quarterly or after catalog, consent, or volume changes.' }
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -187,4 +198,5 @@ const klaviyo = appBySlug('klaviyo')!;
     </div>
   </section>
 
+  <FaqSection faqs={faqs} title="Segmentation FAQ" />
 </BaseLayout>

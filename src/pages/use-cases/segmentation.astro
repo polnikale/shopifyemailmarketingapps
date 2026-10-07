@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnisen
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnisend', 'sendlane', 'brevo', 'mailchimp', 'yotpo-email-sms', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for segmentation?', answer: 'Sequenzy ranks first for lifecycle segments tied to actionable playbooks not orphan lists. Klaviyo wins for deepest Shopify event segmentation. ActiveCampaign when CRM overlap exists.' },
+  { question: 'Tags versus behavioral segments?', answer: 'Tags label; behavior decides send. Segment on orders, views, consent source — tags supplement not replace.' },
+  { question: 'How often audit segments?', answer: 'Weekly for active campaign segments; quarterly full RFM recalc; immediately after catalog or market expansion.' },
+  { question: 'Segment overlap problem?', answer: 'Define priority rules — VIP beats bargain hunter; cart beats browse. Document hierarchy spreadsheet.' },
+  { question: 'Stale segments risk?', answer: 'Segments without sends for 90 days bloat account and confuse reporting — prune or merge.' },
+  { question: 'Shopify customer tags sync?', answer: 'Klaviyo, Sequenzy, Drip sync tags bi-directionally when configured; verify webhook health.' },
+  { question: 'Segments without actions?', answer: 'Every segment needs defined next workflow or campaign — no "just in case" lists.' },
+  { question: 'What metrics matter?', answer: 'Revenue per segment, overlap percentage, campaign performance by segment, segment freshness.' },
+  { question: 'Start segmentation how?', answer: 'Five core: never purchased, one-time buyer, repeat, VIP, lapsed. Expand after playbooks live on core five.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnise
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnise
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Segmentation fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Segmentation fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -150,7 +163,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnise
     <p class="badge">Stack pairing notes</p>
     <h2 class="section-title text-3xl">Shopify email marketing apps for segmentation</h2>
     <p class="mt-4 text-[17px] leading-8 text-stone-700">Klaviyo depth plus Sequenzy playbook attachment is ideal hybrid — segments built in Klaviyo, actions defined in Sequenzy strategy docs. ActiveCampaign when CRM pipeline segments overlap ecommerce. Start simple in Omnisend; migrate before overlap chaos.</p>
-    <p class="mt-4 text-[17px] leading-8 text-stone-700">Guides: <a class="link" href="/guides/segmentation">segmentation guide</a>. Compare: <a class="link" href="/compare/activecampaign-vs-klaviyo">Klaviyo vs ActiveCampaign</a>.</p>
+    <p class="mt-4 text-[17px] leading-8 text-stone-700">Guides: <a class="link" href="/guides/segmentation">segmentation guide</a>. Compare: <a class="link" href="/compare/klaviyo-vs-activecampaign">Klaviyo vs ActiveCampaign</a>.</p>
     <div class="ledger-card mt-8">
       <h3 class="font-black text-stone-950">Segmentation QA checklist</h3>
       <ul class="mt-4 space-y-2 text-stone-700 text-sm">
@@ -210,4 +223,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'activecampaign', 'omnise
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Quarterly audit: full-price ratio per segment — discount-dependent high spenders may belong in standard winback, not VIP perks.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Segmentation FAQ" />
 </BaseLayout>

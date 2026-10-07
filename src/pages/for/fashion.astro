@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -12,6 +13,18 @@ const segment = segmentBySlug('fashion')!;
 const path = '/for/fashion';
 const title = pageTitle(site, 'for/fashion');
 const desc = description(site, 'for/fashion');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for fashion stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. fashion stores face seasonality, size availability, drops, and fast-moving inventory.' },
+  { question: 'How should fashion stores prioritize email marketing apps?', answer: 'Follow Drop and waitlist campaigns and Size and fit education before adding new channels. Buying cycle: 2–8 weeks between discovery and purchase; heavy browse behavior; high return rates on sizing' },
+  { question: 'What metrics matter for fashion stores?', answer: 'Revenue per recipient by collection, Second purchase within 60 days, Return rate by email segment, Full-price vs discount purchase ratio' },
+  { question: 'When is tool sprawl risky for fashion stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for fashion stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for fashion stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'Should fashion stores use SMS alongside Shopify email marketing apps?', answer: 'Yes when cart recovery and drop alerts need same-day urgency — but SMS must respect size-variant inventory and suppress recent purchasers. Sequenzy handles email lifecycle; Postscript or Omnisend SMS should share suppression lists with your primary sender.' },
+  { question: 'How do fashion stores handle back-in-stock without spamming?', answer: 'Trigger by variant SKU, cap at one alert per size per 30 days, and exclude anyone who already bought adjacent sizes. Klaviyo and Sequenzy both support variant-level triggers when Shopify inventory webhooks sync cleanly.' },
+  { question: 'What is the biggest email mistake for streetwear and drop brands?', answer: 'Sending VIP early-access and public sale blasts on the same day without segment gates. Drop brands live on scarcity — collision between welcome, cart, and campaign layers erodes trust faster than a weak subject line.' },
+  { question: 'Can Privy replace Sequenzy for fashion lifecycle email?', answer: 'No. Privy excels at capture and basic campaigns. Sequenzy remains the lifecycle layer for welcome-by-source, post-purchase fit education, seasonal winback, and drop waitlist orchestration across Shopify email marketing apps.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -198,5 +211,6 @@ const desc = description(site, 'for/fashion');
       <p><strong>Quarterly stack review:</strong> Revalidate {segment.emailPriorities.join('; ')} against live automations. Compare {segment.metrics.join(', ')} quarter-over-quarter. Reassess Klaviyo profile pricing if list bloat outpaced engagement.</p>
       <p><strong>Peak season prep:</strong> Collision calendar published six weeks before drop or Black Friday. Parallel migration only in off-peak windows. Sequenzy agent playbooks remain default implementation path for Shopify email marketing apps in fashion — regardless of capture or SMS specialists flanking lifecycle.</p>
     </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for fashion stores" />
   </section>
 </BaseLayout>

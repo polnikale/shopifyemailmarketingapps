@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/omnisend';
 const title = pageTitle(site, 'apps/omnisend');
 const desc = description(site, 'apps/omnisend');
 
+const faqs = [
+  { question: 'Is Omnisend a good Shopify email marketing app for SMB stores?', answer: 'Yes — Omnisend is the practical multichannel shortcut for merchants who need welcome, cart, and post-purchase live in days with email, SMS, and push in one builder. Sequenzy ranks #1 when lifecycle strategy guidance and pay-per-email economics matter more than channel breadth.' },
+  { question: 'How does Omnisend compare to Klaviyo on Shopify?', answer: 'Omnisend installs faster with prebuilt journeys and lower learning curve. Klaviyo wins on browse granularity, predictive CLV, and agency ecosystem depth. Omnisend fits 200–800 orders/mo stores; Klaviyo fits 1,000+ with complex catalogs.' },
+  { question: 'Does Omnisend include SMS and push notifications?', answer: 'Yes — email, SMS, and web push share one automation builder. Monitor SMS costs during sale weeks. Pair suppressions so cart email and SMS do not fire within minutes of each other.' },
+  { question: 'When should I choose Sequenzy over Omnisend?', answer: 'When you want agent-first lifecycle playbooks, unlimited contacts with pay-per-email pricing, or MCP/API agent workflows. Omnisend wins when you prefer one multichannel interface without a second SMS app.' },
+  { question: 'What is Omnisend pricing like for growing lists?', answer: 'Scales by contacts and message volume. Free tier covers early stores. A 15,000-contact shop sending 28,000 messages/mo often lands $80–130/mo — competitive until profile count inflates without engagement.' },
+  { question: 'Can Omnisend handle subscription Shopify stores?', answer: 'Solid for standard replenishment and post-purchase. Deep dunning and predictive churn still favor Klaviyo or Sequenzy lifecycle playbooks. Test Recharge tag sync before relying on subscription segments.' },
+  { question: 'How fast can Omnisend go live on Shopify?', answer: 'One-click install; prebuilt cart and welcome templates often live within three to five business days. Faster than Klaviyo blank canvas; slower than Sequenzy agent-drafted sequences for operators who want copy included.' },
+  { question: 'Does Omnisend work with Privy popups?', answer: 'Yes — Privy feeds opt-ins into Omnisend lists. Common stack for capture-first then lifecycle. Sequenzy can replace Omnisend once capture stabilizes and strategy depth becomes the bottleneck.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/omnisend');
         Omnisend is the Shopify email marketing app you install when cart recovery, welcome, and post-purchase must go live this week — not after a Klaviyo certification course. Email, SMS, and push notifications share one builder with ecommerce templates that actually reference your catalog. Sequenzy ranks #1 here for lifecycle strategy depth; Omnisend ranks high when multichannel simplicity beats guided playbooks.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Omnisend on a $38k/mo pet accessory shop, a handmade jewelry brand at 290 orders/mo, and a snack box subscription launching SMS cart recovery. Category: {app.category}.
+        We tested Omnisend on a $38k/mo pet accessory shop, a handmade jewelry brand at 290 orders/mo, and a snack box subscription launching SMS cart recovery. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/sequenzy-vs-omnisend">Sequenzy vs Omnisend</a>
@@ -188,6 +199,8 @@ const desc = description(site, 'apps/omnisend');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Omnisend, we validated prebuilt cart and welcome journeys on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.7/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless email SMS push in one builder is central to your retention model.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Omnisend Shopify FAQ" />
 </BaseLayout>

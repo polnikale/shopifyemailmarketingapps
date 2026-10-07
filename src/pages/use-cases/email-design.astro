@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'shopify-email', 'brev
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'shopify-email', 'brevo', 'mailchimp', 'yotpo-email-sms', 'drip', 'tinyemail', 'privy'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for email design?', answer: 'Sequenzy ranks first for product-led lifecycle templates optimized for mobile readability. Klaviyo wins for dynamic product blocks at scale. Shopify Email for zero-friction brand-matched basics.' },
+  { question: 'Mobile-first email design rules?', answer: 'Single column, 16px+ body text, tap targets 44px+, max two product cards above fold, alt text on all images, plain-text fallback.' },
+  { question: 'How many products in one email?', answer: 'Two to three on mobile lifecycle emails; more only in dedicated browse grids with clear hierarchy.' },
+  { question: 'Dark mode considerations?', answer: 'Test logos and buttons in dark mode; avoid pure black text on transparent PNG heroes.' },
+  { question: 'Image-heavy versus text?', answer: 'Balance — image-off clients must still convey offer and CTA. Candle and ceramic brands often over-image.' },
+  { question: 'Shopify product blocks?', answer: 'Pull live price and inventory from catalog; stale blocks worse than no block.' },
+  { question: 'Accessibility?', answer: 'Semantic headings, alt text, sufficient contrast, link text descriptive not "click here".' },
+  { question: 'What metrics matter?', answer: 'Mobile click rate, image-off rendering quality, accessibility complaints.' },
+  { question: 'Test where before send?', answer: 'iOS Mail, Gmail app, Outlook web minimum; Litmus or Email on Acid for launches.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'shopify-email', 'bre
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'shopify-email', 'bre
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Design fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Design fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -214,4 +227,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'shopify-email', 'bre
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Sale-week edit drill: marketer swaps hero and code in under thirty minutes without dev.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Email design FAQ" />
 </BaseLayout>

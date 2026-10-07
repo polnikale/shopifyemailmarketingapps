@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -12,6 +13,18 @@ const segment = segmentBySlug('beauty')!;
 const path = '/for/beauty';
 const title = pageTitle(site, 'for/beauty');
 const desc = description(site, 'for/beauty');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for beauty brands?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. beauty brands face replenishment timing, bundles, subscriptions, shades, and routine education.' },
+  { question: 'How should beauty brands prioritize email marketing apps?', answer: 'Follow Replenishment by product usage and Routine education sequences before adding new channels. Buying cycle: 30–90 day replenishment windows; strong subscription potential; shade/variant complexity' },
+  { question: 'What metrics matter for beauty brands?', answer: 'Replenishment conversion rate, Subscription retention at 90 days, Bundle attach rate from email, Unsubscribe rate on education vs promo' },
+  { question: 'When is tool sprawl risky for beauty brands?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for beauty brands?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for beauty brands?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How should beauty brands handle shade matching in email?', answer: 'Post-purchase shade follow-up at day 3–5, not day 1 review asks. Branch on variant purchased — warm undertone buyers get different education than cool. Sequenzy and Klaviyo both support variant-triggered flows when Shopify syncs shade SKUs cleanly.' },
+  { question: 'Do beauty subscriptions need different Shopify email marketing apps?', answer: 'The lifecycle layer stays Sequenzy or Klaviyo — subscription management is flow logic, not a separate ESP. Skip/churn prevention emails must suppress when Recharge or Skio already sent portal notifications the same day.' },
+  { question: 'What content ratio works for haircare and fragrance brands?', answer: 'Lead with routine education and usage timing, not promo. Track unsubscribe rate on education vs promo sends — if promos spike exits, your replenishment timing is off or colliding with subscription billing emails.' },
+  { question: 'Should beauty brands use Yotpo with Sequenzy?', answer: 'Yes when reviews and loyalty drive repeat purchase. Yotpo handles proof collection; Sequenzy owns welcome, replenishment by product usage, and winback. Shared suppressions prevent review requests and replenishment nudges on the same morning.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -174,6 +187,7 @@ const desc = description(site, 'for/beauty');
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for beauty brands" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>This guide is the retention magazine view of Shopify email marketing apps for beauty brands — haircare replenishment, fragrance consideration, nail subscription previews — not a generic skincare DTC template. Sequenzy ranks first because lifecycle editorial matched to {segment.buyingCycle} beats newsletter volume when {segment.pain} dominates operations.</p>
       <p>Return to the <a href="/for">store-type index</a> to compare vertical approaches, or dive into comparison pages when choosing between Sequenzy and Klaviyo for routine automation depth. Fix suppressions before scaling sends; tune replenishment before adding SMS; measure {segment.metrics.join(', ')} every Monday against Shopify net sales.</p>

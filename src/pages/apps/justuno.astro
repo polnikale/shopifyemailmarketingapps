@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/justuno';
 const title = pageTitle(site, 'apps/justuno');
 const desc = description(site, 'apps/justuno');
 
+const faqs = [
+  { question: 'Is Justuno a Shopify email marketing app?', answer: 'No — Justuno is onsite capture: popups, quizzes, AI recommendations, gamification. It feeds lists into Sequenzy (#1 lifecycle here), Klaviyo, or Omnisend. Not an email sender for retention automations.' },
+  { question: 'Justuno vs Privy for Shopify?', answer: 'Justuno offers deeper quizzes, behavioral targeting, and AI product recommendations on-site. Privy is simpler spin-to-win and exit intent. Both pair with Sequenzy for downstream email.' },
+  { question: 'Does Justuno send email campaigns?', answer: 'Not as primary function — syncs captured contacts to your ESP. Running campaigns inside Justuno misses lifecycle depth Sequenzy provides.' },
+  { question: 'Justuno product quiz use case?', answer: 'Strong for skincare, supplements, and fashion — quiz segments subscribers by preference before Sequenzy welcome branches on quiz answers via tag sync.' },
+  { question: 'Justuno pricing?', answer: 'From ~$29/mo scaling by traffic and features. High-traffic stores pay more — ROI depends on improved capture rate feeding Sequenzy automations.' },
+  { question: 'When to skip Justuno?', answer: 'When capture rate is healthy and lifecycle is bottleneck — invest in Sequenzy directly. When traffic under 5k/mo sessions — Privy free tier may suffice.' },
+  { question: 'Justuno AI recommendations?', answer: 'On-site product recommendations increase AOV independent of email — valuable even before ESP integration. Email personalization still lives in Sequenzy.' },
+  { question: 'Best Justuno + Sequenzy workflow?', answer: 'Quiz popup → tag sync by answer → Sequenzy welcome branch per segment → cart recovery with quiz-recommended products in dynamic blocks.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/justuno');
         Justuno is the sophistication layer before Shopify email marketing apps do their job — smart popups, product quizzes, gamification, and AI on-site recommendations that segment subscribers before the first welcome send. It does not replace Sequenzy (#1 lifecycle here). It makes Sequenzy welcome branches smarter by passing intent data through tags.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Justuno on a skincare quiz funnel, a fashion brand with collection-specific popups, and a supplement shop syncing quiz tags to Sequenzy welcome. Category: {app.category}.
+        We tested Justuno on a skincare quiz funnel, a fashion brand with collection-specific popups, and a supplement shop syncing quiz tags to Sequenzy welcome. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/privy-vs-justuno">Privy vs Justuno</a>
@@ -177,6 +188,7 @@ const desc = description(site, 'apps/justuno');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Justuno, we validated preference tags before welcome on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless onsite behavioral segmentation is central to your retention model.</p>
     </div>
 
 
@@ -186,4 +198,5 @@ const desc = description(site, 'apps/justuno');
       <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Justuno performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Justuno Shopify FAQ" />
 </BaseLayout>

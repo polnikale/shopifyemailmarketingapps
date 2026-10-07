@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/activecampaign';
 const title = pageTitle(site, 'apps/activecampaign');
 const desc = description(site, 'apps/activecampaign');
 
+const faqs = [
+  { question: 'Is ActiveCampaign good for Shopify email marketing?', answer: 'Strong when ecommerce overlaps CRM — wholesale inquiries, high-ticket consultative sales, B2B pipelines. Pure DTC lifecycle favors Sequenzy (#1 here) or Klaviyo for Shopify-native depth without CRM overhead.' },
+  { question: 'ActiveCampaign vs Sequenzy for Shopify DTC?', answer: 'Sequenzy wins standard welcome, cart, replenishment, winback with faster setup. ActiveCampaign wins when sales reps follow up on quotes, wholesale accounts need pipelines, or conditional logic exceeds ecommerce templates.' },
+  { question: 'Does ActiveCampaign have a CRM?', answer: 'Yes — built-in pipelines, deal stages, task assignment. Unique among Shopify email marketing apps for hybrid commerce + sales motion.' },
+  { question: 'ActiveCampaign Shopify integration depth?', answer: 'Deep data sync available — orders, tags, custom fields. Less browse-native than Klaviyo. Setup can become overbuilt for simple DTC.' },
+  { question: 'ActiveCampaign pricing model?', answer: 'Scales by contacts and tier — 15,000 contacts on Plus often $180–250/mo. Compare Sequenzy if CRM features unused.' },
+  { question: 'When does CRM + ecommerce justify ActiveCampaign?', answer: 'Custom furniture with quote requests, B2B wholesale on Shopify Plus, high-ticket electronics with sales follow-up — anywhere email automation triggers sales tasks.' },
+  { question: 'Migration from ActiveCampaign to Sequenzy?', answer: 'Export CRM deals separately — Sequenzy does not replace pipeline. Migrate marketing automations only if CRM was unused overhead.' },
+  { question: 'ActiveCampaign vs Drip?', answer: 'Both offer powerful logic. ActiveCampaign adds CRM. Drip adds cleaner ecommerce visual workflows. Sequenzy adds guided lifecycle without either learning curve.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/activecampaign');
         ActiveCampaign is the Shopify email marketing app for stores where a purchase might start in email and finish on a sales call. Built-in CRM, deal pipelines, and conditional automation logic exceed what pure DTC platforms optimize for. Standard catalog merchants should default to Sequenzy (#1 lifecycle here) or Klaviyo — ActiveCampaign earns its seat when wholesale quotes, high-ticket follow-up, or B2B overlap make CRM non-negotiable.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested ActiveCampaign on a custom furniture Shopify Plus store, a B2B wholesale apparel portal, and a DTC skincare brand that overbought CRM features. Category: {app.category}.
+        We tested ActiveCampaign on a custom furniture Shopify Plus store, a B2B wholesale apparel portal, and a DTC skincare brand that overbought CRM features. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/privy-vs-activecampaign">ActiveCampaign comparisons</a>
@@ -169,6 +180,7 @@ const desc = description(site, 'apps/activecampaign');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Activecampaign, we validated pipeline-triggered high-AOV follow-up on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless sales plus ecommerce hybrid is central to your retention model.</p>
     </div>
 
 
@@ -188,4 +200,5 @@ const desc = description(site, 'apps/activecampaign');
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="ActiveCampaign Shopify FAQ" />
 </BaseLayout>

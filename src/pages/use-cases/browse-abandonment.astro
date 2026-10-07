@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy', 'shopify-email', 'mailchimp', 'brevo', 'activecampaign', 'tinyemail'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for browse abandonment?', answer: 'Sequenzy ranks first for proof-first browse sequences that delay discounts until education lands. Klaviyo wins with granular viewed-product events and collection-level segmentation. Drip wins for visual browse branching.' },
+  { question: 'How is browse abandonment different from cart abandonment?', answer: 'Browse signals interest, not commitment. Intent decays slower but conversion requires education and trust. Discounting on browse email one trains wait-for-sale behavior. Cart recovery can justify stronger urgency.' },
+  { question: 'What trigger threshold should I use?', answer: 'Common: viewed product 2+ times or 60+ seconds on PDP without add-to-cart. High-AOV ceramic may require 3+ views over 48 hours. Pet food with known SKU may fire after single deep view with size guide engagement.' },
+  { question: 'Should browse emails include the viewed product?', answer: 'Yes — dynamic product blocks from Shopify catalog with current price and inventory. Include social proof specific to that SKU. Avoid recommending OOS variants.' },
+  { question: 'When should browse abandonment offer a discount?', answer: 'Email three at earliest, and only if no add-to-cart occurred and segment shows discount sensitivity. Full-price browse converters exist — protect them.' },
+  { question: 'How do I prevent browse and cart overlap?', answer: 'Suppress browse when customer enters cart abandonment flow. Cart intent supersedes browse intent. Document in collision calendar.' },
+  { question: 'Can Shopify Email do browse abandonment?', answer: 'No automated browse triggers in Shopify Email. Requires lifecycle platform with viewed product events from Shopify or onsite tracking.' },
+  { question: 'What metrics prove browse success?', answer: 'Browse-to-cart rate, full-price conversion rate, revenue without discount, product view depth before purchase.' },
+  { question: 'Does browse abandonment work for subscription products?', answer: 'Yes — educate on scent rotation or pet food transition before subscribe CTA. Browse for candle subscriptions often needs burn-time FAQ before price objection handling.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -62,8 +74,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy', 'sho
     <div class="ledger-card mb-12 overflow-x-auto">
       <h2 class="section-title text-3xl">App comparison</h2>
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Browse fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Browse fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -186,4 +198,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy', 'sho
     </div>
   </section>
 
+  <FaqSection faqs={faqs} title="Browse abandonment FAQ" />
 </BaseLayout>

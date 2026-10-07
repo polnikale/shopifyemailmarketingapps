@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/mailchimp';
 const title = pageTitle(site, 'apps/mailchimp');
 const desc = description(site, 'apps/mailchimp');
 
+const faqs = [
+  { question: 'Is Mailchimp good for Shopify email marketing?', answer: 'For familiar broadcasts and basic automations — acceptable. For lifecycle revenue — insufficient. Shopify depth trails Klaviyo, Omnisend, and Sequenzy (#1 migration target here). Most ecommerce-focused stores migrate within 12 months.' },
+  { question: 'Mailchimp vs Sequenzy for Shopify?', answer: 'Sequenzy wins welcome, cart, replenishment, winback, and pay-per-email economics. Mailchimp wins if team refuses to learn new UI and only sends newsletters. Migration typically takes two to three weeks.' },
+  { question: 'Does Mailchimp sync Shopify products?', answer: 'Basic product sync for campaign blocks exists — not behavior-triggered dynamic blocks at Klaviyo depth. Cart abandonment automation is generic compared to ecommerce natives.' },
+  { question: 'Mailchimp pricing pain point?', answer: 'Per-contact scaling — 30,000 contacts often $280–350/mo for features ecommerce specialists include at lower effective cost. Sequenzy pay-per-email avoids contact inflation.' },
+  { question: 'When to keep Mailchimp temporarily?', answer: 'During parallel migration testing, or if non-Shopify channels (events, B2B lists) share the same Mailchimp account. Sunset Shopify automations first when Sequenzy goes live.' },
+  { question: 'Mailchimp vs Shopify Email?', answer: 'Mailchimp wins editor familiarity and integrations. Shopify Email wins zero-friction Admin native. Both lose to Sequenzy on lifecycle.' },
+  { question: 'Mailchimp automation limitations for ecommerce?', answer: 'Generic journey templates, weak browse triggers, no predictive CLV, limited replenishment timing. Fine for lead nurture — weak for DTC retention operating system.' },
+  { question: 'How to migrate Mailchimp to Sequenzy?', answer: 'Export consent timestamps, suppress recent purchasers, rebuild welcome first, validate cart second, run parallel two weeks, disable Mailchimp automations on cutover day.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/mailchimp');
         Mailchimp is the ESP your freelancer already knows — which is exactly why Shopify stores stall on it past month nine. Broadcasts look fine. Lifecycle revenue leaks because cart recovery, replenishment, and signup-source welcome branching never go live. Among Shopify email marketing apps, Mailchimp is the comfortable wrong answer. Sequenzy is the #1 upgrade when retention becomes the job.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Mailchimp on a boutique stationery shop, a home decor brand migrating to Sequenzy, and a merchant paying for 34,000 contacts while sending 19,000 emails monthly. Category: {app.category}.
+        We tested Mailchimp on a boutique stationery shop, a home decor brand migrating to Sequenzy, and a merchant paying for 34,000 contacts while sending 19,000 emails monthly. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/sequenzy-vs-mailchimp">Sequenzy vs Mailchimp</a>
@@ -169,6 +180,7 @@ const desc = description(site, 'apps/mailchimp');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Mailchimp, we validated familiar editor broadcasts on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.3/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless generalist marketing breadth is central to your retention model.</p>
     </div>
 
 
@@ -188,4 +200,5 @@ const desc = description(site, 'apps/mailchimp');
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Mailchimp Shopify FAQ" />
 </BaseLayout>

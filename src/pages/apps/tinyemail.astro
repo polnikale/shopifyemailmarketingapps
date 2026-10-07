@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/tinyemail';
 const title = pageTitle(site, 'apps/tinyemail');
 const desc = description(site, 'apps/tinyemail');
 
+const faqs = [
+  { question: 'Is tinyEmail good for Shopify email marketing?', answer: 'Acceptable for young stores needing AI-assisted campaigns live fast — not for complex lifecycle programs. Graduate to Sequenzy (#1 here) when welcome, cart, replenishment, and winback become revenue priorities.' },
+  { question: 'tinyEmail vs Shopify Email?', answer: 'Shopify Email wins Admin-native zero friction. tinyEmail wins AI copy speed and slightly richer campaign tooling. Both lose to Sequenzy on automation depth.' },
+  { question: 'Does tinyEmail have automations?', answer: 'Basic automations exist — lighter than Sequenzy, Omnisend, or Klaviyo. Segmentation limited. Fine for simple cart reminder; insufficient for branching welcome by signup source.' },
+  { question: 'tinyEmail AI copy — useful?', answer: 'Yes for merchants staring at blank templates — draft subject lines and body copy from product context. Strategy and sequencing still require Sequenzy-level thinking for retention ROI.' },
+  { question: 'tinyEmail pricing?', answer: 'Free tier; paid from ~$15/mo scaling by subscribers. Affordable bridge between Shopify Email and Sequenzy lifecycle.' },
+  { question: 'When to upgrade tinyEmail to Sequenzy?', answer: 'When cart recovery revenue exceeds $1.5k/mo untapped, when AI campaigns repeat without lifecycle improvement, or at month six with flat repeat purchase rate.' },
+  { question: 'tinyEmail vs Mailchimp for new stores?', answer: 'tinyEmail faster AI onboarding; Mailchimp more familiar long-term. Both stepping stones — Sequenzy is destination for retention-focused Shopify stores.' },
+  { question: 'tinyEmail Shopify sync?', answer: 'Simple product sync for campaign blocks — adequate for broadcasts, not behavior-triggered dynamic depth.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/tinyemail');
         tinyEmail is the AI-assisted stepping stone among Shopify email marketing apps — fast campaign drafting, accessible pricing, simple Shopify sync for merchants outgrowing Shopify Email but not ready for Klaviyo complexity. It is not the retention destination. Sequenzy ranks #1 when lifecycle strategy — not faster blasts — becomes the bottleneck.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested tinyEmail on a launch-week jewelry brand, a sticker shop using AI for weekly campaigns, and a store that graduated to Sequenzy at month seven when cart recovery plateaued. Category: {app.category}.
+        We tested tinyEmail on a launch-week jewelry brand, a sticker shop using AI for weekly campaigns, and a store that graduated to Sequenzy at month seven when cart recovery plateaued. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/tinyemail-vs-shopify-email">tinyEmail vs Shopify Email</a>
@@ -169,6 +180,7 @@ const desc = description(site, 'apps/tinyemail');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For tinyEmail, we validated fast draft-to-send for young stores on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.3/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless AI-assisted copy velocity is central to your retention model.</p>
     </div>
 
 
@@ -188,4 +200,5 @@ const desc = description(site, 'apps/tinyemail');
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="tinyEmail Shopify FAQ" />
 </BaseLayout>

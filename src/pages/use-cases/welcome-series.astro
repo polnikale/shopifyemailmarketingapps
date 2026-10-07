@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -21,6 +22,44 @@ const comparisonApps = [
   'yotpo-email-sms', 'mailchimp', 'brevo', 'tinyemail',
 ].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  {
+    question: 'What is the best Shopify email marketing app for welcome series?',
+    answer: 'Sequenzy ranks first because welcome series is a strategy problem before a design problem — branching by signup source, delaying discounts until brand proof lands, and suppressing existing customers requires lifecycle thinking, not a three-email template. Klaviyo wins when you need deep source metadata from multiple popup tools and predictive first-purchase scoring at scale.',
+  },
+  {
+    question: 'How many emails should a Shopify welcome series have?',
+    answer: 'Three to five emails over 7–14 days for most DTC stores. Email 1 delivers the promised incentive and brand story within five minutes. Email 2 at 24 hours builds proof — reviews, founder story, bestsellers. Email 3 at 72 hours addresses objections. Reserve discount escalation for cold segments only. Subscription and high-AOV stores often extend to five touches over three weeks.',
+  },
+  {
+    question: 'Should welcome series offer a discount immediately?',
+    answer: 'Only when signup source signals discount intent — spin-to-win, coupon popup, abandoned checkout email capture. Product-page and content subscribers should get proof-first welcome: social proof, education, bestseller curation. Leading every welcome with 20% off trains the list to ignore full-price sends within two months.',
+  },
+  {
+    question: 'How do I branch welcome by signup source in Shopify?',
+    answer: 'Pass popup ID, landing page URL, or UTM source into Shopify customer metafields or your email platform custom properties at opt-in. Branch welcome email one creative and offer logic by source. Sourdough recipe PDF downloaders get different proof than someone who opted in from a ceramic planter PDP. Klaviyo, Sequenzy, and Drip all support property-based branching when capture tools pass metadata.',
+  },
+  {
+    question: 'What if an existing customer re-subscribes?',
+    answer: 'Exclude them from new-buyer welcome immediately. Route to loyalty acknowledgment or replenishment if they have order history. Re-subscribed customers who receive "10% off your first order" destroy trust and inflate discount dependency metrics. Sync Shopify customer tags for has_placed_order before welcome fires.',
+  },
+  {
+    question: 'Can Privy handle the full welcome series?',
+    answer: 'Privy handles capture and basic welcome — sufficient for stores under 150 orders per month with simple offers. It lacks sophisticated branching, collision suppression with cart flows, and long nurture for high-consideration catalogs. Pair Privy capture with Sequenzy or Klaviyo execution once list growth outpaces basic automation.',
+  },
+  {
+    question: 'What metrics prove welcome series success?',
+    answer: 'First purchase within 14 days, welcome revenue per subscriber, unsubscribe rate by source, and full-price versus discounted first order ratio. Click rate alone misleads — a welcome with aggressive discount drives clicks that erode margin. Track whether email-acquired buyers repurchase without incentive within 60 days.',
+  },
+  {
+    question: 'How does welcome series interact with abandoned cart?',
+    answer: 'Suppress welcome discount offers for subscribers who enter cart abandonment within 48 hours of opt-in — they should receive cart recovery, not competing incentives. Set priority rules: cart flow wins over welcome email three when both are eligible. Document collision logic before launch; overlap causes double-discount support tickets.',
+  },
+  {
+    question: 'Is Shopify Email enough for welcome automation?',
+    answer: 'Shopify Email can send a single welcome-style campaign manually. It cannot branch by source, suppress existing customers automatically, or run multi-touch nurture with behavioral triggers. Stores serious about first-purchase conversion graduate within months.',
+  },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -112,7 +151,7 @@ const comparisonApps = [
             <th>Pricing</th>
             <th>Shopify depth</th>
             <th>Automation</th>
-            
+            <th>Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -123,7 +162,7 @@ const comparisonApps = [
               <td>{app.pricing}</td>
               <td>{app.shopifyDepth}</td>
               <td>{app.automationDepth}</td>
-              
+              <td>★ {app.rating}</td>
             </tr>
           ))}
         </tbody>
@@ -254,4 +293,5 @@ const comparisonApps = [
     </div>
   </section>
 
+  <FaqSection faqs={faqs} title="Welcome series FAQ" />
 </BaseLayout>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip', 'yotpo-email-sms', 'firepush', 'mailchimp', 'attentive', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for product launches?', answer: 'Sequenzy ranks first for launch playbooks with VIP early access, waitlist fulfillment order, and inventory-aware sends. Klaviyo wins for complex drop segmentation. Privy wins for waitlist capture feeding launch executor.' },
+  { question: 'How early should VIPs get access?', answer: '24 hours before general list is standard for ceramic drops and limited candle scents. Document exclusion for recent full-price buyers of adjacent SKUs.' },
+  { question: 'Should launch email entire list?', answer: 'No — exclude recent purchasers, sold-out variants, unavailable markets. Segment by interest: planter collectors vs sourdough buyers vs pet owners.' },
+  { question: 'How do waitlists work?', answer: 'Privy or Klaviyo waitlist signup → fulfillment in signup order on restock/go-live. Firepush for push waitlist optional.' },
+  { question: 'Inventory sync critical?', answer: 'Yes — variant-level inventory in email blocks. False availability on glaze drop destroys trust and spikes support.' },
+  { question: 'Launch versus welcome collision?', answer: 'Pause welcome discount paths during launch week for subscribers who match launch segment — avoid offer stacking.' },
+  { question: 'SMS for drops?', answer: 'Postscript or Attentive for flash urgency on mobile-heavy candle and ceramic drops — coordinate with email suppressions.' },
+  { question: 'What metrics matter?', answer: 'Launch sell-through in 48h, waitlist conversion, VIP vs general revenue split, inventory accuracy in emails.' },
+  { question: 'Shopify Email for launches?', answer: 'Manual broadcasts only — no VIP early access automation or waitlist orchestration.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip', 'yot
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip', 'yot
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Launch fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Launch fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -186,4 +199,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'drip', 'yot
     </div>
   </section>
 
+  <FaqSection faqs={faqs} title="Product launch FAQ" />
 </BaseLayout>

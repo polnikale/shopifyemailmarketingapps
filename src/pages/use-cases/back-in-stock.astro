@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'firepush'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'firepush', 'drip', 'shopify-email', 'yotpo-email-sms', 'postscript', 'mailchimp'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for back-in-stock alerts?', answer: 'Sequenzy ranks first for waitlist-ordered fulfillment with inventory confirmation gates. Klaviyo wins for variant-level alerts at scale. Privy for waitlist capture UI.' },
+  { question: 'When send back-in-stock alert?', answer: 'Immediate on confirmed restock — inventory &gt; 0 in Shopify for exact variant. Priority by waitlist signup order. Expire offer link after 48h.' },
+  { question: 'Alert entire list or waitlist only?', answer: 'Waitlist only for fairness and deliverability — blasting full list on restock trains ignores and hurts placement.' },
+  { question: 'Variant-level accuracy?', answer: 'Essential — pet food bag size, ceramic glaze, candle scent must match waitlisted SKU not parent product.' },
+  { question: 'False alert prevention?', answer: 'Confirm inventory stable 15+ minutes before send; buffer for sync lag. Alert again if OOS within 24h damages trust permanently.' },
+  { question: 'Customer bought substitute?', answer: 'Exclude from alert — they solved need. Shopify order history check before send.' },
+  { question: 'Waitlist versus notify me apps?', answer: 'Capture tool records intent; Shopify email marketing app sends on restock webhook. Often two layers integrated.' },
+  { question: 'Web push for back-in-stock?', answer: 'Firepush adds push channel for waitlist — pair with email and suppress if purchased via either channel.' },
+  { question: 'What metrics matter?', answer: 'Waitlist conversion rate, time to sell-through after alert, revenue per alert sent, false alert rate.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'firepush', 
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'firepush', 
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Back-in-stock fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Back-in-stock fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -218,4 +231,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'privy', 'omnisend', 'firepush', 
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Review waitlist conversion quarterly — low conversion with high capture may mean PDP friction, not email creative failure.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Back-in-stock FAQ" />
 </BaseLayout>

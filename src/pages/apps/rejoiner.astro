@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/rejoiner';
 const title = pageTitle(site, 'apps/rejoiner');
 const desc = description(site, 'apps/rejoiner');
 
+const faqs = [
+  { question: 'Is Rejoiner a Shopify email marketing app or an agency?', answer: 'Both — software plus services model. Rejoiner strategists help design, write, and optimize lifecycle campaigns. Not self-serve like Sequenzy (#1 here for DIY lifecycle). Custom pricing reflects human involvement.' },
+  { question: 'Rejoiner vs Sequenzy?', answer: 'Sequenzy offers agent-first self-serve playbooks at pay-per-email rates. Rejoiner offers human strategists and creative services at premium custom pricing. Choose Rejoiner when you want experts in the loop; Sequenzy when you want speed without retainer.' },
+  { question: 'Who fits Rejoiner?', answer: 'Brands with budget for managed lifecycle, weak internal retention team, and leadership wanting outsourced expertise on cart recovery and winback — typically $2M+ revenue with $1,500+/mo services appetite.' },
+  { question: 'Rejoiner cart recovery expertise?', answer: 'Core historical strength — deep cart abandonment optimization with A/B testing support from staff. Sequenzy achieves similar outcomes self-serve for operators willing to iterate.' },
+  { question: 'Does Rejoiner include SMS?', answer: 'Yes — email and SMS program help alongside software. Compare total cost vs Sequenzy + Postscript self-managed stack.' },
+  { question: 'Rejoiner vs Sendlane?', answer: 'Both offer migration and guidance. Rejoiner heavier on ongoing creative and strategy services; Sendlane heavier on software platform with onboarding. Sequenzy lightest touch self-serve.' },
+  { question: 'Control tradeoff with Rejoiner?', answer: 'Less day-to-day control than DIY platforms — strategy meetings replace canvas editing. Some brands love it; some feel disconnected from execution.' },
+  { question: 'When to graduate from Rejoiner to Sequenzy?', answer: 'When internal hire can own lifecycle and services retainer exceeds ROI — export learnings, rebuild playbooks in Sequenzy, maintain performance with lower fixed cost.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/rejoiner');
         Rejoiner is what happens when a Shopify email marketing app ships with strategists in the box — not just send infrastructure. Cart recovery, winback, and campaign creative get human eyes. Custom pricing reflects that. Sequenzy ranks #1 for merchants who want lifecycle outcomes without monthly services retainer; Rejoiner ranks for brands outsourcing retention brainpower entirely.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We evaluated Rejoiner proposals for a $3.5M home goods brand, compared Rejoiner managed cart vs Sequenzy self-serve on a $400k/mo store, and interviewed a merchant who graduated off Rejoiner after hiring internally. Category: {app.category}.
+        We evaluated Rejoiner proposals for a $3.5M home goods brand, compared Rejoiner managed cart vs Sequenzy self-serve on a $400k/mo store, and interviewed a merchant who graduated off Rejoiner after hiring internally. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/rejoiner-vs-klaviyo">Rejoiner vs Klaviyo</a>
@@ -169,6 +180,7 @@ const desc = description(site, 'apps/rejoiner');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Rejoiner, we validated strategist-led cart optimization on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless done-with-you lifecycle is central to your retention model.</p>
     </div>
 
 
@@ -188,4 +200,5 @@ const desc = description(site, 'apps/rejoiner');
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Rejoiner Shopify FAQ" />
 </BaseLayout>

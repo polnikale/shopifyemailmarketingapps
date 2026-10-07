@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'yotpo-email-
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'yotpo-email-sms', 'drip', 'shopify-email', 'postscript', 'mailchimp', 'sendlane'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for holiday gifting?', answer: 'Sequenzy ranks first for gift-buyer segmentation, shipping deadline urgency, and gift-card last-minute paths. Klaviyo wins for complex gift segment logic. Omnisend for fast seasonal multichannel.' },
+  { question: 'When send gift guide emails?', answer: '4 weeks before primary shipping deadline for ceramic and candles; 2 weeks for pet treat baskets; escalate deadline reminders final 7 days.' },
+  { question: 'Separate gift from self-purchase messaging?', answer: 'Yes — gift buyers need bundle ideas, gift wrap, deadline clarity; self-purchasers need different creative. Segment by gift message attribute or purchaser behavior.' },
+  { question: 'Shipping deadline emails?', answer: '3-day, 1-day, and cutoff-day reminders with timezone-aware copy when possible. Stop when Shopify delivery promise impossible.' },
+  { question: 'Last-minute digital gift cards?', answer: 'Final 48h push gift card email to engagers who have not purchased — saves revenue when physical ship impossible.' },
+  { question: 'Gift purchaser post-purchase?', answer: 'Thank gift buyer; do not send product education meant for recipient. Offer gift receipt or send-to-friend option.' },
+  { question: 'International markets?', answer: 'Exclude markets past cutoff from physical gift promos; offer digital alternatives.' },
+  { question: 'What metrics matter?', answer: 'Gift purchase revenue, shipping deadline conversion, gift card sales from email, return rate on gift purchases.' },
+  { question: 'Holiday gifting versus Black Friday?', answer: 'BFCM is discount peak; holiday gifting is deadline and curation peak — different calendars, coordinate suppressions.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'yotpo-email
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'yotpo-email
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Gifting fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Gifting fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -210,4 +223,5 @@ const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'yotpo-email
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Test global promo pause during gift deadline week — collision with cart and welcome verified sixty days before peak.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Holiday gifting FAQ" />
 </BaseLayout>

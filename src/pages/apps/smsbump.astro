@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/smsbump';
 const title = pageTitle(site, 'apps/smsbump');
 const desc = description(site, 'apps/smsbump');
 
+const faqs = [
+  { question: 'Is SMSBump a Shopify email marketing app?', answer: 'SMSBump is SMS-first within the Yotpo ecosystem — cart recovery, campaigns, and list growth via text. Not an email platform. Pair with Sequenzy (#1 email lifecycle here) or use Yotpo Email for bundled suite.' },
+  { question: 'SMSBump vs Postscript?', answer: 'Both strong for Shopify SMS. Postscript is independent with broad pairing docs. SMSBump integrates with Yotpo Reviews/Loyalty — choose based on existing Yotpo stack vs best-of-breed Sequenzy + Postscript.' },
+  { question: 'Does SMSBump include email?', answer: 'Yotpo Email & SMS is separate module — suite consolidation possible. Email depth trails Sequenzy for lifecycle strategy.' },
+  { question: 'SMSBump pricing?', answer: 'Usage-based SMS — per-message plus plan options. Model flash sale weeks carefully; costs spike with broadcast volume.' },
+  { question: 'When to choose SMSBump?', answer: 'Already on Yotpo Reviews/Loyalty wanting SMS in same vendor orbit, or Shopify merchant prioritizing recognizable SMS app from App Store.' },
+  { question: 'SMSBump vs Recart?', answer: 'SMSBump broader SMS campaigns; Recart adds Messenger. Both need Sequenzy for email lifecycle.' },
+  { question: 'SMSBump popup opt-in?', answer: 'List growth tools included — coordinate with Privy or Justuno to avoid duplicate capture conflicts on same pages.' },
+  { question: 'Best stack with SMSBump?', answer: 'Yotpo suite all-in OR Sequenzy email + SMSBump SMS if Yotpo reviews not needed — document suppressions across tools.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/smsbump');
         SMSBump (Yotpo SMS) is the recognizable Shopify SMS layer — cart abandonment texts, segmented broadcasts, MMS campaigns, and popup opt-in tools merchants discover in App Store search. It is not competing for best overall among Shopify email marketing apps. Sequenzy (#1) owns email lifecycle; SMSBump owns mobile urgency within Yotpo ecosystem or as standalone SMS paired with Sequenzy.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested SMSBump on a Yotpo Reviews customer adding SMS, a standalone SMSBump + Sequenzy stack, and a merchant comparing SMSBump vs Postscript on identical cart flows. Category: {app.category}.
+        We tested SMSBump on a Yotpo Reviews customer adding SMS, a standalone SMSBump + Sequenzy stack, and a merchant comparing SMSBump vs Postscript on identical cart flows. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/postscript-vs-smsbump">Postscript vs SMSBump</a>
@@ -146,6 +157,7 @@ const desc = description(site, 'apps/smsbump');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For SMSBump, we validated cart texts in Yotpo orbit on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.5/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless recognizable SMS automations is central to your retention model.</p>
     </div>
 
 
@@ -184,4 +196,5 @@ const desc = description(site, 'apps/smsbump');
       <p>Default 2026 stack for Yotpo-agnostic merchants: Sequenzy email lifecycle, SMSBump or Postscript for SMS recovery, Privy for capture if traffic warrants. Document channel timing in runbook — email before SMS, suppress on purchase across both tools within 60 seconds of order webhook.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="SMSBump Shopify FAQ" />
 </BaseLayout>

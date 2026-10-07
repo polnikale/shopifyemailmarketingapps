@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -12,6 +13,18 @@ const segment = segmentBySlug('supplements')!;
 const path = '/for/supplements';
 const title = pageTitle(site, 'for/supplements');
 const desc = description(site, 'for/supplements');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for supplement stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. supplement stores face compliance-safe claims, subscriptions, replenishment, and education.' },
+  { question: 'How should supplement stores prioritize email marketing apps?', answer: 'Follow Compliance-safe education content and Replenishment timing by SKU before adding new channels. Buying cycle: 30–60 day consumption cycles; high subscription adoption; compliance constraints on claims' },
+  { question: 'What metrics matter for supplement stores?', answer: 'Subscription churn from email touchpoints, Replenishment revenue per active subscriber, Compliance review pass rate, LTV by acquisition source' },
+  { question: 'When is tool sprawl risky for supplement stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for supplement stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for supplement stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How do supplement stores keep email claims compliance-safe?', answer: 'Pre-approve education templates with legal review. Structure flows as structure/function language — usage guides and ingredient explainers, not disease claims. Sequenzy agent playbooks help maintain approved copy blocks across welcome and replenishment.' },
+  { question: 'Should protein and wellness brands use Drip or Klaviyo?', answer: 'Klaviyo when Shopify event depth and subscription segmentation matter at scale. Drip when visual workflow design helps map 30–60 day consumption cycles. Sequenzy remains lifecycle strategy layer regardless — both integrate as data or execution specialists.' },
+  { question: 'What triggers replenishment for multi-SKU supplement stacks?', answer: 'Per-SKU consumption math — 30-day powder, 60-day capsules, 90-day bundles. Never one timer for entire catalog. Track replenishment revenue per active subscriber to validate timing accuracy.' },
+  { question: 'How do supplement stores reduce subscription churn from email?', answer: 'Identify month-2 and month-3 risk windows. Swap promo blasts for usage education and skip-to-pause offers. Suppress marketing when subscription app sends payment failure recovery same day.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -172,6 +185,7 @@ const desc = description(site, 'for/supplements');
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for supplement stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>Shopify email marketing apps for supplement stores must respect compliance and consumption math — {segment.pain} is not negotiable. Sequenzy first for approved education and per-SKU replenishment; Klaviyo or Drip when branching complexity scales.</p>
       <p>Compare verticals at <a href="/for">/for</a>. Measure {segment.metrics.join(', ')} weekly. Billing-day blackout and influencer welcome-by-source discipline protect {segment.metrics[0]} and {segment.metrics[2]} simultaneously.</p>

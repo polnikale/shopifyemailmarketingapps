@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -12,6 +13,18 @@ const segment = segmentBySlug('print-on-demand')!;
 const path = '/for/print-on-demand';
 const title = pageTitle(site, 'for/print-on-demand');
 const desc = description(site, 'for/print-on-demand');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for print-on-demand stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. print-on-demand stores face trend cycles, personalization, and margin-sensitive promos.' },
+  { question: 'How should print-on-demand stores prioritize email marketing apps?', answer: 'Follow Trend and design drop alerts and Personalization follow-up before adding new channels. Buying cycle: Impulse to 2-week consideration; trend-driven; thin margins' },
+  { question: 'What metrics matter for print-on-demand stores?', answer: 'Margin per email order, Trend drop sell-through, Personalization completion rate, Discount dependency ratio' },
+  { question: 'When is tool sprawl risky for print-on-demand stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for print-on-demand stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for print-on-demand stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How do POD stores protect margin in email promos?', answer: 'Document margin-safe discount rules — max percentage by product type, never site-wide without COGS review. Track margin per email order and discount dependency ratio weekly. Sequenzy winback can exclude below-margin SKUs automatically.' },
+  { question: 'Should trend drops use Privy or Sequenzy?', answer: 'Privy for capture on trend landing pages; Sequenzy for drop sequencing and post-purchase personalization follow-up. Trend drop sell-through improves when VIP gates precede public blasts — not when three apps send independently.' },
+  { question: 'How do POD stores follow up on personalization?', answer: 'Abandoned personalization flows — custom text half-entered — need distinct recovery from standard cart. Track personalization completion rate as email-attributed metric.' },
+  { question: 'When does Omnisend beat Klaviyo for POD?', answer: 'When lean teams need email plus SMS live before month end for trend drops. Sequenzy still owns lifecycle strategy; Omnisend executes fast multichannel for hype cycles.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -166,6 +179,7 @@ const desc = description(site, 'for/print-on-demand');
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for print-on-demand stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>POD Shopify email marketing apps balance trend drops and margin — meme merch, personalized mugs, niche community tees need {segment.emailPriorities.join('; ')} with COGS honesty. Sequenzy VIP-first sequencing; {segment.metrics[0]} weekly.</p>
       <p>All guides at <a href="/for">/for</a>. {segment.metrics[3]} should fall as community content replaces discount dependency.</p>

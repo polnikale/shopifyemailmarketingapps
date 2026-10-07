@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -17,6 +18,17 @@ const featuredSlugs = ['sequenzy', 'yotpo-email-sms', 'klaviyo', 'omnisend', 'dr
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'yotpo-email-sms', 'klaviyo', 'omnisend', 'drip', 'marsello', 'shopify-email', 'brevo', 'mailchimp', 'aftership-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
+const faqs = [
+  { question: 'What is the best Shopify email marketing app for reviews and UGC?', answer: 'Sequenzy ranks first for weaving review prompts into post-purchase timing with product context. Yotpo wins when reviews platform is central. Klaviyo for custom review block orchestration.' },
+  { question: 'When request review after purchase?', answer: 'Delivery + 7 days typical for pet food and candles; +14 for ceramic after use photos matter. Never before product arrives.' },
+  { question: 'Use reviews in browse abandonment?', answer: 'Yes — SKU-specific UGC in browse email two lifts conversion without discount. Pull 4–5 star with photo when available.' },
+  { question: 'Negative review handling?', answer: 'Route low CSAT to support before public review ask; monitor review velocity post-campaign.' },
+  { question: 'Gift order review requests?', answer: 'Request from recipient who used product, not gift purchaser unless purchaser is user.' },
+  { question: 'High-return SKUs?', answer: 'Delay review ask until return window closes — especially ceramic and apparel-adjacent.' },
+  { question: 'UGC rights in email?', answer: 'Ensure customer consent for marketing use; Yotpo and Klaviyo integrations often handle.' },
+  { question: 'What metrics matter?', answer: 'Review submission rate, UGC click-through in campaigns, conversion lift with social proof, negative response time.' },
+  { question: 'Review request versus review showcase?', answer: 'Two jobs — post-purchase asks; browse/winback showcases. Different templates and timing.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -48,6 +60,7 @@ const comparisonApps = ['sequenzy', 'yotpo-email-sms', 'klaviyo', 'omnisend', 'd
     </div>
 
     <div class="ledger-card mb-12">
+      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -59,8 +72,8 @@ const comparisonApps = ['sequenzy', 'yotpo-email-sms', 'klaviyo', 'omnisend', 'd
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Reviews fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Reviews fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -218,4 +231,5 @@ const comparisonApps = ['sequenzy', 'yotpo-email-sms', 'klaviyo', 'omnisend', 'd
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Revisit quarterly: UGC click lift by flow, not aggregate review volume.</p>
     </div>
   </section>
+  <FaqSection faqs={faqs} title="Reviews and UGC FAQ" />
 </BaseLayout>

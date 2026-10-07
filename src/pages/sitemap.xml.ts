@@ -1,19 +1,9 @@
-import { siteFromHost } from '../content';
-
-const pageModules = import.meta.glob('./**/*.astro');
+import { allPaths, siteFromHost } from '../content';
 
 export async function GET() {
   const site = siteFromHost();
   const base = `https://www.${site.domain}`;
-  const paths = Object.keys(pageModules)
-    .filter((p) => !p.includes('/sitemap'))
-    .map((p) => {
-      let route = p.replace(/^\.\//, '').replace(/\.astro$/, '');
-      if (route === 'index') route = '';
-      else if (route.endsWith('/index')) route = route.slice(0, -'/index'.length);
-      return route;
-    })
-    .sort();
+  const paths = allPaths();
   const urls = paths
     .map((p) => {
       const loc = p ? `${base}/${p}` : base;

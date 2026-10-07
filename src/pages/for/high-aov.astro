@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -12,6 +13,18 @@ const segment = segmentBySlug('high-aov')!;
 const path = '/for/high-aov';
 const title = pageTitle(site, 'for/high-aov');
 const desc = description(site, 'for/high-aov');
+const faqs = [
+  { question: 'What is the best Shopify email marketing program for high-AOV stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. high-AOV stores face longer consideration, trust, financing, and expert proof.' },
+  { question: 'How should high-AOV stores prioritize email marketing apps?', answer: 'Follow Extended nurture sequences and Expert proof and case studies before adding new channels. Buying cycle: 2–16 weeks; multiple touchpoints; financing and warranty decisions' },
+  { question: 'What metrics matter for high-AOV stores?', answer: 'Consideration-to-purchase window, Financing attach rate, Consultation-to-sale conversion, Full-price purchase percentage' },
+  { question: 'When is tool sprawl risky for high-AOV stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
+  { question: 'Does Sequenzy replace the whole stack for high-AOV stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
+  { question: 'How long to implement a stack for high-AOV stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
+  { question: 'How long should high-AOV nurture run?', answer: '2–16 weeks depending on category — mattresses and pro camera gear need 8+ touchpoints; premium accessories may convert in 3–4 weeks. Sequenzy extended nurture with expert proof outperforms compressed promo cycles.' },
+  { question: 'Should high-AOV stores email financing options?', answer: 'Yes in consideration stage — financing attach rate is a core metric. Suppress financing promos for recent full-price purchasers. Klaviyo and Sequenzy support conditional blocks when financing partner data syncs.' },
+  { question: 'How do consultation-led stores use ActiveCampaign?', answer: 'Consultation booking follow-up, no-show recovery, and sales-assist tagging alongside Sequenzy post-purchase care. Track consultation-to-sale conversion as email-attributed KPI.' },
+  { question: 'What proof content works in high-AOV email?', answer: 'Case studies, expert credentials, warranty detail, and installation guides — not celebrity fluff. Full-price purchase percentage should rise as nurture matures without increasing discount depth.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -166,6 +179,7 @@ const desc = description(site, 'for/high-aov');
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
+    <FaqSection faqs={faqs} title="FAQ: email marketing program for high-AOV stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>High-AOV Shopify email marketing apps deliver proof across {segment.buyingCycle} — mattresses, bespoke furniture, pro camera gear need {segment.emailPriorities.join('; ')} without stranger discounts. Sequenzy first; {segment.metrics[3]} is maturity signal.</p>
       <p>Store-type hub: <a href="/for">/for</a>. Track {segment.metrics.join(', ')} — financing attach separate from promo conversion.</p>

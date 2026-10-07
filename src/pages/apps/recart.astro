@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,6 +12,16 @@ const path = '/apps/recart';
 const title = pageTitle(site, 'apps/recart');
 const desc = description(site, 'apps/recart');
 
+const faqs = [
+  { question: 'Is Recart a Shopify email marketing app?', answer: 'Recart is mobile-first cart recovery via SMS and Messenger — not a full email platform. Pair with Sequenzy (#1 email lifecycle here) for complete retention. Recart when SMS/Messenger recovery outperforms email on your traffic.' },
+  { question: 'Recart vs Postscript?', answer: 'Both specialize in mobile cart recovery. Postscript is SMS-native with stronger TCPA tooling. Recart adds Messenger channel for Facebook-attributed traffic. Choose based on channel mix; both need Sequenzy or Klaviyo for email.' },
+  { question: 'Does Recart support Facebook Messenger recovery?', answer: 'Yes — differentiated channel for stores with Messenger subscriber bases from click-to-Messenger ads. Declining channel for some brands as Meta policies shift — validate opt-in quality.' },
+  { question: 'Recart pricing model?', answer: 'Usage-based messaging on paid/custom plans. Model per-message ROI during promo weeks — same discipline as Postscript.' },
+  { question: 'When does Recart make sense?', answer: 'Promo-driven DTC with high mobile cart abandonment and strong SMS opt-in. Less fit for education-heavy catalogs needing long email nurtures.' },
+  { question: 'Recart browse abandonment?', answer: 'Browse abandonment SMS available — narrower than Klaviyo browse email depth. Email browse still belongs in Sequenzy or Klaviyo.' },
+  { question: 'Can Recart replace email ESP?', answer: 'No — replenishment, welcome education, and winback sequences need email. Recart is recovery wedge not retention platform.' },
+  { question: 'Best stack with Recart?', answer: 'Sequenzy email lifecycle + Recart SMS/Messenger recovery with documented cross-channel suppressions.' },
+];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -25,7 +36,7 @@ const desc = description(site, 'apps/recart');
         Recart attacks abandoned carts where thumbs live — SMS and Messenger reminders for promo-driven Shopify stores where mobile recovery beats inbox delays. It is not a Shopify email marketing app in the full sense; it is the urgent nudge layer. Sequenzy (#1 here) owns welcome, education, replenishment, and winback email. Recart owns the 60-minute cart text and Messenger ping.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Recart on a flash-sale apparel brand, a Meta-heavy accessories shop, and a merchant comparing Recart Messenger vs Postscript SMS-only. Category: {app.category}.
+        We tested Recart on a flash-sale apparel brand, a Meta-heavy accessories shop, and a merchant comparing Recart Messenger vs Postscript SMS-only. Rating: ★ {app.rating}. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/recart-vs-postscript">Recart vs Postscript</a>
@@ -156,6 +167,7 @@ const desc = description(site, 'apps/recart');
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Recart, we validated Messenger and SMS cart nudges on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
+      <p>Rating 4.4/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless promo-driven mobile urgency is central to your retention model.</p>
     </div>
 
 
@@ -184,4 +196,5 @@ const desc = description(site, 'apps/recart');
       <p>Document Messenger opt-in quality separately from SMS — declining Meta channel policies make quarterly opt-in audits non-optional.</p>
     </div>
 
+  <FaqSection faqs={faqs} title="Recart Shopify FAQ" />
 </BaseLayout>
