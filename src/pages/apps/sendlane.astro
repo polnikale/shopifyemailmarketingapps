@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,16 +11,6 @@ const path = '/apps/sendlane';
 const title = pageTitle(site, 'apps/sendlane');
 const desc = description(site, 'apps/sendlane');
 
-const faqs = [
-  { question: 'Is Sendlane good for Shopify email marketing?', answer: 'Yes for DTC brands ready to invest in guided retention with email + SMS coordination and migration support. Entry price higher than Omnisend. Sequenzy ranks #1 when pay-per-email and agent-first setup beat white-glove onboarding costs.' },
-  { question: 'Sendlane vs Klaviyo?', answer: 'Sendlane offers migration help and ecommerce-first positioning with less profile-pricing shock transparency. Klaviyo wins predictive depth and ecosystem. Sequenzy wins economics and strategy speed for sub-$1M stores.' },
-  { question: 'What is Sendlane pricing?', answer: 'From ~$83/mo with custom packages — less transparent self-serve than Sequenzy or Omnisend. Justify with migration support and revenue attribution if switching from legacy ESP.' },
-  { question: 'Does Sendlane include SMS?', answer: 'Yes — email and SMS journeys coordinated. Strong deliverability tooling. Compare total cost vs Sequenzy email + Postscript SMS split.' },
-  { question: 'Sendlane migration support — worth it?', answer: 'Valuable when leaving Klaviyo or Mailchimp with complex automations and no internal ops hire. Less valuable if starting fresh — Sequenzy playbooks go live faster without migration invoice.' },
-  { question: 'Sendlane vs Rejoiner?', answer: 'Both target brands wanting help. Sendlane is software-first with onboarding; Rejoiner is services-heavier. Sequenzy is self-serve strategy for teams avoiding both premium tiers.' },
-  { question: 'Who should skip Sendlane?', answer: 'Stores under 400 orders/mo, merchants wanting transparent self-serve pricing, or teams preferring Sequenzy agent-first over guided packages.' },
-  { question: 'Sendlane revenue attribution?', answer: 'Revenue-focused reporting by flow and campaign — solid for proving ROI to leadership during ESP budget conversations.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -36,7 +25,7 @@ const faqs = [
         Sendlane is the Shopify email marketing app for DTC brands exiting Klaviyo or Mailchimp with baggage — complex automations, dirty lists, and a leadership team demanding proof retention spend works. Ecommerce-first journeys, migration onboarding, and revenue attribution justify higher entry pricing. Sequenzy ranks #1 when you are starting fresh or want agent-first economics without $83/mo floor.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We evaluated Sendlane during a Klaviyo migration for a $180k/mo supplement brand, a fashion retailer comparing Sendlane vs Sequenzy, and a store using Sendlane SMS + email coordination through Q4. Rating: ★ {app.rating}. Category: {app.category}.
+        We evaluated Sendlane during a Klaviyo migration for a $180k/mo supplement brand, a fashion retailer comparing Sendlane vs Sequenzy, and a store using Sendlane SMS + email coordination through Q4. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/sendlane-vs-klaviyo">Sendlane vs Klaviyo</a>
@@ -180,7 +169,6 @@ const faqs = [
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Sendlane, we validated onboarding-led cart rebuild on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
-      <p>Rating 4.6/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless guided ecommerce automation is central to your retention model.</p>
     </div>
 
 
@@ -200,5 +188,4 @@ const faqs = [
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
-  <FaqSection faqs={faqs} title="Sendlane Shopify FAQ" />
 </BaseLayout>

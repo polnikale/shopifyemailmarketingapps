@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,16 +11,6 @@ const path = '/apps/marsello';
 const title = pageTitle(site, 'apps/marsello');
 const desc = description(site, 'apps/marsello');
 
-const faqs = [
-  { question: 'Is Marsello a good Shopify email marketing app?', answer: 'Strong when loyalty, POS, and email/SMS campaigns must share one system — omnichannel retailers with Shopify plus physical stores. Pure online DTC lifecycle favors Sequenzy (#1 here) or Klaviyo for email depth without loyalty-centric architecture.' },
-  { question: 'Marsello vs Yotpo?', answer: 'Both combine loyalty with marketing. Yotpo adds reviews ecosystem; Marsello emphasizes POS sync and retail-first workflows. Sequenzy wins email-first lifecycle without loyalty module overhead.' },
-  { question: 'Does Marsello sync Shopify POS?', answer: 'Yes — core differentiator. In-store purchases feed loyalty points and segments for email campaigns. Critical for hybrid retailers; irrelevant for online-only brands.' },
-  { question: 'Marsello email depth vs Klaviyo?', answer: 'Email features trail Klaviyo and Sequenzy on browse abandonment, agent playbooks, and predictive segmentation. Acceptable when loyalty tier triggers drive most automations.' },
-  { question: 'Marsello pricing?', answer: 'From ~$49/mo scaling by contacts and features. Compare total cost vs Sequenzy email plus standalone loyalty if online-only.' },
-  { question: 'When to choose Sequenzy over Marsello?', answer: 'Online-only DTC without POS, when lifecycle strategy matters more than points programs, or when pay-per-email beats contact-tiered Marsello pricing at your send ratio.' },
-  { question: 'Marsello referral programs?', answer: 'Built-in referral flows tie to loyalty — useful for community-driven brands. Email creative still less flexible than dedicated ESPs.' },
-  { question: 'Best Marsello merchant profile?', answer: 'Coffee shop with Shopify online + two retail locations, boutique with POS repeat visitors, brand where in-store and online purchase history must unify.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -36,7 +25,7 @@ const faqs = [
         Marsello connects loyalty points, POS purchases, and email/SMS campaigns for retailers who sell online and in-store — not for pure DTC brands living only in Shopify Admin. Among Shopify email marketing apps, it is loyalty infrastructure with marketing attached. Sequenzy ranks #1 when email lifecycle strategy drives retention without points programs; Marsello ranks when tier status and in-store behavior trigger sends.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Marsello on a boutique with Shopify POS, a coffee roaster with two cafés plus ecommerce, and an online-only skincare brand that wrongly chose Marsello. Rating: ★ {app.rating}. Category: {app.category}.
+        We tested Marsello on a boutique with Shopify POS, a coffee roaster with two cafés plus ecommerce, and an online-only skincare brand that wrongly chose Marsello. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/marsello-vs-klaviyo">Marsello vs Klaviyo</a>
@@ -158,7 +147,6 @@ const faqs = [
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Marsello, we validated tier-triggered omnichannel campaigns on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
-      <p>Rating 4.4/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless points programs across channels is central to your retention model.</p>
     </div>
 
 
@@ -196,5 +184,4 @@ const faqs = [
       <p>Some omnichannel brands run Marsello loyalty plus Sequenzy email lifecycle — Marsello owns points balance comms, Sequenzy owns welcome, cart, replenishment, winback. Requires strict suppression mapping so tier celebration emails do not collide with Sequenzy winback on same day.</p>
     </div>
 
-  <FaqSection faqs={faqs} title="Marsello Shopify FAQ" />
 </BaseLayout>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,16 +11,6 @@ const path = '/apps/aftership-email';
 const title = pageTitle(site, 'apps/aftership-email');
 const desc = description(site, 'apps/aftership-email');
 
-const faqs = [
-  { question: 'Is AfterShip Email a full Shopify email marketing app?', answer: 'No — it excels at post-purchase timing tied to shipping, delivery, and returns within the AfterShip ecosystem. Full lifecycle belongs in Sequenzy (#1 here) or Klaviyo. AfterShip Email complements when tracking events drive retention messages.' },
-  { question: 'When does AfterShip Email make sense?', answer: 'When you already use AfterShip Tracking, Returns, or Post-Purchase and want delivery-triggered emails without a separate ESP integration. Less valuable standalone.' },
-  { question: 'AfterShip Email vs Sequenzy post-purchase?', answer: 'AfterShip wins delivery-precise timing and tracking page integration. Sequenzy wins education-before-cross-sell strategy, replenishment, welcome, cart, and winback in one lifecycle platform.' },
-  { question: 'Does AfterShip Email include SMS?', answer: 'SMS shipping updates available within bundle. Not SMS marketing depth — Postscript for campaigns. Pair Sequenzy for email lifecycle.' },
-  { question: 'AfterShip review request flows?', answer: 'Post-delivery review requests are practical strength — timing based on actual delivery scan not fulfillment guess. Competes with Yotpo review requests if already in AfterShip stack.' },
-  { question: 'Can AfterShip replace Klaviyo?', answer: 'Not for stores needing browse abandonment, predictive segments, or campaign breadth. Niche post-purchase layer only unless catalog is shipping-event-centric.' },
-  { question: 'AfterShip Email pricing?', answer: 'Varies by AfterShip product bundle — audit total AfterShip spend vs adding Sequenzy for lifecycle and keeping AfterShip tracking-only.' },
-  { question: 'Best stack with AfterShip?', answer: 'AfterShip Tracking + Sequenzy lifecycle email + AfterShip delivery triggers for review requests. Avoid duplicating post-purchase across three tools.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -36,7 +25,7 @@ const faqs = [
         AfterShip Email is not competing to be your only Shopify email marketing app — it is the messaging layer when delivery scans, tracking pages, and returns status should trigger the send. Merchants already living in AfterShip for tracking find natural extension here. Everyone else should default to Sequenzy (#1 lifecycle) and treat AfterShip as optional post-purchase precision.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested AfterShip Email on a furniture brand with long transit times, a skincare shop using delivery-triggered review asks, and a merchant duplicating post-purchase across AfterShip and Klaviyo. Rating: ★ {app.rating}. Category: {app.category}.
+        We tested AfterShip Email on a furniture brand with long transit times, a skincare shop using delivery-triggered review asks, and a merchant duplicating post-purchase across AfterShip and Klaviyo. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/use-cases/post-purchase">Post-purchase guide</a>
@@ -179,7 +168,6 @@ const faqs = [
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For AfterShip Email, we validated carrier-scan review requests on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
-      <p>Rating 4.3/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless post-purchase logistics triggers is central to your retention model.</p>
     </div>
 
 
@@ -199,5 +187,4 @@ const faqs = [
       <p class="mt-4 text-lg leading-8 text-stone-700">Revisit this matrix quarterly. Shopify email marketing apps rankings shift with your order volume, team bandwidth, and catalog complexity — not with logo familiarity.</p>
     </div>
 
-  <FaqSection faqs={faqs} title="AfterShip Email FAQ" />
 </BaseLayout>

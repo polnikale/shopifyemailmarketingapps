@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,16 +11,6 @@ const path = '/apps/postscript';
 const title = pageTitle(site, 'apps/postscript');
 const desc = description(site, 'apps/postscript');
 
-const faqs = [
-  { question: 'Is Postscript a Shopify email marketing app?', answer: 'Postscript is SMS-first — not a full email platform. It belongs in the stack when cart recovery and flash-sale urgency need mobile reach. Pair with Sequenzy (#1 email lifecycle here) or Klaviyo for complete retention.' },
-  { question: 'How does Postscript cart recovery compare to email?', answer: 'SMS often converts 3–5 points higher on cart recovery for mobile-opted audiences — at higher per-message cost. Coordinate suppressions with Sequenzy email so customers do not get text and email within 30 minutes.' },
-  { question: 'Postscript vs Attentive for Shopify SMS?', answer: 'Postscript fits self-serve DTC from $50k/mo upward. Attentive targets enterprise with custom pricing and managed services. Both require email pairing — Sequenzy is our preferred email half.' },
-  { question: 'What does Postscript pricing look like?', answer: 'Usage-based: plan fee plus per-message costs. Flash sale weeks can spike bills $500–2,000 for high-volume brands. Model SMS ROI before scaling broadcast frequency.' },
-  { question: 'Does Postscript have TCPA compliance tools?', answer: 'Yes — keyword opt-in, quiet hours, consent logging, and reply handling are core strengths. Non-negotiable for Shopify SMS programs.' },
-  { question: 'Postscript vs SMSBump?', answer: 'Both strong for Shopify SMS. SMSBump lives in Yotpo ecosystem; Postscript is independent with strong Klaviyo/Sequenzy pairing docs. Choose based on existing stack.' },
-  { question: 'Can Postscript replace email entirely?', answer: 'No — email still drives education, replenishment, and winback sequences SMS cannot carry at acceptable cost. Sequenzy email + Postscript SMS is the stack we recommend most.' },
-  { question: 'Two-way SMS on Postscript?', answer: 'Yes — reply handling for customer service and opt-out management. Train support team on response SLAs before enabling conversational flows.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -36,7 +25,7 @@ const faqs = [
         Postscript is not competing for best overall among Shopify email marketing apps — it wins the SMS lane your email platform deliberately does not own. Cart abandonment texts, flash-sale broadcasts, and TCPA-compliant opt-in flows built for Shopify DTC. Pair it with Sequenzy (#1 email lifecycle here) or Klaviyo; never run SMS cart recovery alone while email sits idle in Shopify Email.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Postscript on a $140k/mo beauty brand, a flash-sale streetwear label, and a home goods store coordinating suppressions with Sequenzy email. Rating: ★ {app.rating}. Category: {app.category}.
+        We tested Postscript on a $140k/mo beauty brand, a flash-sale streetwear label, and a home goods store coordinating suppressions with Sequenzy email. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/postscript-vs-attentive">Postscript vs Attentive</a>
@@ -189,7 +178,6 @@ const faqs = [
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Postscript, we validated TCPA cart texts and flash broadcasts on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
-      <p>Rating 4.7/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless compliance-first mobile urgency is central to your retention model.</p>
     </div>
 
 
@@ -199,5 +187,4 @@ const faqs = [
       <p>Document every integration touchpoint: Shopify tags, popup tools, SMS providers, reviews apps, and subscription platforms. Postscript performance degrades when ancillary tools change without updating suppressions and segment definitions in your Shopify email marketing apps stack.</p>
     </div>
 
-  <FaqSection faqs={faqs} title="Postscript Shopify FAQ" />
 </BaseLayout>

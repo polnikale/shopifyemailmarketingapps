@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('food-and-beverage')!;
 const path = '/for/food-and-beverage';
 const title = pageTitle(site, 'for/food-and-beverage');
 const desc = description(site, 'for/food-and-beverage');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for food and beverage brands?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. food and beverage brands face repeat purchase windows, subscriptions, and limited-time flavors.' },
-  { question: 'How should food and beverage brands prioritize email marketing apps?', answer: 'Follow Replenishment by consumption rate and New flavor launch alerts before adding new channels. Buying cycle: 1–4 week consumption; subscription-heavy; limited SKU availability' },
-  { question: 'What metrics matter for food and beverage brands?', answer: 'Reorder rate by product, Subscription skip recovery, Launch sell-through from email, Margin after shipping promos' },
-  { question: 'When is tool sprawl risky for food and beverage brands?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for food and beverage brands?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for food and beverage brands?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'How do food brands handle perishability in email?', answer: 'Shipping clarity and consumption timing belong in post-purchase, not footer fine print. Reorder triggers should account for delivery transit plus consumption rate — a 2-week coffee bag cycle starts at delivery, not purchase date.' },
-  { question: 'Should limited flavor launches use SMS or email?', answer: 'Email for story and waitlist; SMS for same-day sell-through when inventory is truly limited. Omnisend or Rejoiner SMS must share suppressions with Sequenzy replenishment — subscribers should not get "reorder your favorite" and "new flavor drop" simultaneously.' },
-  { question: 'How do F&B brands recover subscription skips?', answer: 'Preview next box or next shipment content before skip deadline. Skip recovery sequences outperform discount codes when product experience is the retention lever. Track subscription skip recovery as primary metric.' },
-  { question: 'What margin guardrails apply to food email promos?', answer: 'Model margin after shipping promos — free shipping blasts on heavy glass jars destroy unit economics. Track margin after shipping promos weekly, not just revenue.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -179,7 +166,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for food and beverage brands" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>F&B Shopify email marketing apps anchor reorder to {segment.buyingCycle} — specialty coffee, hot sauce drops, snack subscriptions need {segment.emailPriorities.join('; ')} with {segment.metrics[3]} guardrails on shipping promos. Sequenzy first; margin discipline always.</p>
       <p>All store types at <a href="/for">/for</a>. Track {segment.metrics.join(', ')} weekly — launch sell-through and skip recovery validate preview investment.</p>

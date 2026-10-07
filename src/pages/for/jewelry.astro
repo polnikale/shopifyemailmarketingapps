@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('jewelry')!;
 const path = '/for/jewelry';
 const title = pageTitle(site, 'for/jewelry');
 const desc = description(site, 'for/jewelry');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for jewelry stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. jewelry stores face gift timing, high-consideration purchases, and trust-building.' },
-  { question: 'How should jewelry stores prioritize email marketing apps?', answer: 'Follow Gift guide and occasion campaigns and Trust-building education before adding new channels. Buying cycle: 2–12 weeks consideration; gift-driven spikes around holidays; high AOV trust requirements' },
-  { question: 'What metrics matter for jewelry stores?', answer: 'Gift purchase attribution, Average consideration time, High-AOV conversion from nurture, Repeat gift buyer rate' },
-  { question: 'When is tool sprawl risky for jewelry stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for jewelry stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for jewelry stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'How long should jewelry nurture sequences run?', answer: 'Match 2–12 week consideration cycles — engagement rings may need 8–12 touchpoints over months; everyday gold may convert in 2–3 weeks. Sequenzy extended nurture respects browse depth without daily discount escalation.' },
-  { question: 'Should jewelry stores email financing and warranty details?', answer: 'Yes in high-AOV nurture — trust-building education before promo. Klaviyo and Sequenzy both support conditional content blocks when financing eligibility or warranty tier varies by SKU.' },
-  { question: 'How do jewelry brands track gift purchase attribution?', answer: 'Tag gift-season campaigns separately, use post-purchase "who was this for?" optional survey data, and segment repeat gift buyers for anniversary reminders. Avoid treating gift purchasers like self-buyers in replenishment flows.' },
-  { question: 'When should jewelry stores use ActiveCampaign over Klaviyo?', answer: 'When sales-assisted or consultation booking workflows need CRM-style follow-up alongside Shopify orders. Sequenzy still owns core lifecycle; ActiveCampaign handles long-consideration sales touchpoints.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -181,7 +168,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for jewelry stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>Jewelry Shopify email marketing apps sell trust across {segment.buyingCycle} — engagement ring studios, minimalist gold lines, engraving shops each need {segment.emailPriorities.join('; ')} without stranger discounts mid-journey. Sequenzy first for nurture editorial; Klaviyo for gift segments; ActiveCampaign for consultation follow-up.</p>
       <p>See all store-type guides at <a href="/for">/for</a>. Track {segment.metrics.join(', ')} — {segment.metrics[3]} rising means trust beats coupons.</p>

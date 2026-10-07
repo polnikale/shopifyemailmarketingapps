@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -18,17 +17,6 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'sendlane', 'omnisend'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'sendlane', 'omnisend', 'yotpo-email-sms', 'brevo', 'mailchimp', 'activecampaign', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app for revenue analytics?', answer: 'Sequenzy ranks first for flow-level revenue focus without profile-tax reporting noise. Klaviyo wins for granular attribution and benchmarks. Drip for workflow revenue clarity.' },
-  { question: 'Last-click attribution enough?', answer: 'No — measure revenue per recipient, margin after discount, and incremental lift where holdouts possible. Last-click over-credits cart recovery.' },
-  { question: 'How compare flow versus campaign revenue?', answer: 'Separate dashboards — flows are always-on; campaigns are spikes. Mixing obscures which lifecycle jobs earn keep.' },
-  { question: 'Holdout testing worth it?', answer: 'Quarterly on cart and winback if volume sufficient — 5–10% holdout reveals true incrementality.' },
-  { question: 'Ignore margin at peril?', answer: 'Yes — email revenue with 25% discount may destroy contribution. Track margin after incentives in Shopify plus ESP.' },
-  { question: 'Would-have-purchased-anyway revenue?', answer: 'Replenishment reminders to buyers who reorder on habit inflate attribution — compare to historical reorder timing cohort.' },
-  { question: 'Weekly review ritual?', answer: 'Flow revenue per recipient, unsubscribe by flow, discount cost, Shopify net sales correlation — 30 minutes Monday.' },
-  { question: 'What metrics from use-case metadata?', answer: 'Incremental revenue per flow, revenue per recipient, contribution margin after discounts, cohort LTV by email engagement.' },
-  { question: 'Shopify Email analytics?', answer: 'Basic campaign stats only — insufficient for lifecycle incrementality analysis.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +48,6 @@ const faqs = [
     </div>
 
     <div class="ledger-card mb-12">
-      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -72,8 +59,8 @@ const faqs = [
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Analytics fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Analytics fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -223,5 +210,4 @@ const faqs = [
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Report engaged ratio to finance for billing conversations — total list size is vanity at renewal time.</p>
     </div>
   </section>
-  <FaqSection faqs={faqs} title="Analytics FAQ" />
 </BaseLayout>

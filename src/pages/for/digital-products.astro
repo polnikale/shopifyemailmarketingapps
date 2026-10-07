@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('digital-products')!;
 const path = '/for/digital-products';
 const title = pageTitle(site, 'for/digital-products');
 const desc = description(site, 'for/digital-products');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for digital product shops?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. digital product shops face delivery, onboarding, cross-sells, and low-inventory constraints.' },
-  { question: 'How should digital product shops prioritize email marketing apps?', answer: 'Follow Instant delivery and access emails and Onboarding and activation series before adding new channels. Buying cycle: Immediate delivery; onboarding critical; cross-sell within 7 days' },
-  { question: 'What metrics matter for digital product shops?', answer: 'Activation rate post-purchase, Cross-sell within 14 days, Renewal conversion, Support ticket reduction from onboarding' },
-  { question: 'When is tool sprawl risky for digital product shops?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for digital product shops?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for digital product shops?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'What belongs in instant delivery emails for digital products?', answer: 'Access links, login troubleshooting, and first-win instruction within minutes of purchase — not a review request. Sequenzy instant delivery flows should fire before any cross-sell. Activation rate post-purchase is the metric that matters day one.' },
-  { question: 'How fast should digital shops cross-sell?', answer: 'Within 7–14 days when onboarding completes — cross-sell by purchase behavior, not random catalog. Course buyers get advanced modules; template buyers get complementary asset packs. Track cross-sell within 14 days as primary KPI.' },
-  { question: 'Should digital products use ActiveCampaign or Klaviyo?', answer: 'ActiveCampaign when course-style onboarding needs complex branching and tag logic. Klaviyo when Shopify digital delivery and browse events drive segmentation. Sequenzy remains lifecycle strategy layer for both.' },
-  { question: 'How do digital shops reduce support tickets via email?', answer: 'Onboarding series addressing top 5 access confusions before day 3. Support ticket reduction from onboarding is a measurable email ROI metric — not just revenue.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -179,7 +166,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for digital product shops" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>Digital Shopify email marketing apps gate promotion behind {segment.metrics[0]} — Notion templates, courses, design assets need {segment.emailPriorities.join('; ')} at {segment.buyingCycle} speed. Sequenzy first; activation before cross-sell always.</p>
       <p>Compare store types at <a href="/for">/for</a>. {segment.metrics[3]} falling validates onboarding; {segment.metrics[1]} measures expansion post-activation.</p>

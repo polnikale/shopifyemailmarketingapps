@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -18,17 +17,6 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'aftership-email', 'yotpo-email-sm
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'aftership-email', 'yotpo-email-sms', 'omnisend', 'drip', 'sendlane', 'shopify-email', 'brevo', 'mailchimp'].map((s) => appBySlug(s)!).filter(Boolean);
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app for post-purchase flows?', answer: 'Sequenzy ranks first for product-specific education sequences tied to Shopify line items without pushing sales before delivery. Klaviyo wins for complex cross-sell logic. AfterShip Email wins when delivery events drive timing.' },
-  { question: 'When should post-purchase cross-sell send?', answer: 'After delivery + 2–14 days depending on category. Sourdough kits: day 3 usage tips. Pet food: day 14 complementary treat suggestion. Ceramic: day 7 care guide before accessory cross-sell. Never before fulfillment for physical goods.' },
-  { question: 'How do gift orders differ?', answer: 'Branch on gift message or separate purchaser profile. Gift buyers get thank-you and gift-wrap upsell; recipients get product education without assuming they chose the brand. Sync Shopify order attributes.' },
-  { question: 'Should post-purchase ask for reviews immediately?', answer: 'No — wait until delivery + 5–7 days when product was usable. See reviews guide. High-return SKUs need longer window.' },
-  { question: 'Can post-purchase reduce support tickets?', answer: 'Yes — sourdough starter temperature FAQ, planter drainage setup, candle first-burn instructions in email two cut ticket volume 18–30% in merchant tests when product-specific.' },
-  { question: 'How does post-purchase interact with replenishment?', answer: 'Consumables route to replenishment timers after education completes. Suppress cross-sell promos when replenishment flow active on same SKU.' },
-  { question: 'Is AfterShip Email enough alone?', answer: 'Strong for shipping-triggered messages; lighter for full lifecycle cross-sell and segmentation. Pair with Sequenzy or Klaviyo for education depth.' },
-  { question: 'What metrics matter?', answer: 'Review submission rate, second order within 60 days, support ticket reduction, cross-sell attach rate.' },
-  { question: 'Does Shopify Email automate post-purchase?', answer: 'Minimal automation — confirmation exists natively in Shopify; education and cross-sell need lifecycle platform.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +48,6 @@ const faqs = [
     </div>
 
     <div class="ledger-card mb-12">
-      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -72,8 +59,8 @@ const faqs = [
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Post-purchase fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Post-purchase fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -196,5 +183,4 @@ const faqs = [
     <p class="mt-2 text-center text-xs text-stone-700/80">Shopify email marketing apps editorial — 2026.</p>
   </section>
 
-  <FaqSection faqs={faqs} title="Post-purchase FAQ" />
 </BaseLayout>

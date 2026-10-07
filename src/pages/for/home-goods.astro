@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('home-goods')!;
 const path = '/for/home-goods';
 const title = pageTitle(site, 'for/home-goods');
 const desc = description(site, 'for/home-goods');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for home goods stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. home goods stores face larger catalogs, style preferences, and delayed purchase cycles.' },
-  { question: 'How should home goods stores prioritize email marketing apps?', answer: 'Follow Room and style segmentation and Inspiration content series before adding new channels. Buying cycle: 4–16 weeks; room-by-room purchasing; heavy inspiration browsing' },
-  { question: 'What metrics matter for home goods stores?', answer: 'Cross-sell revenue per room segment, Browse-to-purchase window, Catalog engagement depth, Project completion rate' },
-  { question: 'When is tool sprawl risky for home goods stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for home goods stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for home goods stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'How should home goods stores segment by room?', answer: 'Tag browse and purchase behavior by room — bedroom, kitchen, outdoor — using collection views and metafields. Cross-sell flows should complete rooms, not random catalog picks. Sequenzy room-based playbooks respect 4–16 week project timelines.' },
-  { question: 'Do home goods brands need Drip or Klaviyo for large catalogs?', answer: 'Klaviyo when predictive browse segmentation justifies profile pricing. Drip when visual workflows help map room-completion journeys. Sequenzy remains lifecycle strategy layer for inspiration-to-purchase editorial.' },
-  { question: 'What email cadence fits delayed purchase cycles?', answer: 'Inspiration content weekly at most during active browse; monthly during dormant project phases. Heavy daily promos train subscribers to wait for sales across long consideration windows.' },
-  { question: 'How do home goods stores measure project completion?', answer: 'Track cross-sell revenue per room segment and catalog engagement depth — subscribers who opened three-plus room guides before second purchase indicate project completion momentum.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -179,7 +166,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for home goods stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>Home goods Shopify email marketing apps remember room context across {segment.buyingCycle} — outdoor furniture, bedding, kitchenware projects need {segment.emailPriorities.join('; ')} before broadcast promos. Sequenzy first for inspiration editorial; project completion ({segment.metrics[3]}) beats open rate.</p>
       <p>Browse all vertical guides at <a href="/for">/for</a>. Measure {segment.metrics.join(', ')} against Shopify cohorts weekly.</p>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('b2b-wholesale')!;
 const path = '/for/b2b-wholesale';
 const title = pageTitle(site, 'for/b2b-wholesale');
 const desc = description(site, 'for/b2b-wholesale');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for B2B wholesale Shopify stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. B2B wholesale Shopify stores face account approvals, bulk ordering, and rep follow-up.' },
-  { question: 'How should B2B wholesale Shopify stores prioritize email marketing apps?', answer: 'Follow Account approval and onboarding and Bulk order reminders before adding new channels. Buying cycle: Account-based; approval workflows; bulk reorder cycles' },
-  { question: 'What metrics matter for B2B wholesale Shopify stores?', answer: 'Account activation rate, Bulk reorder frequency, Rep-attributed revenue, MOQ compliance from email prompts' },
-  { question: 'When is tool sprawl risky for B2B wholesale Shopify stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for B2B wholesale Shopify stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for B2B wholesale Shopify stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'How do B2B wholesale stores handle account approval email?', answer: 'Instant acknowledgment on application, status updates at each approval stage, and onboarding upon activation — separate from DTC promo flows. Account activation rate is the top-funnel metric for B2B email.' },
-  { question: 'Should wholesale use ActiveCampaign or Klaviyo?', answer: 'ActiveCampaign when rep-triggered follow-up and CRM-style tagging matter. Klaviyo when Shopify B2B catalog events drive segmentation. Sequenzy remains lifecycle layer for account onboarding and bulk reorder reminders.' },
-  { question: 'How do MOQ reminders work in email?', answer: 'Bulk order reminders keyed to historical reorder cadence and MOQ thresholds — not generic monthly blasts. Track MOQ compliance from email prompts as operational metric.' },
-  { question: 'Can B2B accounts receive DTC marketing?', answer: 'Never without explicit opt-in. Wholesale pricing and consumer promos in same inbox destroy channel trust. Suppression between account types is non-negotiable across Shopify email marketing apps.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -181,7 +168,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Zero-tolerance DTC-to-wholesale audit weekly.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for account lifecycle matched to {segment.buyingCycle}. Rep-marketing collision calendar mandatory.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for B2B wholesale Shopify stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>B2B wholesale Shopify email marketing apps manage accounts — restaurant supply, salon backbar, retail inventory need {segment.emailPriorities.join('; ')} with zero DTC crossover. Sequenzy first; rep-marketing collision calendar mandatory.</p>
       <p>Compare verticals at <a href="/for">/for</a>. {segment.metrics[0]} and {segment.metrics[2]} weekly — professional timing, not cart recovery, defines success.</p>
