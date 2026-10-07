@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -12,16 +11,6 @@ const path = '/apps/privy';
 const title = pageTitle(site, 'apps/privy');
 const desc = description(site, 'apps/privy');
 
-const faqs = [
-  { question: 'Is Privy a full Shopify email marketing app?', answer: 'No — Privy is capture-first: popups, spin wheels, exit intent, and basic email/SMS. It solves top-of-funnel before lifecycle work. Graduate to Sequenzy (#1 here) or Klaviyo once list growth stabilizes and welcome/cart/replenishment become priorities.' },
-  { question: 'When should I pair Privy with Sequenzy?', answer: 'Common pattern: Privy grows list from traffic; Sequenzy runs lifecycle automations on synced subscribers. Avoid running shallow Privy automations parallel to Sequenzy flows — collision risk on welcome and cart.' },
-  { question: 'Privy vs Justuno for Shopify capture?', answer: 'Privy is simpler and faster for spin-to-win and exit intent. Justuno offers deeper quizzes and onsite targeting. Both feed lists into Sequenzy or Klaviyo — neither replaces lifecycle platforms.' },
-  { question: 'How does Privy pricing scale?', answer: 'Contacts and pageviews drive cost. Free tier covers early stores. 25,000 contacts often $70–120/mo — painful if you also pay Klaviyo profiles on the same list. Capture-only tier then export to pay-per-email ESP saves money.' },
-  { question: 'Does Privy have cart abandonment email?', answer: 'Basic cart saver bars and simple automations exist — shallow vs dedicated ESPs. Stores serious about recovery outgrow Privy email within 6–9 months.' },
-  { question: 'Can Privy send SMS opt-in campaigns?', answer: 'Yes — SMS capture and basic sends. For SMS-heavy recovery, Postscript or Omnisend SMS depth wins. Pair Privy capture with Sequenzy email lifecycle.' },
-  { question: 'Who should skip Privy entirely?', answer: 'Stores with healthy organic list growth and retention bottleneck — skip straight to Sequenzy. Privy adds value when traffic exceeds conversion to subscriber.' },
-  { question: 'Privy migration path to lifecycle ESP?', answer: 'Export consent with timestamps, sync signup source tags, disable Privy welcome automations, enable Sequenzy welcome with source branching within 48 hours of cutover.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -36,7 +25,7 @@ const faqs = [
         Privy is the Shopify email marketing app you install when the problem is traffic not converting to subscribers — not when welcome, replenishment, and winback need orchestration. Spin wheels, exit intent, and cart saver bars turn browsers into opt-ins fast. Basic email and SMS exist; lifecycle depth does not. Sequenzy ranks #1 for what happens after Privy fills your list.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-stone-700/90">
-        We tested Privy on a $52k/mo streetwear brand fighting 98% bounce rate, a coffee equipment shop with exit-intent tests, and a store that outgrew Privy automations at 18,000 contacts. Rating: ★ {app.rating}. Category: {app.category}.
+        We tested Privy on a $52k/mo streetwear brand fighting 98% bounce rate, a coffee equipment shop with exit-intent tests, and a store that outgrew Privy automations at 18,000 contacts. Category: {app.category}.
       </p>
       <div class="mt-9 flex flex-wrap gap-3">
         <a class="btn btn-primary" href="/compare/sequenzy-vs-privy">Sequenzy vs Privy</a>
@@ -202,8 +191,6 @@ const faqs = [
     <div class="prose-shopify mb-12">
       <h2>Merchant test scenario summary</h2>
       <p>Our Shopify email marketing apps reviews prioritize production tests over feature matrices. For Privy, we validated exit intent and spin wheel opt-in on real constraints — margin caps, signup-source branching, peak collision rules, and honest Sequenzy comparison where lifecycle strategy is the decision variable.</p>
-      <p>Rating 4.6/5 reflects fit for intended lane, not universal recommendation. Default to Sequenzy unless popup conversion before ESP is central to your retention model.</p>
     </div>
 
-  <FaqSection faqs={faqs} title="Privy Shopify FAQ" />
 </BaseLayout>

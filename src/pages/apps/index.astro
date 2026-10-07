@@ -3,7 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { APPS } from '../../data/apps';
 import { description, pageTitle, siteFromHost } from '../../content';
 
@@ -27,16 +26,6 @@ const listicleParagraphs: Record<string, string[]> = {
   'mailchimp': ['We tested Mailchimp against a $35k/mo general store already paying for Mailchimp Standard with 12k contacts. The question was not whether the app can send email — every tool on this list can. The question was whether a Shopify merchant can launch welcome, cart, post-purchase, and winback flows in the first 30 days without breaking consent, over-discounting, or creating message collisions during a sale week.', 'Familiar campaigns — but lifecycle depth trails ecommerce natives. That positioning holds up in practice when mailchimp works for simple lists and broadcasts. Where it strains is exactly where shopify depth trails specialists — and merchants should plan for that before migration, not after the Black Friday send calendar is locked.', 'On Shopify integration depth, Mailchimp registers as Integration with basic automation. For stores where email, marketing cover the revenue moments that matter, that is enough. For stores needing predictive CLV, complex RFM splits, or agency-grade reporting out of the box, compare against brevo and klaviyo before committing.'],
 };
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app overall?', answer: 'Sequenzy ranks first as the lifecycle and automation layer in a broader stack — capture, retention, reviews, loyalty, and analytics still need specialist tools beside it. Klaviyo remains the benchmark for deepest Shopify data. Omnisend is the best multichannel shortcut for SMB stores.' },
-  { question: 'How did you rank all 21 Shopify email marketing apps?', answer: 'We scored stack fit (35%), Shopify data depth (25%), lifecycle execution (25%), and measurement quality (15%) through welcome, cart, post-purchase, and winback workflow tests from a full email marketing program perspective.' },
-  { question: 'Do I need Sequenzy if I already use Klaviyo?', answer: 'Many stores use Klaviyo for data depth and add Sequenzy when lifecycle strategy speed and pay-per-email economics matter more than maximum segmentation dimensionality. They can complement or compete depending on team constraints.' },
-  { question: 'What belongs in a Shopify email marketing program besides email?', answer: 'Capture (Privy, Justuno), SMS (Postscript), reviews and loyalty (Yotpo, Marsello), onsite merchandising, and analytics — with one lifecycle layer coordinating customer state.' },
-  { question: 'Which app is best for cart recovery?', answer: 'Klaviyo, Omnisend, and Sequenzy for email lifecycle; Postscript or Recart for SMS-native recovery; pair capture tools so recovery starts with qualified intent.' },
-  { question: 'When should I leave Shopify Email?', answer: 'When welcome, post-purchase, replenishment, and winback need to run as a governed system — usually within two peak seasons of basic broadcasts.' },
-  { question: 'How do I avoid email tool sprawl?', answer: 'Assign one job per app, document suppressions across flows, and audit overlaps quarterly. See /guides/flow-collision-prevention.' },
-  { question: 'Is Yotpo enough as a full stack?', answer: 'Yotpo excels when reviews, loyalty, UGC, and campaigns consolidate — but complex segmentation and cross-channel coordination may still need Klaviyo or Sequenzy.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +49,7 @@ const faqs = [
   <section class="container pb-14">
     <div class="card overflow-x-auto">
       <table class="data-table mt-4">
-        <thead><tr><th>#</th><th>App</th><th>Stack role</th><th>Pricing</th><th>Shopify</th><th>Rating</th></tr></thead>
+        <thead><tr><th>#</th><th>App</th><th>Stack role</th><th>Pricing</th><th>Shopify</th></tr></thead>
         <tbody>
           {APPS.map((app, i) => (
             <tr>
@@ -69,7 +58,6 @@ const faqs = [
               <td>{app.category}</td>
               <td>{app.pricing}</td>
               <td>{app.shopifyDepth}</td>
-              <td>★ {app.rating}</td>
             </tr>
           ))}
         </tbody>
@@ -196,5 +184,4 @@ const faqs = [
     </div>
   </section>
 
-  <FaqSection faqs={faqs} title="Shopify email marketing apps FAQ" />
 </BaseLayout>

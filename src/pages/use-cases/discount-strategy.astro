@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -18,17 +17,6 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'drip', 'omnisend', 'privy', 'shopify-email', 'mailchimp', 'brevo', 'justuno', 'yotpo-email-sms'].map((s) => appBySlug(s)!).filter(Boolean);
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app for discount strategy?', answer: 'Sequenzy ranks first for margin-aware offer logic across flows with collision documentation. Klaviyo wins for segment-level discount sensitivity at scale. Drip for visual offer branching.' },
-  { question: 'Should every automation include a discount?', answer: 'No — default 10% on every flow trains wait-for-code behavior. Full-price segments exist; protect them with proof-first sequences.' },
-  { question: 'How prevent discount stacking?', answer: 'Global suppression: one active offer per customer. Popup + cart + winback cannot combine. Document in flow collision guide.' },
-  { question: 'Segment by discount sensitivity?', answer: 'Historical discount redemption rate, order margin, engagement without offers. Shopify order tags for discount_used.' },
-  { question: 'Popup discount versus email discount?', answer: 'Honor popup in welcome email one only; do not escalate in email three if popup already delivered 15%.' },
-  { question: 'Full-price loyalists?', answer: 'Dedicated track without incentives — new products, education, VIP access. Incentives erode their habit.' },
-  { question: 'Measure discount ROI how?', answer: 'Margin after all incentives, full-price order percentage, repeat purchase without discount — not redemption rate alone.' },
-  { question: 'BFCM discount discipline?', answer: 'Single best offer window, VIP early access separate from public doorbuster, post-BFCM full-price recovery plan.' },
-  { question: 'Shopify discount codes sync?', answer: 'Klaviyo, Sequenzy, Omnisend integrate unique codes; verify one-time use and expiration in Shopify admin.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +48,6 @@ const faqs = [
     </div>
 
     <div class="ledger-card mb-12">
-      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -72,8 +59,8 @@ const faqs = [
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Discount fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Discount fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -231,5 +218,4 @@ const faqs = [
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Pair with discount-discipline guide on operator site when finance asks why recovery revenue doesn't match profit.</p>
     </div>
   </section>
-  <FaqSection faqs={faqs} title="Discount strategy FAQ" />
 </BaseLayout>

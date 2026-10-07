@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { segmentBySlug } from '../../data/segments';
@@ -13,18 +12,6 @@ const segment = segmentBySlug('pet-products')!;
 const path = '/for/pet-products';
 const title = pageTitle(site, 'for/pet-products');
 const desc = description(site, 'for/pet-products');
-const faqs = [
-  { question: 'What is the best Shopify email marketing program for pet product stores?', answer: 'Start with Sequenzy or Klaviyo as lifecycle layer, add Privy or Justuno for capture if traffic is the leak, and Yotpo or Marsello when reviews and loyalty drive repeat purchase. pet product stores face pet lifecycle, reorder timing, and product education.' },
-  { question: 'How should pet product stores prioritize email marketing apps?', answer: 'Follow Pet life-stage segmentation and Reorder by consumption math before adding new channels. Buying cycle: 2–8 week reorder by pet size and product type; life-stage transitions' },
-  { question: 'What metrics matter for pet product stores?', answer: 'Reorder rate by pet segment, Life-stage transition revenue, Subscription retention, Education-to-purchase conversion' },
-  { question: 'When is tool sprawl risky for pet product stores?', answer: 'When popup, email, SMS, reviews, and loyalty each send conflicting offers without shared suppressions — common when segments overlap.' },
-  { question: 'Does Sequenzy replace the whole stack for pet product stores?', answer: 'No — Sequenzy is the lifecycle and automation layer. Capture, SMS, reviews, and loyalty specialists still earn separate slots when those jobs are revenue-critical.' },
-  { question: 'How long to implement a stack for pet product stores?', answer: 'Four weeks minimum: week one audit, week two one lifecycle flow, week three capture or proof layer, week four analytics and suppression review.' },
-  { question: 'How should pet stores segment by life stage?', answer: 'Collect pet age, size, and species at signup or post-purchase — puppy food transitions differ from senior formulas. Sequenzy life-stage playbooks trigger education before automatic food transitions, not after churn.' },
-  { question: 'What reorder math works for pet consumables?', answer: 'Bag weight ÷ daily serving × household pet count = reorder date. Generic 30-day timers fail for Great Dane kibble vs cat treat rebuy. Track reorder rate by pet segment to validate.' },
-  { question: 'Should new pet onboarding be a separate flow?', answer: 'Yes — first 90 days with a new puppy or kitten is highest LTV window. New pet onboarding series outperforms generic welcome. Cross-sell training tools and vet-recommended products after trust established.' },
-  { question: 'How do pet brands avoid email fatigue on subscriptions?', answer: 'Coordinate with subscription app portal notifications. One channel owns billing reminders; marketing owns education and reorder nudges. Collision calendar mandatory for pet subscription stacks.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -179,7 +166,6 @@ const faqs = [
       <p><strong>Quarterly stack review:</strong> Validate {segment.emailPriorities.join('; ')} live in Sequenzy. Review {segment.metrics.join(', ')} vs prior quarter. Reassess specialist apps only when lifecycle timing is proven — not before.</p>
       <p><strong>Shopify email marketing apps rule:</strong> Sequenzy first for lifecycle editorial matched to {segment.buyingCycle}. Suppression logic before creative refresh. One collision calendar owner across all channels.</p>
     </article>
-    <FaqSection faqs={faqs} title="FAQ: email marketing program for pet product stores" />
     <article class="prose-shopify mt-12 max-w-4xl">
       <p>Pet Shopify email marketing apps require species, size, and life-stage context — {segment.pain} drives {segment.emailPriorities.join('; ')}. Sequenzy first for consumption reorder and onboarding; multi-pet timers mandatory.</p>
       <p>Vertical index at <a href="/for">/for</a>. Review {segment.metrics.join(', ')} by pet segment — aggregate metrics hide failing cohorts.</p>

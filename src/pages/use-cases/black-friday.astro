@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -18,17 +17,6 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'postscript']
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'privy', 'postscript', 'attentive', 'drip', 'sendlane', 'yotpo-email-sms', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app for Black Friday?', answer: 'Sequenzy ranks first for BFCM calendars with VIP early access, collision rules, and post-peak deliverability recovery. Klaviyo wins for scale segmentation. Omnisend for fast multichannel peaks.' },
-  { question: 'When start BFCM email sequence?', answer: 'Teaser week -1; VIP access -24h; general launch Thanksgiving week; last chance +48h. Start deliverability prep October not November.' },
-  { question: 'Daily blasts for two weeks?', answer: 'Avoid — list fatigue and spam complaints spike. 4–6 strategic sends with segment relevance beat daily generic blasts.' },
-  { question: 'VIP early access essential?', answer: 'Yes for ceramic, candle, and pet brands with repeat base — 40–60% peak revenue often from VIP despite smaller list share.' },
-  { question: 'Exclude recent full-price buyers?', answer: 'Yes — they feel punished if BFCM deeper than recent order. Route to exclusive gift or early access not public doorbuster.' },
-  { question: 'SMS on BFCM?', answer: 'Postscript or Omnisend SMS for flash segments — coordinate suppressions with email to prevent triple touch same hour.' },
-  { question: 'Post-BFCM deliverability?', answer: 'January sunset, reduced frequency, re-engagement single attempt — see deliverability guide.' },
-  { question: 'Pause lifecycle flows during BFCM?', answer: 'Pause or throttle welcome discounts, winback offers, replenishment promos that collide with site-wide sale.' },
-  { question: 'What metrics matter?', answer: 'Revenue per send during BFCM, unsubscribe spike, deliverability post-BFCM, January reactivation rate.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +48,6 @@ const faqs = [
     </div>
 
     <div class="ledger-card mb-12">
-      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -72,8 +59,8 @@ const faqs = [
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>BFCM fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>BFCM fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -228,5 +215,4 @@ const faqs = [
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Archive BFCM decisions with send schedule, discount depth by segment, collision incidents, and margin outcome. January planning reads October notes — not ESP default reports.</p>
     </div>
   </section>
-  <FaqSection faqs={faqs} title="Black Friday FAQ" />
 </BaseLayout>

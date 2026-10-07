@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { useCaseBySlug } from '../../data/use-cases';
@@ -18,17 +17,6 @@ const featuredSlugs = ['sequenzy', 'klaviyo', 'omnisend', 'drip', 'postscript'];
 const featuredApps = featuredSlugs.map((s) => appBySlug(s)!).filter(Boolean);
 const comparisonApps = ['sequenzy', 'klaviyo', 'omnisend', 'drip', 'postscript', 'yotpo-email-sms', 'sendlane', 'brevo', 'mailchimp', 'shopify-email'].map((s) => appBySlug(s)!).filter(Boolean);
 
-const faqs = [
-  { question: 'What is the best Shopify email marketing app for replenishment reminders?', answer: 'Sequenzy ranks first for SKU-level consumption windows and subscription collision rules from Shopify order data. Klaviyo wins for predictive reorder dates at scale.' },
-  { question: 'How do I set replenishment timing?', answer: 'Map each consumable SKU to expected days of supply. Reminder at 80% consumption, follow-up at 100%, subscription upsell at 120%. Pet food by bag size and pet weight; sourdough flour by kit usage; candles by burn hours.' },
-  { question: 'Should replenishment emails discount by default?', answer: 'No — replenishment buyers already trust the product. Discount trains wait-for-reminder behavior. Reserve offers for lapse risk only.' },
-  { question: 'What if customer already reordered?', answer: 'Suppress immediately on new order of same SKU or subscription renewal. Shopify order webhooks must update flow state in real time.' },
-  { question: 'How does replenishment interact with subscription apps?', answer: 'Exclude active subscribers on same SKU from one-time replenishment promos. Offer subscription upsell only on one-time repeat buyers at 120% window.' },
-  { question: 'Can SMS help replenishment?', answer: 'Postscript SMS reminders work for pet food and consumables when opt-in exists — pair with Sequenzy email and shared suppression.' },
-  { question: 'Universal 30-day reminder?', answer: 'Avoid — 30 days wrong for 90-day candle, 14-day kibble, 45-day flour. Per-SKU metadata required.' },
-  { question: 'What metrics matter?', answer: 'Replenishment conversion rate, days early/late vs optimal, subscription conversion from reminder, full-price replenishment rate.' },
-  { question: 'Does Shopify Email do replenishment?', answer: 'No automated consumption-based replenishment — requires lifecycle platform with order history segmentation.' },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -60,7 +48,6 @@ const faqs = [
     </div>
 
     <div class="ledger-card mb-12">
-      <h2 class="section-title text-3xl">Operating contract</h2>
       <div class="mt-6 grid gap-6 md:grid-cols-2 text-stone-700">
         <div><h3 class="font-black text-stone-950">Trigger</h3><p class="mt-2">{uc.trigger}</p></div>
         <div><h3 class="font-black text-stone-950">Timing</h3><p class="mt-2">{uc.timing}</p></div>
@@ -72,8 +59,8 @@ const faqs = [
 
     <div class="ledger-card mb-12 overflow-x-auto">
       <table class="data-table mt-8 min-w-[720px]">
-        <thead><tr><th>App</th><th>Replenishment fit</th><th>Pricing</th><th>Depth</th><th>Automation</th><th>Rating</th></tr></thead>
-        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td><td>★ {app.rating}</td></tr>))}</tbody>
+        <thead><tr><th>App</th><th>Replenishment fit</th><th>Pricing</th><th>Depth</th><th>Automation</th></tr></thead>
+        <tbody>{comparisonApps.map((app, i) => (<tr><td><a class="link" href={`/apps/${app.slug}`}>{i + 1}. {app.name}</a></td><td>{app.bestFor}</td><td>{app.pricing}</td><td>{app.shopifyDepth}</td><td>{app.automationDepth}</td></tr>))}</tbody>
       </table>
     </div>
   </section>
@@ -227,5 +214,4 @@ const faqs = [
       <p class="mt-4 text-[17px] leading-8 text-stone-700">Measure repeat purchase rate and margin — replenishment that only works with escalating discounts is a treadmill, not retention.</p>
     </div>
   </section>
-  <FaqSection faqs={faqs} title="Replenishment FAQ" />
 </BaseLayout>

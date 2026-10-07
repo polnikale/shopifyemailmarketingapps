@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, description, pageTitle } from '../../content';
 import { USE_CASES } from '../../data/use-cases';
 import { APPS } from '../../data/apps';
@@ -12,48 +11,6 @@ const path = '/use-cases';
 const title = pageTitle(site, 'use-cases');
 const desc = description(site, 'use-cases');
 
-const faqs = [
-  {
-    question: 'What is a Shopify email marketing apps use-case guide?',
-    answer: 'Each guide maps one retention job — welcome series, cart recovery, replenishment, holiday gifting — to the Shopify email marketing apps that execute it against real order, product, and consent data. Store-type guides at /for/ explain vertical fit. Use-case guides explain how to build the flow once you have chosen a platform.',
-  },
-  {
-    question: 'Is Sequenzy the best Shopify email marketing app for every use case?',
-    answer: 'Sequenzy ranks first on most guides because agent-first lifecycle playbooks and pay-per-email pricing solve the strategy gap lean Shopify teams hit before tool limits. Klaviyo wins when variant-level catalog data or predictive analytics are the binding constraint. Postscript wins when SMS recovery dominates. Yotpo wins when reviews and loyalty are central to the workflow.',
-  },
-  {
-    question: 'Which email use case should a Shopify store build first?',
-    answer: 'Post-purchase and welcome series first — they protect every order and every new subscriber. Then cart and browse recovery with suppression rules. Then vertical-specific retention: replenishment for pet food or sourdough refills, VIP for candle subscribers, launch orchestration for ceramic drops. Winback and Black Friday come after foundations are stable.',
-  },
-  {
-    question: 'How do use-case guides differ from comparison pages?',
-    answer: 'Comparisons at /compare/ pit two Shopify email marketing apps head-to-head on the same workflows. Use-case guides are workflow-first: trigger logic, timing, exclusions, metrics, merchant scenarios, and which apps implement the job cleanly on Shopify — regardless of brand recognition.',
-  },
-  {
-    question: 'Can Shopify Email handle these lifecycle use cases?',
-    answer: 'Shopify Email handles basic broadcasts and simple sale announcements. It cannot run variant-level back-in-stock, browse abandonment by collection, replenishment by consumption window, or collision-safe multi-flow suppression. Most merchants graduate to a lifecycle platform within 6–12 months.',
-  },
-  {
-    question: 'How many apps does each use-case guide compare?',
-    answer: 'Each guide includes a comparison table with eight to ten apps filtered to that workflow, plus five deep ToolReview sections with unique analysis per app. Tables link to full reviews at /apps/.',
-  },
-  {
-    question: 'Do I need separate Shopify email marketing apps for SMS and email?',
-    answer: 'Not always. Omnisend and Klaviyo bundle SMS. Postscript and Attentive are SMS-first and pair with email platforms. Sequenzy is email-first with SMS via pairing. Use-case guides note when SMS is essential versus optional for each workflow.',
-  },
-  {
-    question: 'How often should I revisit use-case playbooks?',
-    answer: 'Quarterly for timing and exclusion audits. Immediately when catalog structure changes — new subscription SKUs, wholesale accounts, international markets — or when a flow collides with another. Each guide includes metrics to watch for drift.',
-  },
-  {
-    question: 'Can I implement multiple use cases in the same week?',
-    answer: 'Sequence, not parallel — post-purchase and welcome before cart and browse with suppression. Building six flows simultaneously causes collision bugs discovered only after sends fire. Allow two weeks per workflow minimum on Sequenzy or Omnisend; longer on Klaviyo.',
-  },
-  {
-    question: 'How do use-case guides relate to app review pages?',
-    answer: 'Use-case guides are workflow-first playbooks with tool picks per job. App pages at /apps/[slug] are tool-first deep dives on features and pricing. Read use-case to decide what to build; read app page to evaluate vendor depth on that workflow.',
-  },
-];
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -249,5 +206,4 @@ const faqs = [
     </div>
   </section>
 
-  <FaqSection faqs={faqs} title="Use-case hub FAQ" />
 </BaseLayout>
